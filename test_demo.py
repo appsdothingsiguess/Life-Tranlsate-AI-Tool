@@ -15,7 +15,7 @@ from datetime import datetime
 # Load environment
 load_dotenv()
 API_KEY = os.getenv("GOOGLE_API_KEY")
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-2.5-flash-lite"
 
 if not API_KEY:
     print("ERROR: GOOGLE_API_KEY not found")

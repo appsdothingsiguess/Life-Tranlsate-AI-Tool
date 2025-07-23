@@ -20,7 +20,7 @@ GEMINI_PROMPT = (
     "Reply only with a natural, brief Spanish sentence the student should say. "
     "Do not add explanations or alternatives. Just respond with the one sentence."
 )
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-2.5-flash-lite"
 
 # Thread-safe logging infrastructure
 _log_lock = threading.Lock()
@@ -91,6 +91,7 @@ except Exception as e:
 try:
     client = genai.Client(api_key=API_KEY)
     log_with_timestamp("Gemini client initialized successfully", "SYSTEM")
+    log_with_timestamp(f"Using Gemini model: {MODEL_NAME} (optimized for live exam latency)", "SYSTEM")
 except Exception as e:
     log_with_timestamp(f"Failed to initialize Gemini client: {e}", "ERROR")
     raise
@@ -126,7 +127,7 @@ def warm_up_gemini():
             start_time = time.time()
             
             response = client.models.generate_content(
-                model=MODEL_NAME,  # "gemini-2.5-flash"
+                model=MODEL_NAME,  # "gemini-2.5-flash-lite"
                 contents=f"{prompt}\n\nStudent said in Spanish: {warmup_input}"
             )
             
@@ -158,9 +159,10 @@ def warm_up_gemini():
 
 def call_gemini_api(spanish_input, is_repeat=False):
     """
-    Use Gemini 2.5 Flash model with strict prompt and logging.
+    Use Gemini 2.5 Flash Lite model with strict prompt, response time tracking, and logging.
     Retry up to 2 times on failure (1s and 2s backoff).
     Log full request prompt and full response in [GEMINI_PROMPT] and [GEMINI_REPLY].
+    Track response times for live exam performance monitoring.
     Handle API errors gracefully without crash.
     """
     import time
@@ -181,10 +183,19 @@ def call_gemini_api(spanish_input, is_repeat=False):
     
     for attempt in range(max_retries + 1):  # 0, 1, 2 (3 total attempts)
         try:
+            # Start timing for performance tracking
+            start_time = time.time()
+            
+            # Configure request with optimizations for live exam latency
             response = client.models.generate_content(
-                model=MODEL_NAME,  # "gemini-2.5-flash"
-                contents=f"{prompt}\n\nStudent said in Spanish: {spanish_input}"
+                model=MODEL_NAME,  # "gemini-2.5-flash-lite"
+                contents=f"{prompt}\n\nStudent said in Spanish: {spanish_input}",
+                # Add any available latency optimizations here
+                # Note: thinking_budget parameter may not be available in all versions
             )
+            
+            # Calculate response time
+            response_time = time.time() - start_time
             
             # Extract response text
             response_text = response.text.strip() if hasattr(response, "text") else ""
@@ -192,9 +203,15 @@ def call_gemini_api(spanish_input, is_repeat=False):
             if not response_text:
                 raise ValueError("Gemini returned an empty response")
             
-            # Log the full response
+            # Log the full response with timing information
             event_type = "GEMINI_REPLY_REPEAT" if is_repeat else "GEMINI_REPLY"
-            log_with_timestamp(f"Response: {response_text}", event_type)
+            log_with_timestamp(f"Response ({response_time:.2f}s): {response_text}", event_type)
+            
+            # Log performance warning if response is too slow for live exam
+            if response_time > 2.0:
+                log_with_timestamp(f"WARNING: Gemini response time {response_time:.2f}s exceeds 2s target for live exam", "PERFORMANCE")
+            else:
+                log_with_timestamp(f"Gemini response time {response_time:.2f}s within live exam target", "PERFORMANCE")
             
             return response_text
             

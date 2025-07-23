@@ -2,66 +2,66 @@
 
 ## Introduction
 
-This feature enhances the existing Spanish oral exam transcription tool by implementing intelligent audio processing, proper sentence detection, controlled AI interaction, and comprehensive logging. The system will prevent over-transcription of partial speech, require explicit user confirmation before AI calls, and provide detailed logging of all interactions.
+This feature transforms the Spanish oral exam transcription tool from silence-based detection to a continuous overlapping streaming transcription system. The system will provide real-time transcription with minimal latency suitable for live oral exams, eliminating the need to wait for silence periods and ensuring continuous feedback.
 
 ## Requirements
 
 ### Requirement 1
 
-**User Story:** As a Spanish student using the oral exam tool, I want the system to detect complete sentences instead of fragmenting my speech, so that I get accurate transcriptions of full thoughts.
+**User Story:** As a Spanish student using the oral exam tool during a live exam, I want continuous real-time transcription without waiting for silence, so that I can receive immediate feedback on my speech.
 
 #### Acceptance Criteria
 
-1. WHEN the user speaks THEN the system SHALL wait for 2-3 seconds of silence before processing the audio
-2. WHEN audio contains mid-sentence pauses THEN the system SHALL NOT trigger transcription until the complete sentence is finished
-3. WHEN a complete sentence is detected THEN the system SHALL transcribe the entire audio segment as one unit
-4. WHEN the user is still speaking THEN the system SHALL continue buffering audio without premature transcription
+1. WHEN the system starts THEN it SHALL record audio at 48kHz mono from the capture device
+2. WHEN 1.0 second has elapsed THEN the system SHALL extract the latest 3.0 seconds of audio from the rolling buffer
+3. WHEN extracting audio chunks THEN the system SHALL resample each 3.0s slice from 48kHz to 16kHz before transcription
+4. WHEN there is sufficient audio data THEN the system SHALL send the 3.0s chunk to Whisper for transcription without waiting for silence
 
 ### Requirement 2
 
-**User Story:** As a Spanish student, I want to control when the AI generates responses, so that I can review my transcribed speech before getting AI feedback.
+**User Story:** As a Spanish student using the live transcription system, I want efficient background processing that doesn't block the main audio loop, so that transcription happens smoothly without audio dropouts.
 
 #### Acceptance Criteria
 
-1. WHEN transcription is complete THEN the system SHALL display the transcribed text and wait for user confirmation
-2. WHEN the user presses Enter THEN the system SHALL send the transcription to Gemini for response
-3. WHEN no user confirmation is given THEN the system SHALL NOT automatically call the Gemini API
-4. WHEN the user chooses not to proceed THEN the system SHALL allow them to continue with new speech input
+1. WHEN transcription is needed THEN the system SHALL use a worker thread to perform transcription processing
+2. WHEN the main audio loop is running THEN it SHALL NOT be blocked by transcription operations
+3. WHEN there is less than 2.5 seconds of audio in the buffer THEN the system SHALL skip transcription
+4. WHEN transcription is in progress THEN the system SHALL continue capturing new audio without interruption
 
 ### Requirement 3
 
-**User Story:** As a Spanish student, I want the AI to provide concise, natural Spanish responses, so that I can practice realistic conversational exchanges.
+**User Story:** As a Spanish student using the live transcription system, I want to avoid duplicate transcriptions from overlapping audio chunks, so that I receive clean, non-repetitive feedback.
 
 #### Acceptance Criteria
 
-1. WHEN sending prompts to Gemini THEN the system SHALL use the exact prompt: "You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence."
-2. WHEN Gemini responds THEN the system SHALL use the "gemini-2.5-flash" model
-3. WHEN receiving AI responses THEN the system SHALL display only the single Spanish sentence response
-4. WHEN the AI provides verbose feedback THEN the system SHALL handle it appropriately by using the constrained prompt
+1. WHEN processing overlapping audio chunks THEN the system SHALL implement content deduplication to avoid duplicate transcriptions
+2. WHEN transcription results are similar to recent outputs THEN the system SHALL skip displaying duplicate content
+3. WHEN implementing deduplication THEN the system SHALL use either content comparison or minimum time gap between outputs
+4. WHEN transcription overlap occurs THEN the system SHALL handle it gracefully without confusing the user
 
 ### Requirement 4
 
-**User Story:** As a user debugging or reviewing my practice sessions, I want comprehensive logging of all system activities, so that I can track what was transcribed and what responses were generated.
+**User Story:** As a user debugging or monitoring the streaming transcription system, I want detailed logging of all window-based transcription events, so that I can track system performance and transcription quality.
 
 #### Acceptance Criteria
 
-1. WHEN any transcription occurs THEN the system SHALL log the transcribed Spanish input to both console and log.txt file
-2. WHEN Whisper provides translations THEN the system SHALL log the translation output
-3. WHEN sending requests to Gemini THEN the system SHALL log the exact prompt and parameters sent
-4. WHEN receiving Gemini responses THEN the system SHALL log the complete response received
-5. WHEN any system event occurs THEN the system SHALL include timestamps in all log entries
-6. WHEN the log file doesn't exist THEN the system SHALL create it automatically
+1. WHEN starting transcription of a 3s slice THEN the system SHALL log "[WINDOW_TRANSCRIBE] Started transcription for 3s slice" with timestamp
+2. WHEN transcription completes THEN the system SHALL log "[WINDOW_RESULT] Transcription result: <text>" with timestamp
+3. WHEN skipping transcription due to insufficient audio THEN the system SHALL log "[WINDOW_SKIP] Not enough audio data" with timestamp
+4. WHEN any system event occurs THEN the system SHALL include timestamps in all log entries
+5. WHEN the log file doesn't exist THEN the system SHALL create it automatically
+6. WHEN logging transcription events THEN the system SHALL log to both console and log.txt file
 
 ### Requirement 5
 
-**User Story:** As a user who wants to practice with previous prompts, I want the ability to repeat the last Gemini call, so that I can get alternative responses without speaking again.
+**User Story:** As a Spanish student using the live transcription system, I want transcription to happen within approximately 1.5 seconds of speaking, so that I can receive near real-time feedback during my oral exam practice.
 
 #### Acceptance Criteria
 
-1. WHEN the user presses a designated hotkey THEN the system SHALL repeat the last successful Gemini API call
-2. WHEN no previous prompt exists THEN the system SHALL inform the user that no previous prompt is available
-3. WHEN repeating a prompt THEN the system SHALL log this action clearly
-4. WHEN using the repeat function THEN the system SHALL use the same prompt text as the previous call
+1. WHEN audio is captured THEN the system SHALL process and transcribe it within approximately 1.5 seconds
+2. WHEN using Whisper for transcription THEN the system SHALL configure it with task="transcribe" and language="es"
+3. WHEN transcription latency exceeds acceptable limits THEN the system SHALL log performance warnings
+4. WHEN optimizing for live use THEN the system SHALL prioritize speed over perfect accuracy
 
 ### Requirement 6
 

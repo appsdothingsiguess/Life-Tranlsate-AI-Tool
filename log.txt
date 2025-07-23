@@ -228,3 +228,136 @@
 [2025-07-23 16:35:46] [SYSTEM] Transcription thread finished successfully
 [2025-07-23 16:35:46] [SYSTEM] Audio buffer cleared
 [2025-07-23 16:35:46] [SYSTEM] System cleanup completed
+=== System startup at 2025-07-23 16:55:00 ===
+[2025-07-23 16:55:00] [SYSTEM] Logging system initialized successfully
+[2025-07-23 16:55:00] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 16:55:00] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 16:55:00] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 16:55:00] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 16:55:01] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 16:55:01] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 16:55:01] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 16:55:01] [SYSTEM] Transcription worker thread started
+[2025-07-23 16:55:01] [SYSTEM] Transcription worker thread started successfully
+[2025-07-23 16:55:01] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-23 16:55:01] [SYSTEM] Gemini warm-up thread started
+[2025-07-23 16:55:01] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 16:55:01] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-23 16:55:01] [SYSTEM] Audio stream started successfully
+[2025-07-23 16:55:05] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 4.47s - Response: Listo.
+[2025-07-23 16:55:07] [AUDIO] SPEECH_START detected (RMS: 0.1059)
+[2025-07-23 16:55:21] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
+[2025-07-23 16:55:21] [AUDIO] Processing complete speech segment (768000 samples, 16.00s)
+[2025-07-23 16:55:21] [AUDIO] Audio queued for transcription processing
+[2025-07-23 16:55:21] [AUDIO] Audio resampled from 768000 to 256000 samples
+[2025-07-23 16:55:21] [TRANSCRIBE_ES] Starting Whisper transcription
+[2025-07-23 16:55:22] [TRANSCRIBE_ES] Transcription completed, detected language: es
+[2025-07-23 16:55:22] [TRANSCRIBE_ES] Spanish transcription: unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas te lo agradezco.
+[2025-07-23 16:55:23] [USER_CONFIRM] User confirmed for Gemini processing
+[2025-07-23 16:55:23] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 16:55:23] [GEMINI_PROMPT] Spanish input: unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas te lo agradezco.
+[2025-07-23 16:55:29] [AUDIO] SPEECH_START detected (RMS: 0.0167)
+[2025-07-23 16:55:31] [GEMINI_REPLY] Response: ¿Podrías comprobar si quedan patatas?
+[2025-07-23 16:55:35] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
+[2025-07-23 16:55:35] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 16:55:35] [AUDIO] Audio queued for transcription processing
+[2025-07-23 16:55:35] [AUDIO] Audio resampled from 384000 to 128000 samples
+[2025-07-23 16:55:35] [TRANSCRIBE_ES] Starting Whisper transcription
+[2025-07-23 16:55:35] [TRANSCRIBE_ES] Transcription completed, detected language: es
+[2025-07-23 16:55:35] [TRANSCRIBE_ES] Spanish transcription: Subtítulos por la comunidad de Amara.org
+[2025-07-23 16:55:36] [USER_SKIP] EOF received during confirmation prompt
+[2025-07-23 16:55:37] [SYSTEM] Keyboard interrupt received
+[2025-07-23 16:55:37] [SYSTEM] Application terminated by user
+[2025-07-23 16:55:37] [SYSTEM] Starting system cleanup
+[2025-07-23 16:55:37] [SYSTEM] Signaled transcription worker to stop
+[2025-07-23 16:55:37] [SYSTEM] Waiting for audio queue to empty
+[2025-07-23 16:55:37] [SYSTEM] Audio queue emptied successfully
+[2025-07-23 16:55:37] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-23 16:55:37] [SYSTEM] Transcription worker thread stopped
+[2025-07-23 16:55:37] [SYSTEM] Transcription thread finished successfully
+[2025-07-23 16:55:37] [SYSTEM] Audio buffer cleared
+[2025-07-23 16:55:37] [SYSTEM] System cleanup completed
+=== System startup at 2025-07-23 16:58:04 ===
+[2025-07-23 16:58:04] [SYSTEM] Logging system initialized successfully
+[2025-07-23 16:58:04] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 16:58:04] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 16:58:04] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 16:58:04] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 16:58:04] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 16:58:05] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 16:58:05] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 16:58:05] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 16:58:05] [SYSTEM] Transcription worker thread started
+[2025-07-23 16:58:05] [SYSTEM] Transcription worker thread started successfully
+[2025-07-23 16:58:05] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-23 16:58:05] [SYSTEM] Gemini warm-up thread started
+[2025-07-23 16:58:05] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 16:58:05] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-23 16:58:05] [SYSTEM] Audio stream started successfully
+[2025-07-23 16:58:05] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.32s - Response: Listo.
+[2025-07-23 16:58:09] [AUDIO] SPEECH_START detected (RMS: 0.1923)
+[2025-07-23 16:58:21] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
+[2025-07-23 16:58:21] [AUDIO] Processing complete speech segment (672000 samples, 14.00s)
+[2025-07-23 16:58:21] [AUDIO] Audio queued for transcription processing
+[2025-07-23 16:58:21] [AUDIO] Audio resampled from 672000 to 224000 samples
+[2025-07-23 16:58:21] [TRANSCRIBE_ES] Starting Whisper transcription
+[2025-07-23 16:58:22] [TRANSCRIBE_ES] Transcription completed, detected language: es
+[2025-07-23 16:58:22] [TRANSCRIBE_ES] Spanish transcription: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo. Había pensado en comprar dos barras de pan para el desayuno.
+[2025-07-23 16:58:24] [USER_CONFIRM] User confirmed for Gemini processing
+[2025-07-23 16:58:24] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 16:58:24] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo. Había pensado en comprar dos barras de pan para el desayuno.
+[2025-07-23 16:58:24] [GEMINI_REPLY] Response (0.22s): Claro, tráeme un poco de leche, por favor.
+[2025-07-23 16:58:24] [PERFORMANCE] Gemini response time 0.22s within live exam target
+[2025-07-23 16:58:33] [SYSTEM] Keyboard interrupt received
+[2025-07-23 16:58:33] [SYSTEM] Application terminated by user
+[2025-07-23 16:58:33] [SYSTEM] Starting system cleanup
+[2025-07-23 16:58:33] [SYSTEM] Signaled transcription worker to stop
+[2025-07-23 16:58:33] [SYSTEM] Waiting for audio queue to empty
+[2025-07-23 16:58:33] [SYSTEM] Audio queue emptied successfully
+[2025-07-23 16:58:33] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-23 16:58:33] [SYSTEM] Transcription worker thread stopped
+[2025-07-23 16:58:33] [SYSTEM] Transcription thread finished successfully
+[2025-07-23 16:58:33] [SYSTEM] Audio buffer cleared
+[2025-07-23 16:58:33] [SYSTEM] System cleanup completed
+=== System startup at 2025-07-23 16:59:10 ===
+[2025-07-23 16:59:10] [SYSTEM] Logging system initialized successfully
+[2025-07-23 16:59:10] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 16:59:10] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 16:59:10] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 16:59:10] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 16:59:10] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 16:59:11] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 16:59:11] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 16:59:11] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 16:59:11] [SYSTEM] Transcription worker thread started
+[2025-07-23 16:59:11] [SYSTEM] Transcription worker thread started successfully
+[2025-07-23 16:59:11] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-23 16:59:11] [SYSTEM] Gemini warm-up thread started
+[2025-07-23 16:59:11] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 16:59:11] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-23 16:59:11] [SYSTEM] Audio stream started successfully
+[2025-07-23 16:59:11] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.21s - Response: Estoy listo.
+[2025-07-23 16:59:17] [AUDIO] SPEECH_START detected (RMS: 0.1052)
+[2025-07-23 16:59:31] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
+[2025-07-23 16:59:31] [AUDIO] Processing complete speech segment (768000 samples, 16.00s)
+[2025-07-23 16:59:31] [AUDIO] Audio queued for transcription processing
+[2025-07-23 16:59:31] [AUDIO] Audio resampled from 768000 to 256000 samples
+[2025-07-23 16:59:31] [TRANSCRIBE_ES] Starting Whisper transcription
+[2025-07-23 16:59:32] [TRANSCRIBE_ES] Transcription completed, detected language: es
+[2025-07-23 16:59:32] [TRANSCRIBE_ES] Spanish transcription: unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas te lo agradezco.
+[2025-07-23 16:59:33] [USER_CONFIRM] User confirmed for Gemini processing
+[2025-07-23 16:59:33] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 16:59:33] [GEMINI_PROMPT] Spanish input: unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas te lo agradezco.
+[2025-07-23 16:59:33] [GEMINI_REPLY] Response (0.20s): Sí, voy a mirar ahora mismo.
+[2025-07-23 16:59:33] [PERFORMANCE] Gemini response time 0.20s within live exam target
+[2025-07-23 16:59:38] [SYSTEM] Keyboard interrupt received
+[2025-07-23 16:59:38] [SYSTEM] Application terminated by user
+[2025-07-23 16:59:38] [SYSTEM] Starting system cleanup
+[2025-07-23 16:59:38] [SYSTEM] Signaled transcription worker to stop
+[2025-07-23 16:59:38] [SYSTEM] Waiting for audio queue to empty
+[2025-07-23 16:59:38] [SYSTEM] Audio queue emptied successfully
+[2025-07-23 16:59:38] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-23 16:59:38] [SYSTEM] Transcription worker thread stopped
+[2025-07-23 16:59:38] [SYSTEM] Transcription thread finished successfully
+[2025-07-23 16:59:38] [SYSTEM] Audio buffer cleared
+[2025-07-23 16:59:38] [SYSTEM] System cleanup completed

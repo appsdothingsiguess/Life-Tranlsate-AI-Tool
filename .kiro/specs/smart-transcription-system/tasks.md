@@ -1,106 +1,59 @@
 # Implementation Plan
 
-- [x] 1. Set up core constants and logging infrastructure
+- [ ] 1. Set up streaming constants and window-specific logging
+  - Define minimal streaming constants (WINDOW_DURATION=3.0, WINDOW_INTERVAL=1.0, MIN_AUDIO_DURATION=2.5)
+  - Add logging methods for [WINDOW_TRANSCRIBE], [WINDOW_RESULT], [WINDOW_SKIP] events with timestamps
+  - Keep existing thread-safe logging infrastructure
+  - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6_
 
+- [ ] 2. Create unified StreamingBuffer class for audio management
+  - Implement single StreamingBuffer class that combines rolling buffer and window extraction
+  - Use deque for efficient circular buffer with automatic oldest-data eviction
+  - Extract 3.0-second windows directly in audio callback (no separate timer threads)
+  - Skip windows with less than 2.5 seconds of data and log [WINDOW_SKIP]
+  - _Requirements: 1.1, 1.2, 1.4, 4.3_
 
+- [ ] 3. Validate Whisper native audio format support
+  - Test if faster-whisper accepts 48kHz float32 audio directly without external resampling
+  - If Whisper handles resampling internally, skip scipy resampling entirely
+  - Only implement manual resampling if Whisper requires 16kHz input
+  - Log audio format validation results during startup
+  - Add fallback logging if Whisper rejects 48kHz input - log exactly when/why it fell back to scipy
+  - _Requirements: 1.3, 5.4_
 
+- [ ] 4. Build minimal streaming transcription worker thread
+  - Create single worker thread for non-blocking transcription processing
+  - Use thread-safe queue for audio window processing
+  - Configure faster-whisper with language="es" and task="transcribe"
+  - Log [WINDOW_TRANSCRIBE] start and [WINDOW_RESULT] completion
+  - Handle transcription errors without crashing main loop
+  - _Requirements: 2.1, 2.2, 2.4, 4.1, 4.2, 5.1, 5.2_
 
+- [ ] 5. Implement simple duplicate filtering
+  - Add basic check: skip if current transcription is identical to last result within 1.5s window
+  - Store only last transcription text and timestamp for comparison
+  - No fuzzy matching or complex similarity algorithms
+  - Log when duplicates are skipped
+  - _Requirements: 3.1, 3.2, 3.3, 3.4_
 
-  - Define system constants (RMS_THRESHOLD, SILENCE_SECS, LOG_FILE, GEMINI_PROMPT, MODEL_NAME)
-  - Implement thread-safe logging function with timestamp formatting
-  - Create log file with proper error handling
-  - _Requirements: 4.1, 4.5, 4.6_
+- [ ] 6. Replace silence detection with continuous streaming callback
+  - Remove all RMS threshold and silence detection logic completely
+  - Implement audio callback that feeds StreamingBuffer and triggers window extraction directly
+  - Extract windows every 1.0 second within the callback or main polling loop
+  - Maintain 48kHz mono audio capture from VB-Audio Virtual Cable
+  - _Requirements: 1.1, 1.2, 2.3_
 
-- [x] 2. Implement RMS-based pause detection and audio buffering
-
-
-
-
-
-
-  - Compute RMS for audio level detection
-  - Track is_speaking state and silence_start timing
-  - Flip state after SILENCE_SECS threshold is reached
-  - Log SPEECH_START and SPEECH_END events with timestamps
-  - _Requirements: 1.1, 1.2, 1.3, 1.4_
-
-- [x] 3. Create transcription processing worker thread
-
-
-
-
-
-  - Run `process_audio()` in a background thread to handle queued audio chunks
-  - Pull from `audio_queue` (thread-safe Queue) and call faster-whisper transcription
-  - Configure faster-whisper with `language="es"` and `task="transcribe"` (no English translation)
-  - Log `[TRANSCRIBE_ES]` event with the Spanish result
-  - Store last transcription in `last_spanish` for repeat prompt functionality
-  - Handle empty results and exceptions gracefully with `[ERROR]` logs
-  - _Requirements: 1.3, 3.2, 4.1, 4.2, 6.2_
-
-
-- [x] 4. Build user confirmation and Gemini AI interaction system
-
-
-
-
-
-  - Show transcription to user and prompt for action
-  - Only call Gemini if confirmed (Enter)
-  - Use controlled, single-sentence Gemini prompts
-  - Support repeat functionality ('r') for last transcription
-  - _Requirements: 2.1, 2.2, 2.3, 2.4, 3.1, 3.2, 3.3, 5.1, 5.2, 5.3, 5.4_
-
-- [x] 4.1 Implement user confirmation interface
-
-
-  - Display Spanish transcription after silence is detected and processed
-  - Prompt user with: `[Press Enter = Gemini, q = skip, r = repeat]`
-  - Block for input, but do not call Gemini until Enter is pressed
-  - Log `[USER_CONFIRM]` or `[USER_SKIP]` or `[USER_REPEAT]`
-  - _Requirements: 2.1, 2.2, 2.3, 2.4_
-
-- [x] 4.2 Integrate Gemini API with strict prompt and logging
-
-
-  - Use Gemini 2.5 Flash model with this prompt:  
-    `"You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence."`
-  - Retry up to 2 times on failure (1s and 2s backoff)
-  - Log full request prompt and full response in `[GEMINI_PROMPT]` and `[GEMINI_REPLY]`
-  - Handle API errors gracefully without crash
-  - _Requirements: 3.1, 3.2, 3.3, 4.3, 4.4_
-
-- [x] 4.3 Add repeat-last-response functionality
-
-
-  - Store last Spanish transcription and Gemini reply in global variables
-  - On 'r' key, resend Gemini request with previous transcription
-  - If no previous prompt exists, log `[USER_REPEAT]` with warning
-  - Display repeated response and log `[GEMINI_REPLY_REPEAT]`
+- [ ] 7. Add performance monitoring for live exam latency
+  - Target ~1.5 second total latency from speech to transcription result
+  - Log processing time for each transcription window with log_transcription_latency(window_id, duration)
+  - Buffer timestamps and calculate rolling average over last 5-10 windows for smoothed performance tracking
+  - Add latency warnings when processing exceeds 1.5s target
+  - Test with continuous Spanish speech to validate real-time performance
   - _Requirements: 5.1, 5.2, 5.3, 5.4_
 
-
-- [x] 5. Implement comprehensive error handling and cleanup
-
-
-
-
-
-  - Add try/catch blocks around all major operations
-  - Handle KeyboardInterrupt for graceful shutdown
-  - Implement proper thread cleanup and resource management
-  - Add error logging for all failure scenarios
-  - _Requirements: 4.1, 4.5_
-
-- [x] 6. Integrate with existing tech stack and test end-to-end
-
-
-
-
-
-  - Configure VB-Audio Virtual Cable as input source
-  - Verify faster-whisper float16 integration
-  - Test google-genai SDK integration
-  - Validate dotenv configuration loading
-  - Run complete workflow testing (speak → silence → transcribe → confirm → AI response)
+- [ ] 8. Test complete streaming pipeline with existing integrations
+  - Maintain existing VB-Audio Virtual Cable input (device index 37)
+  - Keep faster-whisper float16 integration and Gemini 2.5 Flash Lite
+  - Preserve dotenv configuration and error handling
+  - Run end-to-end test with live Spanish audio input
   - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6_

@@ -2,77 +2,96 @@
 
 ## Overview
 
-The smart transcription system enhances the existing Spanish oral exam tool by implementing intelligent audio processing with pause detection, controlled AI interaction, and comprehensive logging. The system transforms the current continuous processing approach into a sentence-aware, user-controlled workflow that provides better transcription accuracy and learning experience.
+The overlapping streaming transcription system transforms the Spanish oral exam tool from silence-based detection to a continuous sliding window approach. The system captures audio at 48kHz, processes 3-second overlapping chunks every 1 second, resamples to 16kHz, and provides real-time transcription with minimal latency suitable for live oral exams.
 
 ## Architecture
 
-The system follows a modular architecture with clear separation of concerns:
+The system follows a streaming architecture with continuous audio processing:
 
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Audio Input   │───▶│  Audio Processor │───▶│   Transcriber   │
-│   (VB-Cable)    │    │  (Pause Detect)  │    │  (Whisper)      │
+│   Audio Input   │───▶│ Rolling Buffer   │───▶│ Window Extractor│
+│  (48kHz Mono)   │    │ (Continuous)     │    │ (Every 1.0s)    │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                                        │
+                                                        ▼
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Resampler     │◀───│ Audio Validator  │◀───│ 3.0s Audio Slice│
+│ (48kHz→16kHz)   │    │ (≥2.5s check)   │    │                 │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+         │                                              
+         ▼                                              
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│ Worker Thread   │───▶│   Transcriber    │───▶│  Deduplicator   │
+│ (Non-blocking)  │    │ (Whisper ES)     │    │ (Content Filter)│
 └─────────────────┘    └──────────────────┘    └─────────────────┘
                                 │                        │
                                 ▼                        ▼
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│     Logger      │◀───│  Main Controller │◀───│ User Interface  │
-│   (File + CLI)  │    │   (Orchestrator) │    │ (Confirmation)  │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-                                │
-                                ▼
-                       ┌─────────────────┐
-                       │   AI Interface  │
-                       │   (Gemini API)  │
-                       └─────────────────┘
+                       ┌─────────────────┐    ┌─────────────────┐
+                       │     Logger      │    │ Result Display  │
+                       │ (Window Events) │    │ (Live Output)   │
+                       └─────────────────┘    └─────────────────┘
 ```
 
 ## Components and Interfaces
 
-### 1. Audio Processor Component
+### 1. Streaming Audio Processor Component
 
-**Purpose:** Handles real-time audio capture with intelligent pause detection
+**Purpose:** Handles continuous audio capture with rolling buffer and sliding window extraction
 
 **Key Classes:**
-- `AudioProcessor`: Main audio handling class
-- `PauseDetector`: Implements silence detection algorithm
-- `AudioBuffer`: Manages audio data buffering
+- `StreamingAudioProcessor`: Main streaming audio handling class
+- `RollingBuffer`: Manages continuous audio data buffering
+- `WindowExtractor`: Extracts 3-second slices every 1 second
 
 **Interfaces:**
 ```python
-class AudioProcessor:
-    def __init__(self, sample_rate: int, device_index: int, pause_threshold: float)
-    def start_listening(self) -> None
-    def stop_listening(self) -> None
-    def set_audio_callback(self, callback: Callable) -> None
+class StreamingAudioProcessor:
+    def __init__(self, sample_rate: int, device_index: int, window_interval: float)
+    def start_streaming(self) -> None
+    def stop_streaming(self) -> None
+    def set_window_callback(self, callback: Callable) -> None
 
-class PauseDetector:
-    def __init__(self, silence_duration: float, threshold: float)
-    def detect_pause(self, audio_chunk: np.ndarray) -> bool
-    def reset(self) -> None
+class RollingBuffer:
+    def __init__(self, max_duration: float, sample_rate: int)
+    def append(self, audio_chunk: np.ndarray) -> None
+    def get_latest_window(self, duration: float) -> np.ndarray
+    def has_sufficient_data(self, min_duration: float) -> bool
+
+class WindowExtractor:
+    def __init__(self, window_duration: float, interval: float)
+    def extract_window(self, buffer: RollingBuffer) -> Optional[np.ndarray]
+    def should_extract(self) -> bool
 ```
 
-### 2. Transcription Component
+### 2. Streaming Transcription Component
 
-**Purpose:** Manages Whisper model integration and transcription processing
+**Purpose:** Manages Whisper model integration for continuous window-based transcription
 
 **Key Classes:**
-- `TranscriptionService`: Handles Whisper model operations
-- `TranscriptionResult`: Data structure for transcription results
+- `StreamingTranscriptionService`: Handles Whisper model operations for streaming audio
+- `WindowTranscriptionResult`: Data structure for window-based transcription results
+- `ContentDeduplicator`: Filters duplicate transcriptions from overlapping windows
 
 **Interfaces:**
 ```python
-class TranscriptionService:
+class StreamingTranscriptionService:
     def __init__(self, model_size: str, compute_type: str)
-    def transcribe(self, audio: np.ndarray) -> TranscriptionResult
-    def translate(self, audio: np.ndarray) -> TranscriptionResult
+    def transcribe_window(self, audio: np.ndarray) -> WindowTranscriptionResult
+    def configure_for_streaming(self, language: str, task: str) -> None
 
 @dataclass
-class TranscriptionResult:
+class WindowTranscriptionResult:
     spanish_text: str
-    english_translation: str
     confidence: float
     timestamp: datetime
+    window_duration: float
+    is_duplicate: bool
+
+class ContentDeduplicator:
+    def __init__(self, similarity_threshold: float, min_time_gap: float)
+    def is_duplicate(self, new_text: str, timestamp: datetime) -> bool
+    def add_result(self, text: str, timestamp: datetime) -> None
 ```
 
 ### 3. AI Interface Component
@@ -96,29 +115,29 @@ class PromptManager:
     def store_prompt(self, prompt: str) -> None
 ```
 
-### 4. Logging Component
+### 4. Streaming Logging Component
 
-**Purpose:** Provides comprehensive logging to file and console
+**Purpose:** Provides comprehensive logging for window-based transcription events
 
 **Key Classes:**
-- `SystemLogger`: Centralized logging service
-- `LogEntry`: Structured log entry format
+- `StreamingLogger`: Centralized logging service for streaming events
+- `WindowLogEntry`: Structured log entry format for window events
 
 **Interfaces:**
 ```python
-class SystemLogger:
+class StreamingLogger:
     def __init__(self, log_file: str)
-    def log_transcription(self, spanish: str, english: str) -> None
-    def log_ai_request(self, prompt: str) -> None
-    def log_ai_response(self, response: str) -> None
+    def log_window_transcribe_start(self, window_duration: float) -> None
+    def log_window_result(self, text: str, confidence: float) -> None
+    def log_window_skip(self, reason: str) -> None
     def log_system_event(self, event: str) -> None
 
 @dataclass
-class LogEntry:
+class WindowLogEntry:
     timestamp: datetime
-    event_type: str
+    event_type: str  # WINDOW_TRANSCRIBE, WINDOW_RESULT, WINDOW_SKIP
     content: str
-    metadata: Dict[str, Any]
+    window_metadata: Dict[str, Any]
 ```
 
 ### 5. User Interface Component
@@ -143,24 +162,26 @@ class HotkeyManager:
 
 ## Data Models
 
-### Audio Processing Models
+### Streaming Audio Processing Models
 ```python
 @dataclass
-class AudioConfig:
+class StreamingAudioConfig:
     sample_rate: int = 48000
     target_rate: int = 16000
     channels: int = 1
     device_index: int
-    block_duration: float = 2.0
-    window_duration: float = 4.0
-    pause_threshold: float = 2.5  # seconds of silence
+    window_duration: float = 3.0  # 3-second windows
+    window_interval: float = 1.0  # Extract every 1 second
+    min_audio_duration: float = 2.5  # Skip if less than 2.5s
+    buffer_max_duration: float = 10.0  # Rolling buffer size
 
 @dataclass
-class AudioSegment:
+class AudioWindow:
     data: np.ndarray
     timestamp: datetime
     duration: float
-    is_complete_sentence: bool
+    sample_rate: int
+    is_resampled: bool
 ```
 
 ### Transcription Models
@@ -195,15 +216,18 @@ class AIResponse:
 
 ## Error Handling
 
-### Audio Processing Errors
+### Streaming Audio Processing Errors
 - **Device Not Found**: Graceful fallback to default device with user notification
-- **Audio Stream Interruption**: Automatic reconnection with buffered audio preservation
-- **Buffer Overflow**: Intelligent buffer management with oldest data eviction
+- **Audio Stream Interruption**: Automatic reconnection with rolling buffer preservation
+- **Buffer Overflow**: Circular buffer management with oldest data eviction
+- **Window Extraction Failure**: Skip current window and continue with next interval
+- **Resampling Errors**: Log error and skip problematic audio window
 
-### Transcription Errors
+### Streaming Transcription Errors
 - **Model Loading Failure**: Clear error message with fallback options
-- **Transcription Timeout**: Configurable timeout with partial result handling
-- **Empty Audio**: Skip processing with appropriate logging
+- **Window Transcription Timeout**: Skip current window and continue processing
+- **Insufficient Audio Data**: Log WINDOW_SKIP event and wait for next window
+- **Worker Thread Failure**: Restart transcription worker with error logging
 
 ### AI Service Errors
 - **API Key Issues**: Clear authentication error messages
