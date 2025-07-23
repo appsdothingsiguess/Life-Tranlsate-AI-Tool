@@ -1,0 +1,230 @@
+=== System startup at 2025-07-23 11:42:40 ===
+[2025-07-23 11:42:40] [SYSTEM] Logging system initialized successfully
+[2025-07-23 11:42:40] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 11:42:40] [INFO] Testing INFO level logging
+[2025-07-23 11:42:40] [SYSTEM] Testing SYSTEM level logging
+[2025-07-23 11:42:40] [ERROR] Testing ERROR level logging
+[2025-07-23 11:42:40] [TEST] Thread 1 - Message 1
+[2025-07-23 11:42:40] [TEST] Thread 2 - Message 1
+[2025-07-23 11:42:40] [TEST] Thread 3 - Message 1
+[2025-07-23 11:42:40] [TEST] Thread 1 - Message 2
+[2025-07-23 11:42:40] [TEST] Thread 2 - Message 2
+[2025-07-23 11:42:40] [TEST] Thread 3 - Message 2
+[2025-07-23 11:42:40] [TEST] Thread 1 - Message 3
+[2025-07-23 11:42:40] [TEST] Thread 2 - Message 3
+[2025-07-23 11:42:40] [TEST] Thread 3 - Message 3
+[2025-07-23 11:42:40] [SYSTEM] All logging tests completed successfully
+=== System startup at 2025-07-23 12:07:35 ===
+[2025-07-23 12:07:35] [SYSTEM] Logging system initialized successfully
+[2025-07-23 12:07:35] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 12:07:49] [AUDIO] SPEECH_START detected
+[2025-07-23 12:07:55] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:07:55] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:07:57] [AUDIO] SPEECH_START detected
+[2025-07-23 12:08:03] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:08:03] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:08:27] [AUDIO] SPEECH_START detected
+[2025-07-23 12:08:33] [AUDIO] SPEECH_END detected after 4.01s of silence
+[2025-07-23 12:08:33] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:08:47] [AUDIO] SPEECH_START detected
+[2025-07-23 12:08:53] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:08:53] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:09:13] [AUDIO] SPEECH_START detected
+[2025-07-23 12:09:19] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:09:19] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:09:49] [AUDIO] SPEECH_START detected
+[2025-07-23 12:09:55] [AUDIO] SPEECH_END detected after 4.01s of silence
+[2025-07-23 12:09:55] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:10:09] [AUDIO] SPEECH_START detected
+[2025-07-23 12:10:15] [AUDIO] SPEECH_END detected after 3.99s of silence
+[2025-07-23 12:10:15] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:10:25] [AUDIO] SPEECH_START detected
+[2025-07-23 12:10:31] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:10:31] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:10:57] [AUDIO] SPEECH_START detected
+[2025-07-23 12:11:03] [AUDIO] SPEECH_END detected after 4.01s of silence
+[2025-07-23 12:11:03] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:11:47] [AUDIO] SPEECH_START detected
+[2025-07-23 12:11:53] [AUDIO] SPEECH_END detected after 3.99s of silence
+[2025-07-23 12:11:53] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:12:21] [AUDIO] SPEECH_START detected
+[2025-07-23 12:12:27] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:12:27] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:12:37] [AUDIO] SPEECH_START detected
+[2025-07-23 12:12:43] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:12:43] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:13:01] [AUDIO] SPEECH_START detected
+[2025-07-23 12:13:07] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:13:07] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:13:23] [AUDIO] SPEECH_START detected
+[2025-07-23 12:13:29] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:13:29] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:15:13] [AUDIO] SPEECH_START detected
+[2025-07-23 12:15:19] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:15:19] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:15:35] [AUDIO] SPEECH_START detected
+[2025-07-23 12:15:41] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:15:41] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:15:45] [AUDIO] SPEECH_START detected
+[2025-07-23 12:15:51] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:15:51] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:16:25] [AUDIO] SPEECH_START detected
+[2025-07-23 12:16:31] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:16:31] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+[2025-07-23 12:16:45] [AUDIO] SPEECH_START detected
+[2025-07-23 12:16:57] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:16:57] [AUDIO] Processing complete speech segment (672000 samples, 14.00s)
+[2025-07-23 12:17:05] [AUDIO] SPEECH_START detected
+[2025-07-23 12:17:11] [AUDIO] SPEECH_END detected after 4.00s of silence
+[2025-07-23 12:17:11] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
+=== System startup at 2025-07-23 12:28:50 ===
+[2025-07-23 12:28:50] [SYSTEM] Logging system initialized successfully
+[2025-07-23 12:28:50] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 12:28:51] [SYSTEM] Transcription worker thread started
+[2025-07-23 12:28:51] [SYSTEM] Transcription worker thread started
+[2025-07-23 12:28:53] [AUDIO] SPEECH_START detected
+[2025-07-23 12:29:13] [AUDIO] SPEECH_END detected after 15.99s of silence
+[2025-07-23 12:29:13] [AUDIO] Processing complete speech segment (1056000 samples, 22.00s)
+[2025-07-23 12:29:13] [AUDIO] Audio queued for transcription processing
+[2025-07-23 12:29:14] [TRANSCRIBE_ES] Spanish transcription: Unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas, te lo agradezco. Y luego también si necesitas alguna otra cosa.
+[2025-07-23 12:29:16] [USER_CONFIRM] User confirmed for Gemini processing
+[2025-07-23 12:29:16] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 12:29:16] [GEMINI_PROMPT] Spanish input: Unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas, te lo agradezco. Y luego también si necesitas alguna otra cosa.
+[2025-07-23 12:29:17] [GEMINI_REPLY] Response: Voy a mirar lo de las patatas.
+[2025-07-23 12:29:24] [SYSTEM] All queued audio processed
+[2025-07-23 12:29:24] [TEST] Test message
+[2025-07-23 12:29:24] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 12:29:24] [GEMINI_PROMPT] Spanish input: Hola, ¿cómo estás?
+[2025-07-23 12:29:24] [SYSTEM] Transcription worker thread stopped
+[2025-07-23 12:29:24] [GEMINI_REPLY] Response: Estoy bien, gracias. ¿Y tú?
+[2025-07-23 12:29:24] [USER_CONFIRM] User confirmed for Gemini processing
+[2025-07-23 12:29:24] [USER_SKIP] User skipped Gemini processing
+[2025-07-23 12:29:24] [USER_REPEAT] User requested repeat of last transcription
+=== System startup at 2025-07-23 12:47:05 ===
+[2025-07-23 12:47:05] [SYSTEM] Logging system initialized successfully
+[2025-07-23 12:47:05] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 12:47:05] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 12:47:05] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 12:47:05] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 12:47:06] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 12:47:06] [SYSTEM] Using audio device 32: Dell AW2721D (NVIDIA High Definition Audio)
+[2025-07-23 12:47:06] [ERROR] Audio device error: Device only supports 0 input channels, need 1
+=== System startup at 2025-07-23 12:49:58 ===
+[2025-07-23 12:49:58] [SYSTEM] Logging system initialized successfully
+[2025-07-23 12:49:58] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 12:49:58] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 12:49:58] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 12:49:58] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 12:49:59] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 12:49:59] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 12:49:59] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+=== System startup at 2025-07-23 12:50:52 ===
+[2025-07-23 12:50:52] [SYSTEM] Logging system initialized successfully
+[2025-07-23 12:50:52] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 12:50:52] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 12:50:52] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 12:50:52] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 12:50:53] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 12:50:53] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 12:50:53] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 12:50:53] [ERROR] Audio chunk contains NaN or infinite values
+[2025-07-23 12:50:53] [ERROR] Audio chunk contains NaN or infinite values
+[2025-07-23 12:50:53] [TEST] Test message
+[2025-07-23 12:50:53] [TEST] Test with émojis 🎯 and spëcial chars
+[2025-07-23 12:50:53] [TEST] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+[2025-07-23 12:50:53] [ERROR] Audio chunk contains NaN or infinite values
+[2025-07-23 12:50:53] [AUDIO] SPEECH_START detected (RMS: 0.2160)
+[2025-07-23 12:50:53] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 12:50:53] [GEMINI_PROMPT] Spanish input: 
+[2025-07-23 12:50:56] [GEMINI_REPLY] Response: Cuéntame de ti.
+[2025-07-23 12:50:56] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 12:50:56] [GEMINI_PROMPT] Spanish input: Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola 
+[2025-07-23 12:50:59] [GEMINI_REPLY] Response: ¿Cómo estás?
+=== System startup at 2025-07-23 16:10:15 ===
+[2025-07-23 16:10:15] [SYSTEM] Logging system initialized successfully
+[2025-07-23 16:10:15] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 16:10:15] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 16:10:15] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 16:10:15] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 16:10:16] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 16:10:16] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 16:10:16] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 16:10:16] [SYSTEM] Transcription worker thread started
+[2025-07-23 16:10:16] [SYSTEM] Transcription worker thread started successfully
+[2025-07-23 16:10:16] [SYSTEM] Audio stream started successfully
+[2025-07-23 16:10:20] [AUDIO] SPEECH_START detected (RMS: 0.1913)
+[2025-07-23 16:10:40] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
+[2025-07-23 16:10:40] [AUDIO] Processing complete speech segment (1056000 samples, 22.00s)
+[2025-07-23 16:10:40] [AUDIO] Audio queued for transcription processing
+[2025-07-23 16:10:40] [AUDIO] Audio resampled from 1056000 to 352000 samples
+[2025-07-23 16:10:40] [TRANSCRIBE_ES] Starting Whisper transcription
+[2025-07-23 16:10:41] [TRANSCRIBE_ES] Transcription completed, detected language: es
+[2025-07-23 16:10:41] [TRANSCRIBE_ES] Spanish transcription: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas, te lo voy a
+[2025-07-23 16:10:44] [USER_CONFIRM] User confirmed for Gemini processing
+[2025-07-23 16:10:44] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 16:10:44] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas, te lo voy a
+[2025-07-23 16:10:50] [GEMINI_REPLY] Response: ¿Puedes mirar si quedan patatas?
+[2025-07-23 16:10:58] [AUDIO] SPEECH_START detected (RMS: 0.0303)
+[2025-07-23 16:11:14] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
+[2025-07-23 16:11:14] [AUDIO] Processing complete speech segment (864000 samples, 18.00s)
+[2025-07-23 16:11:14] [AUDIO] Audio queued for transcription processing
+[2025-07-23 16:11:14] [AUDIO] Audio resampled from 864000 to 288000 samples
+[2025-07-23 16:11:14] [TRANSCRIBE_ES] Starting Whisper transcription
+[2025-07-23 16:11:14] [TRANSCRIBE_ES] Transcription completed, detected language: es
+[2025-07-23 16:11:14] [TRANSCRIBE_ES] Spanish transcription: unos tomates, unas cebollas y lo que no sé es si quedan patatas, si lo puedes mirar y me avisas te lo agradezco y luego también
+[2025-07-23 16:11:20] [USER_CONFIRM] User confirmed for Gemini processing
+[2025-07-23 16:11:20] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 16:11:20] [GEMINI_PROMPT] Spanish input: unos tomates, unas cebollas y lo que no sé es si quedan patatas, si lo puedes mirar y me avisas te lo agradezco y luego también
+[2025-07-23 16:11:25] [GEMINI_REPLY] Response: ¿Podrías mirar si quedan patatas?
+[2025-07-23 16:12:10] [SYSTEM] Keyboard interrupt received
+[2025-07-23 16:12:10] [SYSTEM] Application terminated by user
+[2025-07-23 16:12:10] [SYSTEM] Starting system cleanup
+[2025-07-23 16:12:10] [SYSTEM] Signaled transcription worker to stop
+[2025-07-23 16:12:10] [SYSTEM] Waiting for audio queue to empty
+[2025-07-23 16:12:10] [SYSTEM] Audio queue emptied successfully
+[2025-07-23 16:12:10] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-23 16:12:10] [SYSTEM] Transcription worker thread stopped
+[2025-07-23 16:12:10] [SYSTEM] Transcription thread finished successfully
+[2025-07-23 16:12:10] [SYSTEM] Audio buffer cleared
+[2025-07-23 16:12:10] [SYSTEM] System cleanup completed
+=== System startup at 2025-07-23 16:34:57 ===
+[2025-07-23 16:34:57] [SYSTEM] Logging system initialized successfully
+[2025-07-23 16:34:57] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 16:34:57] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 16:34:57] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 16:34:57] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 16:34:57] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 16:34:57] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 16:34:57] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 16:34:57] [SYSTEM] Transcription worker thread started
+[2025-07-23 16:34:57] [SYSTEM] Transcription worker thread started successfully
+[2025-07-23 16:34:57] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-23 16:34:57] [SYSTEM] Gemini warm-up thread started
+[2025-07-23 16:34:57] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 16:34:57] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-23 16:34:57] [SYSTEM] Audio stream started successfully
+[2025-07-23 16:34:58] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.83s - Response: Listo.
+[2025-07-23 16:34:59] [AUDIO] SPEECH_START detected (RMS: 0.0432)
+[2025-07-23 16:35:13] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
+[2025-07-23 16:35:14] [AUDIO] Processing complete speech segment (768000 samples, 16.00s)
+[2025-07-23 16:35:14] [AUDIO] Audio queued for transcription processing
+[2025-07-23 16:35:14] [AUDIO] Audio resampled from 768000 to 256000 samples
+[2025-07-23 16:35:14] [TRANSCRIBE_ES] Starting Whisper transcription
+[2025-07-23 16:35:14] [TRANSCRIBE_ES] Transcription completed, detected language: es
+[2025-07-23 16:35:14] [TRANSCRIBE_ES] Spanish transcription: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo. Había pensado en comprar dos barras de pan para el desayuno.
+[2025-07-23 16:35:16] [USER_CONFIRM] User confirmed for Gemini processing
+[2025-07-23 16:35:16] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 16:35:16] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo. Había pensado en comprar dos barras de pan para el desayuno.
+[2025-07-23 16:35:32] [GEMINI_REPLY] Response: Mamá, una cosa, voy al supermercado por si quieres que te compre algo; de paso cojo dos barras de pan para el desayuno.
+[2025-07-23 16:35:45] [AUDIO] SPEECH_START detected (RMS: 0.0167)
+[2025-07-23 16:35:46] [SYSTEM] Keyboard interrupt received
+[2025-07-23 16:35:46] [SYSTEM] Application terminated by user
+[2025-07-23 16:35:46] [SYSTEM] Starting system cleanup
+[2025-07-23 16:35:46] [SYSTEM] Signaled transcription worker to stop
+[2025-07-23 16:35:46] [SYSTEM] Waiting for audio queue to empty
+[2025-07-23 16:35:46] [SYSTEM] Audio queue emptied successfully
+[2025-07-23 16:35:46] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-23 16:35:46] [SYSTEM] Transcription worker thread stopped
+[2025-07-23 16:35:46] [SYSTEM] Transcription thread finished successfully
+[2025-07-23 16:35:46] [SYSTEM] Audio buffer cleared
+[2025-07-23 16:35:46] [SYSTEM] System cleanup completed
