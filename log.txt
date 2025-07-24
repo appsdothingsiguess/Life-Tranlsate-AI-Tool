@@ -1,655 +1,104 @@
-=== System startup at 2025-07-23 20:59:56 ===
-[2025-07-23 20:59:56] [SYSTEM] Logging system initialized successfully
-[2025-07-23 20:59:56] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 20:59:56] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 20:59:56] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 20:59:56] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 20:59:56] [SYSTEM] Initializing Whisper model with compute_type: float16
-=== System startup at 2025-07-23 21:01:02 ===
-[2025-07-23 21:01:02] [SYSTEM] Logging system initialized successfully
-[2025-07-23 21:01:02] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 21:01:02] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 21:01:02] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 21:01:02] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 21:01:02] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 21:01:03] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 21:01:03] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 21:01:03] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 21:01:03] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 21:01:03] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 21:01:03] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 21:01:03] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 21:01:03] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 21:01:03] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 21:01:35 ===
-[2025-07-23 21:01:35] [SYSTEM] Logging system initialized successfully
-[2025-07-23 21:01:35] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 21:01:35] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 21:01:35] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 21:01:35] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 21:01:35] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 21:01:36] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 21:01:36] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 21:01:36] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 21:01:36] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 21:01:36] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 21:01:36] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 21:01:36] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 21:01:36] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 21:01:36] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 21:01:36] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
-[2025-07-23 21:01:36] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
-[2025-07-23 21:01:36] [SYSTEM] Thread architecture: transcription worker + hotkey listener
-[2025-07-23 21:01:36] [SYSTEM] Starting system threads...
-[2025-07-23 21:01:36] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 21:01:36] [SYSTEM] ✅ Streaming transcription worker thread started successfully
-[2025-07-23 21:01:36] [SYSTEM] ✅ Hotkey listener thread started successfully
-[2025-07-23 21:01:36] [SYSTEM] Hotkey listener thread started with enhanced error handling
-[2025-07-23 21:01:36] [SYSTEM] ✅ All system threads running successfully
-[2025-07-23 21:01:36] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 21:01:36] [SYSTEM] ✅ Gemini warm-up thread started
-[2025-07-23 21:01:36] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 21:01:36] [SYSTEM] Initializing audio stream...
-[2025-07-23 21:01:36] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 21:01:36] [SYSTEM] ✅ Audio stream started successfully
-[2025-07-23 21:01:36] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
-[2025-07-23 21:01:36] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.21s - Response: Listo.
-[2025-07-23 21:01:38] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
-[2025-07-23 21:01:40] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:01:40] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 21:01:42] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:01:42] [AUDIO] Audio window queued (RMS: 0.013639)
-[2025-07-23 21:01:42] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:01:42] [AUDIO_PROCESS] Processing audio window with RMS: 0.013639
-[2025-07-23 21:01:43] [LATENCY] Window 199db18e latency: 0.392s
-[2025-07-23 21:01:43] [LATENCY_AVG] Rolling average latency (1 windows): 0.392s
-[2025-07-23 21:01:43] [LATENCY_OK] Window 199db18e latency 0.392s within 1.5s target
-[2025-07-23 21:01:43] [LATENCY_AVG_OK] Rolling average latency 0.392s within 1.5s target
-[2025-07-23 21:01:43] [WINDOW_RESULT] Transcription result: Subtítulos por la comunidad de Amara.org
-[2025-07-23 21:01:44] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:01:44] [AUDIO] Audio window queued (RMS: 0.019289)
-[2025-07-23 21:01:44] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:01:44] [AUDIO_PROCESS] Processing audio window with RMS: 0.019289
-[2025-07-23 21:01:45] [LATENCY] Window 7c9a103a latency: 0.638s
-[2025-07-23 21:01:45] [LATENCY_AVG] Rolling average latency (2 windows): 0.515s
-[2025-07-23 21:01:45] [LATENCY_OK] Window 7c9a103a latency 0.638s within 1.5s target
-[2025-07-23 21:01:45] [LATENCY_AVG_OK] Rolling average latency 0.515s within 1.5s target
-[2025-07-23 21:01:45] [WINDOW_RESULT] Transcription result: un un un un un un un un un un un un un un
-[2025-07-23 21:01:46] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:01:46] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 21:01:48] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:01:48] [AUDIO] Audio window queued (RMS: 0.078823)
-[2025-07-23 21:01:48] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:01:48] [AUDIO_PROCESS] Processing audio window with RMS: 0.078823
-[2025-07-23 21:01:49] [LATENCY] Window 67fa2268 latency: 0.378s
-[2025-07-23 21:01:49] [LATENCY_AVG] Rolling average latency (3 windows): 0.469s
-[2025-07-23 21:01:49] [LATENCY_OK] Window 67fa2268 latency 0.378s within 1.5s target
-[2025-07-23 21:01:49] [LATENCY_AVG_OK] Rolling average latency 0.469s within 1.5s target
-[2025-07-23 21:01:49] [WINDOW_RESULT] Transcription result: No, no, no, no, no, no.
-[2025-07-23 21:01:50] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:01:50] [AUDIO] Audio window queued (RMS: 0.093843)
-[2025-07-23 21:01:50] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:01:50] [AUDIO_PROCESS] Processing audio window with RMS: 0.093843
-[2025-07-23 21:01:52] [LATENCY] Window 81dbb57b latency: 1.382s
-[2025-07-23 21:01:52] [LATENCY_AVG] Rolling average latency (4 windows): 0.697s
-[2025-07-23 21:01:52] [LATENCY_OK] Window 81dbb57b latency 1.382s within 1.5s target
-[2025-07-23 21:01:52] [LATENCY_AVG_OK] Rolling average latency 0.697s within 1.5s target
-[2025-07-23 21:01:52] [WINDOW_RESULT] Transcription result: ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir
-[2025-07-23 21:01:52] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:01:52] [AUDIO] Audio window queued (RMS: 0.078767)
-[2025-07-23 21:01:52] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:01:52] [AUDIO_PROCESS] Processing audio window with RMS: 0.078767
-[2025-07-23 21:01:52] [LATENCY] Window a867bdb7 latency: 0.136s
-[2025-07-23 21:01:52] [LATENCY_AVG] Rolling average latency (5 windows): 0.585s
-[2025-07-23 21:01:52] [LATENCY_OK] Window a867bdb7 latency 0.136s within 1.5s target
-[2025-07-23 21:01:52] [LATENCY_AVG_OK] Rolling average latency 0.585s within 1.5s target
-[2025-07-23 21:01:52] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
-[2025-07-23 21:01:54] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:01:54] [AUDIO] Audio window queued (RMS: 0.025988)
-[2025-07-23 21:01:54] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:01:54] [AUDIO_PROCESS] Processing audio window with RMS: 0.025988
-[2025-07-23 21:01:54] [LATENCY] Window 057c3754 latency: 0.025s
-[2025-07-23 21:01:54] [LATENCY_AVG] Rolling average latency (6 windows): 0.492s
-[2025-07-23 21:01:54] [LATENCY_OK] Window 057c3754 latency 0.025s within 1.5s target
-[2025-07-23 21:01:54] [LATENCY_AVG_OK] Rolling average latency 0.492s within 1.5s target
-[2025-07-23 21:01:54] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
-[2025-07-23 21:01:56] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
-[2025-07-23 21:01:56] [SYSTEM] Application terminated by user (Ctrl+C)
-[2025-07-23 21:01:56] [SYSTEM] Starting system cleanup
-[2025-07-23 21:01:56] [SYSTEM] Signaled worker threads to stop
-[2025-07-23 21:01:56] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 21:01:56] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 21:01:56] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 21:01:56] [SYSTEM] Hotkey listener thread stopped gracefully
-[2025-07-23 21:01:56] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 21:01:56] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 21:01:56] [SYSTEM] Streaming buffer cleared
-[2025-07-23 21:01:56] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 21:11:22 ===
-[2025-07-23 21:11:22] [SYSTEM] Logging system initialized successfully
-[2025-07-23 21:11:22] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 21:11:22] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 21:11:22] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 21:11:22] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 21:11:22] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 21:11:23] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 21:11:23] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 21:11:23] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 21:11:23] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 21:11:23] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 21:11:23] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 21:11:23] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 21:11:23] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 21:11:23] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 21:11:23] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
-[2025-07-23 21:11:23] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
-[2025-07-23 21:11:23] [SYSTEM] Thread architecture: transcription worker + hotkey listener
-[2025-07-23 21:11:23] [SYSTEM] Starting system threads...
-[2025-07-23 21:11:23] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 21:11:23] [SYSTEM] ✅ Streaming transcription worker thread started successfully
-[2025-07-23 21:11:23] [SYSTEM] Hotkey listener thread started with enhanced error handling
-[2025-07-23 21:11:23] [SYSTEM] ✅ Hotkey listener thread started successfully
-[2025-07-23 21:11:23] [SYSTEM] ✅ All system threads running successfully
-[2025-07-23 21:11:23] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 21:11:23] [SYSTEM] ✅ Gemini warm-up thread started
-[2025-07-23 21:11:23] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 21:11:23] [SYSTEM] Initializing audio stream...
-[2025-07-23 21:11:23] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 21:11:23] [SYSTEM] ✅ Audio stream started successfully
-[2025-07-23 21:11:23] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
-[2025-07-23 21:11:23] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.23s - Response: Listo.
-[2025-07-23 21:11:25] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
-[2025-07-23 21:11:27] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:11:27] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 21:11:29] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:11:29] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 21:11:31] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:11:31] [AUDIO] Audio window queued (RMS: 0.059159)
-[2025-07-23 21:11:31] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:11:31] [AUDIO_PROCESS] Processing audio window with RMS: 0.059159
-[2025-07-23 21:11:31] [LATENCY] Window d4f202eb latency: 0.368s
-[2025-07-23 21:11:31] [LATENCY_AVG] Rolling average latency (1 windows): 0.368s
-[2025-07-23 21:11:31] [LATENCY_OK] Window d4f202eb latency 0.368s within 1.5s target
-[2025-07-23 21:11:31] [LATENCY_AVG_OK] Rolling average latency 0.368s within 1.5s target
-[2025-07-23 21:11:31] [WINDOW_RESULT] Transcription result: Rrrrrrrrrrrrrr
-[2025-07-23 21:11:33] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:11:33] [AUDIO] Audio window queued (RMS: 0.100162)
-[2025-07-23 21:11:33] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:11:33] [AUDIO_PROCESS] Processing audio window with RMS: 0.100162
-[2025-07-23 21:11:34] [LATENCY] Window e0b14597 latency: 1.422s
-[2025-07-23 21:11:34] [LATENCY_AVG] Rolling average latency (2 windows): 0.895s
-[2025-07-23 21:11:34] [LATENCY_OK] Window e0b14597 latency 1.422s within 1.5s target
-[2025-07-23 21:11:34] [LATENCY_AVG_OK] Rolling average latency 0.895s within 1.5s target
-[2025-07-23 21:11:34] [WINDOW_RESULT] Transcription result: Uuuh, Uuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh
-[2025-07-23 21:11:35] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:11:35] [AUDIO] Audio window queued (RMS: 0.093189)
-[2025-07-23 21:11:35] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:11:35] [AUDIO_PROCESS] Processing audio window with RMS: 0.093189
-[2025-07-23 21:11:35] [LATENCY] Window cf74e02f latency: 0.156s
-[2025-07-23 21:11:35] [LATENCY_AVG] Rolling average latency (3 windows): 0.649s
-[2025-07-23 21:11:35] [LATENCY_OK] Window cf74e02f latency 0.156s within 1.5s target
-[2025-07-23 21:11:35] [LATENCY_AVG_OK] Rolling average latency 0.649s within 1.5s target
-[2025-07-23 21:11:35] [WINDOW_RESULT] Transcription result: ¡Selenta Sosión!
-[2025-07-23 21:11:37] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:11:37] [AUDIO] Audio window queued (RMS: 0.065164)
-[2025-07-23 21:11:37] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:11:37] [AUDIO_PROCESS] Processing audio window with RMS: 0.065164
-[2025-07-23 21:11:37] [LATENCY] Window 59b8734f latency: 0.024s
-[2025-07-23 21:11:37] [LATENCY_AVG] Rolling average latency (4 windows): 0.492s
-[2025-07-23 21:11:37] [LATENCY_OK] Window 59b8734f latency 0.024s within 1.5s target
-[2025-07-23 21:11:37] [LATENCY_AVG_OK] Rolling average latency 0.492s within 1.5s target
-[2025-07-23 21:11:37] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
-[2025-07-23 21:11:39] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 21:11:39] [AUDIO] Audio window queued (RMS: 0.008856)
-[2025-07-23 21:11:39] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 21:11:39] [AUDIO_PROCESS] Processing audio window with RMS: 0.008856
-[2025-07-23 21:11:39] [LATENCY] Window 47dc8244 latency: 0.023s
-[2025-07-23 21:11:39] [LATENCY_AVG] Rolling average latency (5 windows): 0.399s
-[2025-07-23 21:11:39] [LATENCY_OK] Window 47dc8244 latency 0.023s within 1.5s target
-[2025-07-23 21:11:39] [LATENCY_AVG_OK] Rolling average latency 0.399s within 1.5s target
-[2025-07-23 21:11:39] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
-[2025-07-23 21:11:39] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
-[2025-07-23 21:11:39] [SYSTEM] Application terminated by user (Ctrl+C)
-[2025-07-23 21:11:39] [SYSTEM] Starting system cleanup
-[2025-07-23 21:11:39] [SYSTEM] Signaled worker threads to stop
-[2025-07-23 21:11:39] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 21:11:39] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 21:11:39] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 21:11:39] [SYSTEM] Hotkey listener thread stopped gracefully
-[2025-07-23 21:11:40] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 21:11:40] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 21:11:40] [SYSTEM] Streaming buffer cleared
-[2025-07-23 21:11:40] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 21:55:21 ===
-[2025-07-23 21:55:21] [SYSTEM] Logging system initialized successfully
-[2025-07-23 21:55:21] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 21:55:21] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 21:55:21] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 21:55:21] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 21:55:21] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 21:55:22] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 21:55:22] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-23 21:55:22] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-23 21:55:22] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-23 21:55:22] [AUDIO_FORMAT] 🚀 Performance: Sub-second latency with pause detection
-[2025-07-23 21:55:22] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.6
-[2025-07-23 21:55:22] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 21:55:22] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 21:58:05 ===
-[2025-07-23 21:58:05] [SYSTEM] Logging system initialized successfully
-[2025-07-23 21:58:05] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 21:58:05] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 21:58:05] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 21:58:05] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 21:58:05] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 21:58:06] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 21:58:06] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-23 21:58:06] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-23 21:58:06] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-23 21:58:06] [AUDIO_FORMAT] 🚀 Performance: Sub-second latency with pause detection
-[2025-07-23 21:58:06] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.6
-[2025-07-23 21:58:06] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 21:58:06] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 21:59:41 ===
-[2025-07-23 21:59:41] [SYSTEM] Logging system initialized successfully
-[2025-07-23 21:59:41] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 21:59:41] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 21:59:41] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 21:59:41] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 21:59:41] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 21:59:42] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 21:59:42] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-23 21:59:42] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-23 21:59:42] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-23 21:59:42] [AUDIO_FORMAT] 🚀 Performance: Sub-second latency with pause detection
-[2025-07-23 21:59:42] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.6
-[2025-07-23 21:59:42] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 21:59:42] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 21:59:42] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
-[2025-07-23 21:59:42] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
-[2025-07-23 21:59:42] [SYSTEM] Thread architecture: transcription worker + hotkey listener
-[2025-07-23 21:59:42] [SYSTEM] Starting system threads...
-[2025-07-23 21:59:42] [SYSTEM] Live transcription worker thread started
-[2025-07-23 21:59:42] [SYSTEM] ✅ Streaming transcription worker thread started successfully
-[2025-07-23 21:59:42] [SYSTEM] Hotkey listener thread started with enhanced error handling
-[2025-07-23 21:59:42] [SYSTEM] ✅ Hotkey listener thread started successfully
-[2025-07-23 21:59:42] [SYSTEM] ✅ All system threads running successfully
-[2025-07-23 21:59:42] [SYSTEM] ✅ Gemini warm-up thread started
-[2025-07-23 21:59:42] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 21:59:42] [SYSTEM] Initializing audio stream...
-[2025-07-23 21:59:42] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 21:59:42] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 21:59:42] [SYSTEM] ✅ Audio stream started successfully
-[2025-07-23 21:59:42] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
-[2025-07-23 21:59:42] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.20s - Response: Listo.
-[2025-07-23 21:59:50] [AUDIO] SPEECH_START detected (RMS: 0.1582)
-[2025-07-23 22:00:08] [AUDIO] SPEECH_END detected after 2.00s of silence (RMS: 0.0000)
-[2025-07-23 22:00:08] [AUDIO] Processing complete speech segment (960000 samples, 20.00s)
-[2025-07-23 22:00:08] [AUDIO] Audio queued for live transcription
-[2025-07-23 22:00:08] [AUDIO] Audio resampled from 960000 to 320000 samples
-[2025-07-23 22:00:08] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-23 22:00:09] [LIVE_ES] Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar...
-[2025-07-23 22:00:13] [HOTKEY_Q] Hotkey 'q' pressed
-[2025-07-23 22:00:18] [SEND_GEMINI] 42w / 1c
-[2025-07-23 22:00:18] [HOTKEY_G] Sending to Gemini: Mamá, una cosa, va a ir al supermercado, por si quieres que ...
-[2025-07-23 22:00:18] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 22:00:18] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar...
-[2025-07-23 22:00:19] [GEMINI_REPLY] Response (0.26s): Mamá, ¿necesitas algo del supermercado?
-[2025-07-23 22:00:19] [PERFORMANCE] Gemini response time 0.26s within live exam target
-[2025-07-23 22:00:19] [GEMINI_RESPONSE_TIME] 0.26s
-[2025-07-23 22:00:30] [AUDIO] SPEECH_START detected (RMS: 0.0490)
-[2025-07-23 22:00:44] [HOTKEY_G] No live text available
-[2025-07-23 22:00:48] [AUDIO] SPEECH_END detected after 2.00s of silence (RMS: 0.0000)
-[2025-07-23 22:00:48] [AUDIO] Processing complete speech segment (960000 samples, 20.00s)
-[2025-07-23 22:00:48] [AUDIO] Audio queued for live transcription
-[2025-07-23 22:00:48] [AUDIO] Audio resampled from 960000 to 320000 samples
-[2025-07-23 22:00:48] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-23 22:00:49] [LIVE_ES] Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas.
-[2025-07-23 22:00:51] [SEND_GEMINI] 38w / 1c
-[2025-07-23 22:00:51] [HOTKEY_G] Sending to Gemini: Mamá, una cosa, va a ir al supermercado, por si quieres que ...
-[2025-07-23 22:00:51] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 22:00:51] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas.
-[2025-07-23 22:00:51] [GEMINI_REPLY] Response (0.26s): ¿Hay algo más que necesites?
-[2025-07-23 22:00:51] [PERFORMANCE] Gemini response time 0.26s within live exam target
-[2025-07-23 22:00:51] [GEMINI_RESPONSE_TIME] 0.26s
-[2025-07-23 22:00:53] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
-[2025-07-23 22:00:53] [SYSTEM] Application terminated by user (Ctrl+C)
-[2025-07-23 22:00:53] [SYSTEM] Starting system cleanup
-[2025-07-23 22:00:53] [SYSTEM] Signaled worker threads to stop
-[2025-07-23 22:00:53] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 22:00:53] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 22:00:53] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 22:00:53] [SYSTEM] Hotkey listener thread stopped gracefully
-[2025-07-23 22:00:54] [SYSTEM] Live transcription worker thread stopped
-[2025-07-23 22:00:54] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 22:00:54] [SYSTEM] Audio buffer cleared
-[2025-07-23 22:00:54] [SYSTEM] Live buffer cleared
-[2025-07-23 22:00:54] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 22:07:57 ===
-[2025-07-23 22:07:57] [SYSTEM] Logging system initialized successfully
-[2025-07-23 22:07:57] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 22:07:57] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 22:07:57] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 22:07:57] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 22:07:57] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 22:07:58] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 22:07:58] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-23 22:07:58] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-23 22:07:58] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-23 22:07:58] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
-[2025-07-23 22:07:58] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
-[2025-07-23 22:07:58] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 22:07:58] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 22:07:58] [AUDIO] SPEECH_START detected (RMS: 0.0200)
-[2025-07-23 22:07:58] [AUDIO] SPEECH_END detected after 0.40s of silence (RMS: 0.0000)
-=== System startup at 2025-07-23 22:10:04 ===
-[2025-07-23 22:10:04] [SYSTEM] Logging system initialized successfully
-[2025-07-23 22:10:04] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 22:10:04] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 22:10:04] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 22:10:04] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 22:10:04] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 22:10:04] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 22:10:04] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-23 22:10:04] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-23 22:10:04] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-23 22:10:04] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
-[2025-07-23 22:10:04] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
-[2025-07-23 22:10:04] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 22:10:04] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 22:11:01 ===
-[2025-07-23 22:11:01] [SYSTEM] Logging system initialized successfully
-[2025-07-23 22:11:01] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 22:11:01] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 22:11:01] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 22:11:01] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 22:11:01] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 22:11:02] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 22:11:02] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-23 22:11:02] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-23 22:11:02] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-23 22:11:02] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
-[2025-07-23 22:11:02] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
-[2025-07-23 22:11:02] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 22:11:02] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 22:11:02] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
-[2025-07-23 22:11:02] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
-[2025-07-23 22:11:02] [SYSTEM] Thread architecture: transcription worker + hotkey listener
-[2025-07-23 22:11:02] [SYSTEM] Starting system threads...
-[2025-07-23 22:11:02] [SYSTEM] Live transcription worker thread started
-[2025-07-23 22:11:02] [SYSTEM] ✅ Streaming transcription worker thread started successfully
-[2025-07-23 22:11:02] [SYSTEM] ✅ Hotkey listener thread started successfully
-[2025-07-23 22:11:02] [SYSTEM] Hotkey listener thread started with enhanced error handling
-[2025-07-23 22:11:02] [SYSTEM] ✅ All system threads running successfully
-[2025-07-23 22:11:02] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 22:11:02] [SYSTEM] ✅ Gemini warm-up thread started
-[2025-07-23 22:11:02] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 22:11:02] [SYSTEM] Initializing audio stream...
-[2025-07-23 22:11:02] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 22:11:02] [SYSTEM] ✅ Audio stream started successfully
-[2025-07-23 22:11:02] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
-[2025-07-23 22:11:03] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.82s - Response: Listo.
-[2025-07-23 22:11:04] [ERROR] Error in audio buffering: local variable 'is_speaking' referenced before assignment
-[2025-07-23 22:11:04] [ERROR] Critical error in audio callback: local variable 'is_speaking' referenced before assignment
-[2025-07-23 22:11:06] [ERROR] Error in audio buffering: local variable 'is_speaking' referenced before assignment
-[2025-07-23 22:11:06] [ERROR] Critical error in audio callback: local variable 'is_speaking' referenced before assignment
-[2025-07-23 22:11:07] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
-[2025-07-23 22:11:07] [SYSTEM] Application terminated by user (Ctrl+C)
-[2025-07-23 22:11:07] [SYSTEM] Starting system cleanup
-[2025-07-23 22:11:07] [SYSTEM] Signaled worker threads to stop
-[2025-07-23 22:11:07] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 22:11:07] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 22:11:07] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 22:11:07] [SYSTEM] Hotkey listener thread stopped gracefully
-[2025-07-23 22:11:08] [SYSTEM] Live transcription worker thread stopped
-[2025-07-23 22:11:08] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 22:11:08] [SYSTEM] Audio buffer cleared
-[2025-07-23 22:11:08] [SYSTEM] Live buffer cleared
-[2025-07-23 22:11:08] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 22:13:47 ===
-[2025-07-23 22:13:47] [SYSTEM] Logging system initialized successfully
-[2025-07-23 22:13:47] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 22:13:47] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 22:13:47] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 22:13:47] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 22:13:47] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 22:13:48] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 22:13:48] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-23 22:13:48] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-23 22:13:48] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-23 22:13:48] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
-[2025-07-23 22:13:48] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
-[2025-07-23 22:13:48] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 22:13:48] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 22:15:24 ===
-[2025-07-23 22:15:24] [SYSTEM] Logging system initialized successfully
-[2025-07-23 22:15:24] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 22:15:24] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 22:15:24] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 22:15:24] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 22:15:24] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 22:15:25] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 22:15:25] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-23 22:15:25] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-23 22:15:25] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-23 22:15:25] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
-[2025-07-23 22:15:25] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
-[2025-07-23 22:15:25] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 22:15:25] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 22:15:25] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
-[2025-07-23 22:15:25] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
-[2025-07-23 22:15:25] [SYSTEM] Thread architecture: transcription worker + hotkey listener
-[2025-07-23 22:15:25] [SYSTEM] Starting system threads...
-[2025-07-23 22:15:25] [SYSTEM] Live transcription worker thread started
-[2025-07-23 22:15:25] [SYSTEM] ✅ Streaming transcription worker thread started successfully
-[2025-07-23 22:15:25] [SYSTEM] Hotkey listener thread started with enhanced error handling
-[2025-07-23 22:15:25] [SYSTEM] ✅ Hotkey listener thread started successfully
-[2025-07-23 22:15:25] [SYSTEM] ✅ All system threads running successfully
-[2025-07-23 22:15:25] [SYSTEM] ✅ Gemini warm-up thread started
-[2025-07-23 22:15:25] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 22:15:25] [SYSTEM] Initializing audio stream...
-[2025-07-23 22:15:25] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 22:15:25] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 22:15:25] [SYSTEM] ✅ Audio stream started successfully
-[2025-07-23 22:15:25] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
-[2025-07-23 22:15:25] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.20s - Response: Listo.
-[2025-07-23 22:15:41] [AUDIO] SPEECH_START detected (RMS: 0.1844)
-[2025-07-23 22:15:45] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
-[2025-07-23 22:15:45] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
-[2025-07-23 22:15:45] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-23 22:15:45] [AUDIO] Audio resampled from 288000 to 96000 samples
-[2025-07-23 22:15:45] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-23 22:15:46] [LIVE_ES] Mamá, una cosa, voy a ir al supermercado por si quieres que compre algo, había pensado en comprar dos vasos.
-[2025-07-23 22:15:47] [AUDIO] SPEECH_START detected (RMS: 0.1787)
-[2025-07-23 22:15:51] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
-[2025-07-23 22:15:51] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
-[2025-07-23 22:15:51] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-23 22:15:51] [AUDIO] Audio resampled from 288000 to 96000 samples
-[2025-07-23 22:15:51] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-23 22:15:51] [LIVE_ES] arroz de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es...
-[2025-07-23 22:15:53] [AUDIO] SPEECH_START detected (RMS: 0.0609)
-[2025-07-23 22:15:57] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
-[2025-07-23 22:15:57] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
-[2025-07-23 22:15:57] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-23 22:15:57] [AUDIO] Audio resampled from 288000 to 96000 samples
-[2025-07-23 22:15:57] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-23 22:15:57] [LIVE_ES] si quedan patatas. Si lo puedes mirar y me avisas te lo agradezco y luego también sin
-[2025-07-23 22:15:58] [SEND_GEMINI] 53w / 3c
-[2025-07-23 22:15:58] [HOTKEY_G] Sending to Gemini: Mamá, una cosa, voy a ir al supermercado por si quieres que ...
-[2025-07-23 22:15:58] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 22:15:58] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, voy a ir al supermercado por si quieres que compre algo, había pensado en comprar dos vasos. arroz de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es... si quedan patatas. Si lo puedes mirar y me avisas te lo agradezco y luego también sin
-[2025-07-23 22:15:58] [GEMINI_REPLY] Response (0.24s): Claro, hija, miraré lo de las patatas.
-[2025-07-23 22:15:58] [PERFORMANCE] Gemini response time 0.24s within live exam target
-[2025-07-23 22:15:58] [GEMINI_RESPONSE_TIME] 0.25s
-[2025-07-23 22:15:59] [AUDIO] SPEECH_START detected (RMS: 0.1068)
-[2025-07-23 22:16:03] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
-[2025-07-23 22:16:03] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
-[2025-07-23 22:16:03] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-23 22:16:03] [AUDIO] Audio resampled from 288000 to 96000 samples
-[2025-07-23 22:16:03] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-23 22:16:03] [LIVE_ES] Si necesitas alguna otra cosa, me lo escribes en un mensaje.
-[2025-07-23 22:16:17] [AUDIO] SPEECH_START detected (RMS: 0.0785)
-[2025-07-23 22:16:21] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
-[2025-07-23 22:16:21] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
-[2025-07-23 22:16:21] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-23 22:16:21] [AUDIO] Audio resampled from 288000 to 96000 samples
-[2025-07-23 22:16:21] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-23 22:16:21] [LIVE_ES] o me llamas pero rápido porque voy a ir ya
-[2025-07-23 22:16:22] [Reprinting last Gemini reply] HOTKEY_R
-[2025-07-23 22:16:23] [HOTKEY_H] Help shown
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'a' (last press 0.092s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key ',' (last press 0.056s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key ' ' (last press 0.045s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'i' (last press 0.036s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'r' (last press 0.092s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'a' (last press 0.104s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'r' (last press 0.094s ago)
-[2025-07-23 22:16:23] [HOTKEY_SPECIAL] Special key pressed (ignored)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key ' ' (last press 0.070s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'l' (last press 0.128s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'o' (last press 0.093s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key ' ' (last press 0.071s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key ' ' (last press 0.094s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'l' (last press 0.151s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'a' (last press 0.140s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key ' ' (last press 0.108s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'a' (last press 0.166s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'a' (last press 0.177s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 't' (last press 0.012s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 'a' (last press 0.178s ago)
-[2025-07-23 22:16:23] [HOTKEY_DEBOUNCE] Debounced key 's' (last press 0.036s ago)
-[2025-07-23 22:16:23] [AUDIO] SPEECH_START detected (RMS: 0.0927)
-[2025-07-23 22:16:24] [SEND_GEMINI] 21w / 2c
-[2025-07-23 22:16:24] [HOTKEY_G] Sending to Gemini: Si necesitas alguna otra cosa, me lo escribes en un mensaje....
-[2025-07-23 22:16:24] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 22:16:24] [GEMINI_PROMPT] Spanish input: Si necesitas alguna otra cosa, me lo escribes en un mensaje. o me llamas pero rápido porque voy a ir ya
-[2025-07-23 22:16:24] [GEMINI_REPLY] Response (0.28s): Claro, te avisaré.
-[2025-07-23 22:16:24] [PERFORMANCE] Gemini response time 0.28s within live exam target
-[2025-07-23 22:16:24] [GEMINI_RESPONSE_TIME] 0.28s
-[2025-07-23 22:16:27] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
-[2025-07-23 22:16:27] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
-[2025-07-23 22:16:27] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-23 22:16:27] [AUDIO] Audio resampled from 288000 to 96000 samples
-[2025-07-23 22:16:27] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-23 22:16:27] [LIVE_ES] te quiero se que va a sonar
-[2025-07-23 22:16:57] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
-[2025-07-23 22:16:57] [SYSTEM] Application terminated by user (Ctrl+C)
-[2025-07-23 22:16:57] [SYSTEM] Starting system cleanup
-[2025-07-23 22:16:57] [SYSTEM] Signaled worker threads to stop
-[2025-07-23 22:16:57] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 22:16:57] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 22:16:57] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 22:16:57] [SYSTEM] Hotkey listener thread stopped gracefully
-[2025-07-23 22:16:57] [SYSTEM] Live transcription worker thread stopped
-[2025-07-23 22:16:57] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 22:16:57] [SYSTEM] Audio buffer cleared
-[2025-07-23 22:16:57] [SYSTEM] Live buffer cleared
-[2025-07-23 22:16:57] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 22:18:50 ===
-[2025-07-23 22:18:50] [SYSTEM] Logging system initialized successfully
-[2025-07-23 22:18:50] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 22:18:50] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 22:18:50] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 22:18:50] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 22:18:50] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 22:18:51] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 22:18:51] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-23 22:18:51] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-23 22:18:51] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-23 22:18:51] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
-[2025-07-23 22:18:51] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
-[2025-07-23 22:18:51] [SYSTEM] Using audio device 37: Desktop Microphone (RØDE NT-USB Mini)
-[2025-07-23 22:18:51] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 22:18:51] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
-[2025-07-23 22:18:51] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
-[2025-07-23 22:18:51] [SYSTEM] Thread architecture: transcription worker + hotkey listener
-[2025-07-23 22:18:51] [SYSTEM] Starting system threads...
-[2025-07-23 22:18:51] [SYSTEM] ✅ Streaming transcription worker thread started successfully
-[2025-07-23 22:18:51] [SYSTEM] Live transcription worker thread started
-[2025-07-23 22:18:51] [SYSTEM] Hotkey listener thread started with enhanced error handling
-[2025-07-23 22:18:51] [SYSTEM] ✅ Hotkey listener thread started successfully
-[2025-07-23 22:18:51] [SYSTEM] ✅ All system threads running successfully
-[2025-07-23 22:18:51] [SYSTEM] ✅ Gemini warm-up thread started
-[2025-07-23 22:18:51] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 22:18:51] [SYSTEM] Initializing audio stream...
-[2025-07-23 22:18:51] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 22:18:51] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 22:18:51] [ERROR] PortAudio stream error: Error opening InputStream: Invalid device [PaErrorCode -9996]
-[2025-07-23 22:18:51] [ERROR] Critical error in main execution: Error opening InputStream: Invalid device [PaErrorCode -9996]
-[2025-07-23 22:18:51] [ERROR] Full traceback: Traceback (most recent call last):
-  File "C:\Users\John\Downloads\programming\Whisper\main.py", line 1136, in main
-    with sd.InputStream(
-  File "C:\Users\John\Downloads\programming\Whisper\whisperenv\lib\site-packages\sounddevice.py", line 1440, in __init__
-    _StreamBase.__init__(self, kind='input', wrap_callback='array',
-  File "C:\Users\John\Downloads\programming\Whisper\whisperenv\lib\site-packages\sounddevice.py", line 909, in __init__
-    _check(_lib.Pa_OpenStream(self._ptr, iparameters, oparameters,
-  File "C:\Users\John\Downloads\programming\Whisper\whisperenv\lib\site-packages\sounddevice.py", line 2804, in _check
-    raise PortAudioError(errormsg, err)
-sounddevice.PortAudioError: Error opening InputStream: Invalid device [PaErrorCode -9996]
-
-[2025-07-23 22:18:51] [SYSTEM] Starting system cleanup
-[2025-07-23 22:18:51] [SYSTEM] Signaled worker threads to stop
-[2025-07-23 22:18:51] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 22:18:51] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 22:18:51] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 22:18:51] [SYSTEM] Hotkey listener thread stopped gracefully
-[2025-07-23 22:18:51] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.31s - Response: Listo.
-[2025-07-23 22:18:52] [SYSTEM] Live transcription worker thread stopped
-[2025-07-23 22:18:52] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 22:18:52] [SYSTEM] Audio buffer cleared
-[2025-07-23 22:18:52] [SYSTEM] Live buffer cleared
-[2025-07-23 22:18:52] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 22:19:58 ===
-[2025-07-23 22:19:58] [SYSTEM] Logging system initialized successfully
-[2025-07-23 22:19:58] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 22:19:58] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 22:19:58] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 22:19:58] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 22:19:58] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 22:19:59] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 22:19:59] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-23 22:19:59] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-23 22:19:59] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-23 22:19:59] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
-[2025-07-23 22:19:59] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
-[2025-07-23 22:19:59] [SYSTEM] Using audio device 37: Desktop Microphone (RØDE NT-USB Mini)
-[2025-07-23 22:19:59] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 22:19:59] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
-[2025-07-23 22:19:59] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
-[2025-07-23 22:19:59] [SYSTEM] Thread architecture: transcription worker + hotkey listener
-[2025-07-23 22:19:59] [SYSTEM] Starting system threads...
-[2025-07-23 22:19:59] [SYSTEM] Live transcription worker thread started
-[2025-07-23 22:19:59] [SYSTEM] ✅ Streaming transcription worker thread started successfully
-[2025-07-23 22:19:59] [SYSTEM] Hotkey listener thread started with enhanced error handling
-[2025-07-23 22:19:59] [SYSTEM] ✅ Hotkey listener thread started successfully
-[2025-07-23 22:19:59] [SYSTEM] ✅ All system threads running successfully
-[2025-07-23 22:19:59] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 22:19:59] [SYSTEM] ✅ Gemini warm-up thread started
-[2025-07-23 22:19:59] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 22:19:59] [SYSTEM] Initializing audio stream...
-[2025-07-23 22:19:59] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 22:19:59] [ERROR] PortAudio stream error: Error opening InputStream: Invalid device [PaErrorCode -9996]
-[2025-07-23 22:19:59] [ERROR] Critical error in main execution: Error opening InputStream: Invalid device [PaErrorCode -9996]
-[2025-07-23 22:19:59] [ERROR] Full traceback: Traceback (most recent call last):
-  File "C:\Users\John\Downloads\programming\Whisper\main.py", line 1136, in main
-    with sd.InputStream(
-  File "C:\Users\John\Downloads\programming\Whisper\whisperenv\lib\site-packages\sounddevice.py", line 1440, in __init__
-    _StreamBase.__init__(self, kind='input', wrap_callback='array',
-  File "C:\Users\John\Downloads\programming\Whisper\whisperenv\lib\site-packages\sounddevice.py", line 909, in __init__
-    _check(_lib.Pa_OpenStream(self._ptr, iparameters, oparameters,
-  File "C:\Users\John\Downloads\programming\Whisper\whisperenv\lib\site-packages\sounddevice.py", line 2804, in _check
-    raise PortAudioError(errormsg, err)
-sounddevice.PortAudioError: Error opening InputStream: Invalid device [PaErrorCode -9996]
-
-[2025-07-23 22:19:59] [SYSTEM] Starting system cleanup
-[2025-07-23 22:19:59] [SYSTEM] Signaled worker threads to stop
-[2025-07-23 22:19:59] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 22:19:59] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 22:19:59] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 22:19:59] [SYSTEM] Hotkey listener thread stopped gracefully
-[2025-07-23 22:19:59] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.18s - Response: Listo.
-[2025-07-23 22:20:00] [SYSTEM] Live transcription worker thread stopped
-[2025-07-23 22:20:00] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 22:20:00] [SYSTEM] Audio buffer cleared
-[2025-07-23 22:20:00] [SYSTEM] Live buffer cleared
-[2025-07-23 22:20:00] [SYSTEM] System cleanup completed
+=== System startup at 2025-07-23 22:58:38 ===
+[2025-07-23 22:58:38] [SYSTEM] Logging system initialized successfully
+[2025-07-23 22:58:38] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 22:58:38] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 22:58:38] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 22:58:38] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 22:58:38] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 22:58:38] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 22:58:38] [AUDIO_FORMAT] === Live Transcription System Ready ===
+[2025-07-23 22:58:38] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
+[2025-07-23 22:58:38] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
+[2025-07-23 22:58:38] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
+[2025-07-23 22:58:38] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
+[2025-07-23 22:58:38] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 22:58:38] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 22:58:38] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
+[2025-07-23 22:58:38] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
+[2025-07-23 22:58:38] [SYSTEM] Thread architecture: transcription worker + hotkey listener + auto-send monitor
+[2025-07-23 22:58:38] [SYSTEM] Starting system threads...
+[2025-07-23 22:58:38] [SYSTEM] Live transcription worker thread started
+[2025-07-23 22:58:38] [SYSTEM] ✅ Streaming transcription worker thread started successfully
+[2025-07-23 22:58:38] [SYSTEM] ✅ Hotkey listener thread started successfully
+[2025-07-23 22:58:38] [SYSTEM] Hotkey listener thread started with enhanced error handling
+[2025-07-23 22:58:38] [SYSTEM] Auto-send monitor thread started
+[2025-07-23 22:58:38] [SYSTEM] ✅ Auto-send monitor thread started successfully
+[2025-07-23 22:58:38] [SYSTEM] ✅ All system threads running successfully
+[2025-07-23 22:58:38] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-23 22:58:38] [SYSTEM] ✅ Gemini warm-up thread started
+[2025-07-23 22:58:38] [GEMINI_WARMUP] Warm-up prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 22:58:38] [SYSTEM] Initializing audio stream...
+[2025-07-23 22:58:38] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-23 22:58:38] [SYSTEM] ✅ Audio stream started successfully
+[2025-07-23 22:58:38] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
+[2025-07-23 22:58:39] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.21s - Response: Estoy listo.
+[2025-07-23 22:58:44] [AUDIO] SPEECH_START detected (RMS: 0.1146)
+[2025-07-23 22:58:48] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 22:58:48] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 22:58:48] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 22:58:48] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 22:58:48] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 22:58:49] [LIVE_ES] ¿Te gustaría practicar tu español en una conversación conmigo?
+[2025-07-23 22:58:50] [AUDIO] SPEECH_START detected (RMS: 0.1125)
+[2025-07-23 22:58:54] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 22:58:54] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 22:58:54] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 22:58:54] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 22:58:54] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 22:58:54] [SEND_GEMINI] 9w / 1c
+[2025-07-23 22:58:54] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 22:58:54] [GEMINI_PROMPT] Spanish input: ¿Te gustaría practicar tu español en una conversación conmigo?
+[2025-07-23 22:58:55] [LIVE_ES] Es exactamente lo que vamos a hacer en la clase de hoy.
+[2025-07-23 22:58:55] [GEMINI_REPLY] Response (0.21s): Sí, me gustaría mucho.
+[2025-07-23 22:58:55] [PERFORMANCE] Gemini response time 0.21s within live exam target
+[2025-07-23 22:58:55] [GEMINI_RESPONSE_TIME] 0.22s
+[2025-07-23 22:58:55] [HOTKEY_G] Manual send completed
+[2025-07-23 22:58:59] [HOTKEY_G] No live text available
+[2025-07-23 22:59:38] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
+[2025-07-23 22:59:38] [SYSTEM] Application terminated by user (Ctrl+C)
+[2025-07-23 22:59:38] [SYSTEM] Starting system cleanup
+[2025-07-23 22:59:38] [SYSTEM] Signaled worker threads to stop
+[2025-07-23 22:59:38] [SYSTEM] Waiting for audio queue to empty
+[2025-07-23 22:59:38] [SYSTEM] Audio queue emptied successfully
+[2025-07-23 22:59:38] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-23 22:59:38] [SYSTEM] Hotkey listener thread stopped gracefully
+[2025-07-23 22:59:39] [SYSTEM] Live transcription worker thread stopped
+[2025-07-23 22:59:39] [SYSTEM] Transcription thread finished successfully
+[2025-07-23 22:59:39] [SYSTEM] Waiting for auto-send monitor thread to finish
+[2025-07-23 22:59:39] [SYSTEM] Auto-send monitor thread stopped
+[2025-07-23 22:59:39] [SYSTEM] Auto-send monitor thread finished successfully
+[2025-07-23 22:59:39] [SYSTEM] Audio buffer cleared
+[2025-07-23 22:59:39] [SYSTEM] Live buffer cleared
+[2025-07-23 22:59:39] [SYSTEM] System cleanup completed

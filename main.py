@@ -18,11 +18,28 @@ import re  # Added for filtering nonsense chunks
 RMS_THRESHOLD = 0.008  # Lower threshold for breath-level latency
 SILENCE_SECS = 0.3     # Breath-level pause detection for immediate response
 MAX_SPEECH_SECS = 4.0  # Flush every 4 seconds if still speaking
+AUTO_SEND_AFTER_SECS = 8  # seconds of silence before auto-fire
 LOG_FILE = "log.txt"
 GEMINI_PROMPT = (
-    "You are a Spanish tutor. The student is preparing for an oral test. "
-    "Reply only with a natural, brief Spanish sentence the student should say. "
-    "Do not add explanations or alternatives. Just respond with the one sentence."
+    "You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. "
+    "Concepts you understand and should utilize: "
+    "- Saber and conocer (and irregular yo forms: sé, conozco)\n"
+    "- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)\n"
+    "- Acabar de + [infinitive]\n"
+    "- Basic Spanish pronunciation rules\n"
+    "- Regular -AR, -ER, -IR verb conjugations (present tense)\n"
+    "- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír\n"
+    "- Stem-changing verbs (e→ie, o→ue, e→i)\n"
+    "- Direct object nouns and pronouns (placement)\n"
+    "- Possession (using \"de,\" possessive adjectives, possessive pronouns, de + el = del)\n"
+    "- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)\n"
+    "- Gustar (and similar verbs, where liked item is subject)\n"
+    "- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)\n"
+    "- Present Progressive (estar + present participle, irregulars, stem changes)\n"
+    "- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)\n"
+    "- Numbers 31 and higher (patterns, cien/ciento, mil/millón)\n"
+    "- Common verbs and expressions (especially with tener)\n"
+    "When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence."
 )
 MODEL_NAME = "gemini-2.5-flash-lite"
 
@@ -39,8 +56,10 @@ def log_with_timestamp(message, event_type="INFO"):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     formatted_message = f"[{timestamp}] [{event_type}] {message}"
     
-    # Always print to console
-    print(formatted_message)
+    # Only print to console for certain event types (suppress internal diagnostics)
+    console_events = {"ERROR", "SYSTEM", "GEMINI_REPLY", "GEMINI_REPLY_REPEAT", "AUTO_SEND", "HOTKEY_G", "HOTKEY_R", "HOTKEY_H"}
+    if event_type in console_events:
+        print(formatted_message)
     
     # Thread-safe file logging with error handling
     with _log_lock:
@@ -116,9 +135,25 @@ def warm_up_gemini():
     
     # Use the same prompt prefix as real interactions
     prompt = (
-        "You are a Spanish tutor. The student is preparing for an oral test. "
-        "Reply only with a natural, brief Spanish sentence the student should say. "
-        "Do not add explanations or alternatives. Just respond with the one sentence."
+ "You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. "
+    "Concepts you understand and should utilize: "
+    "- Saber and conocer (and irregular yo forms: sé, conozco)\n"
+    "- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)\n"
+    "- Acabar de + [infinitive]\n"
+    "- Basic Spanish pronunciation rules\n"
+    "- Regular -AR, -ER, -IR verb conjugations (present tense)\n"
+    "- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír\n"
+    "- Stem-changing verbs (e→ie, o→ue, e→i)\n"
+    "- Direct object nouns and pronouns (placement)\n"
+    "- Possession (using \"de,\" possessive adjectives, possessive pronouns, de + el = del)\n"
+    "- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)\n"
+    "- Gustar (and similar verbs, where liked item is subject)\n"
+    "- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)\n"
+    "- Present Progressive (estar + present participle, irregulars, stem changes)\n"
+    "- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)\n"
+    "- Numbers 31 and higher (patterns, cien/ciento, mil/millón)\n"
+    "- Common verbs and expressions (especially with tener)\n"
+    "When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence."
     )
     
     # Warm-up request content
@@ -177,9 +212,26 @@ def call_gemini_api(spanish_input, is_repeat=False):
     
     # Use the exact prompt specified in requirements
     prompt = (
-        "You are a Spanish tutor. The student is preparing for an oral test. "
-        "Reply only with a natural, brief Spanish sentence the student should say. "
-        "Do not add explanations or alternatives. Just respond with the one sentence."
+    "You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. "
+    "Concepts you understand and should utilize: "
+    "- Saber and conocer (and irregular yo forms: sé, conozco)\n"
+    "- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)\n"
+    "- Acabar de + [infinitive]\n"
+    "- Basic Spanish pronunciation rules\n"
+    "- Regular -AR, -ER, -IR verb conjugations (present tense)\n"
+    "- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír\n"
+    "- Stem-changing verbs (e→ie, o→ue, e→i)\n"
+    "- Direct object nouns and pronouns (placement)\n"
+    "- Possession (using \"de,\" possessive adjectives, possessive pronouns, de + el = del)\n"
+    "- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)\n"
+    "- Gustar (and similar verbs, where liked item is subject)\n"
+    "- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)\n"
+    "- Present Progressive (estar + present participle, irregulars, stem changes)\n"
+    "- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)\n"
+    "- Numbers 31 and higher (patterns, cien/ciento, mil/millón)\n"
+    "- Common verbs and expressions (especially with tener)\n"
+    "When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence."
+
     )
     
     # Log the full request prompt
@@ -301,6 +353,11 @@ hotkey_state = {
 hotkey_lock = threading.Lock()  # Single lock for thread safety
 hotkey_listener_running = False
 hotkey_thread = None  # Will hold the hotkey listener thread reference
+
+# Auto-send monitoring infrastructure
+last_buffer_update_time = None
+auto_send_monitor_running = False
+auto_send_thread = None  # Will hold the auto-send monitor thread reference
 
 # Simple duplicate filtering - store only last transcription text and timestamp
 last_transcription_text = ""
@@ -471,77 +528,104 @@ def is_nonsense_chunk(text):
         return True  # Skip on error to be safe
 
 # >>> HOTKEY_HANDLERS_START
-def handle_g_key(state, lock, log_event, call_gemini):
-    """Send all live buffered text to Gemini if available and not busy."""
+def send_to_gemini(buffer_content):
+    """
+    Shared function to send content to Gemini, used by both manual g-key and auto-send.
+    Returns True if successful, False otherwise.
+    """
     import time
     
     try:
-        with lock:
-            busy = state.get("gemini_busy", False)
+        with hotkey_lock:
+            busy = hotkey_state.get("gemini_busy", False)
         
+        if busy:
+            return False
+        
+        if not buffer_content:
+            return False
+        
+        # Join all buffered text with spaces if it's a list
+        if isinstance(buffer_content, list):
+            full_text = " ".join(buffer_content)
+        else:
+            full_text = str(buffer_content)
+        
+        word_count = len(full_text.split())
+        
+        with hotkey_lock:
+            hotkey_state["gemini_busy"] = True
+        
+        try:
+            start = time.time()
+            
+            # Call Gemini with the content
+            reply = call_gemini_api(full_text)
+            elapsed = time.time() - start
+            
+            if reply is None:
+                raise ValueError("Gemini API returned no response")
+            
+            with hotkey_lock:
+                hotkey_state["last_gemini"] = reply
+                hotkey_state["gemini_busy"] = False
+            
+            # Clear the live buffer after successful send
+            with live_buffer_lock:
+                live_buffer.clear()
+            
+            log_with_timestamp(f"{elapsed:.2f}s", "GEMINI_RESPONSE_TIME")
+            print(f"🤖 Gemini: {reply}")
+            
+            return True
+            
+        except KeyboardInterrupt:
+            with hotkey_lock:
+                hotkey_state["gemini_busy"] = False
+            log_with_timestamp("Gemini call interrupted by user", "ERROR_GEMINI")
+            raise
+        except Exception as gemini_error:
+            with hotkey_lock:
+                hotkey_state["gemini_busy"] = False
+            log_with_timestamp(f"Gemini API error: {str(gemini_error)}", "ERROR_GEMINI")
+            print("🤖 ❌ Gemini request failed. Check logs for details.")
+            return False
+            
+    except Exception as handler_error:
+        log_with_timestamp(f"Critical error in send_to_gemini: {str(handler_error)}", "ERROR_SEND_GEMINI")
+        try:
+            with hotkey_lock:
+                hotkey_state["gemini_busy"] = False
+        except:
+            pass
+        return False
+
+def handle_g_key(state, lock, log_event, call_gemini):
+    """Send all live buffered text to Gemini if available and not busy."""
+    try:
         # Get all live buffer content
         with live_buffer_lock:
             if not live_buffer:
                 log_event("No live text available", "HOTKEY_G")
                 return
             
-            # Join all buffered text with spaces
-            full_text = " ".join(live_buffer)
-            word_count = len(full_text.split())
-            chunk_count = len(live_buffer)
-        
-        if busy:
-            log_event("Gemini busy; ignoring", "HOTKEY_G")
-            return
+            # Create a copy for processing
+            buffer_copy = live_buffer.copy()
+            word_count = len(" ".join(buffer_copy).split())
+            chunk_count = len(buffer_copy)
         
         # Log what we're sending
         log_event(f"{word_count}w / {chunk_count}c", "SEND_GEMINI")
-        log_event(f"Sending to Gemini: {full_text[:60]}...", "HOTKEY_G")
         
-        with lock:
-            state["gemini_busy"] = True
-        
-        try:
-            start = time.time()
-            
-            # Call Gemini with the full buffered text
-            reply = call_gemini(full_text)
-            elapsed = time.time() - start
-            
-            if reply is None:
-                raise ValueError("Gemini API returned no response")
-            
-            with lock:
-                state["last_gemini"] = reply
-                state["gemini_busy"] = False
-            
-            # Clear the live buffer after successful send
-            with live_buffer_lock:
-                live_buffer.clear()
-            
-            log_event(f"{elapsed:.2f}s", "GEMINI_RESPONSE_TIME")
-            print("\n========== GEMINI ==========")
-            print(reply)
-            print("========== /GEMINI =========\n")
-            
-        except KeyboardInterrupt:
-            with lock:
-                state["gemini_busy"] = False
-            log_event("Gemini call interrupted by user", "ERROR_GEMINI")
-            raise
-        except Exception as gemini_error:
-            with lock:
-                state["gemini_busy"] = False
-            log_event(f"Gemini API error: {str(gemini_error)}", "ERROR_GEMINI")
-            print("\n🤖 ❌ Gemini request failed. Check logs for details.\n")
+        # Use shared send function
+        success = send_to_gemini(buffer_copy)
+        if success:
+            log_event("Manual send completed", "HOTKEY_G")
+        else:
+            log_event("Manual send failed", "HOTKEY_G")
             
     except Exception as handler_error:
         log_event(f"Critical error in handle_g_key: {str(handler_error)}", "ERROR_HOTKEY_HANDLER")
-        try:
-            with lock:
-                state["gemini_busy"] = False
-        except:
-            pass
 
 def handle_r_key(state, lock, log_event):
     """Reprint the last Gemini reply if available."""
@@ -549,13 +633,11 @@ def handle_r_key(state, lock, log_event):
         reply = state.get("last_gemini", "")
     
     if not reply:
-        log_event("HOTKEY_R", "No previous Gemini reply")
+        log_event("No previous Gemini reply", "HOTKEY_R")
         return
     
-    log_event("HOTKEY_R", "Reprinting last Gemini reply")
-    print("\n========== GEMINI (repeat) ==========")
-    print(reply)
-    print("========== /GEMINI =========\n")
+    log_event("Reprinting last Gemini reply", "HOTKEY_R")
+    print(f"🤖 Gemini: {reply}")
 
 def handle_h_key(log_event):
     """Display help text for available hotkeys."""
@@ -663,13 +745,68 @@ def hotkey_listener_worker():
 # user_input_worker() and display_transcription_and_prompt() functions removed
 # These have been replaced by the non-blocking hotkey system
 
+def auto_send_monitor():
+    """
+    Auto-send monitor thread that checks for idle silence and auto-sends buffer content.
+    Runs every 0.3s and triggers auto-send after AUTO_SEND_AFTER_SECS seconds of inactivity.
+    """
+    global auto_send_monitor_running, last_buffer_update_time
+    
+    log_with_timestamp("Auto-send monitor thread started", "SYSTEM")
+    
+    while auto_send_monitor_running:
+        try:
+            time.sleep(0.3)  # Check every 0.3 seconds
+            
+            # Check conditions for auto-send
+            with live_buffer_lock:
+                buffer_empty = len(live_buffer) == 0
+                if buffer_empty:
+                    continue
+                
+                buffer_copy = live_buffer.copy()
+                char_count = len(" ".join(buffer_copy))
+            
+            with hotkey_lock:
+                gemini_busy = hotkey_state.get("gemini_busy", False)
+            
+            if gemini_busy:
+                continue
+            
+            # Check if enough time has passed since last buffer update
+            if last_buffer_update_time is None:
+                continue
+            
+            current_time = datetime.now()
+            time_since_update = (current_time - last_buffer_update_time).total_seconds()
+            
+            if time_since_update >= AUTO_SEND_AFTER_SECS:
+                # Trigger auto-send
+                word_count = len(" ".join(buffer_copy).split())
+                log_with_timestamp(f"Auto-sending {word_count} words after {time_since_update:.1f}s silence", "AUTO_SEND")
+                print(f"📨 Auto-sent {word_count} words to Gemini – waiting for reply…")
+                
+                # Use shared send function
+                success = send_to_gemini(buffer_copy)
+                if success:
+                    # Reset the update time to prevent immediate retrigger
+                    last_buffer_update_time = None
+                else:
+                    log_with_timestamp("Auto-send failed", "AUTO_SEND")
+            
+        except Exception as monitor_error:
+            log_with_timestamp(f"Error in auto-send monitor: {monitor_error}", "ERROR_AUTO_SEND")
+            continue
+    
+    log_with_timestamp("Auto-send monitor thread stopped", "SYSTEM")
+
 def streaming_transcription_worker():
     """
     Live transcription worker using RMS-based speech detection.
     Processes complete speech segments immediately after silence detection.
     Filters out nonsense chunks and accumulates valid text in live_buffer.
     """
-    global last_spanish, transcription_worker_running
+    global last_spanish, transcription_worker_running, last_buffer_update_time
     
     log_with_timestamp("Live transcription worker thread started", "SYSTEM")
     
@@ -770,13 +907,18 @@ def streaming_transcription_worker():
                     # Add to live buffer and update hotkey state
                     with live_buffer_lock:
                         live_buffer.append(clean_text)
+                        # Update buffer timing for auto-send
+                        last_buffer_update_time = datetime.now()
+                        
+                        # Show friendly buffer status
+                        total_chars = len(" ".join(live_buffer))
+                        print(f"📄 Buffer: {total_chars} chars  (press g or wait 8 s)")
                     
                     with hotkey_lock:
                         hotkey_state["last_transcription"] = clean_text
                     
-                    # Log and display the live text
+                    # Log the live text (keep detailed logging)
                     log_with_timestamp(f"{clean_text}", "LIVE_ES")
-                    print(f"🎤 {clean_text}")
                     
                     # Mark task as done
                     audio_queue.task_done()
@@ -953,19 +1095,19 @@ def callback(indata, frames, time, status):
 
 def cleanup_resources():
     """
-    Enhanced cleanup function for graceful shutdown with triple worker threads.
-    Handles transcription worker, user input worker, hotkey listener, and resource management.
+    Enhanced cleanup function for graceful shutdown with all worker threads.
+    Handles transcription worker, hotkey listener, auto-send monitor, and resource management.
     """
-    global transcription_worker_running, hotkey_listener_running, transcription_thread, hotkey_thread, audio_stream
-    # user_input_worker_running and user_input_thread disabled - using hotkeys instead
+    global transcription_worker_running, hotkey_listener_running, auto_send_monitor_running
+    global transcription_thread, hotkey_thread, auto_send_thread, audio_stream
     
     log_with_timestamp("Starting system cleanup", "SYSTEM")
     
     try:
         # Signal all worker threads to stop
         transcription_worker_running = False
-        # user_input_worker_running = False  # Disabled - using hotkeys
         hotkey_listener_running = False
+        auto_send_monitor_running = False
         log_with_timestamp("Signaled worker threads to stop", "SYSTEM")
         
         # Wait for any remaining audio processing to complete with timeout
@@ -986,23 +1128,6 @@ def cleanup_resources():
         except Exception as queue_error:
             log_with_timestamp(f"Error waiting for audio queue: {queue_error}", "ERROR")
         
-        # User input queue disabled - using hotkeys instead
-        # try:
-        #     log_with_timestamp("Waiting for user input queue to empty", "SYSTEM")
-        #     start_time = time.time()
-        #     timeout = 3.0  # 3 second timeout
-        #     
-        #     while not user_input_queue.empty() and (time.time() - start_time) < timeout:
-        #         time.sleep(0.1)
-        #     
-        #     if not user_input_queue.empty():
-        #         log_with_timestamp(f"User input queue not empty after {timeout}s timeout, forcing cleanup", "SYSTEM")
-        #     else:
-        #         log_with_timestamp("User input queue emptied successfully", "SYSTEM")
-        #         
-        # except Exception as queue_error:
-        #     log_with_timestamp(f"Error waiting for user input queue: {queue_error}", "ERROR")
-        
         # Wait for transcription thread to finish with timeout
         if transcription_thread and transcription_thread.is_alive():
             try:
@@ -1017,23 +1142,6 @@ def cleanup_resources():
             except Exception as thread_error:
                 log_with_timestamp(f"Error joining transcription thread: {thread_error}", "ERROR")
         
-        # User input thread disabled - using hotkeys instead
-        # if user_input_thread and user_input_thread.is_alive():
-        #     try:
-        #         log_with_timestamp("Waiting for user input thread to finish", "SYSTEM")
-        #         user_input_thread.join(timeout=1.0)  # Reduced timeout to 1 second
-        #         
-        #         if user_input_thread.is_alive():
-        #             log_with_timestamp("User input thread did not finish within timeout - forcing exit", "SYSTEM")
-        #         else:
-        #             log_with_timestamp("User input thread finished successfully", "SYSTEM")
-        #             
-        #     except KeyboardInterrupt:
-        #         # Handle Ctrl+C during cleanup gracefully
-        #         log_with_timestamp("Cleanup interrupted by user - forcing exit", "SYSTEM")
-        #     except Exception as thread_error:
-        #         log_with_timestamp(f"Error joining user input thread: {thread_error}", "ERROR")
-        
         # Wait for hotkey listener thread to finish with timeout
         if hotkey_thread and hotkey_thread.is_alive():
             try:
@@ -1047,6 +1155,20 @@ def cleanup_resources():
                     
             except Exception as thread_error:
                 log_with_timestamp(f"Error joining hotkey listener thread: {thread_error}", "ERROR")
+        
+        # Wait for auto-send monitor thread to finish with timeout
+        if auto_send_thread and auto_send_thread.is_alive():
+            try:
+                log_with_timestamp("Waiting for auto-send monitor thread to finish", "SYSTEM")
+                auto_send_thread.join(timeout=1.0)  # 1 second timeout
+                
+                if auto_send_thread.is_alive():
+                    log_with_timestamp("Auto-send monitor thread did not finish within timeout", "SYSTEM")
+                else:
+                    log_with_timestamp("Auto-send monitor thread finished successfully", "SYSTEM")
+                    
+            except Exception as thread_error:
+                log_with_timestamp(f"Error joining auto-send monitor thread: {thread_error}", "ERROR")
         
         # Clear audio buffer and live buffer
         try:
@@ -1068,7 +1190,6 @@ def cleanup_resources():
             audio_queue_size = audio_queue.qsize()
             if audio_queue_size > 0:
                 log_with_timestamp(f"Warning: {audio_queue_size} items remaining in audio queue", "SYSTEM")
-            # user_input_queue disabled - using hotkeys instead
         except Exception:
             pass
         
@@ -1080,16 +1201,15 @@ def cleanup_resources():
 def main():
     """
     Enhanced main execution function with robust error handling and graceful shutdown.
-    Starts transcription worker and hotkey listener for non-blocking operation.
-    User input has been replaced with hotkey system for better user experience.
+    Starts transcription worker, hotkey listener, and auto-send monitor for non-blocking operation.
     """
-    global transcription_thread, hotkey_thread, audio_stream, hotkey_listener_running
-    # user_input_thread disabled - using hotkeys instead
+    global transcription_thread, hotkey_thread, auto_send_thread, audio_stream
+    global hotkey_listener_running, auto_send_monitor_running
     
     # Display system startup information
     log_with_timestamp("=== SPANISH TRANSCRIPTION SYSTEM STARTING ===", "SYSTEM")
     log_with_timestamp("Shared state initialized: hotkey_state and hotkey_lock ready", "SYSTEM")
-    log_with_timestamp("Thread architecture: transcription worker + hotkey listener", "SYSTEM")
+    log_with_timestamp("Thread architecture: transcription worker + hotkey listener + auto-send monitor", "SYSTEM")
     
     try:
         # Initialize and start core system threads
@@ -1114,8 +1234,18 @@ def main():
             log_with_timestamp(f"❌ Failed to start hotkey listener thread: {thread_error}", "ERROR")
             raise
         
-        # Verify both threads are alive
-        if transcription_thread.is_alive() and hotkey_thread.is_alive():
+        # Start auto-send monitor thread with error handling
+        try:
+            auto_send_monitor_running = True
+            auto_send_thread = threading.Thread(target=auto_send_monitor, daemon=True)
+            auto_send_thread.start()
+            log_with_timestamp("✅ Auto-send monitor thread started successfully", "SYSTEM")
+        except Exception as thread_error:
+            log_with_timestamp(f"❌ Failed to start auto-send monitor thread: {thread_error}", "ERROR")
+            raise
+        
+        # Verify all threads are alive
+        if transcription_thread.is_alive() and hotkey_thread.is_alive() and auto_send_thread.is_alive():
             log_with_timestamp("✅ All system threads running successfully", "SYSTEM")
         else:
             raise RuntimeError("One or more system threads failed to start properly")
@@ -1131,7 +1261,6 @@ def main():
         
         # Start audio stream with comprehensive error handling
         log_with_timestamp("Initializing audio stream...", "SYSTEM")
-        print(f"[🎙️] Starting audio stream on device {DEVICE_INDEX}...")
         try:
             with sd.InputStream(
                 samplerate=SAMPLE_RATE,
@@ -1145,16 +1274,16 @@ def main():
                 log_with_timestamp("✅ Audio stream started successfully", "SYSTEM")
                 log_with_timestamp("=== SYSTEM FULLY OPERATIONAL ===", "SYSTEM")
                 
-                # Display user interface
-                print("[🚀] Live Spanish Transcription System Ready!")
-                print("💡 Speak Spanish or play Spanish audio through VB-Audio Virtual Cable")
-                print("🎯 Words appear live as you speak. Press hotkeys to interact:")
-                print("   [g] Send all live text to Gemini  [r] Repeat last reply  [h] Help  [Ctrl+C] Exit")
-                print("━" * 70)
+                # Display friendly startup banner
+                print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+                print("🎤  Live Spanish Transcriber READY")
+                print("• Speak → text appears immediately")
+                print("• [g] send  [r] repeat  [h] help")
+                print("• Auto-send after 8 s silence")
+                print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
                 
                 # Main listening loop with enhanced shutdown handling
                 try:
-                    print("✅ System ready! Press Ctrl+C to exit gracefully.")
                     while True:
                         sd.sleep(100)  # Shorter sleep for more responsive shutdown
                 except KeyboardInterrupt:
