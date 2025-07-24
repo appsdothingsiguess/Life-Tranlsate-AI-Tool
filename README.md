@@ -296,8 +296,8 @@ translate-tool/
 
 ## 🚀 Performance Tips
 
-1. **Use a good microphone** for better transcription accuracy
-2. **Speak clearly** and at a normal pace
+1. **Have clear audio** for best results; do not have music playing or other system sounds.
+2. **Verify sound settings.** you may need to adjust your sound settings.
 3. **Minimize background noise** for optimal results
 4. **Close unnecessary applications** to free up system resources
 5. **Use wired connections** for more stable audio routing
@@ -305,8 +305,7 @@ translate-tool/
    - Use `pip install faster-whisper[cuda]` for GPU support
    - 4x faster than CPU-only mode
 7. **Model Optimization**: The "small" model balances speed and accuracy
-8. **Audio Quality**: Higher quality audio input improves transcription accuracy
-9. **Voice Activity Detection**: The built-in VAD filter automatically removes silence
+8. **Voice Activity Detection**: The built-in VAD filter automatically removes silence
 
 ## 🤝 Contributing
 
