@@ -1,12 +1,12 @@
-# Live Spanish Transcription Tool
+# Live Language Transcription Tool
 
-A real-time Spanish speech-to-text transcription system with AI-powered response generation, designed for language learning and conversation practice. This tool provides immediate transcription of Spanish speech and generates contextual responses using Google's Gemini AI.
+A real-time language speech-to-text transcription system with AI-powered response generation, designed for language learning and conversation practice. This tool provides immediate transcription of any audio on your PC and generates contextual responses using Google's Gemini AI.
 
 ## 🎯 What It Does
 
-This application is a sophisticated real-time Spanish transcription and conversation assistant that:
+This application is a sophisticated real-time transcription and conversation assistant that:
 
-- **Real-time Speech Recognition**: Continuously listens to Spanish speech and transcribes it using OpenAI's Whisper model
+- **Real-time Speech Recognition**: Continuously listens to language speech and transcribes it using OpenAI's Whisper model
 - **AI-Powered Responses**: Generates natural Spanish responses using Google's Gemini 2.5 Flash Lite model
 - **Live Buffer System**: Accumulates transcribed text in real-time and sends it to AI for responses
 - **Smart Audio Detection**: Uses RMS-based speech detection to identify when you're speaking vs. silent
