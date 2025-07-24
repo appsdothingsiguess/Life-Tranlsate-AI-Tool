@@ -16,7 +16,8 @@ import re  # Added for filtering nonsense chunks
 
 # System Constants
 RMS_THRESHOLD = 0.008  # Lower threshold for breath-level latency
-SILENCE_SECS = 0.6     # Faster pause detection for live transcription
+SILENCE_SECS = 0.3     # Breath-level pause detection for immediate response
+MAX_SPEECH_SECS = 4.0  # Flush every 4 seconds if still speaking
 LOG_FILE = "log.txt"
 GEMINI_PROMPT = (
     "You are a Spanish tutor. The student is preparing for an oral test. "
@@ -256,8 +257,8 @@ except Exception as e:
 log_with_timestamp("=== Live Transcription System Ready ===", "AUDIO_FORMAT")
 log_with_timestamp("✅ RMS-based speech detection enabled", "AUDIO_FORMAT")
 log_with_timestamp("✅ Live buffer accumulation system initialized", "AUDIO_FORMAT")
-log_with_timestamp("🚀 Performance: Sub-second latency with pause detection", "AUDIO_FORMAT")
-log_with_timestamp("📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.6", "AUDIO_FORMAT")
+log_with_timestamp("🚀 Performance: True live streaming with forced flush", "AUDIO_FORMAT")
+log_with_timestamp("📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0", "AUDIO_FORMAT")
 
 # Audio settings
 SAMPLE_RATE = 48000
@@ -272,6 +273,7 @@ BLOCK_SIZE = int(SAMPLE_RATE * BLOCK_DURATION)
 # RMS-based pause detection state (from stablever.py)
 is_speaking = False
 silence_start = None
+speech_start_time = None  # Track when current speech block began
 audio_buffer = deque()
 speech_buffer_lock = threading.Lock()
 
@@ -395,7 +397,7 @@ def update_speaking_state(audio_chunk):
     Flip state after SILENCE_SECS threshold is reached.
     Log SPEECH_START and SPEECH_END events with timestamps.
     """
-    global is_speaking, silence_start
+    global is_speaking, silence_start, speech_start_time
     
     try:
         rms = compute_rms(audio_chunk)
@@ -412,6 +414,7 @@ def update_speaking_state(audio_chunk):
                 # Transition from silence to speech
                 is_speaking = True
                 silence_start = None
+                speech_start_time = current_time  # Track when speech began
                 log_with_timestamp(f"SPEECH_START detected (RMS: {rms:.4f})", "AUDIO")
         else:
             # Audio below threshold (silence)
@@ -426,6 +429,7 @@ def update_speaking_state(audio_chunk):
                     if silence_duration >= SILENCE_SECS:
                         # Transition from speech to silence
                         is_speaking = False
+                        speech_start_time = None  # Reset speech start time
                         log_with_timestamp(f"SPEECH_END detected after {silence_duration:.2f}s of silence (RMS: {rms:.4f})", "AUDIO")
                         return True  # Signal that speech segment is complete
         
@@ -849,7 +853,7 @@ def callback(indata, frames, time, status):
     Audio callback that implements RMS-based pause detection and audio buffering.
     Continuously buffers audio and processes complete speech segments.
     """
-    global audio_buffer
+    global audio_buffer, is_speaking, silence_start, speech_start_time
     
     try:
         if status:
@@ -909,6 +913,40 @@ def callback(indata, frames, time, status):
                         
         except Exception as buffer_error:
             log_with_timestamp(f"Error in audio buffering: {buffer_error}", "ERROR")
+        
+        # Live-flush if speaking too long
+        if is_speaking and speech_start_time:
+            duration = (datetime.now() - speech_start_time).total_seconds()
+            if duration >= MAX_SPEECH_SECS:
+                # Force-complete the segment
+                is_speaking = False
+                silence_start = None
+                speech_start_time = None
+                log_with_timestamp(f"FORCED_FLUSH after {duration:.1f}s continuous speech", "AUDIO")
+                
+                # Process buffered audio (reuse same code path)
+                with speech_buffer_lock:
+                    if len(audio_buffer) > 0:
+                        try:
+                            complete_audio = np.array(audio_buffer)
+                            log_with_timestamp(f"Processing forced flush segment ({len(complete_audio)} samples, {len(complete_audio)/SAMPLE_RATE:.2f}s)", "AUDIO")
+                            
+                            # Queue audio for transcription worker thread
+                            try:
+                                audio_queue.put(complete_audio.copy(), block=False)
+                                log_with_timestamp("Audio queued for live transcription (forced flush)", "AUDIO")
+                            except queue.Full:
+                                log_with_timestamp("Audio queue is full, dropping forced flush segment", "ERROR")
+                            except Exception as queue_error:
+                                log_with_timestamp(f"Error queuing forced flush audio: {queue_error}", "ERROR")
+                            
+                            # Clear the buffer for next speech segment
+                            audio_buffer.clear()
+                            
+                        except Exception as processing_error:
+                            log_with_timestamp(f"Error processing forced flush segment: {processing_error}", "ERROR")
+                            # Clear buffer to prevent corruption
+                            audio_buffer.clear()
             
     except Exception as callback_error:
         log_with_timestamp(f"Critical error in audio callback: {callback_error}", "ERROR")
