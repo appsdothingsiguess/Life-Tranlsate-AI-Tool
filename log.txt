@@ -102,3 +102,470 @@ When the other student provides Spanish text, reply *only* with a single, natura
 [2025-07-23 22:59:39] [SYSTEM] Audio buffer cleared
 [2025-07-23 22:59:39] [SYSTEM] Live buffer cleared
 [2025-07-23 22:59:39] [SYSTEM] System cleanup completed
+=== System startup at 2025-07-23 23:54:49 ===
+[2025-07-23 23:54:49] [SYSTEM] Logging system initialized successfully
+[2025-07-23 23:54:49] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 23:54:49] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 23:54:49] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 23:54:49] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 23:54:49] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 23:54:49] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 23:54:49] [AUDIO_FORMAT] === Live Transcription System Ready ===
+[2025-07-23 23:54:49] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
+[2025-07-23 23:54:49] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
+[2025-07-23 23:54:49] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
+[2025-07-23 23:54:49] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
+[2025-07-23 23:54:49] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 23:54:49] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 23:54:49] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
+[2025-07-23 23:54:49] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
+[2025-07-23 23:54:49] [SYSTEM] Thread architecture: transcription worker + hotkey listener + auto-send monitor
+[2025-07-23 23:54:49] [SYSTEM] Starting system threads...
+[2025-07-23 23:54:49] [SYSTEM] Live transcription worker thread started
+[2025-07-23 23:54:49] [SYSTEM] ✅ Streaming transcription worker thread started successfully
+[2025-07-23 23:54:49] [SYSTEM] Hotkey listener thread started with enhanced error handling
+[2025-07-23 23:54:49] [SYSTEM] ✅ Hotkey listener thread started successfully
+[2025-07-23 23:54:49] [SYSTEM] Auto-send monitor thread started
+[2025-07-23 23:54:49] [SYSTEM] ✅ Auto-send monitor thread started successfully
+[2025-07-23 23:54:49] [SYSTEM] ✅ All system threads running successfully
+[2025-07-23 23:54:49] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-23 23:54:49] [SYSTEM] ✅ Gemini warm-up thread started
+[2025-07-23 23:54:49] [GEMINI_WARMUP] Warm-up prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 23:54:49] [SYSTEM] Initializing audio stream...
+[2025-07-23 23:54:49] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-23 23:54:49] [SYSTEM] ✅ Audio stream started successfully
+[2025-07-23 23:54:49] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
+[2025-07-23 23:54:50] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.27s - Response: Estoy listo.
+[2025-07-23 23:54:53] [AUDIO] SPEECH_START detected (RMS: 0.1208)
+[2025-07-23 23:54:57] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:54:57] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:54:57] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:54:57] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:54:57] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:54:58] [LIVE_ES] Te ayudo a mejorar tu español para que puedas hablar con más confianza.
+[2025-07-23 23:54:59] [AUDIO] SPEECH_START detected (RMS: 0.1431)
+[2025-07-23 23:55:00] [SEND_GEMINI] 13w / 1c
+[2025-07-23 23:55:00] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 23:55:00] [GEMINI_PROMPT] Spanish input: Te ayudo a mejorar tu español para que puedas hablar con más confianza.
+[2025-07-23 23:55:00] [GEMINI_REPLY] Response (0.38s): Gracias, eso me gusta mucho.
+[2025-07-23 23:55:00] [PERFORMANCE] Gemini response time 0.38s within live exam target
+[2025-07-23 23:55:00] [GEMINI_RESPONSE_TIME] 0.39s
+[2025-07-23 23:55:00] [HOTKEY_G] Manual send completed
+[2025-07-23 23:55:03] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:55:03] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:55:03] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:55:03] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:55:03] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:55:04] [LIVE_ES] Si es algo que te interesa, considera suscribirte, posteamos clases de español.
+[2025-07-23 23:55:05] [AUDIO] SPEECH_START detected (RMS: 0.0960)
+[2025-07-23 23:55:08] [SEND_GEMINI] 12w / 1c
+[2025-07-23 23:55:08] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 23:55:08] [GEMINI_PROMPT] Spanish input: Si es algo que te interesa, considera suscribirte, posteamos clases de español.
+[2025-07-23 23:55:08] [GEMINI_REPLY] Response (0.26s): Claro, me interesa mucho.
+[2025-07-23 23:55:08] [PERFORMANCE] Gemini response time 0.26s within live exam target
+[2025-07-23 23:55:08] [GEMINI_RESPONSE_TIME] 0.26s
+[2025-07-23 23:55:08] [HOTKEY_G] Manual send completed
+[2025-07-23 23:55:09] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:55:09] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:55:09] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:55:09] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:55:09] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:55:10] [LIVE_ES] todas las semanas. Muy bien, en la clase de hoy tengo 15 consejos para
+[2025-07-23 23:55:11] [AUDIO] SPEECH_START detected (RMS: 0.1521)
+[2025-07-23 23:55:14] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
+[2025-07-23 23:55:14] [SYSTEM] Application terminated by user (Ctrl+C)
+[2025-07-23 23:55:14] [SYSTEM] Starting system cleanup
+[2025-07-23 23:55:14] [SYSTEM] Signaled worker threads to stop
+[2025-07-23 23:55:14] [SYSTEM] Waiting for audio queue to empty
+[2025-07-23 23:55:14] [SYSTEM] Audio queue emptied successfully
+[2025-07-23 23:55:14] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-23 23:55:14] [SYSTEM] Hotkey listener thread stopped gracefully
+[2025-07-23 23:55:15] [SYSTEM] Auto-send monitor thread stopped
+[2025-07-23 23:55:15] [SYSTEM] Live transcription worker thread stopped
+[2025-07-23 23:55:15] [SYSTEM] Transcription thread finished successfully
+[2025-07-23 23:55:15] [SYSTEM] Audio buffer cleared
+[2025-07-23 23:55:15] [SYSTEM] Live buffer cleared
+[2025-07-23 23:55:15] [SYSTEM] System cleanup completed
+=== System startup at 2025-07-23 23:56:55 ===
+[2025-07-23 23:56:55] [SYSTEM] Logging system initialized successfully
+[2025-07-23 23:56:55] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 23:56:55] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 23:56:55] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 23:56:55] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 23:56:55] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 23:56:55] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 23:56:55] [AUDIO_FORMAT] === Live Transcription System Ready ===
+[2025-07-23 23:56:55] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
+[2025-07-23 23:56:55] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
+[2025-07-23 23:56:55] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
+[2025-07-23 23:56:55] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
+[2025-07-23 23:56:55] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 23:56:55] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 23:56:55] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
+[2025-07-23 23:56:55] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
+[2025-07-23 23:56:55] [SYSTEM] Thread architecture: transcription worker + hotkey listener + auto-send monitor
+[2025-07-23 23:56:55] [SYSTEM] Starting system threads...
+[2025-07-23 23:56:55] [SYSTEM] Live transcription worker thread started
+[2025-07-23 23:56:55] [SYSTEM] ✅ Streaming transcription worker thread started successfully
+[2025-07-23 23:56:55] [SYSTEM] ✅ Hotkey listener thread started successfully
+[2025-07-23 23:56:55] [SYSTEM] Hotkey listener thread started with enhanced error handling
+[2025-07-23 23:56:55] [SYSTEM] Auto-send monitor thread started
+[2025-07-23 23:56:55] [SYSTEM] ✅ Auto-send monitor thread started successfully
+[2025-07-23 23:56:55] [SYSTEM] ✅ All system threads running successfully
+[2025-07-23 23:56:55] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-23 23:56:55] [SYSTEM] ✅ Gemini warm-up thread started
+[2025-07-23 23:56:55] [GEMINI_WARMUP] Warm-up prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 23:56:55] [SYSTEM] Initializing audio stream...
+[2025-07-23 23:56:55] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-23 23:56:55] [SYSTEM] ✅ Audio stream started successfully
+[2025-07-23 23:56:55] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
+[2025-07-23 23:56:56] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.26s - Response: Estoy listo.
+[2025-07-23 23:57:11] [AUDIO] SPEECH_START detected (RMS: 0.0215)
+[2025-07-23 23:57:15] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:57:15] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:57:15] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:57:15] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:57:15] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:57:16] [LIVE_ES] ¿Qué vas a hacer el fin de semana que viene?
+[2025-07-23 23:57:17] [SEND_GEMINI] 10w / 1c
+[2025-07-23 23:57:17] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 23:57:17] [GEMINI_PROMPT] Spanish input: ¿Qué vas a hacer el fin de semana que viene?
+[2025-07-23 23:57:17] [GEMINI_REPLY] Response (0.23s): El sábado voy al cine.
+[2025-07-23 23:57:17] [PERFORMANCE] Gemini response time 0.23s within live exam target
+[2025-07-23 23:57:17] [GEMINI_RESPONSE_TIME] 0.23s
+[2025-07-23 23:57:17] [HOTKEY_G] Manual send completed
+[2025-07-23 23:57:25] [AUDIO] SPEECH_START detected (RMS: 0.0439)
+[2025-07-23 23:57:29] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:57:29] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:57:29] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:57:29] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:57:29] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:57:30] [LIVE_ES] Cuando estás de vacaciones, ¿qué haces?
+[2025-07-23 23:57:31] [SEND_GEMINI] 6w / 1c
+[2025-07-23 23:57:31] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 23:57:31] [GEMINI_PROMPT] Spanish input: Cuando estás de vacaciones, ¿qué haces?
+[2025-07-23 23:57:31] [GEMINI_REPLY] Response (0.31s): Ayer, yo leí un libro interesante.
+[2025-07-23 23:57:31] [PERFORMANCE] Gemini response time 0.31s within live exam target
+[2025-07-23 23:57:31] [GEMINI_RESPONSE_TIME] 0.31s
+[2025-07-23 23:57:31] [HOTKEY_G] Manual send completed
+[2025-07-23 23:57:43] [AUDIO] SPEECH_START detected (RMS: 0.0481)
+[2025-07-23 23:57:47] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:57:47] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:57:47] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:57:47] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:57:47] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:57:48] [LIVE_ES] ¿Dónde te gusta ir cuando hace buen tiempo? ¿Por qué?
+[2025-07-23 23:57:49] [SEND_GEMINI] 10w / 1c
+[2025-07-23 23:57:49] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 23:57:49] [GEMINI_PROMPT] Spanish input: ¿Dónde te gusta ir cuando hace buen tiempo? ¿Por qué?
+[2025-07-23 23:57:50] [GEMINI_REPLY] Response (0.23s): Me gusta ir al parque porque es muy bonito.
+[2025-07-23 23:57:50] [PERFORMANCE] Gemini response time 0.23s within live exam target
+[2025-07-23 23:57:50] [GEMINI_RESPONSE_TIME] 0.24s
+[2025-07-23 23:57:50] [HOTKEY_G] Manual send completed
+[2025-07-23 23:58:05] [AUDIO] SPEECH_START detected (RMS: 0.0483)
+[2025-07-23 23:58:09] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:58:09] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:58:09] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:58:09] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:58:09] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:58:10] [LIVE_ES] ¿Qué están haciendo tus amigos en este momento?
+[2025-07-23 23:58:14] [SEND_GEMINI] 8w / 1c
+[2025-07-23 23:58:14] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 23:58:14] [GEMINI_PROMPT] Spanish input: ¿Qué están haciendo tus amigos en este momento?
+[2025-07-23 23:58:14] [GEMINI_REPLY] Response (0.21s): Mis amigos están estudiando para el examen.
+[2025-07-23 23:58:14] [PERFORMANCE] Gemini response time 0.21s within live exam target
+[2025-07-23 23:58:14] [GEMINI_RESPONSE_TIME] 0.21s
+[2025-07-23 23:58:14] [HOTKEY_G] Manual send completed
+[2025-07-23 23:58:25] [AUDIO] SPEECH_START detected (RMS: 0.0181)
+[2025-07-23 23:58:29] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:58:29] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:58:29] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:58:29] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:58:29] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:58:30] [LIVE_ES] ¿Cuáles son tus colores favoritos?
+[2025-07-23 23:58:31] [SEND_GEMINI] 5w / 1c
+[2025-07-23 23:58:31] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 23:58:31] [GEMINI_PROMPT] Spanish input: ¿Cuáles son tus colores favoritos?
+[2025-07-23 23:58:31] [GEMINI_REPLY] Response (0.28s): Mis colores favoritos son azul y verde.
+[2025-07-23 23:58:31] [PERFORMANCE] Gemini response time 0.28s within live exam target
+[2025-07-23 23:58:31] [GEMINI_RESPONSE_TIME] 0.28s
+[2025-07-23 23:58:31] [HOTKEY_G] Manual send completed
+[2025-07-23 23:58:49] [AUDIO] SPEECH_START detected (RMS: 0.0344)
+[2025-07-23 23:58:53] [AUDIO] SPEECH_END detected after 2.00s of silence (RMS: 0.0000)
+[2025-07-23 23:58:53] [AUDIO] Processing complete speech segment (288000 samples, 6.00s)
+[2025-07-23 23:58:53] [AUDIO] Audio queued for live transcription
+[2025-07-23 23:58:53] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:58:53] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:58:54] [LIVE_ES] ¿Qué vas a hacer el fin de semana que viene?
+[2025-07-23 23:59:01] [AUDIO] SPEECH_START detected (RMS: 0.0293)
+[2025-07-23 23:59:02] [AUTO_SEND] Auto-sending 10 words after 8.2s silence
+[2025-07-23 23:59:02] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-23 23:59:02] [GEMINI_PROMPT] Spanish input: ¿Qué vas a hacer el fin de semana que viene?
+[2025-07-23 23:59:02] [GEMINI_REPLY] Response (0.26s): Yo voy a estudiar mucho.
+[2025-07-23 23:59:02] [PERFORMANCE] Gemini response time 0.26s within live exam target
+[2025-07-23 23:59:02] [GEMINI_RESPONSE_TIME] 0.26s
+[2025-07-23 23:59:05] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:59:05] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:59:05] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:59:05] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:59:05] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:59:06] [LIVE_ES] ¿Qué vas a hacer el fin de semana que viene?
+[2025-07-23 23:59:09] [AUDIO] SPEECH_START detected (RMS: 0.0317)
+[2025-07-23 23:59:13] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:59:13] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:59:13] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:59:13] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:59:13] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:59:14] [LIVE_ES] El sabido voy al cine.
+[2025-07-23 23:59:15] [AUDIO] SPEECH_START detected (RMS: 0.0405)
+[2025-07-23 23:59:19] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:59:19] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:59:19] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:59:19] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:59:19] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:59:20] [LIVE_ES] Cuando estás de vacaciones, ¿qué haces?
+[2025-07-23 23:59:23] [AUDIO] SPEECH_START detected (RMS: 0.2776)
+[2025-07-23 23:59:27] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:59:27] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:59:27] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:59:27] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:59:27] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:59:28] [LIVE_ES] Yo leo un libro interesante
+[2025-07-23 23:59:29] [AUDIO] SPEECH_START detected (RMS: 0.0634)
+[2025-07-23 23:59:33] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:59:33] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:59:33] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:59:33] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:59:33] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:59:34] [LIVE_ES] ¿Dónde te gusta ir cuando hace buen tiempo?
+[2025-07-23 23:59:35] [AUDIO] SPEECH_START detected (RMS: 0.0168)
+[2025-07-23 23:59:39] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:59:39] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:59:39] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:59:39] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:59:39] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:59:40] [LIVE_ES] ¿Por qué?
+[2025-07-23 23:59:43] [AUDIO] SPEECH_START detected (RMS: 0.2366)
+[2025-07-23 23:59:47] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:59:47] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:59:47] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:59:47] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:59:47] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:59:48] [LIVE_ES] Me gusta el fracque, fracque
+[2025-07-23 23:59:49] [AUDIO] SPEECH_START detected (RMS: 0.0934)
+[2025-07-23 23:59:53] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:59:53] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:59:53] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:59:53] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:59:53] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 23:59:54] [LIVE_ES] que es muy bonito
+[2025-07-23 23:59:55] [AUDIO] SPEECH_START detected (RMS: 0.0356)
+[2025-07-23 23:59:59] [AUDIO] FORCED_FLUSH after 4.0s continuous speech
+[2025-07-23 23:59:59] [AUDIO] Processing forced flush segment (288000 samples, 6.00s)
+[2025-07-23 23:59:59] [AUDIO] Audio queued for live transcription (forced flush)
+[2025-07-23 23:59:59] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-23 23:59:59] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 00:00:00] [LIVE_ES] tus amigos en este momento.
+[2025-07-24 00:00:01] [AUDIO] SPEECH_START detected (RMS: 0.0521)
+[2025-07-24 00:00:05] [AUDIO] SPEECH_END detected after 2.00s of silence (RMS: 0.0000)
+[2025-07-24 00:00:05] [AUDIO] Processing complete speech segment (288000 samples, 6.00s)
+[2025-07-24 00:00:05] [AUDIO] Audio queued for live transcription
+[2025-07-24 00:00:05] [AUDIO] Audio resampled from 288000 to 96000 samples
+[2025-07-24 00:00:05] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 00:00:06] [TRANSCRIBE_ES] Empty transcription result - no speech detected
+[2025-07-24 00:00:08] [AUTO_SEND] Auto-sending 50 words after 8.1s silence
+[2025-07-24 00:00:08] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-24 00:00:08] [GEMINI_PROMPT] Spanish input: ¿Qué vas a hacer el fin de semana que viene? El sabido voy al cine. Cuando estás de vacaciones, ¿qué haces? Yo leo un libro interesante ¿Dónde te gusta ir cuando hace buen tiempo? ¿Por qué? Me gusta el fracque, fracque que es muy bonito tus amigos en este momento.
+[2025-07-24 00:00:08] [GEMINI_REPLY] Response (0.25s): No sé, pero me gusta ver películas.
+[2025-07-24 00:00:08] [PERFORMANCE] Gemini response time 0.25s within live exam target
+[2025-07-24 00:00:08] [GEMINI_RESPONSE_TIME] 0.25s
+[2025-07-24 00:00:35] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
+[2025-07-24 00:00:35] [SYSTEM] Application terminated by user (Ctrl+C)
+[2025-07-24 00:00:35] [SYSTEM] Starting system cleanup
+[2025-07-24 00:00:35] [SYSTEM] Signaled worker threads to stop
+[2025-07-24 00:00:35] [SYSTEM] Waiting for audio queue to empty
+[2025-07-24 00:00:35] [SYSTEM] Audio queue emptied successfully
+[2025-07-24 00:00:35] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-24 00:00:35] [SYSTEM] Hotkey listener thread stopped gracefully
+[2025-07-24 00:00:35] [SYSTEM] Auto-send monitor thread stopped
+[2025-07-24 00:00:36] [SYSTEM] Live transcription worker thread stopped
+[2025-07-24 00:00:36] [SYSTEM] Transcription thread finished successfully
+[2025-07-24 00:00:36] [SYSTEM] Audio buffer cleared
+[2025-07-24 00:00:36] [SYSTEM] Live buffer cleared
+[2025-07-24 00:00:36] [SYSTEM] System cleanup completed
