@@ -11,6 +11,8 @@ import queue
 from dotenv import load_dotenv
 from google import genai
 from datetime import datetime
+import msvcrt
+import time
 
 # System Constants
 LOG_FILE = "log.txt"
@@ -533,14 +535,24 @@ streaming_buffer = StreamingBuffer(
 
 # Transcription worker thread infrastructure
 audio_queue = queue.Queue()
-user_input_queue = queue.Queue()  # Queue for user input handling
+# user_input_queue removed - using hotkey system instead
 last_spanish = ""  # Store last transcription for repeat functionality
-last_gemini_response = ""  # Store last Gemini response for repeat functionality
+# last_gemini_response removed - using hotkey_state["last_gemini"] instead
 transcription_worker_running = True
-user_input_worker_running = True
+# user_input_worker_running removed - using hotkey system instead
 transcription_thread = None  # Will hold the worker thread reference
-user_input_thread = None  # Will hold the user input thread reference
+# user_input_thread removed - using hotkey system instead
 audio_stream = None  # Will hold the audio stream reference
+
+# Hotkey infrastructure - minimal shared state and thread safety
+hotkey_state = {
+    "last_transcription": "",
+    "last_gemini": "",
+    "gemini_busy": False
+}
+hotkey_lock = threading.Lock()  # Single lock for thread safety
+hotkey_listener_running = False
+hotkey_thread = None  # Will hold the hotkey listener thread reference
 
 # Simple duplicate filtering - store only last transcription text and timestamp
 last_transcription_text = ""
@@ -598,134 +610,190 @@ def update_last_transcription(text, timestamp):
     except Exception as e:
         log_with_timestamp(f"Error updating last transcription: {e}", "ERROR")
 
-def user_input_worker():
-    """
-    Dedicated user input worker thread to handle user interactions without blocking transcription.
-    Processes user input requests from the user_input_queue.
-    """
-    global user_input_worker_running, last_gemini_response
+# >>> HOTKEY_HANDLERS_START
+def handle_g_key(state, lock, log_event, call_gemini):
+    """Send last transcription to Gemini if available and not busy with enhanced error handling."""
+    import time
     
-    log_with_timestamp("User input worker thread started", "SYSTEM")
-    
-    while user_input_worker_running:
-        try:
-            # Get user input request from queue
-            try:
-                spanish_text = user_input_queue.get(timeout=1.0)
-            except queue.Empty:
-                continue
-            except Exception as queue_error:
-                log_with_timestamp(f"Error getting user input request: {queue_error}", "ERROR")
-                continue
-            
-            try:
-                # Validate input text
-                if not spanish_text or not spanish_text.strip():
-                    log_with_timestamp("Empty or invalid transcription text provided", "ERROR")
-                    user_input_queue.task_done()
-                    continue
-                
-                print(f"\n🎯 Spanish transcription: {spanish_text}")
-                print("   [Press Enter = Gemini, q = skip, r = repeat]: ", end="", flush=True)
-                
-                try:
-                    user_input = input().strip().lower()
-                    
-                    if user_input == "":
-                        # Enter pressed - confirm for Gemini
-                        log_with_timestamp("User confirmed for Gemini processing", "USER_CONFIRM")
-                        try:
-                            gemini_response = call_gemini_api(spanish_text)
-                            if gemini_response:
-                                print(f"🤖 Gemini response: {gemini_response}")
-                                last_gemini_response = gemini_response
-                            else:
-                                log_with_timestamp("Gemini API returned no response", "ERROR")
-                                print("   🤖 Sorry, couldn't get a response from Gemini. Try again.")
-                        except Exception as gemini_error:
-                            log_with_timestamp(f"Error calling Gemini API: {gemini_error}", "ERROR")
-                            print("   🤖 Error getting Gemini response. Try again.")
-                            
-                    elif user_input == "q":
-                        # Skip - user chose not to proceed
-                        log_with_timestamp("User skipped Gemini processing", "USER_SKIP")
-                        print("   Skipped. Continuing to listen...")
-                        
-                    elif user_input == "r":
-                        # Repeat - user wants to repeat last transcription
-                        log_with_timestamp("User requested repeat of last transcription", "USER_REPEAT")
-                        if last_spanish and last_spanish.strip():
-                            try:
-                                # Resend Gemini request with previous transcription
-                                gemini_response = call_gemini_api(last_spanish, is_repeat=True)
-                                if gemini_response:
-                                    print(f"🤖 Gemini response (repeat): {gemini_response}")
-                                    last_gemini_response = gemini_response
-                                else:
-                                    log_with_timestamp("Gemini API returned no response for repeat", "ERROR")
-                                    print("   🤖 Sorry, couldn't get a response from Gemini for repeat. Try again.")
-                            except Exception as repeat_error:
-                                log_with_timestamp(f"Error during repeat Gemini call: {repeat_error}", "ERROR")
-                                print("   🤖 Error getting repeat Gemini response. Try again.")
-                        else:
-                            log_with_timestamp("No previous transcription available for repeat", "USER_REPEAT")
-                            print("   No previous transcription available to repeat.")
-                            
-                    else:
-                        # Invalid input - treat as skip
-                        log_with_timestamp(f"Invalid user input '{user_input}' - treating as skip", "USER_SKIP")
-                        print("   Invalid input. Skipping...")
-                        
-                except EOFError:
-                    # Handle EOF (Ctrl+D on Unix, Ctrl+Z on Windows)
-                    print("\n   EOF received during input. Skipping...")
-                    log_with_timestamp("EOF received during confirmation prompt", "USER_SKIP")
-                except KeyboardInterrupt:
-                    # Handle Ctrl+C during input
-                    print("\n   Interrupted during input. Skipping...")
-                    log_with_timestamp("User interrupted during confirmation prompt", "USER_SKIP")
-                    # Re-raise to allow main loop to handle graceful shutdown
-                    raise
-                except Exception as input_error:
-                    log_with_timestamp(f"Error reading user input: {input_error}", "ERROR")
-                    print("   Error reading input. Skipping...")
-                    
-            except Exception as processing_error:
-                log_with_timestamp(f"Error processing user input request: {processing_error}", "ERROR")
-            finally:
-                try:
-                    user_input_queue.task_done()
-                except Exception as task_done_error:
-                    log_with_timestamp(f"Error marking user input task as done: {task_done_error}", "ERROR")
-                    
-        except Exception as worker_error:
-            log_with_timestamp(f"Critical user input worker error: {worker_error}", "ERROR")
-            continue
-    
-    log_with_timestamp("User input worker thread stopped", "SYSTEM")
-
-def display_transcription_and_prompt(spanish_text):
-    """
-    Non-blocking transcription display that queues user interaction requests.
-    This prevents blocking the transcription worker thread.
-    """
     try:
-        # Validate input text
-        if not spanish_text or not spanish_text.strip():
-            log_with_timestamp("Empty or invalid transcription text provided", "ERROR")
+        with lock:
+            txt = state.get("last_transcription", "")
+            busy = state.get("gemini_busy", False)
+        
+        if not txt:
+            log_event("No transcription available", "HOTKEY_G")
             return
         
-        # Queue the user input request for the dedicated user input worker
+        if busy:
+            log_event("Gemini busy; ignoring", "HOTKEY_G")
+            return
+        
+        log_event(f"Sending to Gemini: {txt[:60]}...", "HOTKEY_G")
+        
+        with lock:
+            state["gemini_busy"] = True
+        
         try:
-            user_input_queue.put(spanish_text, block=False)
-            log_with_timestamp("User input request queued", "USER_INPUT")
-        except queue.Full:
-            log_with_timestamp("User input queue is full, dropping request", "ERROR")
-        except Exception as queue_error:
-            log_with_timestamp(f"Error queuing user input request: {queue_error}", "ERROR")
+            start = time.time()
             
-    except Exception as display_error:
-        log_with_timestamp(f"Critical error in display_transcription_and_prompt: {display_error}", "ERROR")
+            # Call Gemini with timeout protection
+            reply = call_gemini(txt)
+            elapsed = time.time() - start
+            
+            if reply is None:
+                # Handle case where Gemini API failed
+                raise ValueError("Gemini API returned no response")
+            
+            with lock:
+                state["last_gemini"] = reply
+                state["gemini_busy"] = False
+            
+            log_event(f"{elapsed:.2f}s", "GEMINI_RESPONSE_TIME")
+            print("\n========== GEMINI ==========")
+            print(reply)
+            print("========== /GEMINI =========\n")
+            
+        except KeyboardInterrupt:
+            # Handle Ctrl+C during Gemini call
+            with lock:
+                state["gemini_busy"] = False
+            log_event("Gemini call interrupted by user", "ERROR_GEMINI")
+            raise  # Re-raise to allow graceful shutdown
+        except Exception as gemini_error:
+            with lock:
+                state["gemini_busy"] = False
+            log_event(f"Gemini API error: {str(gemini_error)}", "ERROR_GEMINI")
+            print("\n🤖 ❌ Gemini request failed. Check logs for details.\n")
+            
+    except Exception as handler_error:
+        # Catch any other errors in the handler itself
+        log_event(f"Critical error in handle_g_key: {str(handler_error)}", "ERROR_HOTKEY_HANDLER")
+        # Ensure busy flag is cleared even on critical errors
+        try:
+            with lock:
+                state["gemini_busy"] = False
+        except:
+            pass
+
+def handle_r_key(state, lock, log_event):
+    """Reprint the last Gemini reply if available."""
+    with lock:
+        reply = state.get("last_gemini", "")
+    
+    if not reply:
+        log_event("HOTKEY_R", "No previous Gemini reply")
+        return
+    
+    log_event("HOTKEY_R", "Reprinting last Gemini reply")
+    print("\n========== GEMINI (repeat) ==========")
+    print(reply)
+    print("========== /GEMINI =========\n")
+
+def handle_h_key(log_event):
+    """Display help text for available hotkeys."""
+    help_text = (
+        "\n[Hotkeys]\n"
+        "  g  → Send last transcription to Gemini\n"
+        "  r  → Repeat last Gemini reply\n"
+        "  h  → Show this help\n"
+        "  q  → Skip / ignore\n"
+    )
+    log_event("HOTKEY_H", "Help shown")
+    print(help_text)
+
+# HANDLERS_OK
+# <<< HOTKEY_HANDLERS_END
+
+
+def hotkey_listener_worker():
+    """
+    Enhanced hotkey listener thread with comprehensive error handling and graceful shutdown.
+    Implements 300ms debouncing with timestamp tracking per key.
+    Handles g, r, h, q keys with thread-safe shared state access.
+    All exceptions are caught and logged without crashing the main system.
+    """
+    global hotkey_listener_running
+    
+    # Debouncing - track last press time for each key
+    debounce_timers = {}
+    debounce_delay = 0.3  # 300ms debounce
+    
+    log_with_timestamp("Hotkey listener thread started with enhanced error handling", "SYSTEM")
+    
+    while hotkey_listener_running:
+        try:
+            # Check if a key is available (non-blocking)
+            if msvcrt.kbhit():
+                try:
+                    # Get the key press
+                    key = msvcrt.getch().decode('utf-8').lower()
+                    current_time = time.time()
+                    
+                    # Check debouncing for this specific key
+                    if key in debounce_timers:
+                        time_since_last = current_time - debounce_timers[key]
+                        if time_since_last < debounce_delay:
+                            # Key is debounced, ignore this press
+                            log_with_timestamp(f"Debounced key '{key}' (last press {time_since_last:.3f}s ago)", "HOTKEY_DEBOUNCE")
+                            continue
+                    
+                    # Update debounce timer for this key
+                    debounce_timers[key] = current_time
+                    
+                    # Process the key press with individual error handling
+                    try:
+                        if key == 'g':
+                            handle_g_key(hotkey_state, hotkey_lock, log_with_timestamp, call_gemini_api)
+                            
+                        elif key == 'r':
+                            handle_r_key(hotkey_state, hotkey_lock, log_with_timestamp)
+                            
+                        elif key == 'h':
+                            handle_h_key(log_with_timestamp)
+                            
+                        elif key == 'q':
+                            log_with_timestamp("Hotkey 'q' pressed", "HOTKEY_Q")
+                            # Handle q key - will be implemented in next task
+                            
+                        else:
+                            # Ignore other keys silently
+                            pass
+                            
+                    except Exception as handler_error:
+                        log_with_timestamp(f"Error in hotkey handler for '{key}': {handler_error}", "ERROR_HOTKEY_HANDLER")
+                        # Continue running - don't let handler errors crash the listener
+                        
+                except UnicodeDecodeError:
+                    # Handle special keys that can't be decoded
+                    log_with_timestamp("Special key pressed (ignored)", "HOTKEY_SPECIAL")
+                except EOFError:
+                    # Handle EOF gracefully
+                    log_with_timestamp("EOF received in hotkey listener, shutting down", "HOTKEY_EOF")
+                    break
+                except KeyboardInterrupt:
+                    # Handle Ctrl+C in hotkey thread
+                    log_with_timestamp("Keyboard interrupt in hotkey listener, shutting down", "HOTKEY_INTERRUPT")
+                    break
+                except Exception as key_error:
+                    log_with_timestamp(f"Error processing key press: {key_error}", "ERROR_HOTKEY_INPUT")
+            
+            # Small sleep to prevent excessive CPU usage
+            time.sleep(0.01)  # 10ms sleep
+            
+        except KeyboardInterrupt:
+            # Handle Ctrl+C at thread level
+            log_with_timestamp("Hotkey listener thread interrupted by user", "SYSTEM")
+            break
+        except Exception as listener_error:
+            log_with_timestamp(f"Critical hotkey listener error: {listener_error}", "ERROR_HOTKEY_THREAD")
+            # Continue running even on critical errors to maintain system stability
+            time.sleep(0.1)  # Longer sleep on error
+            continue
+    
+    log_with_timestamp("Hotkey listener thread stopped gracefully", "SYSTEM")
+
+# user_input_worker() and display_transcription_and_prompt() functions removed
+# These have been replaced by the non-blocking hotkey system
 
 def streaming_transcription_worker():
     """
@@ -837,8 +905,14 @@ def streaming_transcription_worker():
                     audio_queue.task_done()
                     task_done_called = True
                     
-                    # Display transcription and handle user interaction
-                    display_transcription_and_prompt(last_spanish)
+                    # Update hotkey state and display transcription (non-blocking)
+                    with hotkey_lock:
+                        hotkey_state["last_transcription"] = last_spanish
+                    
+                    # Display transcription with hotkey instructions (non-blocking)
+                    print(f"\n🎯 Spanish transcription: {last_spanish}")
+                    print("   [g=Gemini, r=repeat, h=help]")
+                    print()
                     
                 except Exception as transcription_error:
                     # Handle transcription errors without crashing main loop
@@ -977,17 +1051,19 @@ def callback(indata, frames, time, status):
 
 def cleanup_resources():
     """
-    Enhanced cleanup function for graceful shutdown with dual worker threads.
-    Handles transcription worker, user input worker, and resource management.
+    Enhanced cleanup function for graceful shutdown with triple worker threads.
+    Handles transcription worker, user input worker, hotkey listener, and resource management.
     """
-    global transcription_worker_running, user_input_worker_running, transcription_thread, user_input_thread, audio_stream
+    global transcription_worker_running, hotkey_listener_running, transcription_thread, hotkey_thread, audio_stream
+    # user_input_worker_running and user_input_thread disabled - using hotkeys instead
     
     log_with_timestamp("Starting system cleanup", "SYSTEM")
     
     try:
-        # Signal both worker threads to stop
+        # Signal all worker threads to stop
         transcription_worker_running = False
-        user_input_worker_running = False
+        # user_input_worker_running = False  # Disabled - using hotkeys
+        hotkey_listener_running = False
         log_with_timestamp("Signaled worker threads to stop", "SYSTEM")
         
         # Wait for any remaining audio processing to complete with timeout
@@ -1008,22 +1084,22 @@ def cleanup_resources():
         except Exception as queue_error:
             log_with_timestamp(f"Error waiting for audio queue: {queue_error}", "ERROR")
         
-        # Wait for user input queue to empty
-        try:
-            log_with_timestamp("Waiting for user input queue to empty", "SYSTEM")
-            start_time = time.time()
-            timeout = 3.0  # 3 second timeout
-            
-            while not user_input_queue.empty() and (time.time() - start_time) < timeout:
-                time.sleep(0.1)
-            
-            if not user_input_queue.empty():
-                log_with_timestamp(f"User input queue not empty after {timeout}s timeout, forcing cleanup", "SYSTEM")
-            else:
-                log_with_timestamp("User input queue emptied successfully", "SYSTEM")
-                
-        except Exception as queue_error:
-            log_with_timestamp(f"Error waiting for user input queue: {queue_error}", "ERROR")
+        # User input queue disabled - using hotkeys instead
+        # try:
+        #     log_with_timestamp("Waiting for user input queue to empty", "SYSTEM")
+        #     start_time = time.time()
+        #     timeout = 3.0  # 3 second timeout
+        #     
+        #     while not user_input_queue.empty() and (time.time() - start_time) < timeout:
+        #         time.sleep(0.1)
+        #     
+        #     if not user_input_queue.empty():
+        #         log_with_timestamp(f"User input queue not empty after {timeout}s timeout, forcing cleanup", "SYSTEM")
+        #     else:
+        #         log_with_timestamp("User input queue emptied successfully", "SYSTEM")
+        #         
+        # except Exception as queue_error:
+        #     log_with_timestamp(f"Error waiting for user input queue: {queue_error}", "ERROR")
         
         # Wait for transcription thread to finish with timeout
         if transcription_thread and transcription_thread.is_alive():
@@ -1039,22 +1115,36 @@ def cleanup_resources():
             except Exception as thread_error:
                 log_with_timestamp(f"Error joining transcription thread: {thread_error}", "ERROR")
         
-        # Wait for user input thread to finish with timeout
-        if user_input_thread and user_input_thread.is_alive():
+        # User input thread disabled - using hotkeys instead
+        # if user_input_thread and user_input_thread.is_alive():
+        #     try:
+        #         log_with_timestamp("Waiting for user input thread to finish", "SYSTEM")
+        #         user_input_thread.join(timeout=1.0)  # Reduced timeout to 1 second
+        #         
+        #         if user_input_thread.is_alive():
+        #             log_with_timestamp("User input thread did not finish within timeout - forcing exit", "SYSTEM")
+        #         else:
+        #             log_with_timestamp("User input thread finished successfully", "SYSTEM")
+        #             
+        #     except KeyboardInterrupt:
+        #         # Handle Ctrl+C during cleanup gracefully
+        #         log_with_timestamp("Cleanup interrupted by user - forcing exit", "SYSTEM")
+        #     except Exception as thread_error:
+        #         log_with_timestamp(f"Error joining user input thread: {thread_error}", "ERROR")
+        
+        # Wait for hotkey listener thread to finish with timeout
+        if hotkey_thread and hotkey_thread.is_alive():
             try:
-                log_with_timestamp("Waiting for user input thread to finish", "SYSTEM")
-                user_input_thread.join(timeout=1.0)  # Reduced timeout to 1 second
+                log_with_timestamp("Waiting for hotkey listener thread to finish", "SYSTEM")
+                hotkey_thread.join(timeout=1.0)  # 1 second timeout
                 
-                if user_input_thread.is_alive():
-                    log_with_timestamp("User input thread did not finish within timeout - forcing exit", "SYSTEM")
+                if hotkey_thread.is_alive():
+                    log_with_timestamp("Hotkey listener thread did not finish within timeout", "SYSTEM")
                 else:
-                    log_with_timestamp("User input thread finished successfully", "SYSTEM")
+                    log_with_timestamp("Hotkey listener thread finished successfully", "SYSTEM")
                     
-            except KeyboardInterrupt:
-                # Handle Ctrl+C during cleanup gracefully
-                log_with_timestamp("Cleanup interrupted by user - forcing exit", "SYSTEM")
             except Exception as thread_error:
-                log_with_timestamp(f"Error joining user input thread: {thread_error}", "ERROR")
+                log_with_timestamp(f"Error joining hotkey listener thread: {thread_error}", "ERROR")
         
         # Clear streaming buffer
         try:
@@ -1068,11 +1158,9 @@ def cleanup_resources():
         # Log final statistics
         try:
             audio_queue_size = audio_queue.qsize()
-            user_input_queue_size = user_input_queue.qsize()
             if audio_queue_size > 0:
                 log_with_timestamp(f"Warning: {audio_queue_size} items remaining in audio queue", "SYSTEM")
-            if user_input_queue_size > 0:
-                log_with_timestamp(f"Warning: {user_input_queue_size} items remaining in user input queue", "SYSTEM")
+            # user_input_queue disabled - using hotkeys instead
         except Exception:
             pass
         
@@ -1083,40 +1171,58 @@ def cleanup_resources():
 
 def main():
     """
-    Enhanced main execution function with dual worker threads and improved error handling.
-    Starts transcription worker and user input worker for non-blocking operation.
+    Enhanced main execution function with robust error handling and graceful shutdown.
+    Starts transcription worker and hotkey listener for non-blocking operation.
+    User input has been replaced with hotkey system for better user experience.
     """
-    global transcription_thread, user_input_thread, audio_stream
+    global transcription_thread, hotkey_thread, audio_stream, hotkey_listener_running
+    # user_input_thread disabled - using hotkeys instead
+    
+    # Display system startup information
+    log_with_timestamp("=== SPANISH TRANSCRIPTION SYSTEM STARTING ===", "SYSTEM")
+    log_with_timestamp("Shared state initialized: hotkey_state and hotkey_lock ready", "SYSTEM")
+    log_with_timestamp("Thread architecture: transcription worker + hotkey listener", "SYSTEM")
     
     try:
+        # Initialize and start core system threads
+        log_with_timestamp("Starting system threads...", "SYSTEM")
+        
         # Start streaming transcription worker thread with error handling
         try:
             transcription_thread = threading.Thread(target=streaming_transcription_worker, daemon=True)
             transcription_thread.start()
-            log_with_timestamp("Streaming transcription worker thread started successfully", "SYSTEM")
+            log_with_timestamp("✅ Streaming transcription worker thread started successfully", "SYSTEM")
         except Exception as thread_error:
-            log_with_timestamp(f"Failed to start streaming transcription worker thread: {thread_error}", "ERROR")
+            log_with_timestamp(f"❌ Failed to start streaming transcription worker thread: {thread_error}", "ERROR")
             raise
         
-        # Start user input worker thread with error handling
+        # Start hotkey listener thread with error handling
         try:
-            user_input_thread = threading.Thread(target=user_input_worker, daemon=True)
-            user_input_thread.start()
-            log_with_timestamp("User input worker thread started successfully", "SYSTEM")
+            hotkey_listener_running = True
+            hotkey_thread = threading.Thread(target=hotkey_listener_worker, daemon=True)
+            hotkey_thread.start()
+            log_with_timestamp("✅ Hotkey listener thread started successfully", "SYSTEM")
         except Exception as thread_error:
-            log_with_timestamp(f"Failed to start user input worker thread: {thread_error}", "ERROR")
+            log_with_timestamp(f"❌ Failed to start hotkey listener thread: {thread_error}", "ERROR")
             raise
+        
+        # Verify both threads are alive
+        if transcription_thread.is_alive() and hotkey_thread.is_alive():
+            log_with_timestamp("✅ All system threads running successfully", "SYSTEM")
+        else:
+            raise RuntimeError("One or more system threads failed to start properly")
         
         # Start Gemini warm-up in background thread to avoid blocking startup
         try:
             warmup_thread = threading.Thread(target=warm_up_gemini, daemon=True)
             warmup_thread.start()
-            log_with_timestamp("Gemini warm-up thread started", "SYSTEM")
+            log_with_timestamp("✅ Gemini warm-up thread started", "SYSTEM")
         except Exception as warmup_thread_error:
-            log_with_timestamp(f"Failed to start Gemini warm-up thread: {warmup_thread_error}", "ERROR")
+            log_with_timestamp(f"⚠️ Failed to start Gemini warm-up thread: {warmup_thread_error}", "ERROR")
             # Don't raise - warm-up is optional and shouldn't block startup
         
         # Start audio stream with comprehensive error handling
+        log_with_timestamp("Initializing audio stream...", "SYSTEM")
         print(f"[🎙️] Starting audio stream on device {DEVICE_INDEX}...")
         try:
             with sd.InputStream(
@@ -1128,22 +1234,32 @@ def main():
                 device=DEVICE_INDEX
             ) as stream:
                 audio_stream = stream
-                log_with_timestamp("Audio stream started successfully", "SYSTEM")
-                print("[🚀] Listening for Spanish input. Press Ctrl+C to exit.")
-                print("💡 Speak Spanish or play Spanish audio through VB-Audio Virtual Cable")
-                print("🎯 System will detect speech and present transcriptions for confirmation")
-                print()
+                log_with_timestamp("✅ Audio stream started successfully", "SYSTEM")
+                log_with_timestamp("=== SYSTEM FULLY OPERATIONAL ===", "SYSTEM")
                 
-                # Main listening loop with error handling
+                # Display user interface
+                print("[🚀] Spanish Transcription System Ready!")
+                print("💡 Speak Spanish or play Spanish audio through VB-Audio Virtual Cable")
+                print("🎯 System will detect speech and show transcriptions with hotkey options:")
+                print("   [g] Send to Gemini  [r] Repeat last reply  [h] Help  [Ctrl+C] Exit")
+                print("━" * 70)
+                
+                # Main listening loop with enhanced shutdown handling
                 try:
+                    print("✅ System ready! Press Ctrl+C to exit gracefully.")
                     while True:
-                        sd.sleep(1000)
+                        sd.sleep(100)  # Shorter sleep for more responsive shutdown
                 except KeyboardInterrupt:
-                    print("\n[🛑] Keyboard interrupt received. Exiting gracefully...")
-                    log_with_timestamp("Keyboard interrupt received", "SYSTEM")
+                    print("\n[🛑] Keyboard interrupt received. Shutting down gracefully...")
+                    log_with_timestamp("Keyboard interrupt received - initiating graceful shutdown", "SYSTEM")
+                    raise
+                except EOFError:
+                    print("\n[🛑] EOF received. Shutting down gracefully...")
+                    log_with_timestamp("EOF received - initiating graceful shutdown", "SYSTEM")
                     raise
                 except Exception as loop_error:
                     log_with_timestamp(f"Error in main listening loop: {loop_error}", "ERROR")
+                    print(f"[❌] Main loop error: {loop_error}")
                     raise
                     
         except sd.PortAudioError as pa_error:
@@ -1157,18 +1273,29 @@ def main():
             raise
             
     except KeyboardInterrupt:
-        print("\n[🛑] Exiting gracefully...")
-        log_with_timestamp("Application terminated by user", "SYSTEM")
+        print("\n[🛑] Shutdown initiated by user...")
+        log_with_timestamp("Application terminated by user (Ctrl+C)", "SYSTEM")
+    except EOFError:
+        print("\n[🛑] EOF received, shutting down...")
+        log_with_timestamp("Application terminated by EOF", "SYSTEM")
     except Exception as main_error:
         log_with_timestamp(f"Critical error in main execution: {main_error}", "ERROR")
         print(f"[❌] Critical error: {main_error}")
+        import traceback
+        log_with_timestamp(f"Full traceback: {traceback.format_exc()}", "ERROR")
     finally:
-        # Always perform cleanup
+        # Always perform cleanup with enhanced error handling
+        print("[🔧] Cleaning up resources...")
         try:
             cleanup_resources()
+            print("[✅] Cleanup completed successfully.")
+        except KeyboardInterrupt:
+            print("\n[⚠️] Cleanup interrupted - forcing immediate exit")
+            log_with_timestamp("Cleanup interrupted by user - forcing exit", "SYSTEM")
         except Exception as final_cleanup_error:
             log_with_timestamp(f"Error during final cleanup: {final_cleanup_error}", "ERROR")
             print(f"[❌] Cleanup error: {final_cleanup_error}")
+            print("[⚠️] Some resources may not have been cleaned up properly")
 
 # Run the main function
 if __name__ == "__main__":

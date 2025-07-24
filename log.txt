@@ -1,1482 +1,222 @@
-=== System startup at 2025-07-23 11:42:40 ===
-[2025-07-23 11:42:40] [SYSTEM] Logging system initialized successfully
-[2025-07-23 11:42:40] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 11:42:40] [INFO] Testing INFO level logging
-[2025-07-23 11:42:40] [SYSTEM] Testing SYSTEM level logging
-[2025-07-23 11:42:40] [ERROR] Testing ERROR level logging
-[2025-07-23 11:42:40] [TEST] Thread 1 - Message 1
-[2025-07-23 11:42:40] [TEST] Thread 2 - Message 1
-[2025-07-23 11:42:40] [TEST] Thread 3 - Message 1
-[2025-07-23 11:42:40] [TEST] Thread 1 - Message 2
-[2025-07-23 11:42:40] [TEST] Thread 2 - Message 2
-[2025-07-23 11:42:40] [TEST] Thread 3 - Message 2
-[2025-07-23 11:42:40] [TEST] Thread 1 - Message 3
-[2025-07-23 11:42:40] [TEST] Thread 2 - Message 3
-[2025-07-23 11:42:40] [TEST] Thread 3 - Message 3
-[2025-07-23 11:42:40] [SYSTEM] All logging tests completed successfully
-=== System startup at 2025-07-23 12:07:35 ===
-[2025-07-23 12:07:35] [SYSTEM] Logging system initialized successfully
-[2025-07-23 12:07:35] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 12:07:49] [AUDIO] SPEECH_START detected
-[2025-07-23 12:07:55] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:07:55] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:07:57] [AUDIO] SPEECH_START detected
-[2025-07-23 12:08:03] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:08:03] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:08:27] [AUDIO] SPEECH_START detected
-[2025-07-23 12:08:33] [AUDIO] SPEECH_END detected after 4.01s of silence
-[2025-07-23 12:08:33] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:08:47] [AUDIO] SPEECH_START detected
-[2025-07-23 12:08:53] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:08:53] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:09:13] [AUDIO] SPEECH_START detected
-[2025-07-23 12:09:19] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:09:19] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:09:49] [AUDIO] SPEECH_START detected
-[2025-07-23 12:09:55] [AUDIO] SPEECH_END detected after 4.01s of silence
-[2025-07-23 12:09:55] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:10:09] [AUDIO] SPEECH_START detected
-[2025-07-23 12:10:15] [AUDIO] SPEECH_END detected after 3.99s of silence
-[2025-07-23 12:10:15] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:10:25] [AUDIO] SPEECH_START detected
-[2025-07-23 12:10:31] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:10:31] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:10:57] [AUDIO] SPEECH_START detected
-[2025-07-23 12:11:03] [AUDIO] SPEECH_END detected after 4.01s of silence
-[2025-07-23 12:11:03] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:11:47] [AUDIO] SPEECH_START detected
-[2025-07-23 12:11:53] [AUDIO] SPEECH_END detected after 3.99s of silence
-[2025-07-23 12:11:53] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:12:21] [AUDIO] SPEECH_START detected
-[2025-07-23 12:12:27] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:12:27] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:12:37] [AUDIO] SPEECH_START detected
-[2025-07-23 12:12:43] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:12:43] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:13:01] [AUDIO] SPEECH_START detected
-[2025-07-23 12:13:07] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:13:07] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:13:23] [AUDIO] SPEECH_START detected
-[2025-07-23 12:13:29] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:13:29] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:15:13] [AUDIO] SPEECH_START detected
-[2025-07-23 12:15:19] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:15:19] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:15:35] [AUDIO] SPEECH_START detected
-[2025-07-23 12:15:41] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:15:41] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:15:45] [AUDIO] SPEECH_START detected
-[2025-07-23 12:15:51] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:15:51] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:16:25] [AUDIO] SPEECH_START detected
-[2025-07-23 12:16:31] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:16:31] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 12:16:45] [AUDIO] SPEECH_START detected
-[2025-07-23 12:16:57] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:16:57] [AUDIO] Processing complete speech segment (672000 samples, 14.00s)
-[2025-07-23 12:17:05] [AUDIO] SPEECH_START detected
-[2025-07-23 12:17:11] [AUDIO] SPEECH_END detected after 4.00s of silence
-[2025-07-23 12:17:11] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-=== System startup at 2025-07-23 12:28:50 ===
-[2025-07-23 12:28:50] [SYSTEM] Logging system initialized successfully
-[2025-07-23 12:28:50] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 12:28:51] [SYSTEM] Transcription worker thread started
-[2025-07-23 12:28:51] [SYSTEM] Transcription worker thread started
-[2025-07-23 12:28:53] [AUDIO] SPEECH_START detected
-[2025-07-23 12:29:13] [AUDIO] SPEECH_END detected after 15.99s of silence
-[2025-07-23 12:29:13] [AUDIO] Processing complete speech segment (1056000 samples, 22.00s)
-[2025-07-23 12:29:13] [AUDIO] Audio queued for transcription processing
-[2025-07-23 12:29:14] [TRANSCRIBE_ES] Spanish transcription: Unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas, te lo agradezco. Y luego también si necesitas alguna otra cosa.
-[2025-07-23 12:29:16] [USER_CONFIRM] User confirmed for Gemini processing
-[2025-07-23 12:29:16] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 12:29:16] [GEMINI_PROMPT] Spanish input: Unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas, te lo agradezco. Y luego también si necesitas alguna otra cosa.
-[2025-07-23 12:29:17] [GEMINI_REPLY] Response: Voy a mirar lo de las patatas.
-[2025-07-23 12:29:24] [SYSTEM] All queued audio processed
-[2025-07-23 12:29:24] [TEST] Test message
-[2025-07-23 12:29:24] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 12:29:24] [GEMINI_PROMPT] Spanish input: Hola, ¿cómo estás?
-[2025-07-23 12:29:24] [SYSTEM] Transcription worker thread stopped
-[2025-07-23 12:29:24] [GEMINI_REPLY] Response: Estoy bien, gracias. ¿Y tú?
-[2025-07-23 12:29:24] [USER_CONFIRM] User confirmed for Gemini processing
-[2025-07-23 12:29:24] [USER_SKIP] User skipped Gemini processing
-[2025-07-23 12:29:24] [USER_REPEAT] User requested repeat of last transcription
-=== System startup at 2025-07-23 12:47:05 ===
-[2025-07-23 12:47:05] [SYSTEM] Logging system initialized successfully
-[2025-07-23 12:47:05] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 12:47:05] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 12:47:05] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 12:47:05] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 12:47:06] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 12:47:06] [SYSTEM] Using audio device 32: Dell AW2721D (NVIDIA High Definition Audio)
-[2025-07-23 12:47:06] [ERROR] Audio device error: Device only supports 0 input channels, need 1
-=== System startup at 2025-07-23 12:49:58 ===
-[2025-07-23 12:49:58] [SYSTEM] Logging system initialized successfully
-[2025-07-23 12:49:58] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 12:49:58] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 12:49:58] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 12:49:58] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 12:49:59] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 12:49:59] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 12:49:59] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 12:50:52 ===
-[2025-07-23 12:50:52] [SYSTEM] Logging system initialized successfully
-[2025-07-23 12:50:52] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 12:50:52] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 12:50:52] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 12:50:52] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 12:50:53] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 12:50:53] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 12:50:53] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 12:50:53] [ERROR] Audio chunk contains NaN or infinite values
-[2025-07-23 12:50:53] [ERROR] Audio chunk contains NaN or infinite values
-[2025-07-23 12:50:53] [TEST] Test message
-[2025-07-23 12:50:53] [TEST] Test with émojis 🎯 and spëcial chars
-[2025-07-23 12:50:53] [TEST] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-[2025-07-23 12:50:53] [ERROR] Audio chunk contains NaN or infinite values
-[2025-07-23 12:50:53] [AUDIO] SPEECH_START detected (RMS: 0.2160)
-[2025-07-23 12:50:53] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 12:50:53] [GEMINI_PROMPT] Spanish input: 
-[2025-07-23 12:50:56] [GEMINI_REPLY] Response: Cuéntame de ti.
-[2025-07-23 12:50:56] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 12:50:56] [GEMINI_PROMPT] Spanish input: Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola 
-[2025-07-23 12:50:59] [GEMINI_REPLY] Response: ¿Cómo estás?
-=== System startup at 2025-07-23 16:10:15 ===
-[2025-07-23 16:10:15] [SYSTEM] Logging system initialized successfully
-[2025-07-23 16:10:15] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 16:10:15] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 16:10:15] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 16:10:15] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 16:10:16] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 16:10:16] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 16:10:16] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 16:10:16] [SYSTEM] Transcription worker thread started
-[2025-07-23 16:10:16] [SYSTEM] Transcription worker thread started successfully
-[2025-07-23 16:10:16] [SYSTEM] Audio stream started successfully
-[2025-07-23 16:10:20] [AUDIO] SPEECH_START detected (RMS: 0.1913)
-[2025-07-23 16:10:40] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
-[2025-07-23 16:10:40] [AUDIO] Processing complete speech segment (1056000 samples, 22.00s)
-[2025-07-23 16:10:40] [AUDIO] Audio queued for transcription processing
-[2025-07-23 16:10:40] [AUDIO] Audio resampled from 1056000 to 352000 samples
-[2025-07-23 16:10:40] [TRANSCRIBE_ES] Starting Whisper transcription
-[2025-07-23 16:10:41] [TRANSCRIBE_ES] Transcription completed, detected language: es
-[2025-07-23 16:10:41] [TRANSCRIBE_ES] Spanish transcription: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas, te lo voy a
-[2025-07-23 16:10:44] [USER_CONFIRM] User confirmed for Gemini processing
-[2025-07-23 16:10:44] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 16:10:44] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas, te lo voy a
-[2025-07-23 16:10:50] [GEMINI_REPLY] Response: ¿Puedes mirar si quedan patatas?
-[2025-07-23 16:10:58] [AUDIO] SPEECH_START detected (RMS: 0.0303)
-[2025-07-23 16:11:14] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
-[2025-07-23 16:11:14] [AUDIO] Processing complete speech segment (864000 samples, 18.00s)
-[2025-07-23 16:11:14] [AUDIO] Audio queued for transcription processing
-[2025-07-23 16:11:14] [AUDIO] Audio resampled from 864000 to 288000 samples
-[2025-07-23 16:11:14] [TRANSCRIBE_ES] Starting Whisper transcription
-[2025-07-23 16:11:14] [TRANSCRIBE_ES] Transcription completed, detected language: es
-[2025-07-23 16:11:14] [TRANSCRIBE_ES] Spanish transcription: unos tomates, unas cebollas y lo que no sé es si quedan patatas, si lo puedes mirar y me avisas te lo agradezco y luego también
-[2025-07-23 16:11:20] [USER_CONFIRM] User confirmed for Gemini processing
-[2025-07-23 16:11:20] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 16:11:20] [GEMINI_PROMPT] Spanish input: unos tomates, unas cebollas y lo que no sé es si quedan patatas, si lo puedes mirar y me avisas te lo agradezco y luego también
-[2025-07-23 16:11:25] [GEMINI_REPLY] Response: ¿Podrías mirar si quedan patatas?
-[2025-07-23 16:12:10] [SYSTEM] Keyboard interrupt received
-[2025-07-23 16:12:10] [SYSTEM] Application terminated by user
-[2025-07-23 16:12:10] [SYSTEM] Starting system cleanup
-[2025-07-23 16:12:10] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 16:12:10] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 16:12:10] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 16:12:10] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 16:12:10] [SYSTEM] Transcription worker thread stopped
-[2025-07-23 16:12:10] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 16:12:10] [SYSTEM] Audio buffer cleared
-[2025-07-23 16:12:10] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 16:34:57 ===
-[2025-07-23 16:34:57] [SYSTEM] Logging system initialized successfully
-[2025-07-23 16:34:57] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 16:34:57] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 16:34:57] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 16:34:57] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 16:34:57] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 16:34:57] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 16:34:57] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 16:34:57] [SYSTEM] Transcription worker thread started
-[2025-07-23 16:34:57] [SYSTEM] Transcription worker thread started successfully
-[2025-07-23 16:34:57] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 16:34:57] [SYSTEM] Gemini warm-up thread started
-[2025-07-23 16:34:57] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 16:34:57] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 16:34:57] [SYSTEM] Audio stream started successfully
-[2025-07-23 16:34:58] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.83s - Response: Listo.
-[2025-07-23 16:34:59] [AUDIO] SPEECH_START detected (RMS: 0.0432)
-[2025-07-23 16:35:13] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
-[2025-07-23 16:35:14] [AUDIO] Processing complete speech segment (768000 samples, 16.00s)
-[2025-07-23 16:35:14] [AUDIO] Audio queued for transcription processing
-[2025-07-23 16:35:14] [AUDIO] Audio resampled from 768000 to 256000 samples
-[2025-07-23 16:35:14] [TRANSCRIBE_ES] Starting Whisper transcription
-[2025-07-23 16:35:14] [TRANSCRIBE_ES] Transcription completed, detected language: es
-[2025-07-23 16:35:14] [TRANSCRIBE_ES] Spanish transcription: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo. Había pensado en comprar dos barras de pan para el desayuno.
-[2025-07-23 16:35:16] [USER_CONFIRM] User confirmed for Gemini processing
-[2025-07-23 16:35:16] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 16:35:16] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo. Había pensado en comprar dos barras de pan para el desayuno.
-[2025-07-23 16:35:32] [GEMINI_REPLY] Response: Mamá, una cosa, voy al supermercado por si quieres que te compre algo; de paso cojo dos barras de pan para el desayuno.
-[2025-07-23 16:35:45] [AUDIO] SPEECH_START detected (RMS: 0.0167)
-[2025-07-23 16:35:46] [SYSTEM] Keyboard interrupt received
-[2025-07-23 16:35:46] [SYSTEM] Application terminated by user
-[2025-07-23 16:35:46] [SYSTEM] Starting system cleanup
-[2025-07-23 16:35:46] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 16:35:46] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 16:35:46] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 16:35:46] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 16:35:46] [SYSTEM] Transcription worker thread stopped
-[2025-07-23 16:35:46] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 16:35:46] [SYSTEM] Audio buffer cleared
-[2025-07-23 16:35:46] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 16:55:00 ===
-[2025-07-23 16:55:00] [SYSTEM] Logging system initialized successfully
-[2025-07-23 16:55:00] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 16:55:00] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 16:55:00] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 16:55:00] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 16:55:01] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 16:55:01] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 16:55:01] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 16:55:01] [SYSTEM] Transcription worker thread started
-[2025-07-23 16:55:01] [SYSTEM] Transcription worker thread started successfully
-[2025-07-23 16:55:01] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 16:55:01] [SYSTEM] Gemini warm-up thread started
-[2025-07-23 16:55:01] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 16:55:01] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 16:55:01] [SYSTEM] Audio stream started successfully
-[2025-07-23 16:55:05] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 4.47s - Response: Listo.
-[2025-07-23 16:55:07] [AUDIO] SPEECH_START detected (RMS: 0.1059)
-[2025-07-23 16:55:21] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
-[2025-07-23 16:55:21] [AUDIO] Processing complete speech segment (768000 samples, 16.00s)
-[2025-07-23 16:55:21] [AUDIO] Audio queued for transcription processing
-[2025-07-23 16:55:21] [AUDIO] Audio resampled from 768000 to 256000 samples
-[2025-07-23 16:55:21] [TRANSCRIBE_ES] Starting Whisper transcription
-[2025-07-23 16:55:22] [TRANSCRIBE_ES] Transcription completed, detected language: es
-[2025-07-23 16:55:22] [TRANSCRIBE_ES] Spanish transcription: unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas te lo agradezco.
-[2025-07-23 16:55:23] [USER_CONFIRM] User confirmed for Gemini processing
-[2025-07-23 16:55:23] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 16:55:23] [GEMINI_PROMPT] Spanish input: unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas te lo agradezco.
-[2025-07-23 16:55:29] [AUDIO] SPEECH_START detected (RMS: 0.0167)
-[2025-07-23 16:55:31] [GEMINI_REPLY] Response: ¿Podrías comprobar si quedan patatas?
-[2025-07-23 16:55:35] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
-[2025-07-23 16:55:35] [AUDIO] Processing complete speech segment (384000 samples, 8.00s)
-[2025-07-23 16:55:35] [AUDIO] Audio queued for transcription processing
-[2025-07-23 16:55:35] [AUDIO] Audio resampled from 384000 to 128000 samples
-[2025-07-23 16:55:35] [TRANSCRIBE_ES] Starting Whisper transcription
-[2025-07-23 16:55:35] [TRANSCRIBE_ES] Transcription completed, detected language: es
-[2025-07-23 16:55:35] [TRANSCRIBE_ES] Spanish transcription: Subtítulos por la comunidad de Amara.org
-[2025-07-23 16:55:36] [USER_SKIP] EOF received during confirmation prompt
-[2025-07-23 16:55:37] [SYSTEM] Keyboard interrupt received
-[2025-07-23 16:55:37] [SYSTEM] Application terminated by user
-[2025-07-23 16:55:37] [SYSTEM] Starting system cleanup
-[2025-07-23 16:55:37] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 16:55:37] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 16:55:37] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 16:55:37] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 16:55:37] [SYSTEM] Transcription worker thread stopped
-[2025-07-23 16:55:37] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 16:55:37] [SYSTEM] Audio buffer cleared
-[2025-07-23 16:55:37] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 16:58:04 ===
-[2025-07-23 16:58:04] [SYSTEM] Logging system initialized successfully
-[2025-07-23 16:58:04] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 16:58:04] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 16:58:04] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 16:58:04] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 16:58:04] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 16:58:05] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 16:58:05] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 16:58:05] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 16:58:05] [SYSTEM] Transcription worker thread started
-[2025-07-23 16:58:05] [SYSTEM] Transcription worker thread started successfully
-[2025-07-23 16:58:05] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 16:58:05] [SYSTEM] Gemini warm-up thread started
-[2025-07-23 16:58:05] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 16:58:05] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 16:58:05] [SYSTEM] Audio stream started successfully
-[2025-07-23 16:58:05] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.32s - Response: Listo.
-[2025-07-23 16:58:09] [AUDIO] SPEECH_START detected (RMS: 0.1923)
-[2025-07-23 16:58:21] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
-[2025-07-23 16:58:21] [AUDIO] Processing complete speech segment (672000 samples, 14.00s)
-[2025-07-23 16:58:21] [AUDIO] Audio queued for transcription processing
-[2025-07-23 16:58:21] [AUDIO] Audio resampled from 672000 to 224000 samples
-[2025-07-23 16:58:21] [TRANSCRIBE_ES] Starting Whisper transcription
-[2025-07-23 16:58:22] [TRANSCRIBE_ES] Transcription completed, detected language: es
-[2025-07-23 16:58:22] [TRANSCRIBE_ES] Spanish transcription: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo. Había pensado en comprar dos barras de pan para el desayuno.
-[2025-07-23 16:58:24] [USER_CONFIRM] User confirmed for Gemini processing
-[2025-07-23 16:58:24] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 16:58:24] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo. Había pensado en comprar dos barras de pan para el desayuno.
-[2025-07-23 16:58:24] [GEMINI_REPLY] Response (0.22s): Claro, tráeme un poco de leche, por favor.
-[2025-07-23 16:58:24] [PERFORMANCE] Gemini response time 0.22s within live exam target
-[2025-07-23 16:58:33] [SYSTEM] Keyboard interrupt received
-[2025-07-23 16:58:33] [SYSTEM] Application terminated by user
-[2025-07-23 16:58:33] [SYSTEM] Starting system cleanup
-[2025-07-23 16:58:33] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 16:58:33] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 16:58:33] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 16:58:33] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 16:58:33] [SYSTEM] Transcription worker thread stopped
-[2025-07-23 16:58:33] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 16:58:33] [SYSTEM] Audio buffer cleared
-[2025-07-23 16:58:33] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 16:59:10 ===
-[2025-07-23 16:59:10] [SYSTEM] Logging system initialized successfully
-[2025-07-23 16:59:10] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 16:59:10] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 16:59:10] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 16:59:10] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 16:59:10] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 16:59:11] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 16:59:11] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 16:59:11] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 16:59:11] [SYSTEM] Transcription worker thread started
-[2025-07-23 16:59:11] [SYSTEM] Transcription worker thread started successfully
-[2025-07-23 16:59:11] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 16:59:11] [SYSTEM] Gemini warm-up thread started
-[2025-07-23 16:59:11] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 16:59:11] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 16:59:11] [SYSTEM] Audio stream started successfully
-[2025-07-23 16:59:11] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.21s - Response: Estoy listo.
-[2025-07-23 16:59:17] [AUDIO] SPEECH_START detected (RMS: 0.1052)
-[2025-07-23 16:59:31] [AUDIO] SPEECH_END detected after 4.00s of silence (RMS: 0.0000)
-[2025-07-23 16:59:31] [AUDIO] Processing complete speech segment (768000 samples, 16.00s)
-[2025-07-23 16:59:31] [AUDIO] Audio queued for transcription processing
-[2025-07-23 16:59:31] [AUDIO] Audio resampled from 768000 to 256000 samples
-[2025-07-23 16:59:31] [TRANSCRIBE_ES] Starting Whisper transcription
-[2025-07-23 16:59:32] [TRANSCRIBE_ES] Transcription completed, detected language: es
-[2025-07-23 16:59:32] [TRANSCRIBE_ES] Spanish transcription: unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas te lo agradezco.
-[2025-07-23 16:59:33] [USER_CONFIRM] User confirmed for Gemini processing
-[2025-07-23 16:59:33] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 16:59:33] [GEMINI_PROMPT] Spanish input: unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar y me avisas te lo agradezco.
-[2025-07-23 16:59:33] [GEMINI_REPLY] Response (0.20s): Sí, voy a mirar ahora mismo.
-[2025-07-23 16:59:33] [PERFORMANCE] Gemini response time 0.20s within live exam target
-[2025-07-23 16:59:38] [SYSTEM] Keyboard interrupt received
-[2025-07-23 16:59:38] [SYSTEM] Application terminated by user
-[2025-07-23 16:59:38] [SYSTEM] Starting system cleanup
-[2025-07-23 16:59:38] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 16:59:38] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 16:59:38] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 16:59:38] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 16:59:38] [SYSTEM] Transcription worker thread stopped
-[2025-07-23 16:59:38] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 16:59:38] [SYSTEM] Audio buffer cleared
-[2025-07-23 16:59:38] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 18:18:06 ===
-[2025-07-23 18:18:06] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:18:06] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:18:06] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:18:06] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:18:06] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:18:06] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:18:07] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:18:07] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:18:07] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 18:18:07] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 18:18:07] [WINDOW_RESULT] Transcription result (confidence: 0.95): Hola, ¿cómo estás?
-[2025-07-23 18:18:07] [WINDOW_RESULT] Transcription result: Buenos días
-[2025-07-23 18:18:07] [WINDOW_SKIP] Not enough audio data - insufficient audio data (1.8s < 2.5s minimum)
-=== System startup at 2025-07-23 18:18:59 ===
-[2025-07-23 18:18:59] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:18:59] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:18:59] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:18:59] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:18:59] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:18:59] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:19:00] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:19:00] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:19:00] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 18:19:00] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 18:19:00] [WINDOW_RESULT] Transcription result (confidence: 0.95): Hola, ¿cómo estás?
-[2025-07-23 18:19:00] [WINDOW_RESULT] Transcription result: Buenos días
-[2025-07-23 18:19:00] [WINDOW_SKIP] Not enough audio data - insufficient audio data (1.8s < 2.5s minimum)
-[2025-07-23 18:19:00] [TEST] Test message for infrastructure validation
-=== System startup at 2025-07-23 18:25:08 ===
-[2025-07-23 18:25:08] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:25:08] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:25:08] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:25:08] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:25:08] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:25:08] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:25:09] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:25:09] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:25:09] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:25:09] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 18:26:04 ===
-[2025-07-23 18:26:04] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:26:04] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:26:04] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:26:04] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:26:04] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:26:04] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:26:05] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:26:05] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:26:05] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:26:05] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 18:26:05] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:26:05] [WINDOW_SKIP] Not enough audio data - insufficient data: 1000 samples (1.00s) < 2.5s minimum
-[2025-07-23 18:26:05] [WINDOW_EXTRACT] Extracted window: 3000 samples (3.00s)
-[2025-07-23 18:26:05] [WINDOW_EXTRACT] Extracted window: 3000 samples (3.00s)
-=== System startup at 2025-07-23 18:35:37 ===
-[2025-07-23 18:35:37] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:35:37] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:35:37] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:35:37] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:35:37] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:35:37] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:35:37] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:35:37] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 18:35:37] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 18:35:37] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 18:35:37] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 18:35:37] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 18:35:37] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:35:37] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:35:38] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 18:37:06 ===
-[2025-07-23 18:37:06] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:37:06] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:37:06] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:37:06] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:37:06] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:37:06] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:37:07] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:37:07] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 18:37:07] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 18:37:07] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 18:37:07] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 18:37:07] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 18:37:07] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:37:07] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:37:07] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 18:41:51 ===
-[2025-07-23 18:41:51] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:41:51] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:41:51] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:41:51] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:41:51] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:41:51] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:41:51] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:41:51] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 18:41:51] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 18:41:51] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 18:41:51] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 18:41:51] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 18:41:51] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:41:51] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:41:51] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 18:41:51] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 18:41:51] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 18:41:51] [WINDOW_RESULT] Transcription result: Hola mundo
-[2025-07-23 18:41:53] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 18:41:53] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 18:41:53] [WINDOW_TRANSCRIBE] Started transcription for 0.0s slice
-[2025-07-23 18:41:53] [ERROR] Whisper transcription failed: Mock transcription error
-[2025-07-23 18:41:53] [WINDOW_RESULT] Transcription result: ERROR: Whisper transcription failed: Mock transcription error
-[2025-07-23 18:41:55] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 18:41:55] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 18:41:56] [WINDOW_TRANSCRIBE] Started transcription for 0.0s slice
-[2025-07-23 18:41:56] [WINDOW_RESULT] Transcription result: Test
-[2025-07-23 18:41:56] [WINDOW_TRANSCRIBE] Started transcription for 0.0s slice
-[2025-07-23 18:41:56] [WINDOW_RESULT] Transcription result: Test
-[2025-07-23 18:41:56] [WINDOW_TRANSCRIBE] Started transcription for 0.0s slice
-[2025-07-23 18:41:56] [WINDOW_RESULT] Transcription result: Test
-[2025-07-23 18:41:58] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 18:41:58] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 18:41:58] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 18:41:58] [WINDOW_RESULT] Transcription result: Prueba
-[2025-07-23 18:42:01] [SYSTEM] Streaming transcription worker thread stopped
-=== System startup at 2025-07-23 18:42:54 ===
-[2025-07-23 18:42:54] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:42:54] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:42:54] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:42:54] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:42:54] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:42:54] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:42:55] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:42:55] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 18:42:55] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 18:42:55] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 18:42:55] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 18:42:55] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 18:42:55] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:42:55] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:42:55] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 18:42:55] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 18:42:55] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:42:55] [WINDOW_SKIP] Not enough audio data - insufficient data: 48000 samples (1.00s) < 2.5s minimum
-[2025-07-23 18:42:55] [WINDOW_SKIP] Not enough audio data - insufficient data: 72000 samples (1.50s) < 2.5s minimum
-[2025-07-23 18:42:55] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
-[2025-07-23 18:42:55] [WINDOW_EXTRACT] Extracted window: 120000 samples (2.50s)
-[2025-07-23 18:42:55] [WINDOW_TRANSCRIBE] Started transcription for 2.5s slice
-[2025-07-23 18:42:55] [WINDOW_RESULT] Transcription result: Integración exitosa
-[2025-07-23 18:42:55] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 18:42:55] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 18:42:55] [WINDOW_RESULT] Transcription result: Integración exitosa
-[2025-07-23 18:42:58] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 18:42:58] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 18:42:58] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:42:58] [WINDOW_SKIP] Not enough audio data - insufficient data: 48000 samples (1.00s) < 2.5s minimum
-[2025-07-23 18:42:58] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
-[2025-07-23 18:42:58] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 18:42:58] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 18:42:58] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 18:42:58] [WINDOW_RESULT] Transcription result: Timing test
-[2025-07-23 18:42:58] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 18:42:58] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 18:42:58] [WINDOW_RESULT] Transcription result: Timing test
-[2025-07-23 18:42:58] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 18:42:58] [WINDOW_RESULT] Transcription result: Timing test
-[2025-07-23 18:43:00] [SYSTEM] Streaming transcription worker thread stopped
-=== System startup at 2025-07-23 18:43:55 ===
-[2025-07-23 18:43:55] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:43:55] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:43:55] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:43:55] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:43:55] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:43:55] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:43:56] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:43:56] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 18:43:56] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 18:43:56] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 18:43:56] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 18:43:56] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 18:43:56] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:43:56] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:43:56] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 18:43:56] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 18:43:56] [SYSTEM] Streaming transcription worker thread started successfully
-[2025-07-23 18:43:56] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 18:43:56] [SYSTEM] Gemini warm-up thread started
-[2025-07-23 18:43:56] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 18:43:56] [SYSTEM] Audio stream started successfully
-[2025-07-23 18:43:56] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 18:43:56] [SYSTEM] Keyboard interrupt received
-[2025-07-23 18:43:56] [SYSTEM] Application terminated by user
-[2025-07-23 18:43:56] [SYSTEM] Starting system cleanup
-[2025-07-23 18:43:56] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 18:43:56] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 18:43:56] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 18:43:56] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 18:43:56] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.38s - Response: Estoy listo.
-[2025-07-23 18:43:57] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 18:43:57] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 18:43:57] [SYSTEM] Streaming buffer cleared
-[2025-07-23 18:43:57] [SYSTEM] System cleanup completed
-[2025-07-23 18:43:57] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 18:43:57] [SYSTEM] Streaming transcription worker thread stopped
-=== System startup at 2025-07-23 18:50:14 ===
-[2025-07-23 18:50:14] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:50:14] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:50:14] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:50:14] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:50:14] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:50:14] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:50:15] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:50:15] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 18:50:15] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 18:50:15] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 18:50:15] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 18:50:15] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 18:50:15] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:50:15] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:50:15] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 18:50:55 ===
-[2025-07-23 18:50:55] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:50:55] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:50:55] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:50:55] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:50:55] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:50:55] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:50:56] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:50:56] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 18:50:56] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 18:50:56] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 18:50:56] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 18:50:56] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 18:50:56] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:50:56] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:50:56] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 18:50:56] [DUPLICATE_SKIP] Duplicate transcription skipped: 'Hola mundo' (identical to result 1.0s ago)
-=== System startup at 2025-07-23 18:53:09 ===
-[2025-07-23 18:53:09] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:53:09] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:53:09] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:53:09] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:53:09] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:53:09] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:53:10] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:53:10] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 18:53:10] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 18:53:10] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 18:53:10] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 18:53:10] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 18:53:10] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:53:10] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:53:10] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-=== System startup at 2025-07-23 18:56:12 ===
-[2025-07-23 18:56:12] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:56:12] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:56:12] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:56:12] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:56:12] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:56:12] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:56:13] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:56:13] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 18:56:13] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 18:56:13] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 18:56:13] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 18:56:13] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 18:56:13] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:56:13] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:56:13] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 18:56:13] [DUPLICATE_SKIP] Duplicate transcription skipped: 'Log test' (identical to result 1.0s ago)
-=== System startup at 2025-07-23 18:59:33 ===
-[2025-07-23 18:59:33] [SYSTEM] Logging system initialized successfully
-[2025-07-23 18:59:33] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 18:59:33] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 18:59:33] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 18:59:33] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 18:59:33] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 18:59:34] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 18:59:34] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 18:59:34] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 18:59:34] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 18:59:34] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 18:59:34] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 18:59:34] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 18:59:34] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 18:59:34] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 18:59:34] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-=== System startup at 2025-07-23 19:00:38 ===
-[2025-07-23 19:00:38] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:00:38] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:00:38] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:00:38] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:00:38] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:00:38] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:00:38] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:00:38] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:00:38] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:00:38] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:00:38] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:00:38] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:00:38] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:00:38] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:00:38] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:00:38] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:00:38] [WINDOW_SKIP] Not enough audio data - insufficient data: 48000 samples (1.00s) < 2.5s minimum
-=== System startup at 2025-07-23 19:01:29 ===
-[2025-07-23 19:01:29] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:01:29] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:01:29] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:01:29] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:01:29] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:01:29] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:01:30] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:01:30] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:01:30] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:01:30] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:01:30] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:01:30] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:01:30] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:01:30] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:01:30] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:01:30] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:01:30] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
-[2025-07-23 19:01:30] [WINDOW_EXTRACT] Extracted window: 120000 samples (2.50s)
-[2025-07-23 19:01:30] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:01:30] [AUDIO] Audio window queued for transcription processing
-=== System startup at 2025-07-23 19:02:37 ===
-[2025-07-23 19:02:37] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:02:37] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:02:37] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:02:37] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:02:37] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:02:37] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:02:37] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:02:37] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:02:37] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:02:37] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:02:37] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:02:37] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:02:37] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:02:37] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:02:37] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:02:37] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 19:02:38] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 19:02:38] [WINDOW_SKIP] Not enough audio data - insufficient data: 48000 samples (1.00s) < 2.5s minimum
-[2025-07-23 19:02:38] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
-[2025-07-23 19:02:38] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:02:38] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:02:38] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:02:38] [AUDIO] Audio window queued for transcription processing
-[2025-07-23 19:02:38] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:02:38] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:02:38] [AUDIO] Audio window queued for transcription processing
-[2025-07-23 19:02:38] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:02:38] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:02:38] [AUDIO] Audio window queued for transcription processing
-[2025-07-23 19:02:38] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:02:38] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:02:38] [AUDIO] Audio window queued for transcription processing
-[2025-07-23 19:02:38] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:02:38] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:02:38] [AUDIO] Audio window queued for transcription processing
-=== System startup at 2025-07-23 19:08:06 ===
-[2025-07-23 19:08:06] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:08:06] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:08:06] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:08:06] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:08:06] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:08:06] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:08:07] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:08:07] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:08:07] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:08:07] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:08:07] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:08:07] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:08:07] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:08:07] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:08:07] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:08:07] [LATENCY] Window window_001 latency: 0.800s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (1 windows): 0.800s
-[2025-07-23 19:08:07] [LATENCY_OK] Window window_001 latency 0.800s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 0.800s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window window_002 latency: 1.200s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (2 windows): 1.000s
-[2025-07-23 19:08:07] [LATENCY_OK] Window window_002 latency 1.200s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.000s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window window_003 latency: 1.600s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (3 windows): 1.200s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window window_003 latency 1.600s exceeds 1.5s target by 0.100s
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.200s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window window_004 latency: 0.900s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (4 windows): 1.125s
-[2025-07-23 19:08:07] [LATENCY_OK] Window window_004 latency 0.900s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.125s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window window_005 latency: 2.100s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (5 windows): 1.320s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window window_005 latency 2.100s exceeds 1.5s target by 0.600s
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.320s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window window_006 latency: 1.100s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (6 windows): 1.283s
-[2025-07-23 19:08:07] [LATENCY_OK] Window window_006 latency 1.100s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.283s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window window_007 latency: 1.800s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (7 windows): 1.357s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window window_007 latency 1.800s exceeds 1.5s target by 0.300s
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.357s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window window_008 latency: 0.700s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (8 windows): 1.275s
-[2025-07-23 19:08:07] [LATENCY_OK] Window window_008 latency 0.700s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.275s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window window_009 latency: 1.400s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (9 windows): 1.289s
-[2025-07-23 19:08:07] [LATENCY_OK] Window window_009 latency 1.400s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.289s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window window_010 latency: 2.300s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (10 windows): 1.390s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window window_010 latency 2.300s exceeds 1.5s target by 0.800s
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.390s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_01 latency: 1.000s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (1 windows): 1.000s
-[2025-07-23 19:08:07] [LATENCY_OK] Window buffer_test_01 latency 1.000s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.000s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_02 latency: 1.100s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (2 windows): 1.050s
-[2025-07-23 19:08:07] [LATENCY_OK] Window buffer_test_02 latency 1.100s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.050s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_03 latency: 1.200s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (3 windows): 1.100s
-[2025-07-23 19:08:07] [LATENCY_OK] Window buffer_test_03 latency 1.200s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.100s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_04 latency: 1.300s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (4 windows): 1.150s
-[2025-07-23 19:08:07] [LATENCY_OK] Window buffer_test_04 latency 1.300s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.150s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_05 latency: 1.400s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (5 windows): 1.200s
-[2025-07-23 19:08:07] [LATENCY_OK] Window buffer_test_05 latency 1.400s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.200s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_06 latency: 1.500s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (6 windows): 1.250s
-[2025-07-23 19:08:07] [LATENCY_OK] Window buffer_test_06 latency 1.500s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.250s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_07 latency: 1.600s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (7 windows): 1.300s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window buffer_test_07 latency 1.600s exceeds 1.5s target by 0.100s
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.300s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_08 latency: 1.700s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (8 windows): 1.350s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window buffer_test_08 latency 1.700s exceeds 1.5s target by 0.200s
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.350s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_09 latency: 1.800s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (9 windows): 1.400s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window buffer_test_09 latency 1.800s exceeds 1.5s target by 0.300s
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.400s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_10 latency: 1.900s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (10 windows): 1.450s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window buffer_test_10 latency 1.900s exceeds 1.5s target by 0.400s
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.450s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_11 latency: 2.000s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (10 windows): 1.550s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window buffer_test_11 latency 2.000s exceeds 1.5s target by 0.500s
-[2025-07-23 19:08:07] [LATENCY_AVG_WARNING] WARNING: Rolling average latency 1.550s exceeds 1.5s target by 0.050s
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_12 latency: 2.100s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (10 windows): 1.650s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window buffer_test_12 latency 2.100s exceeds 1.5s target by 0.600s
-[2025-07-23 19:08:07] [LATENCY_AVG_WARNING] WARNING: Rolling average latency 1.650s exceeds 1.5s target by 0.150s
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_13 latency: 2.200s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (10 windows): 1.750s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window buffer_test_13 latency 2.200s exceeds 1.5s target by 0.700s
-[2025-07-23 19:08:07] [LATENCY_AVG_WARNING] WARNING: Rolling average latency 1.750s exceeds 1.5s target by 0.250s
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_14 latency: 2.300s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (10 windows): 1.850s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window buffer_test_14 latency 2.300s exceeds 1.5s target by 0.800s
-[2025-07-23 19:08:07] [LATENCY_AVG_WARNING] WARNING: Rolling average latency 1.850s exceeds 1.5s target by 0.350s
-[2025-07-23 19:08:07] [LATENCY] Window buffer_test_15 latency: 2.400s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (10 windows): 1.950s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window buffer_test_15 latency 2.400s exceeds 1.5s target by 0.900s
-[2025-07-23 19:08:07] [LATENCY_AVG_WARNING] WARNING: Rolling average latency 1.950s exceeds 1.5s target by 0.450s
-[2025-07-23 19:08:07] [LATENCY] Window spanish_01 latency: 0.800s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (1 windows): 0.800s
-[2025-07-23 19:08:07] [LATENCY_OK] Window spanish_01 latency 0.800s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 0.800s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window spanish_02 latency: 1.100s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (2 windows): 0.950s
-[2025-07-23 19:08:07] [LATENCY_OK] Window spanish_02 latency 1.100s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 0.950s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window spanish_03 latency: 0.900s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (3 windows): 0.933s
-[2025-07-23 19:08:07] [LATENCY_OK] Window spanish_03 latency 0.900s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 0.933s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window spanish_04 latency: 1.300s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (4 windows): 1.025s
-[2025-07-23 19:08:07] [LATENCY_OK] Window spanish_04 latency 1.300s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.025s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window spanish_05 latency: 1.000s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (5 windows): 1.020s
-[2025-07-23 19:08:07] [LATENCY_OK] Window spanish_05 latency 1.000s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.020s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window spanish_06 latency: 1.600s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (6 windows): 1.117s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window spanish_06 latency 1.600s exceeds 1.5s target by 0.100s
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.117s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window spanish_07 latency: 1.800s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (7 windows): 1.214s
-[2025-07-23 19:08:07] [LATENCY_WARNING] WARNING: Window spanish_07 latency 1.800s exceeds 1.5s target by 0.300s
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.214s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY] Window spanish_08 latency: 1.400s
-[2025-07-23 19:08:07] [LATENCY_AVG] Rolling average latency (8 windows): 1.238s
-[2025-07-23 19:08:07] [LATENCY_OK] Window spanish_08 latency 1.400s within 1.5s target
-[2025-07-23 19:08:07] [LATENCY_AVG_OK] Rolling average latency 1.238s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY] Window spanish_09 latency: 1.200s
-[2025-07-23 19:08:08] [LATENCY_AVG] Rolling average latency (9 windows): 1.233s
-[2025-07-23 19:08:08] [LATENCY_OK] Window spanish_09 latency 1.200s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY_AVG_OK] Rolling average latency 1.233s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY] Window spanish_10 latency: 1.100s
-[2025-07-23 19:08:08] [LATENCY_AVG] Rolling average latency (10 windows): 1.220s
-[2025-07-23 19:08:08] [LATENCY_OK] Window spanish_10 latency 1.100s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY_AVG_OK] Rolling average latency 1.220s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY] Window spanish_11 latency: 2.100s
-[2025-07-23 19:08:08] [LATENCY_AVG] Rolling average latency (10 windows): 1.350s
-[2025-07-23 19:08:08] [LATENCY_WARNING] WARNING: Window spanish_11 latency 2.100s exceeds 1.5s target by 0.600s
-[2025-07-23 19:08:08] [LATENCY_AVG_OK] Rolling average latency 1.350s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY] Window spanish_12 latency: 1.900s
-[2025-07-23 19:08:08] [LATENCY_AVG] Rolling average latency (10 windows): 1.430s
-[2025-07-23 19:08:08] [LATENCY_WARNING] WARNING: Window spanish_12 latency 1.900s exceeds 1.5s target by 0.400s
-[2025-07-23 19:08:08] [LATENCY_AVG_OK] Rolling average latency 1.430s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY] Window spanish_13 latency: 1.500s
-[2025-07-23 19:08:08] [LATENCY_AVG] Rolling average latency (10 windows): 1.490s
-[2025-07-23 19:08:08] [LATENCY_OK] Window spanish_13 latency 1.500s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY_AVG_OK] Rolling average latency 1.490s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY] Window spanish_14 latency: 1.300s
-[2025-07-23 19:08:08] [LATENCY_AVG] Rolling average latency (10 windows): 1.490s
-[2025-07-23 19:08:08] [LATENCY_OK] Window spanish_14 latency 1.300s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY_AVG_OK] Rolling average latency 1.490s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY] Window spanish_15 latency: 1.000s
-[2025-07-23 19:08:08] [LATENCY_AVG] Rolling average latency (10 windows): 1.490s
-[2025-07-23 19:08:08] [LATENCY_OK] Window spanish_15 latency 1.000s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY_AVG_OK] Rolling average latency 1.490s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY] Window spanish_16 latency: 0.900s
-[2025-07-23 19:08:08] [LATENCY_AVG] Rolling average latency (10 windows): 1.420s
-[2025-07-23 19:08:08] [LATENCY_OK] Window spanish_16 latency 0.900s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY_AVG_OK] Rolling average latency 1.420s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY] Window spanish_17 latency: 1.100s
-[2025-07-23 19:08:08] [LATENCY_AVG] Rolling average latency (10 windows): 1.350s
-[2025-07-23 19:08:08] [LATENCY_OK] Window spanish_17 latency 1.100s within 1.5s target
-[2025-07-23 19:08:08] [LATENCY_AVG_OK] Rolling average latency 1.350s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window spanish_18 latency: 1.200s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (10 windows): 1.330s
-[2025-07-23 19:08:09] [LATENCY_OK] Window spanish_18 latency 1.200s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 1.330s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window spanish_19 latency: 1.400s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (10 windows): 1.350s
-[2025-07-23 19:08:09] [LATENCY_OK] Window spanish_19 latency 1.400s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 1.350s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window spanish_20 latency: 1.300s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (10 windows): 1.370s
-[2025-07-23 19:08:09] [LATENCY_OK] Window spanish_20 latency 1.300s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 1.370s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_0_window_1 latency: 0.800s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (1 windows): 0.800s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_0_window_1 latency 0.800s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 0.800s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_1_window_1 latency: 0.850s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (2 windows): 0.825s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_1_window_1 latency 0.850s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 0.825s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_2_window_1 latency: 0.900s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (3 windows): 0.850s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_2_window_1 latency 0.900s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 0.850s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_1_window_2 latency: 0.950s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (4 windows): 0.875s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_1_window_2 latency 0.950s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 0.875s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_0_window_2 latency: 0.900s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (5 windows): 0.880s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_0_window_2 latency 0.900s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 0.880s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_1_window_3 latency: 1.050s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (6 windows): 0.908s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_1_window_3 latency 1.050s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 0.908s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_2_window_2 latency: 1.000s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (7 windows): 0.921s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_2_window_2 latency 1.000s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 0.921s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_1_window_4 latency: 1.150s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (8 windows): 0.950s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_1_window_4 latency 1.150s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 0.950s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_0_window_3 latency: 1.000s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (9 windows): 0.956s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_0_window_3 latency 1.000s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 0.956s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_0_window_4 latency: 1.100s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (10 windows): 0.970s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_0_window_4 latency 1.100s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 0.970s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_1_window_5 latency: 1.250s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (10 windows): 1.015s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_1_window_5 latency 1.250s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 1.015s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_2_window_3 latency: 1.100s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (10 windows): 1.040s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_2_window_3 latency 1.100s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 1.040s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_0_window_5 latency: 1.200s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (10 windows): 1.070s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_0_window_5 latency 1.200s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 1.070s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_2_window_4 latency: 1.200s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (10 windows): 1.095s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_2_window_4 latency 1.200s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 1.095s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY] Window thread_2_window_5 latency: 1.300s
-[2025-07-23 19:08:09] [LATENCY_AVG] Rolling average latency (10 windows): 1.135s
-[2025-07-23 19:08:09] [LATENCY_OK] Window thread_2_window_5 latency 1.300s within 1.5s target
-[2025-07-23 19:08:09] [LATENCY_AVG_OK] Rolling average latency 1.135s within 1.5s target
-=== System startup at 2025-07-23 19:10:38 ===
-[2025-07-23 19:10:38] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:10:38] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:10:38] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:10:38] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:10:38] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:10:38] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:10:39] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:10:39] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:10:39] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:10:39] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:10:39] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:10:39] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:10:39] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:10:39] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:10:39] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:10:39] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 19:10:39] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:10:40] [LATENCY] Window 703ba68e latency: 0.410s
-[2025-07-23 19:10:40] [LATENCY_AVG] Rolling average latency (1 windows): 0.410s
-[2025-07-23 19:10:40] [LATENCY_OK] Window 703ba68e latency 0.410s within 1.5s target
-[2025-07-23 19:10:40] [LATENCY_AVG_OK] Rolling average latency 0.410s within 1.5s target
-[2025-07-23 19:10:40] [WINDOW_RESULT] Transcription result: Subtítulos realizados por la comunidad de Amara.org
-[2025-07-23 19:10:40] [WINDOW_TRANSCRIBE] Started transcription for 2.8s slice
-[2025-07-23 19:10:40] [LATENCY] Window ec614485 latency: 0.170s
-[2025-07-23 19:10:40] [LATENCY_AVG] Rolling average latency (2 windows): 0.290s
-[2025-07-23 19:10:40] [LATENCY_OK] Window ec614485 latency 0.170s within 1.5s target
-[2025-07-23 19:10:40] [LATENCY_AVG_OK] Rolling average latency 0.290s within 1.5s target
-[2025-07-23 19:10:40] [WINDOW_RESULT] Transcription result: Subtítulos por la comunidad de Amara.org
-[2025-07-23 19:10:40] [WINDOW_TRANSCRIBE] Started transcription for 3.2s slice
-[2025-07-23 19:10:40] [LATENCY] Window e1509bf8 latency: 0.181s
-[2025-07-23 19:10:40] [LATENCY_AVG] Rolling average latency (3 windows): 0.254s
-[2025-07-23 19:10:40] [LATENCY_OK] Window e1509bf8 latency 0.181s within 1.5s target
-[2025-07-23 19:10:40] [LATENCY_AVG_OK] Rolling average latency 0.254s within 1.5s target
-[2025-07-23 19:10:40] [DUPLICATE_SKIP] Duplicate transcription skipped: 'Subtítulos por la comunidad de Amara.org' (identical to result 0.2s ago)
-[2025-07-23 19:10:40] [WINDOW_TRANSCRIBE] Started transcription for 2.9s slice
-[2025-07-23 19:10:40] [LATENCY] Window c3fef12c latency: 0.180s
-[2025-07-23 19:10:40] [LATENCY_AVG] Rolling average latency (4 windows): 0.235s
-[2025-07-23 19:10:40] [LATENCY_OK] Window c3fef12c latency 0.180s within 1.5s target
-[2025-07-23 19:10:40] [LATENCY_AVG_OK] Rolling average latency 0.235s within 1.5s target
-[2025-07-23 19:10:40] [DUPLICATE_SKIP] Duplicate transcription skipped: 'Subtítulos por la comunidad de Amara.org' (identical to result 0.4s ago)
-[2025-07-23 19:10:40] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:10:40] [WINDOW_TRANSCRIBE] Started transcription for 3.1s slice
-[2025-07-23 19:10:40] [LATENCY] Window 024ee227 latency: 0.168s
-[2025-07-23 19:10:40] [LATENCY_AVG] Rolling average latency (5 windows): 0.222s
-[2025-07-23 19:10:40] [LATENCY_OK] Window 024ee227 latency 0.168s within 1.5s target
-[2025-07-23 19:10:40] [LATENCY_AVG_OK] Rolling average latency 0.222s within 1.5s target
-[2025-07-23 19:10:40] [DUPLICATE_SKIP] Duplicate transcription skipped: 'Subtítulos por la comunidad de Amara.org' (identical to result 0.5s ago)
-[2025-07-23 19:10:40] [ERROR] Whisper transcription failed: task_done() called too many times
-[2025-07-23 19:10:40] [WINDOW_RESULT] Transcription result: ERROR: Whisper transcription failed: task_done() called too many times
-[2025-07-23 19:10:40] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:10:42] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 19:10:42] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:10:43] [LATENCY] Window 15ce453d latency: 0.190s
-[2025-07-23 19:10:43] [LATENCY_AVG] Rolling average latency (1 windows): 0.190s
-[2025-07-23 19:10:43] [LATENCY_OK] Window 15ce453d latency 0.190s within 1.5s target
-[2025-07-23 19:10:43] [LATENCY_AVG_OK] Rolling average latency 0.190s within 1.5s target
-[2025-07-23 19:10:43] [WINDOW_RESULT] Transcription result: Subtítulos realizados por la comunidad de Amara.org
-[2025-07-23 19:10:43] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:10:43] [LATENCY] Window f80aee56 latency: 0.178s
-[2025-07-23 19:10:43] [LATENCY_AVG] Rolling average latency (2 windows): 0.184s
-[2025-07-23 19:10:43] [LATENCY_OK] Window f80aee56 latency 0.178s within 1.5s target
-[2025-07-23 19:10:43] [LATENCY_AVG_OK] Rolling average latency 0.184s within 1.5s target
-[2025-07-23 19:10:43] [WINDOW_RESULT] Transcription result: Subtítulos por la comunidad de Amara.org
-[2025-07-23 19:10:43] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:10:43] [LATENCY] Window 655d6269 latency: 0.170s
-[2025-07-23 19:10:43] [LATENCY_AVG] Rolling average latency (3 windows): 0.179s
-[2025-07-23 19:10:43] [LATENCY_OK] Window 655d6269 latency 0.170s within 1.5s target
-[2025-07-23 19:10:43] [LATENCY_AVG_OK] Rolling average latency 0.179s within 1.5s target
-[2025-07-23 19:10:43] [DUPLICATE_SKIP] Duplicate transcription skipped: 'Subtítulos por la comunidad de Amara.org' (identical to result 0.2s ago)
-[2025-07-23 19:10:43] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:10:43] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:10:43] [LATENCY] Window f0217e1c latency: 0.175s
-[2025-07-23 19:10:43] [LATENCY_AVG] Rolling average latency (4 windows): 0.178s
-[2025-07-23 19:10:43] [LATENCY_OK] Window f0217e1c latency 0.175s within 1.5s target
-[2025-07-23 19:10:43] [LATENCY_AVG_OK] Rolling average latency 0.178s within 1.5s target
-[2025-07-23 19:10:43] [DUPLICATE_SKIP] Duplicate transcription skipped: 'Subtítulos por la comunidad de Amara.org' (identical to result 0.4s ago)
-[2025-07-23 19:10:43] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:10:43] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:10:43] [LATENCY] Window e17ea643 latency: 0.168s
-[2025-07-23 19:10:43] [LATENCY_AVG] Rolling average latency (5 windows): 0.176s
-[2025-07-23 19:10:43] [LATENCY_OK] Window e17ea643 latency 0.168s within 1.5s target
-[2025-07-23 19:10:43] [LATENCY_AVG_OK] Rolling average latency 0.176s within 1.5s target
-[2025-07-23 19:10:43] [DUPLICATE_SKIP] Duplicate transcription skipped: 'Subtítulos por la comunidad de Amara.org' (identical to result 0.6s ago)
-[2025-07-23 19:10:43] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:10:43] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:10:43] [LATENCY] Window f8a09e72 latency: 0.023s
-[2025-07-23 19:10:43] [LATENCY_AVG] Rolling average latency (6 windows): 0.151s
-[2025-07-23 19:10:43] [LATENCY_OK] Window f8a09e72 latency 0.023s within 1.5s target
-[2025-07-23 19:10:43] [LATENCY_AVG_OK] Rolling average latency 0.151s within 1.5s target
-[2025-07-23 19:10:43] [WINDOW_RESULT] Transcription result: (no speech detected)
-[2025-07-23 19:10:43] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:10:44] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:10:44] [LATENCY] Window d7e82a6f latency: 0.024s
-[2025-07-23 19:10:44] [LATENCY_AVG] Rolling average latency (7 windows): 0.133s
-[2025-07-23 19:10:44] [LATENCY_OK] Window d7e82a6f latency 0.024s within 1.5s target
-[2025-07-23 19:10:44] [LATENCY_AVG_OK] Rolling average latency 0.133s within 1.5s target
-[2025-07-23 19:10:44] [WINDOW_RESULT] Transcription result: (no speech detected)
-[2025-07-23 19:10:44] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:10:44] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:10:44] [LATENCY] Window d5588409 latency: 0.024s
-[2025-07-23 19:10:44] [LATENCY_AVG] Rolling average latency (8 windows): 0.119s
-[2025-07-23 19:10:44] [LATENCY_OK] Window d5588409 latency 0.024s within 1.5s target
-[2025-07-23 19:10:44] [LATENCY_AVG_OK] Rolling average latency 0.119s within 1.5s target
-[2025-07-23 19:10:44] [WINDOW_RESULT] Transcription result: (no speech detected)
-[2025-07-23 19:10:44] [ERROR] Error marking queue task as done: task_done() called too many times
-=== System startup at 2025-07-23 19:15:01 ===
-[2025-07-23 19:15:01] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:15:01] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:15:01] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:15:01] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:15:01] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:15:01] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:15:02] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:15:02] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:15:02] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:15:02] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:15:02] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:15:02] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:15:02] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:15:02] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:15:02] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:15:02] [TEST_START] Starting Task 8 complete pipeline integration test
-[2025-07-23 19:15:02] [TEST] TEST ✅ PASS VB-Audio Device Configuration: Device 37: CABLE Output (VB-Audio Virtual Cable), 2 input channels
-[2025-07-23 19:15:02] [TEST] TEST ✅ PASS Faster-Whisper Integration: Model loaded, compute_type: float16, transcription functional
-[2025-07-23 19:15:02] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 19:15:02] [GEMINI_PROMPT] Spanish input: Hola, ¿cómo estás?
-[2025-07-23 19:15:02] [GEMINI_REPLY] Response (0.35s): Bien, gracias. ¿Y tú?
-[2025-07-23 19:15:02] [PERFORMANCE] Gemini response time 0.35s within live exam target
-[2025-07-23 19:15:02] [TEST] TEST ✅ PASS Gemini 2.5 Flash Lite Integration: Client initialized, API key loaded, model: gemini-2.5-flash-lite, response: Bien, gracias. ¿Y tú?
-[2025-07-23 19:15:02] [TEST] TEST ✅ PASS Dotenv Configuration: .env file exists, API key loaded correctly, error handling functional
-[2025-07-23 19:15:02] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:15:02] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:15:02] [TEST] TEST ✅ PASS Audio Processing Components: StreamingBuffer functional, audio queue operational
-[2025-07-23 19:15:02] [TEST] TEST ❌ FAIL Windows Python Compatibility: Python: False, Windows: True, Threading: True, Audio: True
-[2025-07-23 19:15:02] [LATENCY] Window test-window-1 latency: 1.200s
-[2025-07-23 19:15:02] [LATENCY_AVG] Rolling average latency (1 windows): 1.200s
-[2025-07-23 19:15:02] [LATENCY_OK] Window test-window-1 latency 1.200s within 1.5s target
-[2025-07-23 19:15:02] [LATENCY_AVG_OK] Rolling average latency 1.200s within 1.5s target
-[2025-07-23 19:15:02] [LATENCY] Window test-window-2 latency: 1.800s
-[2025-07-23 19:15:02] [LATENCY_AVG] Rolling average latency (2 windows): 1.500s
-[2025-07-23 19:15:02] [LATENCY_WARNING] WARNING: Window test-window-2 latency 1.800s exceeds 1.5s target by 0.300s
-[2025-07-23 19:15:02] [LATENCY_AVG_OK] Rolling average latency 1.500s within 1.5s target
-[2025-07-23 19:15:02] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 19:15:02] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 19:15:02] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 19:15:02] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.33s - Response: Estoy listo.
-[2025-07-23 19:15:02] [TEST] TEST ✅ PASS Streaming Pipeline Integration: Duplicate filtering, latency monitoring, and warm-up functional
-[2025-07-23 19:15:02] [ERROR] Empty audio input received
-[2025-07-23 19:15:02] [ERROR] Empty audio input received
-[2025-07-23 19:15:03] [SYSTEM] Starting system cleanup
-[2025-07-23 19:15:03] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 19:15:03] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 19:15:03] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 19:15:03] [SYSTEM] Streaming buffer cleared
-[2025-07-23 19:15:03] [SYSTEM] System cleanup completed
-[2025-07-23 19:15:03] [TEST] TEST ✅ PASS Error Handling Robustness: Audio callback, transcription worker, and cleanup error handling functional
-[2025-07-23 19:15:03] [TEST_COMPLETE] Task 8 integration test completed - 7/8 tests passed
-=== System startup at 2025-07-23 19:16:47 ===
-[2025-07-23 19:16:47] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:16:47] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:16:47] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:16:47] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:16:47] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:16:47] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:16:48] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:16:48] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:16:48] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:16:48] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:16:48] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:16:48] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:16:48] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:16:48] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:16:48] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:16:48] [TEST_START] Starting Task 8 complete pipeline integration test
-[2025-07-23 19:16:48] [TEST] TEST ✅ PASS VB-Audio Device Configuration: Device 37: CABLE Output (VB-Audio Virtual Cable), 2 input channels
-[2025-07-23 19:16:48] [TEST] TEST ✅ PASS Faster-Whisper Integration: Model loaded, compute_type: float16, transcription functional
-[2025-07-23 19:16:48] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 19:16:48] [GEMINI_PROMPT] Spanish input: Hola, ¿cómo estás?
-[2025-07-23 19:16:49] [GEMINI_REPLY] Response (0.24s): Muy bien, gracias. ¿Y tú?
-[2025-07-23 19:16:49] [PERFORMANCE] Gemini response time 0.24s within live exam target
-[2025-07-23 19:16:49] [TEST] TEST ✅ PASS Gemini 2.5 Flash Lite Integration: Client initialized, API key loaded, model: gemini-2.5-flash-lite, response: Muy bien, gracias. ¿Y tú?
-[2025-07-23 19:16:49] [TEST] TEST ✅ PASS Dotenv Configuration: .env file exists, API key loaded correctly, error handling functional
-[2025-07-23 19:16:49] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:16:49] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:16:49] [TEST] TEST ✅ PASS Audio Processing Components: StreamingBuffer functional, audio queue operational
-[2025-07-23 19:16:49] [TEST] TEST ✅ PASS Windows Python Compatibility: Python 3.10, Windows, threading OK, audio access OK
-[2025-07-23 19:16:49] [LATENCY] Window test-window-1 latency: 1.200s
-[2025-07-23 19:16:49] [LATENCY_AVG] Rolling average latency (1 windows): 1.200s
-[2025-07-23 19:16:49] [LATENCY_OK] Window test-window-1 latency 1.200s within 1.5s target
-[2025-07-23 19:16:49] [LATENCY_AVG_OK] Rolling average latency 1.200s within 1.5s target
-[2025-07-23 19:16:49] [LATENCY] Window test-window-2 latency: 1.800s
-[2025-07-23 19:16:49] [LATENCY_AVG] Rolling average latency (2 windows): 1.500s
-[2025-07-23 19:16:49] [LATENCY_WARNING] WARNING: Window test-window-2 latency 1.800s exceeds 1.5s target by 0.300s
-[2025-07-23 19:16:49] [LATENCY_AVG_OK] Rolling average latency 1.500s within 1.5s target
-[2025-07-23 19:16:49] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 19:16:49] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 19:16:49] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 19:16:49] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.28s - Response: Listo.
-[2025-07-23 19:16:49] [TEST] TEST ✅ PASS Streaming Pipeline Integration: Duplicate filtering, latency monitoring, and warm-up functional
-[2025-07-23 19:16:49] [ERROR] Empty audio input received
-[2025-07-23 19:16:49] [ERROR] Empty audio input received
-[2025-07-23 19:16:49] [SYSTEM] Starting system cleanup
-[2025-07-23 19:16:49] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 19:16:49] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 19:16:49] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 19:16:49] [SYSTEM] Streaming buffer cleared
-[2025-07-23 19:16:49] [SYSTEM] System cleanup completed
-[2025-07-23 19:16:49] [TEST] TEST ✅ PASS Error Handling Robustness: Audio callback, transcription worker, and cleanup error handling functional
-[2025-07-23 19:16:49] [TEST_COMPLETE] Task 8 integration test completed - 8/8 tests passed
-=== System startup at 2025-07-23 19:18:53 ===
-[2025-07-23 19:18:53] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:18:53] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:18:53] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:18:53] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:18:53] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:18:53] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:18:54] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:18:54] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:18:54] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:18:54] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:18:54] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:18:54] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:18:54] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:18:54] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:18:54] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:18:54] [TEST] Starting main system startup test
-[2025-07-23 19:18:54] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 19:18:54] [SYSTEM] Streaming transcription worker thread started successfully
-[2025-07-23 19:18:54] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 19:18:54] [SYSTEM] Gemini warm-up thread started
-[2025-07-23 19:18:54] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 19:18:54] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 19:18:54] [ERROR] PortAudio stream error: Error starting stream: Unanticipated host error [PaErrorCode -9999]: 'WdmSyncIoctl: DeviceIoControl GLE = 0x0000001F (prop_set = {8C134960-51AD-11CF-878A-94F801C10000}, prop_id = 12)' [Windows WDM-KS error 0]
-[2025-07-23 19:18:54] [ERROR] Critical error in main execution: Error starting stream: Unanticipated host error [PaErrorCode -9999]: 'WdmSyncIoctl: DeviceIoControl GLE = 0x0000001F (prop_set = {8C134960-51AD-11CF-878A-94F801C10000}, prop_id = 12)' [Windows WDM-KS error 0]
-[2025-07-23 19:18:54] [SYSTEM] Starting system cleanup
-[2025-07-23 19:18:54] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 19:18:54] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 19:18:54] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 19:18:54] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 19:18:54] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.28s - Response: Estoy listo.
-[2025-07-23 19:18:55] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 19:18:55] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 19:18:55] [SYSTEM] Streaming buffer cleared
-[2025-07-23 19:18:55] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 19:22:36 ===
-[2025-07-23 19:22:36] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:22:36] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:22:36] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:22:36] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:22:36] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:22:36] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:22:37] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:22:37] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:22:37] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:22:37] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:22:37] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:22:37] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:22:37] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:22:37] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:22:37] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:22:37] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 19:22:37] [SYSTEM] Streaming transcription worker thread started successfully
-[2025-07-23 19:22:37] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 19:22:37] [SYSTEM] Gemini warm-up thread started
-[2025-07-23 19:22:37] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 19:22:37] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 19:22:37] [SYSTEM] Audio stream started successfully
-[2025-07-23 19:22:37] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.23s - Response: Listo.
-[2025-07-23 19:22:39] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
-[2025-07-23 19:22:41] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:22:41] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:22:41] [AUDIO] Audio window queued for transcription processing
-[2025-07-23 19:22:41] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:22:41] [LATENCY] Window 2cc8e742 latency: 0.082s
-[2025-07-23 19:22:41] [LATENCY_AVG] Rolling average latency (1 windows): 0.082s
-[2025-07-23 19:22:41] [LATENCY_OK] Window 2cc8e742 latency 0.082s within 1.5s target
-[2025-07-23 19:22:41] [LATENCY_AVG_OK] Rolling average latency 0.082s within 1.5s target
-[2025-07-23 19:22:41] [WINDOW_RESULT] Transcription result: (no speech detected)
-[2025-07-23 19:22:41] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:22:43] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:22:43] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:22:43] [AUDIO] Audio window queued for transcription processing
-[2025-07-23 19:22:43] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:22:43] [LATENCY] Window 58384ddf latency: 0.022s
-[2025-07-23 19:22:43] [LATENCY_AVG] Rolling average latency (2 windows): 0.052s
-[2025-07-23 19:22:43] [LATENCY_OK] Window 58384ddf latency 0.022s within 1.5s target
-[2025-07-23 19:22:43] [LATENCY_AVG_OK] Rolling average latency 0.052s within 1.5s target
-[2025-07-23 19:22:43] [WINDOW_RESULT] Transcription result: (no speech detected)
-[2025-07-23 19:22:43] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:22:45] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:22:45] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:22:45] [AUDIO] Audio window queued for transcription processing
-[2025-07-23 19:22:45] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:22:45] [SYSTEM] Keyboard interrupt received
-[2025-07-23 19:22:45] [SYSTEM] Application terminated by user
-[2025-07-23 19:22:45] [SYSTEM] Starting system cleanup
-[2025-07-23 19:22:45] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 19:22:45] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 19:22:45] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 19:22:45] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 19:22:45] [LATENCY] Window 55457156 latency: 0.026s
-[2025-07-23 19:22:45] [LATENCY_AVG] Rolling average latency (3 windows): 0.043s
-[2025-07-23 19:22:45] [LATENCY_OK] Window 55457156 latency 0.026s within 1.5s target
-[2025-07-23 19:22:45] [LATENCY_AVG_OK] Rolling average latency 0.043s within 1.5s target
-[2025-07-23 19:22:45] [WINDOW_RESULT] Transcription result: (no speech detected)
-[2025-07-23 19:22:45] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:22:45] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 19:22:45] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 19:22:45] [SYSTEM] Streaming buffer cleared
-[2025-07-23 19:22:45] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 19:23:18 ===
-[2025-07-23 19:23:18] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:23:18] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:23:18] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:23:18] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:23:18] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:23:18] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:23:19] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:23:19] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:23:19] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:23:19] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:23:19] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:23:19] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:23:19] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:23:19] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:23:19] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:23:19] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 19:23:19] [SYSTEM] Streaming transcription worker thread started successfully
-[2025-07-23 19:23:19] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 19:23:19] [SYSTEM] Gemini warm-up thread started
-[2025-07-23 19:23:19] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 19:23:19] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 19:23:19] [SYSTEM] Audio stream started successfully
-[2025-07-23 19:23:19] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.17s - Response: Listo.
-[2025-07-23 19:23:21] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
-[2025-07-23 19:23:23] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:23:23] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:23:23] [AUDIO] Audio window queued for transcription processing
-[2025-07-23 19:23:23] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:23:23] [LATENCY] Window d136a071 latency: 0.081s
-[2025-07-23 19:23:23] [LATENCY_AVG] Rolling average latency (1 windows): 0.081s
-[2025-07-23 19:23:23] [LATENCY_OK] Window d136a071 latency 0.081s within 1.5s target
-[2025-07-23 19:23:23] [LATENCY_AVG_OK] Rolling average latency 0.081s within 1.5s target
-[2025-07-23 19:23:23] [WINDOW_RESULT] Transcription result: (no speech detected)
-[2025-07-23 19:23:23] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:23:25] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:23:25] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:23:25] [AUDIO] Audio window queued for transcription processing
-[2025-07-23 19:23:25] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:23:25] [LATENCY] Window 5571d508 latency: 0.023s
-[2025-07-23 19:23:25] [LATENCY_AVG] Rolling average latency (2 windows): 0.052s
-[2025-07-23 19:23:25] [LATENCY_OK] Window 5571d508 latency 0.023s within 1.5s target
-[2025-07-23 19:23:25] [LATENCY_AVG_OK] Rolling average latency 0.052s within 1.5s target
-[2025-07-23 19:23:25] [WINDOW_RESULT] Transcription result: (no speech detected)
-[2025-07-23 19:23:25] [ERROR] Error marking queue task as done: task_done() called too many times
-[2025-07-23 19:23:26] [SYSTEM] Keyboard interrupt received
-[2025-07-23 19:23:26] [SYSTEM] Application terminated by user
-[2025-07-23 19:23:26] [SYSTEM] Starting system cleanup
-[2025-07-23 19:23:26] [SYSTEM] Signaled transcription worker to stop
-[2025-07-23 19:23:26] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 19:23:26] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 19:23:26] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-23 19:23:26] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 19:23:26] [SYSTEM] Transcription thread finished successfully
-[2025-07-23 19:23:26] [SYSTEM] Streaming buffer cleared
-[2025-07-23 19:23:26] [SYSTEM] System cleanup completed
-=== System startup at 2025-07-23 19:27:55 ===
-[2025-07-23 19:27:55] [SYSTEM] Logging system initialized successfully
-[2025-07-23 19:27:55] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
-[2025-07-23 19:27:55] [SYSTEM] Environment variables loaded successfully
-[2025-07-23 19:27:55] [SYSTEM] Gemini client initialized successfully
-[2025-07-23 19:27:55] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-23 19:27:55] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-23 19:27:56] [SYSTEM] Whisper model loaded successfully
-[2025-07-23 19:27:56] [AUDIO_FORMAT] === Audio Format Validation Results ===
-[2025-07-23 19:27:56] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
-[2025-07-23 19:27:56] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
-[2025-07-23 19:27:56] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
-[2025-07-23 19:27:56] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
-[2025-07-23 19:27:56] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
-[2025-07-23 19:27:56] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-23 19:27:56] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-23 19:27:56] [SYSTEM] Streaming transcription worker thread started
-[2025-07-23 19:27:56] [SYSTEM] Streaming transcription worker thread started successfully
-[2025-07-23 19:27:56] [SYSTEM] User input worker thread started
-[2025-07-23 19:27:56] [SYSTEM] User input worker thread started successfully
-[2025-07-23 19:27:56] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-23 19:27:56] [SYSTEM] Gemini warm-up thread started
-[2025-07-23 19:27:56] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
-[2025-07-23 19:27:56] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-23 19:27:56] [SYSTEM] Audio stream started successfully
-[2025-07-23 19:27:56] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.22s - Response: Estoy listo.
-[2025-07-23 19:27:58] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
-[2025-07-23 19:28:00] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:00] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:02] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:02] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:04] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:04] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:06] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:06] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:08] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:08] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:10] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:10] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:12] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:12] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:14] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:14] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:16] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:16] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:18] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:18] [AUDIO] Audio window queued (RMS: 0.013639)
-[2025-07-23 19:28:18] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:28:18] [AUDIO_PROCESS] Processing audio window with RMS: 0.013639
-[2025-07-23 19:28:18] [LATENCY] Window 81a9f96a latency: 0.396s
-[2025-07-23 19:28:18] [LATENCY_AVG] Rolling average latency (1 windows): 0.396s
-[2025-07-23 19:28:18] [LATENCY_OK] Window 81a9f96a latency 0.396s within 1.5s target
-[2025-07-23 19:28:18] [LATENCY_AVG_OK] Rolling average latency 0.396s within 1.5s target
-[2025-07-23 19:28:18] [WINDOW_RESULT] Transcription result: Subtítulos por la comunidad de Amara.org
-[2025-07-23 19:28:18] [USER_INPUT] User input request queued
-[2025-07-23 19:28:20] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:20] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:22] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:22] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:24] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:24] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:26] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:26] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
-[2025-07-23 19:28:28] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:28] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000482)
-[2025-07-23 19:28:30] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:30] [AUDIO] Audio window queued (RMS: 0.073339)
-[2025-07-23 19:28:30] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:28:30] [AUDIO_PROCESS] Processing audio window with RMS: 0.073339
-[2025-07-23 19:28:30] [LATENCY] Window 49bcd4f8 latency: 0.230s
-[2025-07-23 19:28:30] [LATENCY_AVG] Rolling average latency (2 windows): 0.313s
-[2025-07-23 19:28:30] [LATENCY_OK] Window 49bcd4f8 latency 0.230s within 1.5s target
-[2025-07-23 19:28:30] [LATENCY_AVG_OK] Rolling average latency 0.313s within 1.5s target
-[2025-07-23 19:28:30] [WINDOW_RESULT] Transcription result: A ver si... ...parece... ...parece...
-[2025-07-23 19:28:30] [USER_INPUT] User input request queued
-[2025-07-23 19:28:32] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:32] [AUDIO] Audio window queued (RMS: 0.106468)
-[2025-07-23 19:28:32] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:28:32] [AUDIO_PROCESS] Processing audio window with RMS: 0.106468
-[2025-07-23 19:28:32] [LATENCY] Window 26355bd5 latency: 0.169s
-[2025-07-23 19:28:32] [LATENCY_AVG] Rolling average latency (3 windows): 0.265s
-[2025-07-23 19:28:32] [LATENCY_OK] Window 26355bd5 latency 0.169s within 1.5s target
-[2025-07-23 19:28:32] [LATENCY_AVG_OK] Rolling average latency 0.265s within 1.5s target
-[2025-07-23 19:28:32] [WINDOW_RESULT] Transcription result: ¡Suscríbete!
-[2025-07-23 19:28:32] [USER_INPUT] User input request queued
-[2025-07-23 19:28:34] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:34] [AUDIO] Audio window queued (RMS: 0.091870)
-[2025-07-23 19:28:34] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:28:34] [AUDIO_PROCESS] Processing audio window with RMS: 0.091870
-[2025-07-23 19:28:34] [LATENCY] Window c7cb1874 latency: 0.313s
-[2025-07-23 19:28:34] [LATENCY_AVG] Rolling average latency (4 windows): 0.277s
-[2025-07-23 19:28:34] [LATENCY_OK] Window c7cb1874 latency 0.313s within 1.5s target
-[2025-07-23 19:28:34] [LATENCY_AVG_OK] Rolling average latency 0.277s within 1.5s target
-[2025-07-23 19:28:34] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
-[2025-07-23 19:28:36] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:36] [AUDIO] Audio window queued (RMS: 0.068523)
-[2025-07-23 19:28:36] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:28:36] [AUDIO_PROCESS] Processing audio window with RMS: 0.068523
-[2025-07-23 19:28:36] [LATENCY] Window 5a6b2c95 latency: 0.264s
-[2025-07-23 19:28:36] [LATENCY_AVG] Rolling average latency (5 windows): 0.274s
-[2025-07-23 19:28:36] [LATENCY_OK] Window 5a6b2c95 latency 0.264s within 1.5s target
-[2025-07-23 19:28:36] [LATENCY_AVG_OK] Rolling average latency 0.274s within 1.5s target
-[2025-07-23 19:28:36] [WINDOW_RESULT] Transcription result: ¡Gran! ¡Adiós! ¡Sólo!
-[2025-07-23 19:28:36] [USER_INPUT] User input request queued
-[2025-07-23 19:28:38] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:38] [AUDIO] Audio window queued (RMS: 0.030973)
-[2025-07-23 19:28:38] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:28:38] [AUDIO_PROCESS] Processing audio window with RMS: 0.030973
-[2025-07-23 19:28:38] [LATENCY] Window dac4be43 latency: 0.023s
-[2025-07-23 19:28:38] [LATENCY_AVG] Rolling average latency (6 windows): 0.233s
-[2025-07-23 19:28:38] [LATENCY_OK] Window dac4be43 latency 0.023s within 1.5s target
-[2025-07-23 19:28:38] [LATENCY_AVG_OK] Rolling average latency 0.233s within 1.5s target
-[2025-07-23 19:28:38] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
-[2025-07-23 19:28:40] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
-[2025-07-23 19:28:40] [AUDIO] Audio window queued (RMS: 0.016460)
-[2025-07-23 19:28:40] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
-[2025-07-23 19:28:40] [AUDIO_PROCESS] Processing audio window with RMS: 0.016460
-[2025-07-23 19:28:40] [LATENCY] Window 042c090c latency: 0.025s
-[2025-07-23 19:28:40] [LATENCY_AVG] Rolling average latency (7 windows): 0.203s
-[2025-07-23 19:28:40] [LATENCY_OK] Window 042c090c latency 0.025s within 1.5s target
-[2025-07-23 19:28:40] [LATENCY_AVG_OK] Rolling average latency 0.203s within 1.5s target
-[2025-07-23 19:28:40] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
-[2025-07-23 19:28:41] [USER_SKIP] EOF received during confirmation prompt
-[2025-07-23 19:28:41] [SYSTEM] Keyboard interrupt received
-[2025-07-23 19:28:41] [SYSTEM] Application terminated by user
-[2025-07-23 19:28:41] [SYSTEM] Starting system cleanup
-[2025-07-23 19:28:41] [SYSTEM] Signaled worker threads to stop
-[2025-07-23 19:28:41] [SYSTEM] Waiting for audio queue to empty
-[2025-07-23 19:28:41] [SYSTEM] Audio queue emptied successfully
-[2025-07-23 19:28:41] [SYSTEM] Waiting for user input queue to empty
-[2025-07-23 19:28:42] [SYSTEM] Streaming transcription worker thread stopped
-[2025-07-23 19:28:44] [SYSTEM] User input queue not empty after 3.0s timeout, forcing cleanup
-[2025-07-23 19:28:44] [SYSTEM] Waiting for user input thread to finish
-[2025-07-23 19:28:46] [USER_SKIP] EOF received during confirmation prompt
-[2025-07-23 19:28:46] [SYSTEM] User input worker thread stopped
+=== System startup at 2025-07-23 20:59:56 ===
+[2025-07-23 20:59:56] [SYSTEM] Logging system initialized successfully
+[2025-07-23 20:59:56] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 20:59:56] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 20:59:56] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 20:59:56] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 20:59:56] [SYSTEM] Initializing Whisper model with compute_type: float16
+=== System startup at 2025-07-23 21:01:02 ===
+[2025-07-23 21:01:02] [SYSTEM] Logging system initialized successfully
+[2025-07-23 21:01:02] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 21:01:02] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 21:01:02] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 21:01:02] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 21:01:02] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 21:01:03] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 21:01:03] [AUDIO_FORMAT] === Audio Format Validation Results ===
+[2025-07-23 21:01:03] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
+[2025-07-23 21:01:03] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
+[2025-07-23 21:01:03] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
+[2025-07-23 21:01:03] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
+[2025-07-23 21:01:03] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
+[2025-07-23 21:01:03] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 21:01:03] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+=== System startup at 2025-07-23 21:01:35 ===
+[2025-07-23 21:01:35] [SYSTEM] Logging system initialized successfully
+[2025-07-23 21:01:35] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 21:01:35] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 21:01:35] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 21:01:35] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 21:01:35] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 21:01:36] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 21:01:36] [AUDIO_FORMAT] === Audio Format Validation Results ===
+[2025-07-23 21:01:36] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
+[2025-07-23 21:01:36] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
+[2025-07-23 21:01:36] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
+[2025-07-23 21:01:36] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
+[2025-07-23 21:01:36] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
+[2025-07-23 21:01:36] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 21:01:36] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 21:01:36] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
+[2025-07-23 21:01:36] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
+[2025-07-23 21:01:36] [SYSTEM] Thread architecture: transcription worker + hotkey listener
+[2025-07-23 21:01:36] [SYSTEM] Starting system threads...
+[2025-07-23 21:01:36] [SYSTEM] Streaming transcription worker thread started
+[2025-07-23 21:01:36] [SYSTEM] ✅ Streaming transcription worker thread started successfully
+[2025-07-23 21:01:36] [SYSTEM] ✅ Hotkey listener thread started successfully
+[2025-07-23 21:01:36] [SYSTEM] Hotkey listener thread started with enhanced error handling
+[2025-07-23 21:01:36] [SYSTEM] ✅ All system threads running successfully
+[2025-07-23 21:01:36] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-23 21:01:36] [SYSTEM] ✅ Gemini warm-up thread started
+[2025-07-23 21:01:36] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 21:01:36] [SYSTEM] Initializing audio stream...
+[2025-07-23 21:01:36] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-23 21:01:36] [SYSTEM] ✅ Audio stream started successfully
+[2025-07-23 21:01:36] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
+[2025-07-23 21:01:36] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.21s - Response: Listo.
+[2025-07-23 21:01:38] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
+[2025-07-23 21:01:40] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:01:40] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
+[2025-07-23 21:01:42] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:01:42] [AUDIO] Audio window queued (RMS: 0.013639)
+[2025-07-23 21:01:42] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:01:42] [AUDIO_PROCESS] Processing audio window with RMS: 0.013639
+[2025-07-23 21:01:43] [LATENCY] Window 199db18e latency: 0.392s
+[2025-07-23 21:01:43] [LATENCY_AVG] Rolling average latency (1 windows): 0.392s
+[2025-07-23 21:01:43] [LATENCY_OK] Window 199db18e latency 0.392s within 1.5s target
+[2025-07-23 21:01:43] [LATENCY_AVG_OK] Rolling average latency 0.392s within 1.5s target
+[2025-07-23 21:01:43] [WINDOW_RESULT] Transcription result: Subtítulos por la comunidad de Amara.org
+[2025-07-23 21:01:44] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:01:44] [AUDIO] Audio window queued (RMS: 0.019289)
+[2025-07-23 21:01:44] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:01:44] [AUDIO_PROCESS] Processing audio window with RMS: 0.019289
+[2025-07-23 21:01:45] [LATENCY] Window 7c9a103a latency: 0.638s
+[2025-07-23 21:01:45] [LATENCY_AVG] Rolling average latency (2 windows): 0.515s
+[2025-07-23 21:01:45] [LATENCY_OK] Window 7c9a103a latency 0.638s within 1.5s target
+[2025-07-23 21:01:45] [LATENCY_AVG_OK] Rolling average latency 0.515s within 1.5s target
+[2025-07-23 21:01:45] [WINDOW_RESULT] Transcription result: un un un un un un un un un un un un un un
+[2025-07-23 21:01:46] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:01:46] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
+[2025-07-23 21:01:48] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:01:48] [AUDIO] Audio window queued (RMS: 0.078823)
+[2025-07-23 21:01:48] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:01:48] [AUDIO_PROCESS] Processing audio window with RMS: 0.078823
+[2025-07-23 21:01:49] [LATENCY] Window 67fa2268 latency: 0.378s
+[2025-07-23 21:01:49] [LATENCY_AVG] Rolling average latency (3 windows): 0.469s
+[2025-07-23 21:01:49] [LATENCY_OK] Window 67fa2268 latency 0.378s within 1.5s target
+[2025-07-23 21:01:49] [LATENCY_AVG_OK] Rolling average latency 0.469s within 1.5s target
+[2025-07-23 21:01:49] [WINDOW_RESULT] Transcription result: No, no, no, no, no, no.
+[2025-07-23 21:01:50] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:01:50] [AUDIO] Audio window queued (RMS: 0.093843)
+[2025-07-23 21:01:50] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:01:50] [AUDIO_PROCESS] Processing audio window with RMS: 0.093843
+[2025-07-23 21:01:52] [LATENCY] Window 81dbb57b latency: 1.382s
+[2025-07-23 21:01:52] [LATENCY_AVG] Rolling average latency (4 windows): 0.697s
+[2025-07-23 21:01:52] [LATENCY_OK] Window 81dbb57b latency 1.382s within 1.5s target
+[2025-07-23 21:01:52] [LATENCY_AVG_OK] Rolling average latency 0.697s within 1.5s target
+[2025-07-23 21:01:52] [WINDOW_RESULT] Transcription result: ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir! ¡Van a morir
+[2025-07-23 21:01:52] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:01:52] [AUDIO] Audio window queued (RMS: 0.078767)
+[2025-07-23 21:01:52] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:01:52] [AUDIO_PROCESS] Processing audio window with RMS: 0.078767
+[2025-07-23 21:01:52] [LATENCY] Window a867bdb7 latency: 0.136s
+[2025-07-23 21:01:52] [LATENCY_AVG] Rolling average latency (5 windows): 0.585s
+[2025-07-23 21:01:52] [LATENCY_OK] Window a867bdb7 latency 0.136s within 1.5s target
+[2025-07-23 21:01:52] [LATENCY_AVG_OK] Rolling average latency 0.585s within 1.5s target
+[2025-07-23 21:01:52] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
+[2025-07-23 21:01:54] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:01:54] [AUDIO] Audio window queued (RMS: 0.025988)
+[2025-07-23 21:01:54] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:01:54] [AUDIO_PROCESS] Processing audio window with RMS: 0.025988
+[2025-07-23 21:01:54] [LATENCY] Window 057c3754 latency: 0.025s
+[2025-07-23 21:01:54] [LATENCY_AVG] Rolling average latency (6 windows): 0.492s
+[2025-07-23 21:01:54] [LATENCY_OK] Window 057c3754 latency 0.025s within 1.5s target
+[2025-07-23 21:01:54] [LATENCY_AVG_OK] Rolling average latency 0.492s within 1.5s target
+[2025-07-23 21:01:54] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
+[2025-07-23 21:01:56] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
+[2025-07-23 21:01:56] [SYSTEM] Application terminated by user (Ctrl+C)
+[2025-07-23 21:01:56] [SYSTEM] Starting system cleanup
+[2025-07-23 21:01:56] [SYSTEM] Signaled worker threads to stop
+[2025-07-23 21:01:56] [SYSTEM] Waiting for audio queue to empty
+[2025-07-23 21:01:56] [SYSTEM] Audio queue emptied successfully
+[2025-07-23 21:01:56] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-23 21:01:56] [SYSTEM] Hotkey listener thread stopped gracefully
+[2025-07-23 21:01:56] [SYSTEM] Streaming transcription worker thread stopped
+[2025-07-23 21:01:56] [SYSTEM] Transcription thread finished successfully
+[2025-07-23 21:01:56] [SYSTEM] Streaming buffer cleared
+[2025-07-23 21:01:56] [SYSTEM] System cleanup completed
+=== System startup at 2025-07-23 21:11:22 ===
+[2025-07-23 21:11:22] [SYSTEM] Logging system initialized successfully
+[2025-07-23 21:11:22] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 21:11:22] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 21:11:22] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 21:11:22] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 21:11:22] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 21:11:23] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 21:11:23] [AUDIO_FORMAT] === Audio Format Validation Results ===
+[2025-07-23 21:11:23] [AUDIO_FORMAT] ✅ Whisper native 48kHz float32 support: CONFIRMED
+[2025-07-23 21:11:23] [AUDIO_FORMAT] ✅ Optimization: Skipping scipy resampling entirely
+[2025-07-23 21:11:23] [AUDIO_FORMAT] 🚀 Performance: Direct 48kHz processing reduces latency
+[2025-07-23 21:11:23] [AUDIO_FORMAT] 📊 Validation source: test_whisper_format_validation.py results
+[2025-07-23 21:11:23] [SYSTEM] StreamingBuffer initialized: window=3.0s, interval=1.0s, min=2.5s
+[2025-07-23 21:11:23] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 21:11:23] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 21:11:23] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
+[2025-07-23 21:11:23] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
+[2025-07-23 21:11:23] [SYSTEM] Thread architecture: transcription worker + hotkey listener
+[2025-07-23 21:11:23] [SYSTEM] Starting system threads...
+[2025-07-23 21:11:23] [SYSTEM] Streaming transcription worker thread started
+[2025-07-23 21:11:23] [SYSTEM] ✅ Streaming transcription worker thread started successfully
+[2025-07-23 21:11:23] [SYSTEM] Hotkey listener thread started with enhanced error handling
+[2025-07-23 21:11:23] [SYSTEM] ✅ Hotkey listener thread started successfully
+[2025-07-23 21:11:23] [SYSTEM] ✅ All system threads running successfully
+[2025-07-23 21:11:23] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-23 21:11:23] [SYSTEM] ✅ Gemini warm-up thread started
+[2025-07-23 21:11:23] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 21:11:23] [SYSTEM] Initializing audio stream...
+[2025-07-23 21:11:23] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-23 21:11:23] [SYSTEM] ✅ Audio stream started successfully
+[2025-07-23 21:11:23] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
+[2025-07-23 21:11:23] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.23s - Response: Listo.
+[2025-07-23 21:11:25] [WINDOW_SKIP] Not enough audio data - insufficient data: 96000 samples (2.00s) < 2.5s minimum
+[2025-07-23 21:11:27] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:11:27] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
+[2025-07-23 21:11:29] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:11:29] [AUDIO_SILENT] Skipping silent audio window (RMS: 0.000000)
+[2025-07-23 21:11:31] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:11:31] [AUDIO] Audio window queued (RMS: 0.059159)
+[2025-07-23 21:11:31] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:11:31] [AUDIO_PROCESS] Processing audio window with RMS: 0.059159
+[2025-07-23 21:11:31] [LATENCY] Window d4f202eb latency: 0.368s
+[2025-07-23 21:11:31] [LATENCY_AVG] Rolling average latency (1 windows): 0.368s
+[2025-07-23 21:11:31] [LATENCY_OK] Window d4f202eb latency 0.368s within 1.5s target
+[2025-07-23 21:11:31] [LATENCY_AVG_OK] Rolling average latency 0.368s within 1.5s target
+[2025-07-23 21:11:31] [WINDOW_RESULT] Transcription result: Rrrrrrrrrrrrrr
+[2025-07-23 21:11:33] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:11:33] [AUDIO] Audio window queued (RMS: 0.100162)
+[2025-07-23 21:11:33] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:11:33] [AUDIO_PROCESS] Processing audio window with RMS: 0.100162
+[2025-07-23 21:11:34] [LATENCY] Window e0b14597 latency: 1.422s
+[2025-07-23 21:11:34] [LATENCY_AVG] Rolling average latency (2 windows): 0.895s
+[2025-07-23 21:11:34] [LATENCY_OK] Window e0b14597 latency 1.422s within 1.5s target
+[2025-07-23 21:11:34] [LATENCY_AVG_OK] Rolling average latency 0.895s within 1.5s target
+[2025-07-23 21:11:34] [WINDOW_RESULT] Transcription result: Uuuh, Uuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh, Uuuuh
+[2025-07-23 21:11:35] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:11:35] [AUDIO] Audio window queued (RMS: 0.093189)
+[2025-07-23 21:11:35] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:11:35] [AUDIO_PROCESS] Processing audio window with RMS: 0.093189
+[2025-07-23 21:11:35] [LATENCY] Window cf74e02f latency: 0.156s
+[2025-07-23 21:11:35] [LATENCY_AVG] Rolling average latency (3 windows): 0.649s
+[2025-07-23 21:11:35] [LATENCY_OK] Window cf74e02f latency 0.156s within 1.5s target
+[2025-07-23 21:11:35] [LATENCY_AVG_OK] Rolling average latency 0.649s within 1.5s target
+[2025-07-23 21:11:35] [WINDOW_RESULT] Transcription result: ¡Selenta Sosión!
+[2025-07-23 21:11:37] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:11:37] [AUDIO] Audio window queued (RMS: 0.065164)
+[2025-07-23 21:11:37] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:11:37] [AUDIO_PROCESS] Processing audio window with RMS: 0.065164
+[2025-07-23 21:11:37] [LATENCY] Window 59b8734f latency: 0.024s
+[2025-07-23 21:11:37] [LATENCY_AVG] Rolling average latency (4 windows): 0.492s
+[2025-07-23 21:11:37] [LATENCY_OK] Window 59b8734f latency 0.024s within 1.5s target
+[2025-07-23 21:11:37] [LATENCY_AVG_OK] Rolling average latency 0.492s within 1.5s target
+[2025-07-23 21:11:37] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
+[2025-07-23 21:11:39] [WINDOW_EXTRACT] Extracted window: 144000 samples (3.00s)
+[2025-07-23 21:11:39] [AUDIO] Audio window queued (RMS: 0.008856)
+[2025-07-23 21:11:39] [WINDOW_TRANSCRIBE] Started transcription for 3.0s slice
+[2025-07-23 21:11:39] [AUDIO_PROCESS] Processing audio window with RMS: 0.008856
+[2025-07-23 21:11:39] [LATENCY] Window 47dc8244 latency: 0.023s
+[2025-07-23 21:11:39] [LATENCY_AVG] Rolling average latency (5 windows): 0.399s
+[2025-07-23 21:11:39] [LATENCY_OK] Window 47dc8244 latency 0.023s within 1.5s target
+[2025-07-23 21:11:39] [LATENCY_AVG_OK] Rolling average latency 0.399s within 1.5s target
+[2025-07-23 21:11:39] [WINDOW_RESULT] Transcription result: (no speech detected or too short)
+[2025-07-23 21:11:39] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
+[2025-07-23 21:11:39] [SYSTEM] Application terminated by user (Ctrl+C)
+[2025-07-23 21:11:39] [SYSTEM] Starting system cleanup
+[2025-07-23 21:11:39] [SYSTEM] Signaled worker threads to stop
+[2025-07-23 21:11:39] [SYSTEM] Waiting for audio queue to empty
+[2025-07-23 21:11:39] [SYSTEM] Audio queue emptied successfully
+[2025-07-23 21:11:39] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-23 21:11:39] [SYSTEM] Hotkey listener thread stopped gracefully
+[2025-07-23 21:11:40] [SYSTEM] Streaming transcription worker thread stopped
+[2025-07-23 21:11:40] [SYSTEM] Transcription thread finished successfully
+[2025-07-23 21:11:40] [SYSTEM] Streaming buffer cleared
+[2025-07-23 21:11:40] [SYSTEM] System cleanup completed

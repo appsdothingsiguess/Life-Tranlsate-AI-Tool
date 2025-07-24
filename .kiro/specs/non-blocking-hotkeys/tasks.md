@@ -1,17 +1,22 @@
 # Implementation Plan
 
-- [ ] 1. Add minimal shared state and hotkey infrastructure
+- [x] 1. Add minimal shared state and hotkey infrastructure
+
+
+
+
+
   - Create global `hotkey_state` dict with last_transcription, last_gemini, gemini_busy fields
   - Add single `hotkey_lock = threading.Lock()` for thread safety
   - Implement simple hotkey listener thread using msvcrt for Windows non-blocking input
   - Add 300ms debouncing with simple timestamp tracking per key
   - _Requirements: 1.1, 2.1, 2.2, 3.1, 3.4_
 
-- [ ] 2. Implement hotkey handlers (g, r, h)
-  - Add handle_g_key(): check transcription availability, gemini_busy state, call Gemini if ready
-  - Add handle_r_key(): reprint last Gemini response with visual separators
-  - Add handle_h_key(): display simple help text with available hotkeys
-  - Add hotkey logging: [HOTKEY_G], [HOTKEY_R], [HOTKEY_H], [MANUAL_GEMINI], [GEMINI_RESPONSE_TIME]
+- [x] 2. Implement hotkey handlers (`g`, `r`, `h`)
+  - Insert the three functions EXACTLY between the markers below.
+  - Do NOT modify anything else in the file.
+  - Log all actions with existing `log_event`.
+  - Use the global `state` dict and `lock` that already exist.
   - _Requirements: 1.2, 1.3, 1.4, 4.1, 4.2, 4.4, 5.1, 6.1, 6.2_
 
 - [ ] 3. Integrate hotkeys with existing transcription system
