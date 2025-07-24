@@ -220,3 +220,108 @@
 [2025-07-23 21:11:40] [SYSTEM] Transcription thread finished successfully
 [2025-07-23 21:11:40] [SYSTEM] Streaming buffer cleared
 [2025-07-23 21:11:40] [SYSTEM] System cleanup completed
+=== System startup at 2025-07-23 21:55:21 ===
+[2025-07-23 21:55:21] [SYSTEM] Logging system initialized successfully
+[2025-07-23 21:55:21] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 21:55:21] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 21:55:21] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 21:55:21] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 21:55:21] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 21:55:22] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 21:55:22] [AUDIO_FORMAT] === Live Transcription System Ready ===
+[2025-07-23 21:55:22] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
+[2025-07-23 21:55:22] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
+[2025-07-23 21:55:22] [AUDIO_FORMAT] 🚀 Performance: Sub-second latency with pause detection
+[2025-07-23 21:55:22] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.6
+[2025-07-23 21:55:22] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 21:55:22] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+=== System startup at 2025-07-23 21:58:05 ===
+[2025-07-23 21:58:05] [SYSTEM] Logging system initialized successfully
+[2025-07-23 21:58:05] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 21:58:05] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 21:58:05] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 21:58:05] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 21:58:05] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 21:58:06] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 21:58:06] [AUDIO_FORMAT] === Live Transcription System Ready ===
+[2025-07-23 21:58:06] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
+[2025-07-23 21:58:06] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
+[2025-07-23 21:58:06] [AUDIO_FORMAT] 🚀 Performance: Sub-second latency with pause detection
+[2025-07-23 21:58:06] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.6
+[2025-07-23 21:58:06] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 21:58:06] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+=== System startup at 2025-07-23 21:59:41 ===
+[2025-07-23 21:59:41] [SYSTEM] Logging system initialized successfully
+[2025-07-23 21:59:41] [SYSTEM] Log file: C:\Users\John\Downloads\programming\Whisper\log.txt
+[2025-07-23 21:59:41] [SYSTEM] Environment variables loaded successfully
+[2025-07-23 21:59:41] [SYSTEM] Gemini client initialized successfully
+[2025-07-23 21:59:41] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-23 21:59:41] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-23 21:59:42] [SYSTEM] Whisper model loaded successfully
+[2025-07-23 21:59:42] [AUDIO_FORMAT] === Live Transcription System Ready ===
+[2025-07-23 21:59:42] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
+[2025-07-23 21:59:42] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
+[2025-07-23 21:59:42] [AUDIO_FORMAT] 🚀 Performance: Sub-second latency with pause detection
+[2025-07-23 21:59:42] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.6
+[2025-07-23 21:59:42] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-23 21:59:42] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-23 21:59:42] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
+[2025-07-23 21:59:42] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
+[2025-07-23 21:59:42] [SYSTEM] Thread architecture: transcription worker + hotkey listener
+[2025-07-23 21:59:42] [SYSTEM] Starting system threads...
+[2025-07-23 21:59:42] [SYSTEM] Live transcription worker thread started
+[2025-07-23 21:59:42] [SYSTEM] ✅ Streaming transcription worker thread started successfully
+[2025-07-23 21:59:42] [SYSTEM] Hotkey listener thread started with enhanced error handling
+[2025-07-23 21:59:42] [SYSTEM] ✅ Hotkey listener thread started successfully
+[2025-07-23 21:59:42] [SYSTEM] ✅ All system threads running successfully
+[2025-07-23 21:59:42] [SYSTEM] ✅ Gemini warm-up thread started
+[2025-07-23 21:59:42] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-23 21:59:42] [SYSTEM] Initializing audio stream...
+[2025-07-23 21:59:42] [GEMINI_WARMUP] Warm-up prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 21:59:42] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-23 21:59:42] [SYSTEM] ✅ Audio stream started successfully
+[2025-07-23 21:59:42] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
+[2025-07-23 21:59:42] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.20s - Response: Listo.
+[2025-07-23 21:59:50] [AUDIO] SPEECH_START detected (RMS: 0.1582)
+[2025-07-23 22:00:08] [AUDIO] SPEECH_END detected after 2.00s of silence (RMS: 0.0000)
+[2025-07-23 22:00:08] [AUDIO] Processing complete speech segment (960000 samples, 20.00s)
+[2025-07-23 22:00:08] [AUDIO] Audio queued for live transcription
+[2025-07-23 22:00:08] [AUDIO] Audio resampled from 960000 to 320000 samples
+[2025-07-23 22:00:08] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 22:00:09] [LIVE_ES] Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar...
+[2025-07-23 22:00:13] [HOTKEY_Q] Hotkey 'q' pressed
+[2025-07-23 22:00:18] [SEND_GEMINI] 42w / 1c
+[2025-07-23 22:00:18] [HOTKEY_G] Sending to Gemini: Mamá, una cosa, va a ir al supermercado, por si quieres que ...
+[2025-07-23 22:00:18] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 22:00:18] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas. Si lo puedes mirar...
+[2025-07-23 22:00:19] [GEMINI_REPLY] Response (0.26s): Mamá, ¿necesitas algo del supermercado?
+[2025-07-23 22:00:19] [PERFORMANCE] Gemini response time 0.26s within live exam target
+[2025-07-23 22:00:19] [GEMINI_RESPONSE_TIME] 0.26s
+[2025-07-23 22:00:30] [AUDIO] SPEECH_START detected (RMS: 0.0490)
+[2025-07-23 22:00:44] [HOTKEY_G] No live text available
+[2025-07-23 22:00:48] [AUDIO] SPEECH_END detected after 2.00s of silence (RMS: 0.0000)
+[2025-07-23 22:00:48] [AUDIO] Processing complete speech segment (960000 samples, 20.00s)
+[2025-07-23 22:00:48] [AUDIO] Audio queued for live transcription
+[2025-07-23 22:00:48] [AUDIO] Audio resampled from 960000 to 320000 samples
+[2025-07-23 22:00:48] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-23 22:00:49] [LIVE_ES] Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas.
+[2025-07-23 22:00:51] [SEND_GEMINI] 38w / 1c
+[2025-07-23 22:00:51] [HOTKEY_G] Sending to Gemini: Mamá, una cosa, va a ir al supermercado, por si quieres que ...
+[2025-07-23 22:00:51] [GEMINI_PROMPT] Prompt: You are a Spanish tutor. The student is preparing for an oral test. Reply only with a natural, brief Spanish sentence the student should say. Do not add explanations or alternatives. Just respond with the one sentence.
+[2025-07-23 22:00:51] [GEMINI_PROMPT] Spanish input: Mamá, una cosa, va a ir al supermercado, por si quieres que compre algo, había pensado en comprar dos barras de pan para el desayuno, unos tomates, unas cebollas y lo que no sé es si quedan patatas.
+[2025-07-23 22:00:51] [GEMINI_REPLY] Response (0.26s): ¿Hay algo más que necesites?
+[2025-07-23 22:00:51] [PERFORMANCE] Gemini response time 0.26s within live exam target
+[2025-07-23 22:00:51] [GEMINI_RESPONSE_TIME] 0.26s
+[2025-07-23 22:00:53] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
+[2025-07-23 22:00:53] [SYSTEM] Application terminated by user (Ctrl+C)
+[2025-07-23 22:00:53] [SYSTEM] Starting system cleanup
+[2025-07-23 22:00:53] [SYSTEM] Signaled worker threads to stop
+[2025-07-23 22:00:53] [SYSTEM] Waiting for audio queue to empty
+[2025-07-23 22:00:53] [SYSTEM] Audio queue emptied successfully
+[2025-07-23 22:00:53] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-23 22:00:53] [SYSTEM] Hotkey listener thread stopped gracefully
+[2025-07-23 22:00:54] [SYSTEM] Live transcription worker thread stopped
+[2025-07-23 22:00:54] [SYSTEM] Transcription thread finished successfully
+[2025-07-23 22:00:54] [SYSTEM] Audio buffer cleared
+[2025-07-23 22:00:54] [SYSTEM] Live buffer cleared
+[2025-07-23 22:00:54] [SYSTEM] System cleanup completed
