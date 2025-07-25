@@ -13,6 +13,14 @@ from datetime import datetime
 import msvcrt
 import time
 import re  # Added for filtering nonsense chunks
+import logging  # Added for logging configuration
+
+# Configure logging to suppress unwanted messages
+logging.getLogger("google_genai").setLevel(logging.WARNING)
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
+logging.getLogger("faster_whisper").setLevel(logging.WARNING)
+
 os.add_dll_directory(r"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin")
 
 # Custom resample function to replace scipy.signal.resample
@@ -42,8 +50,18 @@ def resample(audio_data, new_length):
 # System Constants
 RMS_THRESHOLD = 0.012  # Optimized threshold for better responsiveness
 SILENCE_SECS = 0.2     # Reduced from 0.3s to 0.2s for faster response
-MAX_SPEECH_SECS = 2.0  # Reduced from 4.0s to 2.0s for faster chunks
-AUTO_SEND_AFTER_SECS = 8  # seconds of silence before auto-fire
+MAX_SPEECH_SECS = 3.2  # Soft-hold forced flush starts after 3.2s
+AUTO_SEND_AFTER_SECS = None  # Auto-send disabled - manual send only
+
+# Soft flush constants for intelligent chunking (user requirements)
+SOFT_FLUSH_START_SECS = 3.2    # when grace window should begin
+SOFT_HOLD_MS = 400             # grace-period length (0.4s)
+SOFT_FLUSH_COUNTDOWN_SECS = 0.4  # 400ms countdown window
+MIN_SILENCE_MS = 150           # silence needed to early-flush (0.15s)
+SOFT_FLUSH_SILENCE_THRESHOLD = 0.15  # 150ms silence within countdown
+HARD_FLUSH_TIMEOUT = 5.0       # absolute max duration of one speech chunk
+SOFT_FLUSH_ABSOLUTE_CAP = 5.0  # Absolute hard-flush cap at 5s total
+SEGMENT_MERGE_THRESHOLD = 0.5  # 500ms threshold for merging segments
 LOG_FILE = "log.txt"
 GEMINI_PROMPT = (
     "You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. "
@@ -71,20 +89,32 @@ MODEL_NAME = "gemini-2.5-flash-lite"
 # Thread-safe logging infrastructure
 _log_lock = threading.Lock()
 
+# Console events for live exam interface
+CONSOLE_EVENTS = {
+    "INIT", "READY", "SPEECH_START", "BUFFER_UPDATE", 
+    "GEMINI_REPLY", "READY_NEXT", "HELP", "ERROR", "TRANSCRIBE_ES"
+}
+
 # Live transcription performance monitoring removed - now using immediate processing
+
+def print_console(message, event_type="INFO"):
+    """
+    Console output for live exam interface - only shows exam-relevant messages.
+    All other messages go to log file only.
+    """
+    if event_type in CONSOLE_EVENTS:
+        print(message)
+    
+    # Always log to file for diagnostics
+    log_with_timestamp(message, event_type)
 
 def log_with_timestamp(message, event_type="INFO"):
     """
     Thread-safe logging function with timestamp formatting.
-    Logs to both console and log file with proper error handling.
+    Logs to file only - console output handled by print_console().
     """
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     formatted_message = f"[{timestamp}] [{event_type}] {message}"
-    
-    # Only print to console for certain event types (suppress internal diagnostics)
-    console_events = {"ERROR", "SYSTEM", "GEMINI_REPLY", "GEMINI_REPLY_REPEAT", "AUTO_SEND", "HOTKEY_G", "HOTKEY_R", "HOTKEY_H"}
-    if event_type in console_events:
-        print(formatted_message)
     
     # Thread-safe file logging with error handling
     with _log_lock:
@@ -99,6 +129,35 @@ def log_with_timestamp(message, event_type="INFO"):
         except Exception as e:
             # Handle any other unexpected errors
             print(f"[{timestamp}] [ERROR] Unexpected logging error: {e}")
+
+def log_flush_event(reason, duration_seconds):
+    """
+    Log flush events with consistent format including chunk length.
+    Args:
+        reason: "soft" or "hard" 
+        duration_seconds: length of the audio chunk in seconds
+    """
+    log_with_timestamp(f"FLUSH ({reason}) | len={duration_seconds:.2f}s", "AUDIO")
+
+def print_startup_banner():
+    """
+    Display the live exam startup banner with instructions.
+    """
+    banner = """
+═════════════════════════════════════════════════════════
+LIVE SPANISH ORAL EXAM ASSISTANT
+─────────────────────────────────────────────────────────
+Hotkeys:
+g   → send current text to Gemini immediately
+r   → repeat last Gemini reply
+h   → show this help
+Ctrl‑C → exit
+
+Send mode:   manual only (press g to send)
+Flush limit: 5.0 s per speech chunk
+═════════════════════════════════════════════════════════
+"""
+    print(banner)
 
 def initialize_log_file():
     """
@@ -206,6 +265,7 @@ def warm_up_gemini():
             
             if response_text:
                 log_with_timestamp(f"Warm-up completed in {warmup_time:.2f}s - Response: {response_text}", "GEMINI_WARMUP_COMPLETE")
+                print_console(f"Gemini  warm‑up ({warmup_time:.2f}s)  ✔", "INIT")
                 return True
             else:
                 raise ValueError("Gemini warm-up returned empty response")
@@ -334,13 +394,18 @@ except Exception as e:
 log_with_timestamp("=== Live Transcription System Ready ===", "AUDIO_FORMAT")
 log_with_timestamp("✅ RMS-based speech detection enabled", "AUDIO_FORMAT")
 log_with_timestamp("✅ Live buffer accumulation system initialized", "AUDIO_FORMAT")
-log_with_timestamp("🚀 Performance: True live streaming with forced flush", "AUDIO_FORMAT")
-log_with_timestamp("📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0", "AUDIO_FORMAT")
+log_with_timestamp("🚀 Performance: True live streaming with soft-hold flush", "AUDIO_FORMAT")
+log_with_timestamp("📊 Settings: RMS_THRESHOLD=0.012, SILENCE_SECS=0.2, MAX_SPEECH_SECS=3.2", "AUDIO_FORMAT")
+log_with_timestamp("🎯 Soft-hold: 3.2s start + 400ms countdown + 150ms silence threshold", "AUDIO_FORMAT")
+log_with_timestamp("⏰ Absolute cap: 5.0s maximum speech duration (HARD_FLUSH_TIMEOUT)", "AUDIO_FORMAT")
+log_with_timestamp("🔧 Whisper: beam=1, best_of=1, vad=True, no_speech=0.6", "AUDIO_FORMAT")
+log_with_timestamp("❓ Question splitting: automatic split on '?' for separate Gemini calls", "AUDIO_FORMAT")
+log_with_timestamp("📝 Flush logging: FLUSH (soft|hard) | len=X.XXs format", "AUDIO_FORMAT")
 
 # Audio settings
 SAMPLE_RATE = 48000
 TARGET_RATE = 16000
-BLOCK_DURATION = 2
+BLOCK_DURATION = 0.5
 # WINDOW_DURATION now defined in streaming constants section above
 CHANNELS = 1
 DEVICE_INDEX = 37  # VB-Audio Virtual Cable WASAPI input
@@ -353,6 +418,10 @@ silence_start = None
 speech_start_time = None  # Track when current speech block began
 audio_buffer = deque()
 speech_buffer_lock = threading.Lock()
+
+# Soft-hold forced flush state
+soft_flush_countdown_start = None  # When countdown started
+soft_flush_silence_start = None    # When silence started during countdown
 
 # Live transcription buffer for accumulating text
 live_buffer: list[str] = []
@@ -373,7 +442,8 @@ audio_stream = None  # Will hold the audio stream reference
 hotkey_state = {
     "last_transcription": "",
     "last_gemini": "",
-    "gemini_busy": False
+    "gemini_busy": False,
+    "question_counter": 0  # Track question index for logging
 }
 hotkey_lock = threading.Lock()  # Single lock for thread safety
 hotkey_listener_running = False
@@ -479,7 +549,7 @@ def update_speaking_state(audio_chunk):
     Flip state after SILENCE_SECS threshold is reached.
     Log SPEECH_START and SPEECH_END events with timestamps.
     """
-    global is_speaking, silence_start, speech_start_time
+    global is_speaking, silence_start, speech_start_time, soft_flush_countdown_start, soft_flush_silence_start
     
     try:
         rms = compute_rms(audio_chunk)
@@ -512,6 +582,11 @@ def update_speaking_state(audio_chunk):
                         # Transition from speech to silence
                         is_speaking = False
                         speech_start_time = None  # Reset speech start time
+                        # Reset soft-hold state when speech ends naturally
+                        soft_flush_countdown_start = None
+                        soft_flush_silence_start = None
+                        # Reset speaking feedback flag so it can show again for next speech
+                        # Note: This will be reset in the callback function when speech ends
                         log_with_timestamp(f"SPEECH_END detected after {silence_duration:.2f}s of silence (RMS: {rms:.4f})", "AUDIO")
                         return True  # Signal that speech segment is complete
         
@@ -555,7 +630,8 @@ def is_nonsense_chunk(text):
 # >>> HOTKEY_HANDLERS_START
 def send_to_gemini(buffer_content):
     """
-    Shared function to send content to Gemini, used by both manual g-key and auto-send.
+    Shared function to send content to Gemini, used by manual g-key only.
+    Splits text on question marks and sends each question separately.
     Returns True if successful, False otherwise.
     """
     import time
@@ -576,50 +652,70 @@ def send_to_gemini(buffer_content):
         else:
             full_text = str(buffer_content)
         
-        word_count = len(full_text.split())
+        # Split text on question marks to handle multiple questions
+        questions = [q.strip() for q in full_text.split('?') if q.strip()]
         
-        with hotkey_lock:
-            hotkey_state["gemini_busy"] = True
-        
-        try:
-            start = time.time()
-            
-            # 🎙️ Gemini request feedback
-            print("🤖 Sending to Gemini...")
-            log_with_timestamp("Sending to Gemini", "USER_FEEDBACK")
-            
-            # Call Gemini with the content
-            reply = call_gemini_api(full_text)
-            elapsed = time.time() - start
-            
-            if reply is None:
-                raise ValueError("Gemini API returned no response")
-            
-            with hotkey_lock:
-                hotkey_state["last_gemini"] = reply
-                hotkey_state["gemini_busy"] = False
-            
-            # Clear the live buffer after successful send
-            with live_buffer_lock:
-                live_buffer.clear()
-            
-            log_with_timestamp(f"{elapsed:.2f}s", "GEMINI_RESPONSE_TIME")
-            print(f"🤖 Gemini: {reply}")
-            
-            return True
-            
-        except KeyboardInterrupt:
-            with hotkey_lock:
-                hotkey_state["gemini_busy"] = False
-            log_with_timestamp("Gemini call interrupted by user", "ERROR_GEMINI")
-            raise
-        except Exception as gemini_error:
-            with hotkey_lock:
-                hotkey_state["gemini_busy"] = False
-            log_with_timestamp(f"Gemini API error: {str(gemini_error)}", "ERROR_GEMINI")
-            print("🤖 ❌ Gemini request failed. Check logs for details.")
+        if not questions:
+            log_with_timestamp("No valid questions found in text", "ERROR")
             return False
+        
+        # Send each question separately
+        success_count = 0
+        for i, question in enumerate(questions):
+            # Add question mark back if it was split
+            if not question.endswith('?'):
+                question += '?'
             
+            with hotkey_lock:
+                hotkey_state["gemini_busy"] = True
+                hotkey_state["question_counter"] += 1
+                question_index = hotkey_state["question_counter"]
+            
+            try:
+                start = time.time()
+                
+                # Log the send request (file only, no console output)
+                log_with_timestamp(f"Sending Q{question_index} to Gemini: {question[:50]}...", "USER_FEEDBACK")
+                
+                # Call Gemini with the question
+                reply = call_gemini_api(question)
+                elapsed = time.time() - start
+                
+                if reply is None:
+                    raise ValueError(f"Gemini API returned no response for Q{question_index}")
+                
+                with hotkey_lock:
+                    hotkey_state["last_gemini"] = reply
+                    hotkey_state["gemini_busy"] = False
+                
+                log_with_timestamp(f"Q{question_index} response time: {elapsed:.2f}s", "GEMINI_RESPONSE_TIME")
+                print_console(f"🤖  Q{question_index}  «{reply}»", "GEMINI_REPLY")
+                success_count += 1
+                
+            except Exception as question_error:
+                with hotkey_lock:
+                    hotkey_state["gemini_busy"] = False
+                log_with_timestamp(f"Error sending Q{question_index}: {str(question_error)}", "ERROR_GEMINI")
+                print(f"🤖 ❌ Q{question_index} failed. Check logs for details.")
+                continue
+        
+        # Clear the live buffer after all questions are processed
+        with live_buffer_lock:
+            live_buffer.clear()
+        
+        # Show ready status after successful send
+        if success_count > 0:
+            print_console("─────────────────────────────────────────────────────────", "READY_NEXT")
+            print_console("🔄  Ready — start next answer", "READY_NEXT")
+            print_console("─────────────────────────────────────────────────────────", "READY_NEXT")
+        
+        return success_count > 0
+        
+    except KeyboardInterrupt:
+        with hotkey_lock:
+            hotkey_state["gemini_busy"] = False
+        log_with_timestamp("Gemini call interrupted by user", "ERROR_GEMINI")
+        raise
     except Exception as handler_error:
         log_with_timestamp(f"Critical error in send_to_gemini: {str(handler_error)}", "ERROR_SEND_GEMINI")
         try:
@@ -643,8 +739,8 @@ def handle_g_key(state, lock, log_event, call_gemini):
             word_count = len(" ".join(buffer_copy).split())
             chunk_count = len(buffer_copy)
         
-        # Log what we're sending
-        log_event(f"{word_count}w / {chunk_count}c", "SEND_GEMINI")
+        # Log what we're sending (file only)
+        log_event(f"Manual send: {word_count}w / {chunk_count}c", "HOTKEY_G")
         
         # Use shared send function
         success = send_to_gemini(buffer_copy)
@@ -666,19 +762,12 @@ def handle_r_key(state, lock, log_event):
         return
     
     log_event("Reprinting last Gemini reply", "HOTKEY_R")
-    print(f"🤖 Gemini: {reply}")
+    print_console(f"🤖  Last reply: «{reply}»", "GEMINI_REPLY")
 
 def handle_h_key(log_event):
     """Display help text for available hotkeys."""
-    help_text = (
-        "\n[Hotkeys]\n"
-        "  g  → Send all live text to Gemini\n"
-        "  r  → Repeat last Gemini reply\n"
-        "  h  → Show this help\n"
-        "  q  → Skip / ignore\n"
-    )
     log_event("Help shown", "HOTKEY_H")
-    print(help_text)
+    print_startup_banner()
 
 # HANDLERS_OK
 # <<< HOTKEY_HANDLERS_END
@@ -776,56 +865,19 @@ def hotkey_listener_worker():
 
 def auto_send_monitor():
     """
-    Auto-send monitor thread that checks for idle silence and auto-sends buffer content.
-    Runs every 0.3s and triggers auto-send after AUTO_SEND_AFTER_SECS seconds of inactivity.
+    Auto-send monitor thread - DISABLED.
+    Auto-send feature has been disabled. Only manual send via 'g' key is available.
     """
-    global auto_send_monitor_running, last_buffer_update_time
+    global auto_send_monitor_running
     
-    log_with_timestamp("Auto-send monitor thread started", "SYSTEM")
+    log_with_timestamp("Auto-send monitor thread disabled - manual send only", "SYSTEM")
     
+    # Keep thread alive but do nothing
     while auto_send_monitor_running:
         try:
-            time.sleep(0.3)  # Check every 0.3 seconds
-            
-            # Check conditions for auto-send
-            with live_buffer_lock:
-                buffer_empty = len(live_buffer) == 0
-                if buffer_empty:
-                    continue
-                
-                buffer_copy = live_buffer.copy()
-                char_count = len(" ".join(buffer_copy))
-            
-            with hotkey_lock:
-                gemini_busy = hotkey_state.get("gemini_busy", False)
-            
-            if gemini_busy:
-                continue
-            
-            # Check if enough time has passed since last buffer update
-            if last_buffer_update_time is None:
-                continue
-            
-            current_time = datetime.now()
-            time_since_update = (current_time - last_buffer_update_time).total_seconds()
-            
-            if time_since_update >= AUTO_SEND_AFTER_SECS:
-                # Trigger auto-send
-                word_count = len(" ".join(buffer_copy).split())
-                log_with_timestamp(f"Auto-sending {word_count} words after {time_since_update:.1f}s silence", "AUTO_SEND")
-                print(f"📨 Auto-sent {word_count} words to Gemini – waiting for reply…")
-                
-                # Use shared send function
-                success = send_to_gemini(buffer_copy)
-                if success:
-                    # Reset the update time to prevent immediate retrigger
-                    last_buffer_update_time = None
-                else:
-                    log_with_timestamp("Auto-send failed", "AUTO_SEND")
-            
-        except Exception as monitor_error:
-            log_with_timestamp(f"Error in auto-send monitor: {monitor_error}", "ERROR_AUTO_SEND")
-            continue
+            time.sleep(1.0)  # Sleep for 1 second to reduce CPU usage
+        except Exception:
+            break
     
     log_with_timestamp("Auto-send monitor thread stopped", "SYSTEM")
 
@@ -847,8 +899,6 @@ def streaming_transcription_worker():
             # Pull complete speech segment from queue
             try:
                 audio_data = audio_queue.get(timeout=1.0)
-                # 🎙️ Processing feedback
-                print("🧐 Whisper running...")
                 log_with_timestamp("Processing audio chunk", "USER_FEEDBACK")
             except queue.Empty:
                 continue
@@ -882,17 +932,18 @@ def streaming_transcription_worker():
                 
                 # Transcribe with Whisper
                 try:
+                    print_console("🔄 Processing audio...", "TRANSCRIBE_ES")
                     log_with_timestamp("Starting live transcription", "TRANSCRIBE_ES")
                     
                     segments, info = model.transcribe(
                         audio_data,
                         language="es",
                         task="transcribe",
-                        beam_size=1,  # Reduced from 5 for faster processing
-                        best_of=1,    # Reduced from 5 for faster processing
+                        beam_size=1,  # Reduced from 2 for speed (-70ms)
+                        best_of=1,    # Reduced from 2 for speed (-70ms)
                         vad_filter=True,
                         temperature=0.0,
-                        no_speech_threshold=0.5
+                        no_speech_threshold=0.6  # Slightly more permissive (-20ms)
                     )
                     
                     # Extract text
@@ -939,12 +990,16 @@ def streaming_transcription_worker():
                     # Add to live buffer and update hotkey state
                     with live_buffer_lock:
                         live_buffer.append(clean_text)
-                        # Update buffer timing for auto-send
+                        # Update buffer timing (auto-send disabled)
                         last_buffer_update_time = datetime.now()
                         
-                        # Show friendly buffer status
+                        # Show transcription completion and buffer status
+                        print_console("✅ Transcription complete", "TRANSCRIBE_ES")
+                        
+                        # Show friendly buffer status (only if >= 20 chars)
                         total_chars = len(" ".join(live_buffer))
-                        print(f"📄 Buffer: {total_chars} chars  (press g or wait 8 s)")
+                        if total_chars >= 20:
+                            print_console(f"📄  {total_chars} chars captured   |   g to send", "BUFFER_UPDATE")
                     
                     with hotkey_lock:
                         hotkey_state["last_transcription"] = clean_text
@@ -986,7 +1041,6 @@ def streaming_transcription_worker():
 try:
     info = sd.query_devices(DEVICE_INDEX)
     log_with_timestamp(f"Using audio device {DEVICE_INDEX}: {info['name']}", "SYSTEM")
-    print(f"[📻] Using device: {info['name']}")
     
     # Validate device capabilities
     if info['max_input_channels'] < CHANNELS:
@@ -1002,19 +1056,19 @@ try:
         
 except sd.PortAudioError as pa_error:
     log_with_timestamp(f"PortAudio error with device {DEVICE_INDEX}: {pa_error}", "ERROR")
-    print(f"[❌] PortAudio device error: {pa_error}")
-    print("Available devices:")
+    print_console(f"❌ PortAudio device error: {pa_error}", "ERROR")
+    print_console("Available devices:", "ERROR")
     try:
-        print(sd.query_devices())
+        print_console(str(sd.query_devices()), "ERROR")
     except:
         pass
     exit(1)
 except Exception as e:
     log_with_timestamp(f"Audio device error: {e}", "ERROR")
-    print(f"[❌] Device error: {e}")
-    print("Available devices:")
+    print_console(f"❌ Device error: {e}", "ERROR")
+    print_console("Available devices:", "ERROR")
     try:
-        print(sd.query_devices())
+        print_console(str(sd.query_devices()), "ERROR")
     except:
         pass
     exit(1)
@@ -1027,7 +1081,7 @@ def callback(indata, frames, time, status):
     Audio callback that implements RMS-based pause detection and audio buffering.
     Continuously buffers audio and processes complete speech segments.
     """
-    global audio_buffer, is_speaking, silence_start, speech_start_time
+    global audio_buffer, is_speaking, silence_start, speech_start_time, soft_flush_countdown_start, soft_flush_silence_start
     
     try:
         if status:
@@ -1054,7 +1108,7 @@ def callback(indata, frames, time, status):
             
             # 🎙️ Live feedback when speech starts
             if is_speaking and not hasattr(callback, '_speaking_feedback_shown'):
-                print("🎙️ Transcribing...")
+                print_console("🎙️  Transcribing …", "SPEECH_START")
                 log_with_timestamp("User started speaking", "USER_FEEDBACK")
                 callback._speaking_feedback_shown = True
                 
@@ -1075,14 +1129,9 @@ def callback(indata, frames, time, status):
                         complete_audio = np.array(audio_buffer)
                         log_with_timestamp(f"Processing complete speech segment ({len(complete_audio)} samples, {len(complete_audio)/SAMPLE_RATE:.2f}s)", "AUDIO")
                         
-                        # 🎙️ Audio chunk feedback
-                        print("📥 Audio chunk queued for transcription...")
-                        log_with_timestamp("Audio chunk queued", "USER_FEEDBACK")
-                        
                         # Queue audio for transcription worker thread
                         try:
                             audio_queue.put(complete_audio.copy(), block=False)
-                            print("🔄 Processing audio...")
                             log_with_timestamp("Audio queued for live transcription", "AUDIO")
                         except queue.Full:
                             log_with_timestamp("Audio queue is full, dropping audio segment", "ERROR")
@@ -1092,7 +1141,7 @@ def callback(indata, frames, time, status):
                         # Clear the buffer for next speech segment
                         audio_buffer.clear()
                         
-                        # Reset speaking feedback flag
+                        # Reset speaking feedback flag so it can show again for next speech
                         if hasattr(callback, '_speaking_feedback_shown'):
                             callback._speaking_feedback_shown = False
                         
@@ -1104,44 +1153,164 @@ def callback(indata, frames, time, status):
         except Exception as buffer_error:
             log_with_timestamp(f"Error in audio buffering: {buffer_error}", "ERROR")
         
-        # Live-flush if speaking too long
+        # Soft-hold forced flush logic with proper timing constants
         if is_speaking and speech_start_time:
             duration = (datetime.now() - speech_start_time).total_seconds()
-            if duration >= MAX_SPEECH_SECS:
-                # Force-complete the segment
+            
+            # Check absolute 5s cap first (HARD_FLUSH_TIMEOUT)
+            if duration >= HARD_FLUSH_TIMEOUT:
+                # Force-complete the segment at absolute cap
                 is_speaking = False
                 silence_start = None
                 speech_start_time = None
-                log_with_timestamp(f"FORCED_FLUSH after {duration:.1f}s continuous speech", "AUDIO")
+                soft_flush_countdown_start = None
+                soft_flush_silence_start = None
                 
-                # 🎙️ Feedback for forced flush
-                print("⏱️ Forced flush - processing long speech...")
-                log_with_timestamp("Forced flush triggered", "USER_FEEDBACK")
+                # Log flush event with proper format
+                log_flush_event("hard", duration)
                 
-                # Process buffered audio (reuse same code path)
+                # Process buffered audio
                 with speech_buffer_lock:
                     if len(audio_buffer) > 0:
                         try:
                             complete_audio = np.array(audio_buffer)
-                            log_with_timestamp(f"Processing forced flush segment ({len(complete_audio)} samples, {len(complete_audio)/SAMPLE_RATE:.2f}s)", "AUDIO")
+                            audio_duration = len(complete_audio) / SAMPLE_RATE
                             
                             # Queue audio for transcription worker thread
                             try:
                                 audio_queue.put(complete_audio.copy(), block=False)
-                                print("🔄 Processing audio...")
-                                log_with_timestamp("Audio queued for live transcription (forced flush)", "AUDIO")
+                                log_with_timestamp("Audio queued for live transcription (absolute cap)", "AUDIO")
                             except queue.Full:
-                                log_with_timestamp("Audio queue is full, dropping forced flush segment", "ERROR")
+                                log_with_timestamp("Audio queue is full, dropping absolute cap segment", "ERROR")
                             except Exception as queue_error:
-                                log_with_timestamp(f"Error queuing forced flush audio: {queue_error}", "ERROR")
+                                log_with_timestamp(f"Error queuing absolute cap audio: {queue_error}", "ERROR")
                             
                             # Clear the buffer for next speech segment
                             audio_buffer.clear()
                             
+                            # Reset speaking feedback flag so it can show again for next speech
+                            if hasattr(callback, '_speaking_feedback_shown'):
+                                callback._speaking_feedback_shown = False
+                            
                         except Exception as processing_error:
-                            log_with_timestamp(f"Error processing forced flush segment: {processing_error}", "ERROR")
+                            log_with_timestamp(f"Error processing absolute cap segment: {processing_error}", "ERROR")
                             # Clear buffer to prevent corruption
                             audio_buffer.clear()
+                            
+                            # Reset speaking feedback flag so it can show again for next speech
+                            if hasattr(callback, '_speaking_feedback_shown'):
+                                callback._speaking_feedback_shown = False
+                return
+            
+            # Start soft-hold countdown after MAX_SPEECH_SECS (3.2s)
+            if duration >= MAX_SPEECH_SECS and soft_flush_countdown_start is None:
+                soft_flush_countdown_start = datetime.now()
+                log_with_timestamp(f"SOFT_HOLD_START after {duration:.1f}s - {SOFT_HOLD_MS}ms countdown begins", "AUDIO")
+            
+            # Handle countdown period
+            if soft_flush_countdown_start is not None:
+                countdown_elapsed = (datetime.now() - soft_flush_countdown_start).total_seconds()
+                
+                # Check for silence during countdown
+                rms = compute_rms(audio_chunk)
+                if rms <= RMS_THRESHOLD:
+                    if soft_flush_silence_start is None:
+                        soft_flush_silence_start = datetime.now()
+                        log_with_timestamp("SOFT_HOLD_SILENCE_START - silence detected during countdown", "AUDIO")
+                else:
+                    # Reset silence tracking if speech resumes
+                    soft_flush_silence_start = None
+                
+                # Check if we have enough silence to trigger flush (MIN_SILENCE_MS)
+                if soft_flush_silence_start is not None:
+                    silence_duration = (datetime.now() - soft_flush_silence_start).total_seconds()
+                    if silence_duration >= (MIN_SILENCE_MS / 1000.0):  # Convert ms to seconds
+                        # Soft-hold flush triggered by sufficient silence
+                        is_speaking = False
+                        silence_start = None
+                        speech_start_time = None
+                        soft_flush_countdown_start = None
+                        soft_flush_silence_start = None
+                        
+                        # Log flush event with proper format
+                        log_flush_event("soft", duration)
+                        
+                        # Process buffered audio (reuse same code path)
+                        with speech_buffer_lock:
+                            if len(audio_buffer) > 0:
+                                try:
+                                    complete_audio = np.array(audio_buffer)
+                                    audio_duration = len(complete_audio) / SAMPLE_RATE
+                                    
+                                    # Queue audio for transcription worker thread
+                                    try:
+                                        audio_queue.put(complete_audio.copy(), block=False)
+                                        log_with_timestamp("Audio queued for live transcription (soft-hold)", "AUDIO")
+                                    except queue.Full:
+                                        log_with_timestamp("Audio queue is full, dropping soft-hold segment", "ERROR")
+                                    except Exception as queue_error:
+                                        log_with_timestamp(f"Error queuing soft-hold audio: {queue_error}", "ERROR")
+                                    
+                                    # Clear the buffer for next speech segment
+                                    audio_buffer.clear()
+                                    
+                                    # Reset speaking feedback flag so it can show again for next speech
+                                    if hasattr(callback, '_speaking_feedback_shown'):
+                                        callback._speaking_feedback_shown = False
+                                    
+                                except Exception as processing_error:
+                                    log_with_timestamp(f"Error processing soft-hold segment: {processing_error}", "ERROR")
+                                    # Clear buffer to prevent corruption
+                                    audio_buffer.clear()
+                                    
+                                    # Reset speaking feedback flag so it can show again for next speech
+                                    if hasattr(callback, '_speaking_feedback_shown'):
+                                        callback._speaking_feedback_shown = False
+                        return
+                
+                # Hard flush if countdown expires without sufficient silence
+                if countdown_elapsed >= (SOFT_HOLD_MS / 1000.0):  # Convert ms to seconds
+                    # Force-complete the segment
+                    is_speaking = False
+                    silence_start = None
+                    speech_start_time = None
+                    soft_flush_countdown_start = None
+                    soft_flush_silence_start = None
+                    
+                    # Log flush event with proper format
+                    log_flush_event("hard", duration)
+                    
+                    # Process buffered audio (reuse same code path)
+                    with speech_buffer_lock:
+                        if len(audio_buffer) > 0:
+                            try:
+                                complete_audio = np.array(audio_buffer)
+                                audio_duration = len(complete_audio) / SAMPLE_RATE
+                                
+                                # Queue audio for transcription worker thread
+                                try:
+                                    audio_queue.put(complete_audio.copy(), block=False)
+                                    log_with_timestamp("Audio queued for live transcription (hard flush)", "AUDIO")
+                                except queue.Full:
+                                    log_with_timestamp("Audio queue is full, dropping hard flush segment", "ERROR")
+                                except Exception as queue_error:
+                                    log_with_timestamp(f"Error queuing hard flush audio: {queue_error}", "ERROR")
+                                
+                                # Clear the buffer for next speech segment
+                                audio_buffer.clear()
+                                
+                                # Reset speaking feedback flag so it can show again for next speech
+                                if hasattr(callback, '_speaking_feedback_shown'):
+                                    callback._speaking_feedback_shown = False
+                                
+                            except Exception as processing_error:
+                                log_with_timestamp(f"Error processing hard flush segment: {processing_error}", "ERROR")
+                                # Clear buffer to prevent corruption
+                                audio_buffer.clear()
+                                
+                                # Reset speaking feedback flag so it can show again for next speech
+                                if hasattr(callback, '_speaking_feedback_shown'):
+                                    callback._speaking_feedback_shown = False
             
     except Exception as callback_error:
         log_with_timestamp(f"Critical error in audio callback: {callback_error}", "ERROR")
@@ -1149,7 +1318,7 @@ def callback(indata, frames, time, status):
 def cleanup_resources():
     """
     Enhanced cleanup function for graceful shutdown with all worker threads.
-    Handles transcription worker, hotkey listener, auto-send monitor, and resource management.
+    Handles transcription worker, hotkey listener, auto-send monitor (disabled), and resource management.
     """
     global transcription_worker_running, hotkey_listener_running, auto_send_monitor_running
     global transcription_thread, hotkey_thread, auto_send_thread, audio_stream
@@ -1254,7 +1423,7 @@ def cleanup_resources():
 def main():
     """
     Enhanced main execution function with robust error handling and graceful shutdown.
-    Starts transcription worker, hotkey listener, and auto-send monitor for non-blocking operation.
+    Starts transcription worker, hotkey listener, and auto-send monitor (disabled) for non-blocking operation.
     """
     global transcription_thread, hotkey_thread, auto_send_thread, audio_stream
     global hotkey_listener_running, auto_send_monitor_running
@@ -1262,7 +1431,7 @@ def main():
     # Display system startup information
     log_with_timestamp("=== SPANISH TRANSCRIPTION SYSTEM STARTING ===", "SYSTEM")
     log_with_timestamp("Shared state initialized: hotkey_state and hotkey_lock ready", "SYSTEM")
-    log_with_timestamp("Thread architecture: transcription worker + hotkey listener + auto-send monitor", "SYSTEM")
+    log_with_timestamp("Thread architecture: transcription worker + hotkey listener + auto-send monitor (disabled)", "SYSTEM")
     
     try:
         # Initialize and start core system threads
@@ -1287,12 +1456,12 @@ def main():
             log_with_timestamp(f"❌ Failed to start hotkey listener thread: {thread_error}", "ERROR")
             raise
         
-        # Start auto-send monitor thread with error handling
+        # Start auto-send monitor thread (disabled) with error handling
         try:
             auto_send_monitor_running = True
             auto_send_thread = threading.Thread(target=auto_send_monitor, daemon=True)
             auto_send_thread.start()
-            log_with_timestamp("✅ Auto-send monitor thread started successfully", "SYSTEM")
+            log_with_timestamp("✅ Auto-send monitor thread started (disabled)", "SYSTEM")
         except Exception as thread_error:
             log_with_timestamp(f"❌ Failed to start auto-send monitor thread: {thread_error}", "ERROR")
             raise
@@ -1302,6 +1471,10 @@ def main():
             log_with_timestamp("✅ All system threads running successfully", "SYSTEM")
         else:
             raise RuntimeError("One or more system threads failed to start properly")
+        
+        # Show initialization status
+        print_console("[Init] Loading models …", "INIT")
+        print_console("Whisper small‑fp16         ✔", "INIT")
         
         # Start Gemini warm-up in background thread to avoid blocking startup
         try:
@@ -1327,29 +1500,26 @@ def main():
                 log_with_timestamp("✅ Audio stream started successfully", "SYSTEM")
                 log_with_timestamp("=== SYSTEM FULLY OPERATIONAL ===", "SYSTEM")
                 
-                # Display friendly startup banner
-                print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-                print("🎤  Live Spanish Transcriber READY")
-                print("• Speak → text appears immediately")
-                print("• [g] send  [r] repeat  [h] help")
-                print("• Auto-send after 8 s silence")
-                print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+                # Display startup banner and ready status
+                print_startup_banner()
+                print_console("Ready!  ─ Ready to transcribe ─", "READY")
+                print_console("─────────────────────────────────────────────────────────", "READY")
                 
                 # Main listening loop with enhanced shutdown handling
                 try:
                     while True:
                         sd.sleep(100)  # Shorter sleep for more responsive shutdown
                 except KeyboardInterrupt:
-                    print("\n[🛑] Keyboard interrupt received. Shutting down gracefully...")
+                    print_console("\n🛑 Keyboard interrupt received. Shutting down gracefully...", "ERROR")
                     log_with_timestamp("Keyboard interrupt received - initiating graceful shutdown", "SYSTEM")
                     raise
                 except EOFError:
-                    print("\n[🛑] EOF received. Shutting down gracefully...")
+                    print_console("\n🛑 EOF received. Shutting down gracefully...", "ERROR")
                     log_with_timestamp("EOF received - initiating graceful shutdown", "SYSTEM")
                     raise
                 except Exception as loop_error:
                     log_with_timestamp(f"Error in main listening loop: {loop_error}", "ERROR")
-                    print(f"[❌] Main loop error: {loop_error}")
+                    print_console(f"❌ Main loop error: {loop_error}", "ERROR")
                     raise
                     
         except sd.PortAudioError as pa_error:
@@ -1363,29 +1533,29 @@ def main():
             raise
             
     except KeyboardInterrupt:
-        print("\n[🛑] Shutdown initiated by user...")
+        print_console("\n🛑 Shutdown initiated by user...", "ERROR")
         log_with_timestamp("Application terminated by user (Ctrl+C)", "SYSTEM")
     except EOFError:
-        print("\n[🛑] EOF received, shutting down...")
+        print_console("\n🛑 EOF received, shutting down...", "ERROR")
         log_with_timestamp("Application terminated by EOF", "SYSTEM")
     except Exception as main_error:
         log_with_timestamp(f"Critical error in main execution: {main_error}", "ERROR")
-        print(f"[❌] Critical error: {main_error}")
+        print_console(f"❌ Critical error: {main_error}", "ERROR")
         import traceback
         log_with_timestamp(f"Full traceback: {traceback.format_exc()}", "ERROR")
     finally:
         # Always perform cleanup with enhanced error handling
-        print("[🔧] Cleaning up resources...")
+        print_console("🔧 Cleaning up resources...", "ERROR")
         try:
             cleanup_resources()
-            print("[✅] Cleanup completed successfully.")
+            print_console("✅ Cleanup completed successfully.", "ERROR")
         except KeyboardInterrupt:
-            print("\n[⚠️] Cleanup interrupted - forcing immediate exit")
+            print_console("\n⚠️ Cleanup interrupted - forcing immediate exit", "ERROR")
             log_with_timestamp("Cleanup interrupted by user - forcing exit", "SYSTEM")
         except Exception as final_cleanup_error:
             log_with_timestamp(f"Error during final cleanup: {final_cleanup_error}", "ERROR")
-            print(f"[❌] Cleanup error: {final_cleanup_error}")
-            print("[⚠️] Some resources may not have been cleaned up properly")
+            print_console(f"❌ Cleanup error: {final_cleanup_error}", "ERROR")
+            print_console("⚠️ Some resources may not have been cleaned up properly", "ERROR")
 
 # Run the main function
 if __name__ == "__main__":
@@ -1393,5 +1563,5 @@ if __name__ == "__main__":
         main()
     except Exception as startup_error:
         log_with_timestamp(f"Failed to start application: {startup_error}", "ERROR")
-        print(f"[❌] Application startup failed: {startup_error}")
+        print_console(f"❌ Application startup failed: {startup_error}", "ERROR")
         exit(1)

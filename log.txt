@@ -1,32 +1,39 @@
-=== System startup at 2025-07-24 21:35:48 ===
-[2025-07-24 21:35:48] [SYSTEM] Logging system initialized successfully
-[2025-07-24 21:35:48] [SYSTEM] Log file: C:\Users\John\Documents\programming\translate tool\log.txt
-[2025-07-24 21:35:48] [SYSTEM] Environment variables loaded successfully
-[2025-07-24 21:35:48] [SYSTEM] Gemini client initialized successfully
-[2025-07-24 21:35:48] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
-[2025-07-24 21:35:48] [SYSTEM] Initializing Whisper model with compute_type: float16
-[2025-07-24 21:35:49] [SYSTEM] Whisper model loaded successfully
-[2025-07-24 21:35:49] [AUDIO_FORMAT] === Live Transcription System Ready ===
-[2025-07-24 21:35:49] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
-[2025-07-24 21:35:49] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
-[2025-07-24 21:35:49] [AUDIO_FORMAT] 🚀 Performance: True live streaming with forced flush
-[2025-07-24 21:35:49] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.008, SILENCE_SECS=0.3, MAX_SPEECH_SECS=4.0
-[2025-07-24 21:35:49] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
-[2025-07-24 21:35:49] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
-[2025-07-24 21:35:49] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
-[2025-07-24 21:35:49] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
-[2025-07-24 21:35:49] [SYSTEM] Thread architecture: transcription worker + hotkey listener + auto-send monitor
-[2025-07-24 21:35:49] [SYSTEM] Starting system threads...
-[2025-07-24 21:35:49] [SYSTEM] Live transcription worker thread started
-[2025-07-24 21:35:49] [SYSTEM] ✅ Streaming transcription worker thread started successfully
-[2025-07-24 21:35:49] [SYSTEM] Hotkey listener thread started with enhanced error handling
-[2025-07-24 21:35:49] [SYSTEM] ✅ Hotkey listener thread started successfully
-[2025-07-24 21:35:49] [SYSTEM] Auto-send monitor thread started
-[2025-07-24 21:35:49] [SYSTEM] ✅ Auto-send monitor thread started successfully
-[2025-07-24 21:35:49] [SYSTEM] ✅ All system threads running successfully
-[2025-07-24 21:35:49] [GEMINI_WARMUP] Starting Gemini API warm-up routine
-[2025-07-24 21:35:49] [SYSTEM] ✅ Gemini warm-up thread started
-[2025-07-24 21:35:49] [GEMINI_WARMUP] Warm-up prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+=== System startup at 2025-07-24 23:04:32 ===
+[2025-07-24 23:04:32] [SYSTEM] Logging system initialized successfully
+[2025-07-24 23:04:32] [SYSTEM] Log file: C:\Users\John\Documents\programming\translate tool\log.txt
+[2025-07-24 23:04:32] [SYSTEM] Environment variables loaded successfully
+[2025-07-24 23:04:32] [SYSTEM] Gemini client initialized successfully
+[2025-07-24 23:04:32] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-24 23:04:32] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-24 23:04:33] [SYSTEM] Whisper model loaded successfully
+[2025-07-24 23:04:33] [AUDIO_FORMAT] === Live Transcription System Ready ===
+[2025-07-24 23:04:33] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
+[2025-07-24 23:04:33] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
+[2025-07-24 23:04:33] [AUDIO_FORMAT] 🚀 Performance: True live streaming with soft-hold flush
+[2025-07-24 23:04:33] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.012, SILENCE_SECS=0.2, MAX_SPEECH_SECS=3.2
+[2025-07-24 23:04:33] [AUDIO_FORMAT] 🎯 Soft-hold: 3.2s start + 400ms countdown + 150ms silence threshold
+[2025-07-24 23:04:33] [AUDIO_FORMAT] ⏰ Absolute cap: 5.0s maximum speech duration (HARD_FLUSH_TIMEOUT)
+[2025-07-24 23:04:33] [AUDIO_FORMAT] 🔧 Whisper: beam=1, best_of=1, vad=True, no_speech=0.6
+[2025-07-24 23:04:33] [AUDIO_FORMAT] ❓ Question splitting: automatic split on '?' for separate Gemini calls
+[2025-07-24 23:04:33] [AUDIO_FORMAT] 📝 Flush logging: FLUSH (soft|hard) | len=X.XXs format
+[2025-07-24 23:04:33] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-24 23:04:33] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-24 23:04:33] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
+[2025-07-24 23:04:33] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
+[2025-07-24 23:04:33] [SYSTEM] Thread architecture: transcription worker + hotkey listener + auto-send monitor (disabled)
+[2025-07-24 23:04:33] [SYSTEM] Starting system threads...
+[2025-07-24 23:04:33] [SYSTEM] Live transcription worker thread started
+[2025-07-24 23:04:33] [SYSTEM] ✅ Streaming transcription worker thread started successfully
+[2025-07-24 23:04:33] [SYSTEM] Hotkey listener thread started with enhanced error handling
+[2025-07-24 23:04:33] [SYSTEM] ✅ Hotkey listener thread started successfully
+[2025-07-24 23:04:33] [SYSTEM] Auto-send monitor thread disabled - manual send only
+[2025-07-24 23:04:33] [SYSTEM] ✅ Auto-send monitor thread started (disabled)
+[2025-07-24 23:04:33] [SYSTEM] ✅ All system threads running successfully
+[2025-07-24 23:04:33] [INIT] [Init] Loading models …
+[2025-07-24 23:04:33] [INIT] Whisper small‑fp16         ✔
+[2025-07-24 23:04:33] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-24 23:04:33] [SYSTEM] ✅ Gemini warm-up thread started
+[2025-07-24 23:04:33] [GEMINI_WARMUP] Warm-up prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
 - Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
 - Acabar de + [infinitive]
 - Basic Spanish pronunciation rules
@@ -43,42 +50,54 @@
 - Numbers 31 and higher (patterns, cien/ciento, mil/millón)
 - Common verbs and expressions (especially with tener)
 When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
-[2025-07-24 21:35:49] [SYSTEM] Initializing audio stream...
-[2025-07-24 21:35:49] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
-[2025-07-24 21:35:49] [SYSTEM] ✅ Audio stream started successfully
-[2025-07-24 21:35:49] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
-[2025-07-24 21:35:49] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.34s - Response: Estoy listo.
-[2025-07-24 21:35:55] [AUDIO] SPEECH_START detected (RMS: 0.0345)
-[2025-07-24 21:35:55] [USER_FEEDBACK] User started speaking
-[2025-07-24 21:35:57] [AUDIO] FORCED_FLUSH after 2.0s continuous speech
-[2025-07-24 21:35:57] [USER_FEEDBACK] Forced flush triggered
-[2025-07-24 21:35:57] [AUDIO] Processing forced flush segment (192000 samples, 4.00s)
-[2025-07-24 21:35:57] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-24 21:35:57] [USER_FEEDBACK] Processing audio chunk
-[2025-07-24 21:35:57] [AUDIO] Audio resampled from 192000 to 64000 samples
-[2025-07-24 21:35:57] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-24 21:35:57] [TRANSCRIBE_ES] Empty transcription result - no speech detected
-[2025-07-24 21:35:59] [AUDIO] SPEECH_START detected (RMS: 0.0858)
-[2025-07-24 21:36:01] [AUDIO] FORCED_FLUSH after 2.0s continuous speech
-[2025-07-24 21:36:01] [USER_FEEDBACK] Forced flush triggered
-[2025-07-24 21:36:01] [AUDIO] Processing forced flush segment (192000 samples, 4.00s)
-[2025-07-24 21:36:01] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-24 21:36:01] [USER_FEEDBACK] Processing audio chunk
-[2025-07-24 21:36:01] [AUDIO] Audio resampled from 192000 to 64000 samples
-[2025-07-24 21:36:01] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-24 21:36:01] [LIVE_ES] Hola, bienvenido al restaurante
-[2025-07-24 21:36:03] [AUDIO] SPEECH_START detected (RMS: 0.0987)
-[2025-07-24 21:36:05] [AUDIO] FORCED_FLUSH after 2.0s continuous speech
-[2025-07-24 21:36:05] [USER_FEEDBACK] Forced flush triggered
-[2025-07-24 21:36:05] [AUDIO] Processing forced flush segment (192000 samples, 4.00s)
-[2025-07-24 21:36:05] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-24 21:36:05] [USER_FEEDBACK] Processing audio chunk
-[2025-07-24 21:36:05] [AUDIO] Audio resampled from 192000 to 64000 samples
-[2025-07-24 21:36:05] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-24 21:36:05] [LIVE_ES] Fajitas. Aquí le dejo el menú.
-[2025-07-24 21:36:08] [SEND_GEMINI] 10w / 2c
-[2025-07-24 21:36:08] [USER_FEEDBACK] Sending to Gemini
-[2025-07-24 21:36:08] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+[2025-07-24 23:04:33] [SYSTEM] Initializing audio stream...
+[2025-07-24 23:04:33] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-24 23:04:33] [SYSTEM] ✅ Audio stream started successfully
+[2025-07-24 23:04:33] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
+[2025-07-24 23:04:33] [READY] Ready!  ─ Speak when you're ready ─
+[2025-07-24 23:04:33] [READY] ─────────────────────────────────────────────────────────
+[2025-07-24 23:04:33] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.20s - Response: Estoy lista.
+[2025-07-24 23:04:33] [INIT] Gemini  warm‑up (0.20s)  ✔
+[2025-07-24 23:04:38] [AUDIO] SPEECH_START detected (RMS: 0.1032)
+[2025-07-24 23:04:38] [SPEECH_START] 🎙️  Transcribing …
+[2025-07-24 23:04:38] [USER_FEEDBACK] User started speaking
+[2025-07-24 23:04:41] [AUDIO] SOFT_HOLD_START after 3.5s - 400ms countdown begins
+[2025-07-24 23:04:42] [AUDIO] FLUSH (hard) | len=4.00s
+[2025-07-24 23:04:42] [AUDIO] Audio queued for live transcription (hard flush)
+[2025-07-24 23:04:42] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:04:42] [AUDIO] Audio resampled from 216000 to 72000 samples
+[2025-07-24 23:04:42] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:04:42] [AUDIO] SPEECH_START detected (RMS: 0.1205)
+[2025-07-24 23:04:42] [BUFFER_UPDATE] 📄  39 chars captured   |   g to send
+[2025-07-24 23:04:42] [LIVE_ES] Hola, no te había visto antes por aquí.
+[2025-07-24 23:04:44] [AUDIO] SPEECH_END detected after 0.50s of silence (RMS: 0.0080)
+[2025-07-24 23:04:44] [AUDIO] Processing complete speech segment (96000 samples, 2.00s)
+[2025-07-24 23:04:44] [AUDIO] Audio queued for live transcription
+[2025-07-24 23:04:44] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:04:44] [AUDIO] Audio resampled from 96000 to 32000 samples
+[2025-07-24 23:04:44] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:04:44] [BUFFER_UPDATE] 📄  49 chars captured   |   g to send
+[2025-07-24 23:04:44] [LIVE_ES] te llamas
+[2025-07-24 23:04:45] [AUDIO] SPEECH_START detected (RMS: 0.0132)
+[2025-07-24 23:04:47] [AUDIO] SPEECH_END detected after 0.50s of silence (RMS: 0.0065)
+[2025-07-24 23:04:47] [AUDIO] Processing complete speech segment (96000 samples, 2.00s)
+[2025-07-24 23:04:47] [AUDIO] Audio queued for live transcription
+[2025-07-24 23:04:47] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:04:47] [AUDIO] Audio resampled from 96000 to 32000 samples
+[2025-07-24 23:04:47] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:04:47] [TRANSCRIBE_ES] Empty transcription result - no speech detected
+[2025-07-24 23:04:47] [AUDIO] SPEECH_START detected (RMS: 0.1244)
+[2025-07-24 23:04:49] [AUDIO] SPEECH_END detected after 0.50s of silence (RMS: 0.0053)
+[2025-07-24 23:04:49] [AUDIO] Processing complete speech segment (120000 samples, 2.50s)
+[2025-07-24 23:04:49] [AUDIO] Audio queued for live transcription
+[2025-07-24 23:04:49] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:04:49] [AUDIO] Audio resampled from 120000 to 40000 samples
+[2025-07-24 23:04:49] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:04:49] [BUFFER_UPDATE] 📄  65 chars captured   |   g to send
+[2025-07-24 23:04:49] [LIVE_ES] ¿De dónde eres?
+[2025-07-24 23:04:57] [HOTKEY_G] Manual send: 13w / 3c
+[2025-07-24 23:04:57] [USER_FEEDBACK] Sending Q1 to Gemini: Hola, no te había visto antes por aquí. te llamas ...
+[2025-07-24 23:04:57] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
 - Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
 - Acabar de + [infinitive]
 - Basic Spanish pronunciation rules
@@ -95,41 +114,81 @@ When the other student provides Spanish text, reply *only* with a single, natura
 - Numbers 31 and higher (patterns, cien/ciento, mil/millón)
 - Common verbs and expressions (especially with tener)
 When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
-[2025-07-24 21:36:08] [GEMINI_PROMPT] Spanish input: Hola, bienvenido al restaurante Fajitas. Aquí le dejo el menú.
-[2025-07-24 21:36:09] [GEMINI_REPLY] Response (0.35s): Gracias, voy a mirar el menú.
-[2025-07-24 21:36:09] [PERFORMANCE] Gemini response time 0.35s within live exam target
-[2025-07-24 21:36:09] [GEMINI_RESPONSE_TIME] 0.36s
-[2025-07-24 21:36:09] [HOTKEY_G] Manual send completed
-[2025-07-24 21:36:29] [AUDIO] SPEECH_START detected (RMS: 0.0120)
-[2025-07-24 21:36:31] [AUDIO] FORCED_FLUSH after 2.0s continuous speech
-[2025-07-24 21:36:31] [USER_FEEDBACK] Forced flush triggered
-[2025-07-24 21:36:31] [AUDIO] Processing forced flush segment (192000 samples, 4.00s)
-[2025-07-24 21:36:31] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-24 21:36:31] [USER_FEEDBACK] Processing audio chunk
-[2025-07-24 21:36:31] [AUDIO] Audio resampled from 192000 to 64000 samples
-[2025-07-24 21:36:31] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-24 21:36:31] [TRANSCRIBE_ES] Empty transcription result - no speech detected
-[2025-07-24 21:36:33] [AUDIO] SPEECH_START detected (RMS: 0.0404)
-[2025-07-24 21:36:35] [AUDIO] FORCED_FLUSH after 2.0s continuous speech
-[2025-07-24 21:36:35] [USER_FEEDBACK] Forced flush triggered
-[2025-07-24 21:36:35] [AUDIO] Processing forced flush segment (192000 samples, 4.00s)
-[2025-07-24 21:36:35] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-24 21:36:35] [USER_FEEDBACK] Processing audio chunk
-[2025-07-24 21:36:35] [AUDIO] Audio resampled from 192000 to 64000 samples
-[2025-07-24 21:36:35] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-24 21:36:35] [LIVE_ES] El plato del día es...
-[2025-07-24 21:36:37] [AUDIO] SPEECH_START detected (RMS: 0.0634)
-[2025-07-24 21:36:39] [AUDIO] FORCED_FLUSH after 2.0s continuous speech
-[2025-07-24 21:36:39] [USER_FEEDBACK] Forced flush triggered
-[2025-07-24 21:36:39] [AUDIO] Processing forced flush segment (192000 samples, 4.00s)
-[2025-07-24 21:36:39] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-24 21:36:39] [USER_FEEDBACK] Processing audio chunk
-[2025-07-24 21:36:39] [AUDIO] Audio resampled from 192000 to 64000 samples
-[2025-07-24 21:36:39] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-24 21:36:39] [LIVE_ES] Tacos al pastor.
-[2025-07-24 21:36:43] [SEND_GEMINI] 8w / 2c
-[2025-07-24 21:36:43] [USER_FEEDBACK] Sending to Gemini
-[2025-07-24 21:36:43] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+[2025-07-24 23:04:57] [GEMINI_PROMPT] Spanish input: Hola, no te había visto antes por aquí. te llamas ¿De dónde eres?
+[2025-07-24 23:04:57] [GEMINI_REPLY] Response (0.21s): Soy de Estados Unidos.
+[2025-07-24 23:04:57] [PERFORMANCE] Gemini response time 0.21s within live exam target
+[2025-07-24 23:04:57] [GEMINI_RESPONSE_TIME] Q1 response time: 0.21s
+[2025-07-24 23:04:57] [GEMINI_REPLY] 🤖  Q1  «Soy de Estados Unidos.»
+[2025-07-24 23:04:57] [READY_NEXT] ─────────────────────────────────────────────────────────
+[2025-07-24 23:04:57] [READY_NEXT] 🔄  Ready — start next answer
+[2025-07-24 23:04:57] [READY_NEXT] ─────────────────────────────────────────────────────────
+[2025-07-24 23:04:57] [HOTKEY_G] Manual send completed
+[2025-07-24 23:08:49] [AUDIO] SPEECH_START detected (RMS: 0.0790)
+[2025-07-24 23:08:50] [AUDIO] SPEECH_END detected after 0.50s of silence (RMS: 0.0000)
+[2025-07-24 23:08:50] [AUDIO] Processing complete speech segment (72000 samples, 1.50s)
+[2025-07-24 23:08:50] [AUDIO] Audio queued for live transcription
+[2025-07-24 23:08:50] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:08:50] [AUDIO] Audio resampled from 72000 to 24000 samples
+[2025-07-24 23:08:50] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:08:50] [TRANSCRIBE_ES] Empty transcription result - no speech detected
+[2025-07-24 23:08:52] [ERROR] 
+🛑 Keyboard interrupt received. Shutting down gracefully...
+[2025-07-24 23:08:52] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
+[2025-07-24 23:08:52] [ERROR] 
+🛑 Shutdown initiated by user...
+[2025-07-24 23:08:52] [SYSTEM] Application terminated by user (Ctrl+C)
+[2025-07-24 23:08:52] [ERROR] 🔧 Cleaning up resources...
+[2025-07-24 23:08:52] [SYSTEM] Starting system cleanup
+[2025-07-24 23:08:52] [SYSTEM] Signaled worker threads to stop
+[2025-07-24 23:08:52] [SYSTEM] Waiting for audio queue to empty
+[2025-07-24 23:08:52] [SYSTEM] Audio queue emptied successfully
+[2025-07-24 23:08:52] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-24 23:08:52] [SYSTEM] Hotkey listener thread stopped gracefully
+[2025-07-24 23:08:53] [SYSTEM] Live transcription worker thread stopped
+[2025-07-24 23:08:53] [SYSTEM] Transcription thread finished successfully
+[2025-07-24 23:08:53] [SYSTEM] Waiting for auto-send monitor thread to finish
+[2025-07-24 23:08:53] [SYSTEM] Auto-send monitor thread stopped
+[2025-07-24 23:08:53] [SYSTEM] Auto-send monitor thread finished successfully
+[2025-07-24 23:08:53] [SYSTEM] Audio buffer cleared
+[2025-07-24 23:08:53] [SYSTEM] Live buffer cleared
+[2025-07-24 23:08:53] [SYSTEM] System cleanup completed
+[2025-07-24 23:08:53] [ERROR] ✅ Cleanup completed successfully.
+=== System startup at 2025-07-24 23:09:02 ===
+[2025-07-24 23:09:02] [SYSTEM] Logging system initialized successfully
+[2025-07-24 23:09:02] [SYSTEM] Log file: C:\Users\John\Documents\programming\translate tool\log.txt
+[2025-07-24 23:09:02] [SYSTEM] Environment variables loaded successfully
+[2025-07-24 23:09:02] [SYSTEM] Gemini client initialized successfully
+[2025-07-24 23:09:02] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-24 23:09:02] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-24 23:09:03] [SYSTEM] Whisper model loaded successfully
+[2025-07-24 23:09:03] [AUDIO_FORMAT] === Live Transcription System Ready ===
+[2025-07-24 23:09:03] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
+[2025-07-24 23:09:03] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
+[2025-07-24 23:09:03] [AUDIO_FORMAT] 🚀 Performance: True live streaming with soft-hold flush
+[2025-07-24 23:09:03] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.012, SILENCE_SECS=0.2, MAX_SPEECH_SECS=3.2
+[2025-07-24 23:09:03] [AUDIO_FORMAT] 🎯 Soft-hold: 3.2s start + 400ms countdown + 150ms silence threshold
+[2025-07-24 23:09:03] [AUDIO_FORMAT] ⏰ Absolute cap: 5.0s maximum speech duration (HARD_FLUSH_TIMEOUT)
+[2025-07-24 23:09:03] [AUDIO_FORMAT] 🔧 Whisper: beam=1, best_of=1, vad=True, no_speech=0.6
+[2025-07-24 23:09:03] [AUDIO_FORMAT] ❓ Question splitting: automatic split on '?' for separate Gemini calls
+[2025-07-24 23:09:03] [AUDIO_FORMAT] 📝 Flush logging: FLUSH (soft|hard) | len=X.XXs format
+[2025-07-24 23:09:03] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-24 23:09:03] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-24 23:09:03] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
+[2025-07-24 23:09:03] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
+[2025-07-24 23:09:03] [SYSTEM] Thread architecture: transcription worker + hotkey listener + auto-send monitor (disabled)
+[2025-07-24 23:09:03] [SYSTEM] Starting system threads...
+[2025-07-24 23:09:03] [SYSTEM] Live transcription worker thread started
+[2025-07-24 23:09:03] [SYSTEM] ✅ Streaming transcription worker thread started successfully
+[2025-07-24 23:09:03] [SYSTEM] Hotkey listener thread started with enhanced error handling
+[2025-07-24 23:09:03] [SYSTEM] ✅ Hotkey listener thread started successfully
+[2025-07-24 23:09:03] [SYSTEM] Auto-send monitor thread disabled - manual send only
+[2025-07-24 23:09:03] [SYSTEM] ✅ Auto-send monitor thread started (disabled)
+[2025-07-24 23:09:03] [SYSTEM] ✅ All system threads running successfully
+[2025-07-24 23:09:03] [INIT] [Init] Loading models …
+[2025-07-24 23:09:03] [INIT] Whisper small‑fp16         ✔
+[2025-07-24 23:09:03] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-24 23:09:03] [SYSTEM] ✅ Gemini warm-up thread started
+[2025-07-24 23:09:03] [GEMINI_WARMUP] Warm-up prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
 - Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
 - Acabar de + [infinitive]
 - Basic Spanish pronunciation rules
@@ -146,41 +205,81 @@ When the other student provides Spanish text, reply *only* with a single, natura
 - Numbers 31 and higher (patterns, cien/ciento, mil/millón)
 - Common verbs and expressions (especially with tener)
 When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
-[2025-07-24 21:36:43] [GEMINI_PROMPT] Spanish input: El plato del día es... Tacos al pastor.
-[2025-07-24 21:36:43] [GEMINI_REPLY] Response (0.35s): Yo comí tacos al pastor ayer.
-[2025-07-24 21:36:43] [PERFORMANCE] Gemini response time 0.35s within live exam target
-[2025-07-24 21:36:43] [GEMINI_RESPONSE_TIME] 0.35s
-[2025-07-24 21:36:43] [HOTKEY_G] Manual send completed
-[2025-07-24 21:37:03] [AUDIO] SPEECH_START detected (RMS: 0.0326)
-[2025-07-24 21:37:05] [AUDIO] FORCED_FLUSH after 2.0s continuous speech
-[2025-07-24 21:37:05] [USER_FEEDBACK] Forced flush triggered
-[2025-07-24 21:37:05] [AUDIO] Processing forced flush segment (192000 samples, 4.00s)
-[2025-07-24 21:37:05] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-24 21:37:05] [USER_FEEDBACK] Processing audio chunk
-[2025-07-24 21:37:05] [AUDIO] Audio resampled from 192000 to 64000 samples
-[2025-07-24 21:37:05] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-24 21:37:05] [TRANSCRIBE_ES] Empty transcription result - no speech detected
-[2025-07-24 21:37:07] [AUDIO] SPEECH_START detected (RMS: 0.0411)
-[2025-07-24 21:37:09] [AUDIO] FORCED_FLUSH after 2.0s continuous speech
-[2025-07-24 21:37:09] [USER_FEEDBACK] Forced flush triggered
-[2025-07-24 21:37:09] [AUDIO] Processing forced flush segment (192000 samples, 4.00s)
-[2025-07-24 21:37:09] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-24 21:37:09] [USER_FEEDBACK] Processing audio chunk
-[2025-07-24 21:37:09] [AUDIO] Audio resampled from 192000 to 64000 samples
-[2025-07-24 21:37:09] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-24 21:37:09] [LIVE_ES] De acuerdo.
-[2025-07-24 21:37:11] [AUDIO] SPEECH_START detected (RMS: 0.0461)
-[2025-07-24 21:37:13] [AUDIO] FORCED_FLUSH after 2.0s continuous speech
-[2025-07-24 21:37:13] [USER_FEEDBACK] Forced flush triggered
-[2025-07-24 21:37:13] [AUDIO] Processing forced flush segment (192000 samples, 4.00s)
-[2025-07-24 21:37:13] [AUDIO] Audio queued for live transcription (forced flush)
-[2025-07-24 21:37:13] [USER_FEEDBACK] Processing audio chunk
-[2025-07-24 21:37:13] [AUDIO] Audio resampled from 192000 to 64000 samples
-[2025-07-24 21:37:13] [TRANSCRIBE_ES] Starting live transcription
-[2025-07-24 21:37:13] [LIVE_ES] ¿Puedes tomar?
-[2025-07-24 21:37:15] [SEND_GEMINI] 4w / 2c
-[2025-07-24 21:37:15] [USER_FEEDBACK] Sending to Gemini
-[2025-07-24 21:37:15] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+[2025-07-24 23:09:03] [SYSTEM] Initializing audio stream...
+[2025-07-24 23:09:03] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-24 23:09:03] [SYSTEM] ✅ Audio stream started successfully
+[2025-07-24 23:09:03] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
+[2025-07-24 23:09:03] [READY] Ready!  ─ Speak when you're ready ─
+[2025-07-24 23:09:03] [READY] ─────────────────────────────────────────────────────────
+[2025-07-24 23:09:03] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.39s - Response: Estoy lista.
+[2025-07-24 23:09:03] [INIT] Gemini  warm‑up (0.39s)  ✔
+[2025-07-24 23:09:09] [AUDIO] SPEECH_START detected (RMS: 0.0964)
+[2025-07-24 23:09:09] [SPEECH_START] 🎙️  Transcribing …
+[2025-07-24 23:09:09] [USER_FEEDBACK] User started speaking
+[2025-07-24 23:09:12] [AUDIO] SOFT_HOLD_START after 3.5s - 400ms countdown begins
+[2025-07-24 23:09:12] [AUDIO] SOFT_HOLD_SILENCE_START - silence detected during countdown
+[2025-07-24 23:09:13] [AUDIO] FLUSH (hard) | len=4.00s
+[2025-07-24 23:09:13] [AUDIO] Audio queued for live transcription (hard flush)
+[2025-07-24 23:09:13] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:09:13] [AUDIO] Audio resampled from 216000 to 72000 samples
+[2025-07-24 23:09:13] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:09:13] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:09:13] [AUDIO] SPEECH_START detected (RMS: 0.0172)
+[2025-07-24 23:09:14] [TRANSCRIBE_ES] ✅ Transcription complete
+[2025-07-24 23:09:14] [LIVE_ES] Hola, ¿cómo estás?
+[2025-07-24 23:09:17] [AUDIO] SOFT_HOLD_START after 3.5s - 400ms countdown begins
+[2025-07-24 23:09:17] [AUDIO] FLUSH (hard) | len=4.00s
+[2025-07-24 23:09:17] [AUDIO] Audio queued for live transcription (hard flush)
+[2025-07-24 23:09:17] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:09:17] [AUDIO] Audio resampled from 216000 to 72000 samples
+[2025-07-24 23:09:17] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:09:17] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:09:18] [TRANSCRIBE_ES] ✅ Transcription complete
+[2025-07-24 23:09:18] [BUFFER_UPDATE] 📄  63 chars captured   |   g to send
+[2025-07-24 23:09:18] [LIVE_ES] Estoy muy bien. Cuéntame, ¿qué planes tiene?
+[2025-07-24 23:09:18] [AUDIO] SPEECH_START detected (RMS: 0.1020)
+[2025-07-24 23:09:20] [AUDIO] SPEECH_END detected after 0.50s of silence (RMS: 0.0068)
+[2025-07-24 23:09:20] [AUDIO] Processing complete speech segment (120000 samples, 2.50s)
+[2025-07-24 23:09:20] [AUDIO] Audio queued for live transcription
+[2025-07-24 23:09:20] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:09:20] [AUDIO] Audio resampled from 120000 to 40000 samples
+[2025-07-24 23:09:20] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:09:20] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:09:20] [TRANSCRIBE_ES] ✅ Transcription complete
+[2025-07-24 23:09:20] [BUFFER_UPDATE] 📄  88 chars captured   |   g to send
+[2025-07-24 23:09:20] [LIVE_ES] para este fin de semana.
+[2025-07-24 23:09:20] [AUDIO] SPEECH_START detected (RMS: 0.0257)
+[2025-07-24 23:09:24] [AUDIO] SOFT_HOLD_START after 3.5s - 400ms countdown begins
+[2025-07-24 23:09:24] [AUDIO] FLUSH (hard) | len=4.00s
+[2025-07-24 23:09:24] [AUDIO] Audio queued for live transcription (hard flush)
+[2025-07-24 23:09:24] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:09:24] [AUDIO] Audio resampled from 216000 to 72000 samples
+[2025-07-24 23:09:24] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:09:24] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:09:25] [TRANSCRIBE_ES] Empty transcription result - no speech detected
+[2025-07-24 23:09:25] [AUDIO] SPEECH_START detected (RMS: 0.1000)
+[2025-07-24 23:09:28] [AUDIO] SOFT_HOLD_START after 3.5s - 400ms countdown begins
+[2025-07-24 23:09:29] [AUDIO] FLUSH (hard) | len=4.00s
+[2025-07-24 23:09:29] [AUDIO] Audio queued for live transcription (hard flush)
+[2025-07-24 23:09:29] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:09:29] [AUDIO] Audio resampled from 216000 to 72000 samples
+[2025-07-24 23:09:29] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:09:29] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:09:29] [TRANSCRIBE_ES] ✅ Transcription complete
+[2025-07-24 23:09:29] [BUFFER_UPDATE] 📄  144 chars captured   |   g to send
+[2025-07-24 23:09:29] [LIVE_ES] Sí, iré al cine con Sandra, el domingo. ¿Quieres venir?
+[2025-07-24 23:09:29] [AUDIO] SPEECH_START detected (RMS: 0.0171)
+[2025-07-24 23:09:32] [AUDIO] SPEECH_END detected after 1.50s of silence (RMS: 0.0087)
+[2025-07-24 23:09:32] [AUDIO] Processing complete speech segment (144000 samples, 3.00s)
+[2025-07-24 23:09:32] [AUDIO] Audio queued for live transcription
+[2025-07-24 23:09:32] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:09:32] [AUDIO] Audio resampled from 144000 to 48000 samples
+[2025-07-24 23:09:32] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:09:32] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:09:32] [TRANSCRIBE_ES] Empty transcription result - no speech detected
+[2025-07-24 23:09:34] [HOTKEY_G] Manual send: 25w / 4c
+[2025-07-24 23:09:34] [USER_FEEDBACK] Sending Q1 to Gemini: Hola, ¿cómo estás?...
+[2025-07-24 23:09:34] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
 - Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
 - Acabar de + [infinitive]
 - Basic Spanish pronunciation rules
@@ -197,22 +296,369 @@ When the other student provides Spanish text, reply *only* with a single, natura
 - Numbers 31 and higher (patterns, cien/ciento, mil/millón)
 - Common verbs and expressions (especially with tener)
 When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
-[2025-07-24 21:37:15] [GEMINI_PROMPT] Spanish input: De acuerdo. ¿Puedes tomar?
-[2025-07-24 21:37:15] [GEMINI_REPLY] Response (0.32s): Sí, puedo tomar.
-[2025-07-24 21:37:15] [PERFORMANCE] Gemini response time 0.32s within live exam target
-[2025-07-24 21:37:15] [GEMINI_RESPONSE_TIME] 0.32s
-[2025-07-24 21:37:15] [HOTKEY_G] Manual send completed
-[2025-07-24 21:37:24] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
-[2025-07-24 21:37:24] [SYSTEM] Application terminated by user (Ctrl+C)
-[2025-07-24 21:37:24] [SYSTEM] Starting system cleanup
-[2025-07-24 21:37:24] [SYSTEM] Signaled worker threads to stop
-[2025-07-24 21:37:24] [SYSTEM] Waiting for audio queue to empty
-[2025-07-24 21:37:24] [SYSTEM] Audio queue emptied successfully
-[2025-07-24 21:37:24] [SYSTEM] Waiting for transcription thread to finish
-[2025-07-24 21:37:24] [SYSTEM] Hotkey listener thread stopped gracefully
-[2025-07-24 21:37:24] [SYSTEM] Auto-send monitor thread stopped
-[2025-07-24 21:37:24] [SYSTEM] Live transcription worker thread stopped
-[2025-07-24 21:37:24] [SYSTEM] Transcription thread finished successfully
-[2025-07-24 21:37:24] [SYSTEM] Audio buffer cleared
-[2025-07-24 21:37:24] [SYSTEM] Live buffer cleared
-[2025-07-24 21:37:24] [SYSTEM] System cleanup completed
+[2025-07-24 23:09:34] [GEMINI_PROMPT] Spanish input: Hola, ¿cómo estás?
+[2025-07-24 23:09:34] [GEMINI_REPLY] Response (0.21s): ¡Muy bien, gracias!
+[2025-07-24 23:09:34] [PERFORMANCE] Gemini response time 0.21s within live exam target
+[2025-07-24 23:09:34] [GEMINI_RESPONSE_TIME] Q1 response time: 0.21s
+[2025-07-24 23:09:34] [GEMINI_REPLY] 🤖  Q1  «¡Muy bien, gracias!»
+[2025-07-24 23:09:34] [USER_FEEDBACK] Sending Q2 to Gemini: Estoy muy bien. Cuéntame, ¿qué planes tiene?...
+[2025-07-24 23:09:34] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-24 23:09:34] [GEMINI_PROMPT] Spanish input: Estoy muy bien. Cuéntame, ¿qué planes tiene?
+[2025-07-24 23:09:34] [GEMINI_REPLY] Response (0.21s): Ayer, yo fui al cine.
+[2025-07-24 23:09:34] [PERFORMANCE] Gemini response time 0.21s within live exam target
+[2025-07-24 23:09:34] [GEMINI_RESPONSE_TIME] Q2 response time: 0.21s
+[2025-07-24 23:09:34] [GEMINI_REPLY] 🤖  Q2  «Ayer, yo fui al cine.»
+[2025-07-24 23:09:34] [USER_FEEDBACK] Sending Q3 to Gemini: para este fin de semana. Sí, iré al cine con Sandr...
+[2025-07-24 23:09:34] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-24 23:09:34] [GEMINI_PROMPT] Spanish input: para este fin de semana. Sí, iré al cine con Sandra, el domingo. ¿Quieres venir?
+[2025-07-24 23:09:34] [GEMINI_REPLY] Response (0.20s): Sí, yo también voy a ir al cine.
+[2025-07-24 23:09:34] [PERFORMANCE] Gemini response time 0.20s within live exam target
+[2025-07-24 23:09:34] [GEMINI_RESPONSE_TIME] Q3 response time: 0.20s
+[2025-07-24 23:09:34] [GEMINI_REPLY] 🤖  Q3  «Sí, yo también voy a ir al cine.»
+[2025-07-24 23:09:34] [READY_NEXT] ─────────────────────────────────────────────────────────
+[2025-07-24 23:09:34] [READY_NEXT] 🔄  Ready — start next answer
+[2025-07-24 23:09:34] [READY_NEXT] ─────────────────────────────────────────────────────────
+[2025-07-24 23:09:34] [HOTKEY_G] Manual send completed
+[2025-07-24 23:09:42] [ERROR] 
+🛑 Keyboard interrupt received. Shutting down gracefully...
+[2025-07-24 23:09:42] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
+[2025-07-24 23:09:42] [ERROR] 
+🛑 Shutdown initiated by user...
+[2025-07-24 23:09:42] [SYSTEM] Application terminated by user (Ctrl+C)
+[2025-07-24 23:09:42] [ERROR] 🔧 Cleaning up resources...
+[2025-07-24 23:09:42] [SYSTEM] Starting system cleanup
+[2025-07-24 23:09:42] [SYSTEM] Signaled worker threads to stop
+[2025-07-24 23:09:42] [SYSTEM] Waiting for audio queue to empty
+[2025-07-24 23:09:42] [SYSTEM] Audio queue emptied successfully
+[2025-07-24 23:09:42] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-24 23:09:42] [SYSTEM] Hotkey listener thread stopped gracefully
+[2025-07-24 23:09:43] [SYSTEM] Auto-send monitor thread stopped
+[2025-07-24 23:09:43] [SYSTEM] Live transcription worker thread stopped
+[2025-07-24 23:09:43] [SYSTEM] Transcription thread finished successfully
+[2025-07-24 23:09:43] [SYSTEM] Audio buffer cleared
+[2025-07-24 23:09:43] [SYSTEM] Live buffer cleared
+[2025-07-24 23:09:43] [SYSTEM] System cleanup completed
+[2025-07-24 23:09:43] [ERROR] ✅ Cleanup completed successfully.
+=== System startup at 2025-07-24 23:12:17 ===
+[2025-07-24 23:12:17] [SYSTEM] Logging system initialized successfully
+[2025-07-24 23:12:17] [SYSTEM] Log file: C:\Users\John\Documents\programming\translate tool\log.txt
+[2025-07-24 23:12:17] [SYSTEM] Environment variables loaded successfully
+[2025-07-24 23:12:17] [SYSTEM] Gemini client initialized successfully
+[2025-07-24 23:12:17] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-24 23:12:17] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-24 23:12:18] [SYSTEM] Whisper model loaded successfully
+[2025-07-24 23:12:18] [AUDIO_FORMAT] === Live Transcription System Ready ===
+[2025-07-24 23:12:18] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
+[2025-07-24 23:12:18] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
+[2025-07-24 23:12:18] [AUDIO_FORMAT] 🚀 Performance: True live streaming with soft-hold flush
+[2025-07-24 23:12:18] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.012, SILENCE_SECS=0.2, MAX_SPEECH_SECS=3.2
+[2025-07-24 23:12:18] [AUDIO_FORMAT] 🎯 Soft-hold: 3.2s start + 400ms countdown + 150ms silence threshold
+[2025-07-24 23:12:18] [AUDIO_FORMAT] ⏰ Absolute cap: 5.0s maximum speech duration (HARD_FLUSH_TIMEOUT)
+[2025-07-24 23:12:18] [AUDIO_FORMAT] 🔧 Whisper: beam=1, best_of=1, vad=True, no_speech=0.6
+[2025-07-24 23:12:18] [AUDIO_FORMAT] ❓ Question splitting: automatic split on '?' for separate Gemini calls
+[2025-07-24 23:12:18] [AUDIO_FORMAT] 📝 Flush logging: FLUSH (soft|hard) | len=X.XXs format
+[2025-07-24 23:12:18] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-24 23:12:18] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-24 23:12:18] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
+[2025-07-24 23:12:18] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
+[2025-07-24 23:12:18] [SYSTEM] Thread architecture: transcription worker + hotkey listener + auto-send monitor (disabled)
+[2025-07-24 23:12:18] [SYSTEM] Starting system threads...
+[2025-07-24 23:12:18] [SYSTEM] Live transcription worker thread started
+[2025-07-24 23:12:18] [SYSTEM] ✅ Streaming transcription worker thread started successfully
+[2025-07-24 23:12:18] [SYSTEM] Hotkey listener thread started with enhanced error handling
+[2025-07-24 23:12:18] [SYSTEM] ✅ Hotkey listener thread started successfully
+[2025-07-24 23:12:18] [SYSTEM] Auto-send monitor thread disabled - manual send only
+[2025-07-24 23:12:18] [SYSTEM] ✅ Auto-send monitor thread started (disabled)
+[2025-07-24 23:12:18] [SYSTEM] ✅ All system threads running successfully
+[2025-07-24 23:12:18] [INIT] [Init] Loading models …
+[2025-07-24 23:12:18] [INIT] Whisper small‑fp16         ✔
+[2025-07-24 23:12:18] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-24 23:12:18] [SYSTEM] ✅ Gemini warm-up thread started
+[2025-07-24 23:12:18] [GEMINI_WARMUP] Warm-up prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-24 23:12:18] [SYSTEM] Initializing audio stream...
+[2025-07-24 23:12:18] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-24 23:12:18] [SYSTEM] ✅ Audio stream started successfully
+[2025-07-24 23:12:18] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
+[2025-07-24 23:12:18] [READY] Ready!  ─ Speak when you're ready ─
+[2025-07-24 23:12:18] [READY] ─────────────────────────────────────────────────────────
+[2025-07-24 23:12:18] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.26s - Response: Estoy listo.
+[2025-07-24 23:12:18] [INIT] Gemini  warm‑up (0.26s)  ✔
+[2025-07-24 23:12:28] [AUDIO] SPEECH_START detected (RMS: 0.0376)
+[2025-07-24 23:12:28] [SPEECH_START] 🎙️  Transcribing …
+[2025-07-24 23:12:28] [USER_FEEDBACK] User started speaking
+[2025-07-24 23:12:32] [AUDIO] SOFT_HOLD_START after 3.5s - 400ms countdown begins
+[2025-07-24 23:12:32] [AUDIO] FLUSH (hard) | len=4.00s
+[2025-07-24 23:12:32] [AUDIO] Audio queued for live transcription (hard flush)
+[2025-07-24 23:12:32] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:12:32] [AUDIO] Audio resampled from 216000 to 72000 samples
+[2025-07-24 23:12:32] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:12:32] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:12:33] [AUDIO] SPEECH_START detected (RMS: 0.1097)
+[2025-07-24 23:12:33] [TRANSCRIBE_ES] ✅ Transcription complete
+[2025-07-24 23:12:33] [BUFFER_UPDATE] 📄  28 chars captured   |   g to send
+[2025-07-24 23:12:33] [LIVE_ES] Hola, no te había visto a...
+[2025-07-24 23:12:35] [AUDIO] SPEECH_END detected after 1.50s of silence (RMS: 0.0038)
+[2025-07-24 23:12:35] [AUDIO] Processing complete speech segment (144000 samples, 3.00s)
+[2025-07-24 23:12:35] [AUDIO] Audio queued for live transcription
+[2025-07-24 23:12:35] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:12:35] [AUDIO] Audio resampled from 144000 to 48000 samples
+[2025-07-24 23:12:35] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:12:35] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:12:35] [TRANSCRIBE_ES] ✅ Transcription complete
+[2025-07-24 23:12:35] [BUFFER_UPDATE] 📄  61 chars captured   |   g to send
+[2025-07-24 23:12:35] [LIVE_ES] antes por aquí. ¿Cómo te llamas?
+[2025-07-24 23:12:38] [AUDIO] SPEECH_START detected (RMS: 0.0164)
+[2025-07-24 23:12:39] [AUDIO] SPEECH_END detected after 0.50s of silence (RMS: 0.0057)
+[2025-07-24 23:12:39] [AUDIO] Processing complete speech segment (72000 samples, 1.50s)
+[2025-07-24 23:12:39] [AUDIO] Audio queued for live transcription
+[2025-07-24 23:12:39] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:12:39] [AUDIO] Audio resampled from 72000 to 24000 samples
+[2025-07-24 23:12:39] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:12:39] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:12:39] [TRANSCRIBE_ES] Empty transcription result - no speech detected
+[2025-07-24 23:12:39] [AUDIO] SPEECH_START detected (RMS: 0.0300)
+[2025-07-24 23:12:41] [AUDIO] SPEECH_END detected after 0.50s of silence (RMS: 0.0039)
+[2025-07-24 23:12:41] [AUDIO] Processing complete speech segment (120000 samples, 2.50s)
+[2025-07-24 23:12:41] [AUDIO] Audio queued for live transcription
+[2025-07-24 23:12:41] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:12:41] [AUDIO] Audio resampled from 120000 to 40000 samples
+[2025-07-24 23:12:41] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:12:41] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:12:41] [TRANSCRIBE_ES] ✅ Transcription complete
+[2025-07-24 23:12:41] [BUFFER_UPDATE] 📄  77 chars captured   |   g to send
+[2025-07-24 23:12:41] [LIVE_ES] ¿De dónde eres?
+[2025-07-24 23:12:44] [AUDIO] SPEECH_START detected (RMS: 0.1121)
+[2025-07-24 23:12:48] [AUDIO] SPEECH_END detected after 2.00s of silence (RMS: 0.0041)
+[2025-07-24 23:12:48] [AUDIO] Processing complete speech segment (192000 samples, 4.00s)
+[2025-07-24 23:12:48] [AUDIO] Audio queued for live transcription
+[2025-07-24 23:12:48] [USER_FEEDBACK] Processing audio chunk
+[2025-07-24 23:12:48] [AUDIO] Audio resampled from 192000 to 64000 samples
+[2025-07-24 23:12:48] [TRANSCRIBE_ES] 🔄 Processing audio...
+[2025-07-24 23:12:48] [TRANSCRIBE_ES] Starting live transcription
+[2025-07-24 23:12:48] [TRANSCRIBE_ES] ✅ Transcription complete
+[2025-07-24 23:12:48] [BUFFER_UPDATE] 📄  125 chars captured   |   g to send
+[2025-07-24 23:12:48] [LIVE_ES] Me gusta mucho ese lugar. ¿Cuántos años tienes?
+[2025-07-24 23:12:56] [HOTKEY_G] Manual send: 23w / 4c
+[2025-07-24 23:12:56] [USER_FEEDBACK] Sending Q1 to Gemini: Hola, no te había visto a... antes por aquí. ¿Cómo...
+[2025-07-24 23:12:56] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-24 23:12:56] [GEMINI_PROMPT] Spanish input: Hola, no te había visto a... antes por aquí. ¿Cómo te llamas?
+[2025-07-24 23:12:56] [GEMINI_REPLY] Response (0.22s): Me llamo Alex.
+[2025-07-24 23:12:56] [PERFORMANCE] Gemini response time 0.22s within live exam target
+[2025-07-24 23:12:56] [GEMINI_RESPONSE_TIME] Q1 response time: 0.22s
+[2025-07-24 23:12:56] [GEMINI_REPLY] 🤖  Q1  «Me llamo Alex.»
+[2025-07-24 23:12:56] [USER_FEEDBACK] Sending Q2 to Gemini: ¿De dónde eres?...
+[2025-07-24 23:12:56] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-24 23:12:56] [GEMINI_PROMPT] Spanish input: ¿De dónde eres?
+[2025-07-24 23:12:56] [GEMINI_REPLY] Response (0.19s): Soy de Estados Unidos.
+[2025-07-24 23:12:56] [PERFORMANCE] Gemini response time 0.19s within live exam target
+[2025-07-24 23:12:56] [GEMINI_RESPONSE_TIME] Q2 response time: 0.19s
+[2025-07-24 23:12:56] [GEMINI_REPLY] 🤖  Q2  «Soy de Estados Unidos.»
+[2025-07-24 23:12:56] [USER_FEEDBACK] Sending Q3 to Gemini: Me gusta mucho ese lugar. ¿Cuántos años tienes?...
+[2025-07-24 23:12:56] [GEMINI_PROMPT] Prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-24 23:12:56] [GEMINI_PROMPT] Spanish input: Me gusta mucho ese lugar. ¿Cuántos años tienes?
+[2025-07-24 23:12:56] [GEMINI_REPLY] Response (0.24s): Tengo veintiuno.
+[2025-07-24 23:12:56] [PERFORMANCE] Gemini response time 0.24s within live exam target
+[2025-07-24 23:12:56] [GEMINI_RESPONSE_TIME] Q3 response time: 0.24s
+[2025-07-24 23:12:56] [GEMINI_REPLY] 🤖  Q3  «Tengo veintiuno.»
+[2025-07-24 23:12:56] [READY_NEXT] ─────────────────────────────────────────────────────────
+[2025-07-24 23:12:56] [READY_NEXT] 🔄  Ready — start next answer
+[2025-07-24 23:12:56] [READY_NEXT] ─────────────────────────────────────────────────────────
+[2025-07-24 23:12:56] [HOTKEY_G] Manual send completed
+[2025-07-24 23:13:28] [ERROR] 
+🛑 Keyboard interrupt received. Shutting down gracefully...
+[2025-07-24 23:13:28] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
+[2025-07-24 23:13:28] [ERROR] 
+🛑 Shutdown initiated by user...
+[2025-07-24 23:13:28] [SYSTEM] Application terminated by user (Ctrl+C)
+[2025-07-24 23:13:28] [ERROR] 🔧 Cleaning up resources...
+[2025-07-24 23:13:28] [SYSTEM] Starting system cleanup
+[2025-07-24 23:13:28] [SYSTEM] Signaled worker threads to stop
+[2025-07-24 23:13:28] [SYSTEM] Waiting for audio queue to empty
+[2025-07-24 23:13:28] [SYSTEM] Audio queue emptied successfully
+[2025-07-24 23:13:28] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-24 23:13:28] [SYSTEM] Hotkey listener thread stopped gracefully
+[2025-07-24 23:13:28] [SYSTEM] Auto-send monitor thread stopped
+[2025-07-24 23:13:29] [SYSTEM] Live transcription worker thread stopped
+[2025-07-24 23:13:29] [SYSTEM] Transcription thread finished successfully
+[2025-07-24 23:13:29] [SYSTEM] Audio buffer cleared
+[2025-07-24 23:13:29] [SYSTEM] Live buffer cleared
+[2025-07-24 23:13:29] [SYSTEM] System cleanup completed
+[2025-07-24 23:13:29] [ERROR] ✅ Cleanup completed successfully.
+=== System startup at 2025-07-24 23:16:58 ===
+[2025-07-24 23:16:58] [SYSTEM] Logging system initialized successfully
+[2025-07-24 23:16:58] [SYSTEM] Log file: C:\Users\John\Documents\programming\translate tool\log.txt
+[2025-07-24 23:16:58] [SYSTEM] Environment variables loaded successfully
+[2025-07-24 23:16:58] [SYSTEM] Gemini client initialized successfully
+[2025-07-24 23:16:58] [SYSTEM] Using Gemini model: gemini-2.5-flash-lite (optimized for live exam latency)
+[2025-07-24 23:16:58] [SYSTEM] Initializing Whisper model with compute_type: float16
+[2025-07-24 23:16:59] [SYSTEM] Whisper model loaded successfully
+[2025-07-24 23:16:59] [AUDIO_FORMAT] === Live Transcription System Ready ===
+[2025-07-24 23:16:59] [AUDIO_FORMAT] ✅ RMS-based speech detection enabled
+[2025-07-24 23:16:59] [AUDIO_FORMAT] ✅ Live buffer accumulation system initialized
+[2025-07-24 23:16:59] [AUDIO_FORMAT] 🚀 Performance: True live streaming with soft-hold flush
+[2025-07-24 23:16:59] [AUDIO_FORMAT] 📊 Settings: RMS_THRESHOLD=0.012, SILENCE_SECS=0.2, MAX_SPEECH_SECS=3.2
+[2025-07-24 23:16:59] [AUDIO_FORMAT] 🎯 Soft-hold: 3.2s start + 400ms countdown + 150ms silence threshold
+[2025-07-24 23:16:59] [AUDIO_FORMAT] ⏰ Absolute cap: 5.0s maximum speech duration (HARD_FLUSH_TIMEOUT)
+[2025-07-24 23:16:59] [AUDIO_FORMAT] 🔧 Whisper: beam=1, best_of=1, vad=True, no_speech=0.6
+[2025-07-24 23:16:59] [AUDIO_FORMAT] ❓ Question splitting: automatic split on '?' for separate Gemini calls
+[2025-07-24 23:16:59] [AUDIO_FORMAT] 📝 Flush logging: FLUSH (soft|hard) | len=X.XXs format
+[2025-07-24 23:16:59] [SYSTEM] Using audio device 37: CABLE Output (VB-Audio Virtual Cable)
+[2025-07-24 23:16:59] [SYSTEM] Audio settings validated: 48000Hz, 1 channel(s)
+[2025-07-24 23:16:59] [SYSTEM] === SPANISH TRANSCRIPTION SYSTEM STARTING ===
+[2025-07-24 23:16:59] [SYSTEM] Shared state initialized: hotkey_state and hotkey_lock ready
+[2025-07-24 23:16:59] [SYSTEM] Thread architecture: transcription worker + hotkey listener + auto-send monitor (disabled)
+[2025-07-24 23:16:59] [SYSTEM] Starting system threads...
+[2025-07-24 23:16:59] [SYSTEM] Live transcription worker thread started
+[2025-07-24 23:16:59] [SYSTEM] ✅ Streaming transcription worker thread started successfully
+[2025-07-24 23:16:59] [SYSTEM] Hotkey listener thread started with enhanced error handling
+[2025-07-24 23:16:59] [SYSTEM] ✅ Hotkey listener thread started successfully
+[2025-07-24 23:16:59] [SYSTEM] Auto-send monitor thread disabled - manual send only
+[2025-07-24 23:16:59] [SYSTEM] ✅ Auto-send monitor thread started (disabled)
+[2025-07-24 23:16:59] [SYSTEM] ✅ All system threads running successfully
+[2025-07-24 23:16:59] [INIT] [Init] Loading models …
+[2025-07-24 23:16:59] [INIT] Whisper small‑fp16         ✔
+[2025-07-24 23:16:59] [GEMINI_WARMUP] Starting Gemini API warm-up routine
+[2025-07-24 23:16:59] [SYSTEM] ✅ Gemini warm-up thread started
+[2025-07-24 23:16:59] [GEMINI_WARMUP] Warm-up prompt: You are a university student currently in Spanish 2, responding naturally to another student in Spanish. Your goal is to reply with a simple, grammatically correct Spanish sentence, as someone who has completed Spanish 1 and is currently learning the concepts listed below would. Concepts you understand and should utilize: - Saber and conocer (and irregular yo forms: sé, conozco)
+- Preterite tense (regular -ar, -er, -ir verbs; irregulars like -car/-gar/-zar changes; creer, leer, oír, ver; common preterite adverbs)
+- Acabar de + [infinitive]
+- Basic Spanish pronunciation rules
+- Regular -AR, -ER, -IR verb conjugations (present tense)
+- Irregular present tense verbs: ser, estar, ir, tener, venir, decir, hacer, poner, salir, suponer, traer, ver, oír
+- Stem-changing verbs (e→ie, o→ue, e→i)
+- Direct object nouns and pronouns (placement)
+- Possession (using "de," possessive adjectives, possessive pronouns, de + el = del)
+- Ser vs. Estar (DOCTOR, PLACE/LoCo mnemonics, adjective meaning changes)
+- Gustar (and similar verbs, where liked item is subject)
+- Forming questions (pitch, inversion, tags, interrogative words, por qué vs. porque)
+- Present Progressive (estar + present participle, irregulars, stem changes)
+- Descriptive adjectives and nationality (agreement, position, bueno/malo/grande/santo)
+- Numbers 31 and higher (patterns, cien/ciento, mil/millón)
+- Common verbs and expressions (especially with tener)
+When the other student provides Spanish text, reply *only* with a single, natural, brief Spanish sentence. Do not add explanations, alternatives, or any text beyond that one sentence.
+[2025-07-24 23:16:59] [SYSTEM] Initializing audio stream...
+[2025-07-24 23:16:59] [GEMINI_WARMUP] Warm-up input: Say 'ready' in Spanish.
+[2025-07-24 23:16:59] [SYSTEM] ✅ Audio stream started successfully
+[2025-07-24 23:16:59] [SYSTEM] === SYSTEM FULLY OPERATIONAL ===
+[2025-07-24 23:16:59] [READY] Ready!  ─ Ready to transcribe ─
+[2025-07-24 23:16:59] [READY] ─────────────────────────────────────────────────────────
+[2025-07-24 23:16:59] [GEMINI_WARMUP_COMPLETE] Warm-up completed in 0.24s - Response: Listo.
+[2025-07-24 23:16:59] [INIT] Gemini  warm‑up (0.24s)  ✔
+[2025-07-24 23:17:06] [ERROR] 
+🛑 Keyboard interrupt received. Shutting down gracefully...
+[2025-07-24 23:17:06] [SYSTEM] Keyboard interrupt received - initiating graceful shutdown
+[2025-07-24 23:17:06] [ERROR] 
+🛑 Shutdown initiated by user...
+[2025-07-24 23:17:06] [SYSTEM] Application terminated by user (Ctrl+C)
+[2025-07-24 23:17:06] [ERROR] 🔧 Cleaning up resources...
+[2025-07-24 23:17:06] [SYSTEM] Starting system cleanup
+[2025-07-24 23:17:06] [SYSTEM] Signaled worker threads to stop
+[2025-07-24 23:17:06] [SYSTEM] Waiting for audio queue to empty
+[2025-07-24 23:17:06] [SYSTEM] Audio queue emptied successfully
+[2025-07-24 23:17:06] [SYSTEM] Waiting for transcription thread to finish
+[2025-07-24 23:17:06] [SYSTEM] Hotkey listener thread stopped gracefully
+[2025-07-24 23:17:06] [SYSTEM] Live transcription worker thread stopped
+[2025-07-24 23:17:06] [SYSTEM] Transcription thread finished successfully
+[2025-07-24 23:17:06] [SYSTEM] Waiting for auto-send monitor thread to finish
+[2025-07-24 23:17:06] [SYSTEM] Auto-send monitor thread stopped
+[2025-07-24 23:17:06] [SYSTEM] Auto-send monitor thread finished successfully
+[2025-07-24 23:17:06] [SYSTEM] Audio buffer cleared
+[2025-07-24 23:17:06] [SYSTEM] Live buffer cleared
+[2025-07-24 23:17:06] [SYSTEM] System cleanup completed
+[2025-07-24 23:17:06] [ERROR] ✅ Cleanup completed successfully.

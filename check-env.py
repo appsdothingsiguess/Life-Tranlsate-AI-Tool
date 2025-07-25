@@ -6,6 +6,13 @@ from dotenv import load_dotenv
 from google import genai
 from pathlib import Path
 import ctypes
+import logging  # Added for logging configuration
+
+# Configure logging to suppress unwanted messages
+logging.getLogger("google_genai").setLevel(logging.WARNING)
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
+logging.getLogger("faster_whisper").setLevel(logging.WARNING)
 
 print("=== System Diagnostic ===\n")
 
