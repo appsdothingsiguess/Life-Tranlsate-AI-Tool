@@ -1,0 +1,13 @@
+# litellm.config.yaml
+general_settings:
+  cache: true
+  cache_path: ./cache  # Local dir for caching
+  drop_params: true
+
+model_list:
+  - model_name: claude-4
+    litellm_provider: anthropic
+    api_key: ${ANTHROPIC_API_KEY}
+  - model_name: claude-3
+    litellm_provider: anthropic
+    api_key: ${ANTHROPIC_API_KEY}

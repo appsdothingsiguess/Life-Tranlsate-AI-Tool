@@ -40,9 +40,9 @@ def resample(audio_data, new_length):
         return audio_data.astype(np.float32)  # Ensure float32 output
 
 # System Constants
-RMS_THRESHOLD = 0.008  # Lower threshold for breath-level latency
-SILENCE_SECS = 0.3     # Breath-level pause detection for immediate response
-MAX_SPEECH_SECS = 4.0  # Flush every 4 seconds if still speaking
+RMS_THRESHOLD = 0.012  # Optimized threshold for better responsiveness
+SILENCE_SECS = 0.2     # Reduced from 0.3s to 0.2s for faster response
+MAX_SPEECH_SECS = 2.0  # Reduced from 4.0s to 2.0s for faster chunks
 AUTO_SEND_AFTER_SECS = 8  # seconds of silence before auto-fire
 LOG_FILE = "log.txt"
 GEMINI_PROMPT = (
@@ -584,6 +584,10 @@ def send_to_gemini(buffer_content):
         try:
             start = time.time()
             
+            # 🎙️ Gemini request feedback
+            print("🤖 Sending to Gemini...")
+            log_with_timestamp("Sending to Gemini", "USER_FEEDBACK")
+            
             # Call Gemini with the content
             reply = call_gemini_api(full_text)
             elapsed = time.time() - start
@@ -843,6 +847,9 @@ def streaming_transcription_worker():
             # Pull complete speech segment from queue
             try:
                 audio_data = audio_queue.get(timeout=1.0)
+                # 🎙️ Processing feedback
+                print("🧐 Whisper running...")
+                log_with_timestamp("Processing audio chunk", "USER_FEEDBACK")
             except queue.Empty:
                 continue
             except Exception as queue_error:
@@ -881,8 +888,8 @@ def streaming_transcription_worker():
                         audio_data,
                         language="es",
                         task="transcribe",
-                        beam_size=5,
-                        best_of=5,
+                        beam_size=1,  # Reduced from 5 for faster processing
+                        best_of=1,    # Reduced from 5 for faster processing
                         vad_filter=True,
                         temperature=0.0,
                         no_speech_threshold=0.5
@@ -1044,6 +1051,13 @@ def callback(indata, frames, time, status):
         # Update speaking state and check if speech segment is complete
         try:
             speech_complete = update_speaking_state(audio_chunk)
+            
+            # 🎙️ Live feedback when speech starts
+            if is_speaking and not hasattr(callback, '_speaking_feedback_shown'):
+                print("🎙️ Transcribing...")
+                log_with_timestamp("User started speaking", "USER_FEEDBACK")
+                callback._speaking_feedback_shown = True
+                
         except Exception as e:
             log_with_timestamp(f"Error in speaking state detection: {e}", "ERROR")
             return
@@ -1061,9 +1075,14 @@ def callback(indata, frames, time, status):
                         complete_audio = np.array(audio_buffer)
                         log_with_timestamp(f"Processing complete speech segment ({len(complete_audio)} samples, {len(complete_audio)/SAMPLE_RATE:.2f}s)", "AUDIO")
                         
+                        # 🎙️ Audio chunk feedback
+                        print("📥 Audio chunk queued for transcription...")
+                        log_with_timestamp("Audio chunk queued", "USER_FEEDBACK")
+                        
                         # Queue audio for transcription worker thread
                         try:
                             audio_queue.put(complete_audio.copy(), block=False)
+                            print("🔄 Processing audio...")
                             log_with_timestamp("Audio queued for live transcription", "AUDIO")
                         except queue.Full:
                             log_with_timestamp("Audio queue is full, dropping audio segment", "ERROR")
@@ -1072,6 +1091,10 @@ def callback(indata, frames, time, status):
                         
                         # Clear the buffer for next speech segment
                         audio_buffer.clear()
+                        
+                        # Reset speaking feedback flag
+                        if hasattr(callback, '_speaking_feedback_shown'):
+                            callback._speaking_feedback_shown = False
                         
                     except Exception as processing_error:
                         log_with_timestamp(f"Error processing complete audio segment: {processing_error}", "ERROR")
@@ -1091,6 +1114,10 @@ def callback(indata, frames, time, status):
                 speech_start_time = None
                 log_with_timestamp(f"FORCED_FLUSH after {duration:.1f}s continuous speech", "AUDIO")
                 
+                # 🎙️ Feedback for forced flush
+                print("⏱️ Forced flush - processing long speech...")
+                log_with_timestamp("Forced flush triggered", "USER_FEEDBACK")
+                
                 # Process buffered audio (reuse same code path)
                 with speech_buffer_lock:
                     if len(audio_buffer) > 0:
@@ -1101,6 +1128,7 @@ def callback(indata, frames, time, status):
                             # Queue audio for transcription worker thread
                             try:
                                 audio_queue.put(complete_audio.copy(), block=False)
+                                print("🔄 Processing audio...")
                                 log_with_timestamp("Audio queued for live transcription (forced flush)", "AUDIO")
                             except queue.Full:
                                 log_with_timestamp("Audio queue is full, dropping forced flush segment", "ERROR")
