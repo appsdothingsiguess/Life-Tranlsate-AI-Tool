@@ -1,0 +1,31 @@
+name: Local Claude Setup
+version: 1.0.0
+schema: v1
+
+models:
+  - uses: anthropic/claude-4-sonnet
+    with:
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}  # Set in .env
+      maxTokens: 100000
+
+  - uses: anthropic/claude-3-7-sonnet
+    with:
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      maxTokens: 60000
+
+context:
+  - provider: code
+  - provider: file
+  - provider: folder
+  - provider: docs
+  - provider: codebase
+  - provider: terminal
+  - provider: web
+    params:
+      n: 5
+  - provider: search
+    params:
+      maxResults: 100
+  - provider: debugger
+    params:
+      stackDepth: 3

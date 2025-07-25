@@ -95,6 +95,7 @@ ENV/
 env.bak/
 venv.bak/
 /whisperenv
+/.continue
 
 # Spyder project settings
 .spyderproject

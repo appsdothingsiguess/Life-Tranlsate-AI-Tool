@@ -3,7 +3,7 @@ import torch
 import sounddevice as sd
 import numpy as np
 from faster_whisper import WhisperModel
-from scipy.signal import resample  # Re-added for RMS-based system
+# from scipy.signal import resample  # Commented out due to Python 3.13 compatibility issue
 from collections import deque
 import threading
 import queue
@@ -13,6 +13,31 @@ from datetime import datetime
 import msvcrt
 import time
 import re  # Added for filtering nonsense chunks
+os.add_dll_directory(r"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin")
+
+# Custom resample function to replace scipy.signal.resample
+def resample(audio_data, new_length):
+    """
+    Simple resample function to replace scipy.signal.resample
+    Uses linear interpolation for audio resampling
+    """
+    try:
+        original_length = len(audio_data)
+        if original_length == new_length:
+            return audio_data.astype(np.float32)  # Ensure float32 output
+        
+        # Create time arrays
+        original_time = np.linspace(0, 1, original_length)
+        new_time = np.linspace(0, 1, new_length)
+        
+        # Linear interpolation
+        resampled = np.interp(new_time, original_time, audio_data)
+        return resampled.astype(np.float32)  # Ensure float32 output
+        
+    except Exception as e:
+        # Fallback: return original data if resampling fails
+        print(f"Resampling failed: {e}, using original audio")
+        return audio_data.astype(np.float32)  # Ensure float32 output
 
 # System Constants
 RMS_THRESHOLD = 0.008  # Lower threshold for breath-level latency

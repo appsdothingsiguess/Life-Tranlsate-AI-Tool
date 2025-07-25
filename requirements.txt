@@ -1,7 +1,9 @@
-torch>=2.0.0
-sounddevice>=0.4.6
-numpy>=1.21.0
-faster-whisper>=0.9.0
-scipy>=1.9.0
+torch==2.4.1+cu121
+torchaudio==2.4.1+cu121
+torchvision==0.19.1+cu121
+faster-whisper==1.0.1
+sounddevice==0.4.6
+numpy>=1.25.2
 python-dotenv>=1.0.0
-google-genai>=0.3.0 
+scipy>=1.10.0  # optional unless you're using scipy resample
+google-generativeai==0.4.1
