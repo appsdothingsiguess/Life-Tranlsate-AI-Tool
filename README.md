@@ -178,13 +178,47 @@ Once the application is running, you'll see:
 
 ### Keyboard Controls
 
-| Key | Function |
-|-----|----------|
-| `g` | **Send manually** - Send accumulated text to Gemini AI immediately |
-| `r` | **Repeat** - Show the last Gemini response again |
-| `h` | **Help** - Display this help information |
-| `q` | **Skip/Ignore** - Ignore current input (placeholder) |
+| Key Combination | Function |
+|----------------|----------|
+| `Ctrl+Alt+Shift+S` | **Send manually** - Send accumulated text to Gemini AI immediately |
+| `Ctrl+Alt+Shift+R` | **Repeat** - Show the last Gemini response again |
+| `Ctrl+Alt+Shift+H` | **Help** - Display this help information |
+| `Ctrl+Alt+Shift+C` | **Skip/Ignore** - Clear current transcription buffer |
 | `Ctrl+C` | **Exit** - Gracefully shut down the application |
+
+### How to Test Hotkeys Globally
+
+1. **Start the application**: `python main.py`
+2. **Verify global hotkeys are active**: Look for the message `[HOTKEY] Global hooks active (CTRL+ALT+SHIFT+S=send • CTRL+ALT+SHIFT+R=repeat • CTRL+ALT+SHIFT+H=help • CTRL+ALT+SHIFT+C=skip)`
+3. **Switch to another application**: Open a browser, text editor, or any other application
+4. **Test hotkeys**: Press the key combinations while the other application is focused
+5. **Verify functionality**: The hotkeys should work even without console focus
+
+**Note**: If you see `[HOTKEY] Console hot-keys active` instead, the global hotkey libraries failed to load. Install them with:
+```bash
+pip install pynput keyboard
+```
+
+### Customizing Hotkeys
+
+To customize the hotkey combinations, edit the `KEY_CONFIG` dictionary in `main.py`:
+
+```python
+KEY_CONFIG = {
+    "modifiers": ["ctrl", "alt", "shift"],  # Change modifier keys
+    "keys": {
+        "send": "s",      # Change to any key
+        "repeat": "r",    # Change to any key
+        "help": "h",      # Change to any key
+        "skip": "c"       # Change to any key
+    }
+}
+```
+
+To view the current key mapping, run:
+```bash
+python main.py --keys dump
+```
 
 ### Understanding the Interface
 

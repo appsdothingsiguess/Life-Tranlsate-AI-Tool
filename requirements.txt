@@ -7,3 +7,5 @@ numpy>=1.25.2
 python-dotenv>=1.0.0
 scipy>=1.10.0  # optional unless you're using scipy resample
 google-generativeai==0.4.1
+keyboard>=0.13.5  # Global hotkey support for Windows
+pynput>=1.7.6    # Cross-platform fallback for hotkeys

@@ -1,3 +1,27 @@
+"""
+CHANGELOG
+=========
+
+v2.2.0 - Collision-Free Global Hotkeys
+- Replaced F-keys with triple-modifier combinations (Ctrl+Alt+Shift+key)
+- Eliminated input hijacking in other applications
+- Updated hotkey mapping: Ctrl+Alt+Shift+S (send), Ctrl+Alt+Shift+R (repeat), etc.
+- Added KEY_CONFIG for easy hotkey customization
+- Maintained all UX improvements: instant transcription cue, empty buffer handling, error handling
+- Added --keys dump CLI flag for key mapping verification
+
+v2.1.0 - Global Hotkeys & UX Improvements
+- Replaced console polling with pynput.keyboard.Listener for system-wide hotkeys
+- Added instant transcription cue (🎙️ Transcribing…) on SPEECH_START
+- Improved empty buffer handling with user-friendly warning
+- Enhanced Gemini error handling with concise error messages
+- Fixed banner order: warm-up completes before "Ready" status
+- Removed F6 alternate send key to simplify hotkey mapping
+- Updated all console messages for better UX flow
+
+v2.0.0 - Previous version with F-key hotkeys and basic global support
+"""
+
 import os
 import torch
 import sounddevice as sd
@@ -10,10 +34,43 @@ import queue
 from dotenv import load_dotenv
 from google import genai
 from datetime import datetime
-import msvcrt
 import time
 import re  # Added for filtering nonsense chunks
 import logging  # Added for logging configuration
+
+# Global hotkey library imports with cross-platform fallback
+try:
+    from pynput import keyboard as pynput_keyboard
+    _HOTKEY_LIB = "pynput"
+except ImportError:
+    try:
+        import keyboard  # Windows / X11 / Wayland
+        _HOTKEY_LIB = "keyboard"
+    except ImportError:
+        import msvcrt  # Fallback to console-only hotkeys
+        _HOTKEY_LIB = "msvcrt"
+
+# Hotkey mapping configuration - collision-free triple-modifier combos
+HOTKEY_MAP = {
+    "send": "ctrl+alt+shift+s",
+    "repeat": "ctrl+alt+shift+r", 
+    "help": "ctrl+alt+shift+h",
+    "skip": "ctrl+alt+shift+c"
+}
+
+# Key configuration for easy customization
+KEY_CONFIG = {
+    "modifiers": ["ctrl", "alt", "shift"],
+    "keys": {
+        "send": "s",
+        "repeat": "r", 
+        "help": "h",
+        "skip": "c"
+    }
+}
+
+# Global variables for cleanup
+_pynput_listener = None
 
 # Configure logging to suppress unwanted messages
 logging.getLogger("google_genai").setLevel(logging.WARNING)
@@ -143,17 +200,18 @@ def print_startup_banner():
     """
     Display the live exam startup banner with instructions.
     """
-    banner = """
+    banner = f"""
 ═════════════════════════════════════════════════════════
 LIVE SPANISH ORAL EXAM ASSISTANT
 ─────────────────────────────────────────────────────────
-Hotkeys:
-g   → send current text to Gemini immediately
-r   → repeat last Gemini reply
-h   → show this help
+Global Hotkeys (work from any application):
+{HOTKEY_MAP['send'].upper()}   → send current text to Gemini immediately
+{HOTKEY_MAP['repeat'].upper()}   → repeat last Gemini reply
+{HOTKEY_MAP['help'].upper()}   → show this help
+{HOTKEY_MAP['skip'].upper()}   → clear/skip current buffer
 Ctrl‑C → exit
 
-Send mode:   manual only (press g to send)
+Send mode:   manual only (press {HOTKEY_MAP['send'].upper()} to send)
 Flush limit: 5.0 s per speech chunk
 ═════════════════════════════════════════════════════════
 """
@@ -266,6 +324,11 @@ def warm_up_gemini():
             if response_text:
                 log_with_timestamp(f"Warm-up completed in {warmup_time:.2f}s - Response: {response_text}", "GEMINI_WARMUP_COMPLETE")
                 print_console(f"Gemini  warm‑up ({warmup_time:.2f}s)  ✔", "INIT")
+                
+                # Print ready banner after warm-up completes
+                print_console("Ready!  ─ Ready to transcribe ─", "READY")
+                print_console("─────────────────────────────────────────────────────────", "READY")
+                
                 return True
             else:
                 raise ValueError("Gemini warm-up returned empty response")
@@ -279,8 +342,10 @@ def warm_up_gemini():
                 log_with_timestamp("Retrying warm-up in 2 seconds...", "GEMINI_WARMUP")
                 time.sleep(2)
             else:
-                # Final attempt failed
+                # Final attempt failed - still show ready banner
                 log_with_timestamp("Gemini warm-up failed after all attempts", "GEMINI_WARMUP_FAIL")
+                print_console("Ready!  ─ Ready to transcribe ─", "READY")
+                print_console("─────────────────────────────────────────────────────────", "READY")
                 return False
     
     return False
@@ -717,7 +782,14 @@ def send_to_gemini(buffer_content):
         log_with_timestamp("Gemini call interrupted by user", "ERROR_GEMINI")
         raise
     except Exception as handler_error:
+        # User-friendly error handling - don't clear buffer so user can retry
+        error_msg = str(handler_error)
+        if "Empty response" in error_msg or not error_msg.strip():
+            error_msg = "Empty response"
+        
+        print_console(f"❌  Gemini error: {error_msg}", "USER_FEEDBACK")
         log_with_timestamp(f"Critical error in send_to_gemini: {str(handler_error)}", "ERROR_SEND_GEMINI")
+        
         try:
             with hotkey_lock:
                 hotkey_state["gemini_busy"] = False
@@ -725,140 +797,392 @@ def send_to_gemini(buffer_content):
             pass
         return False
 
-def handle_g_key(state, lock, log_event, call_gemini):
+def handle_send_key(state, lock, log_event, call_gemini):
     """Send all live buffered text to Gemini if available and not busy."""
+    log_event(f"[HOTKEY] {HOTKEY_MAP['send']} fired - sending buffer", "HOTKEY")
+    
     try:
-        # Get all live buffer content
+        # Get all live buffer content and strip whitespace
         with live_buffer_lock:
             if not live_buffer:
-                log_event("No live text available", "HOTKEY_G")
+                print_console("⚠️  Nothing to send — say something first!", "USER_FEEDBACK")
+                log_event("Nothing to send", "USER_FEEDBACK")
                 return
             
             # Create a copy for processing
             buffer_copy = live_buffer.copy()
-            word_count = len(" ".join(buffer_copy).split())
+            full_text = " ".join(buffer_copy).strip()
+            
+            # Check if buffer is empty or only whitespace
+            if not full_text:
+                print_console("⚠️  Nothing to send — say something first!", "USER_FEEDBACK")
+                log_event("Nothing to send", "USER_FEEDBACK")
+                return
+            
+            word_count = len(full_text.split())
             chunk_count = len(buffer_copy)
         
         # Log what we're sending (file only)
-        log_event(f"Manual send: {word_count}w / {chunk_count}c", "HOTKEY_G")
+        log_event(f"Manual send: {word_count}w / {chunk_count}c", "HOTKEY_SEND")
         
         # Use shared send function
         success = send_to_gemini(buffer_copy)
         if success:
-            log_event("Manual send completed", "HOTKEY_G")
+            log_event("Manual send completed", "HOTKEY_SEND")
         else:
-            log_event("Manual send failed", "HOTKEY_G")
+            log_event("Manual send failed", "HOTKEY_SEND")
             
     except Exception as handler_error:
-        log_event(f"Critical error in handle_g_key: {str(handler_error)}", "ERROR_HOTKEY_HANDLER")
+        log_event(f"Critical error in handle_send_key: {str(handler_error)}", "ERROR_HOTKEY_HANDLER")
 
-def handle_r_key(state, lock, log_event):
+def handle_repeat_key(state, lock, log_event):
     """Reprint the last Gemini reply if available."""
+    log_event(f"[HOTKEY] {HOTKEY_MAP['repeat']} fired - repeating last reply", "HOTKEY")
+    
     with lock:
         reply = state.get("last_gemini", "")
     
     if not reply:
-        log_event("No previous Gemini reply", "HOTKEY_R")
+        log_event("No previous Gemini reply", "HOTKEY_REPEAT")
         return
     
-    log_event("Reprinting last Gemini reply", "HOTKEY_R")
+    log_event("Reprinting last Gemini reply", "HOTKEY_REPEAT")
     print_console(f"🤖  Last reply: «{reply}»", "GEMINI_REPLY")
 
-def handle_h_key(log_event):
+def handle_help_key(log_event):
     """Display help text for available hotkeys."""
-    log_event("Help shown", "HOTKEY_H")
+    log_event(f"[HOTKEY] {HOTKEY_MAP['help']} fired - showing help", "HOTKEY")
+    log_event("Help shown", "HOTKEY_HELP")
     print_startup_banner()
+
+def handle_skip_key(log_event):
+    """Skip/clear current transcription buffer."""
+    log_event(f"[HOTKEY] {HOTKEY_MAP['skip']} fired - clearing buffer", "HOTKEY")
+    
+    try:
+        with live_buffer_lock:
+            buffer_size = len(live_buffer)
+            live_buffer.clear()
+        
+        if buffer_size > 0:
+            log_event(f"Buffer cleared ({buffer_size} chunks)", "HOTKEY_SKIP")
+            print_console("🗑️  Buffer cleared", "HOTKEY_SKIP")
+        else:
+            log_event("Buffer was already empty", "HOTKEY_SKIP")
+            
+    except Exception as skip_error:
+        log_event(f"Error clearing buffer: {skip_error}", "ERROR_HOTKEY_HANDLER")
 
 # HANDLERS_OK
 # <<< HOTKEY_HANDLERS_END
 
+# Global hotkey debouncing state
+_hotkey_debounce_timers = {}
+_hotkey_debounce_delay = 0.3  # 300ms debounce
 
-def hotkey_listener_worker():
+def _is_hotkey_debounced(key):
     """
-    Enhanced hotkey listener thread with comprehensive error handling and graceful shutdown.
-    Implements 300ms debouncing with timestamp tracking per key.
-    Handles g, r, h, q keys with thread-safe shared state access.
-    All exceptions are caught and logged without crashing the main system.
+    Check if a hotkey is within the debounce window.
+    Returns True if the key should be ignored due to debouncing.
+    """
+    global _hotkey_debounce_timers, _hotkey_debounce_delay
+    
+    current_time = time.time()
+    if key in _hotkey_debounce_timers:
+        time_since_last = current_time - _hotkey_debounce_timers[key]
+        if time_since_last < _hotkey_debounce_delay:
+            log_with_timestamp(f"Debounced key '{key}' (last press {time_since_last:.3f}s ago)", "HOTKEY_DEBOUNCE")
+            return True
+    
+    # Update debounce timer for this key
+    _hotkey_debounce_timers[key] = current_time
+    return False
+
+# Global modifier state tracking
+_modifier_state = {
+    "ctrl": False,
+    "alt": False,
+    "shift": False
+}
+
+def _update_modifier_state(key, pressed):
+    """Update modifier state based on key press/release."""
+    global _modifier_state
+    
+    if hasattr(key, 'name'):
+        key_name = key.name.lower()
+        if key_name in _modifier_state:
+            _modifier_state[key_name] = pressed
+
+def _check_hotkey_combination(key):
+    """Check if current key press matches any hotkey combination."""
+    global _modifier_state
+    
+    # Get the pressed key character
+    if hasattr(key, 'char') and key.char:
+        pressed_key = key.char.lower()
+    else:
+        return None
+    
+    # Check if all required modifiers are pressed
+    if (_modifier_state["ctrl"] and 
+        _modifier_state["alt"] and 
+        _modifier_state["shift"]):
+        
+        # Check if this key matches any of our hotkeys
+        for action, key_char in KEY_CONFIG["keys"].items():
+            if pressed_key == key_char:
+                return action
+    
+    return None
+
+def _on_hotkey_press(key):
+    """
+    Global hotkey press handler with modifier combination detection.
+    """
+    try:
+        # Update modifier state
+        _update_modifier_state(key, True)
+        
+        # Check for hotkey combination
+        action = _check_hotkey_combination(key)
+        
+        if action:
+            # Check debouncing
+            if _is_hotkey_debounced(action):
+                return
+            
+            # Process the hotkey action
+            try:
+                if action == "send":
+                    handle_send_key(hotkey_state, hotkey_lock, log_with_timestamp, call_gemini_api)
+                    
+                elif action == "repeat":
+                    handle_repeat_key(hotkey_state, hotkey_lock, log_with_timestamp)
+                    
+                elif action == "help":
+                    handle_help_key(log_with_timestamp)
+                    
+                elif action == "skip":
+                    handle_skip_key(log_with_timestamp)
+                    
+            except Exception as handler_error:
+                log_with_timestamp(f"Error in hotkey handler for '{action}': {handler_error}", "ERROR_HOTKEY_HANDLER")
+                # Continue running - don't let handler errors crash the listener
+                
+    except Exception as hotkey_error:
+        log_with_timestamp(f"Error processing global hotkey: {hotkey_error}", "ERROR_HOTKEY_INPUT")
+
+def _on_hotkey_release(key):
+    """
+    Global hotkey release handler for modifier state tracking.
+    """
+    try:
+        # Update modifier state
+        _update_modifier_state(key, False)
+    except Exception as hotkey_error:
+        log_with_timestamp(f"Error processing hotkey release: {hotkey_error}", "ERROR_HOTKEY_INPUT")
+
+def _register_hotkey(label, key, func):
+    """
+    Register a hotkey with robust logging and error handling.
+    """
+    try:
+        keyboard.add_hotkey(key, func)
+        log_with_timestamp(f"[HOTKEY] Registered {label} on {key}", "SYSTEM")
+        return True
+    except Exception as e:
+        log_with_timestamp(f"[HOTKEY] Failed to register {label} on {key}: {e}", "ERROR")
+        return False
+
+def _check_keyboard_privileges():
+    """
+    Check if keyboard library has sufficient privileges for global hotkeys.
+    Returns True if privileges are sufficient, False otherwise.
+    """
+    try:
+        # Test if we can detect a simple key press
+        keyboard.is_pressed('shift')
+        return True
+    except (RuntimeError, PermissionError) as e:
+        log_with_timestamp(f"[HOTKEY] Admin rights required for global hooks: {e}", "ERROR")
+        print_console("[HOTKEY] Admin rights required for global hooks. Run PowerShell as Administrator.", "ERROR")
+        return False
+    except Exception as e:
+        log_with_timestamp(f"[HOTKEY] Keyboard privilege check failed: {e}", "ERROR")
+        return False
+
+def start_global_hotkeys():
+    """
+    Start global hotkey listener using the appropriate library.
+    Returns True if successful, False otherwise.
+    """
+    global hotkey_listener_running, _pynput_listener
+    
+    try:
+        log_with_timestamp(f"Starting global hotkey listener using {_HOTKEY_LIB}", "SYSTEM")
+        
+        if _HOTKEY_LIB == "keyboard":
+            # Keyboard library doesn't support complex modifier combinations well
+            # Fall back to pynput or console hotkeys
+            log_with_timestamp("Keyboard library doesn't support modifier combinations, falling back to console", "SYSTEM")
+            return start_console_hotkeys()
+            
+        elif _HOTKEY_LIB == "pynput":
+            # Register hotkeys with pynput library using modifier combinations
+            def on_press(key):
+                try:
+                    _on_hotkey_press(key)
+                except Exception as e:
+                    log_with_timestamp(f"Pynput key press error: {e}", "ERROR_HOTKEY_INPUT")
+            
+            def on_release(key):
+                try:
+                    _on_hotkey_release(key)
+                except Exception as e:
+                    log_with_timestamp(f"Pynput key release error: {e}", "ERROR_HOTKEY_INPUT")
+            
+            # Start pynput listener in daemon thread
+            def pynput_listener():
+                try:
+                    global _pynput_listener
+                    _pynput_listener = pynput_keyboard.Listener(
+                        on_press=on_press,
+                        on_release=on_release
+                    )
+                    _pynput_listener.start()
+                    _pynput_listener.join()
+                except Exception as e:
+                    log_with_timestamp(f"Pynput listener error: {e}", "ERROR_HOTKEY_THREAD")
+            
+            hotkey_thread = threading.Thread(target=pynput_listener, daemon=True)
+            hotkey_thread.start()
+            hotkey_listener_running = True
+            
+        else:
+            # Fallback to console-only hotkeys (original msvcrt implementation)
+            log_with_timestamp("Falling back to console-only hotkeys (msvcrt)", "SYSTEM")
+            return start_console_hotkeys()
+        
+        log_with_timestamp("Global hotkey listener started successfully", "SYSTEM")
+        print_console(f"[HOTKEY] Global hooks active ({HOTKEY_MAP['send'].upper()}=send • {HOTKEY_MAP['repeat'].upper()}=repeat • {HOTKEY_MAP['help'].upper()}=help • {HOTKEY_MAP['skip'].upper()}=skip)", "SYSTEM")
+        return True
+        
+    except Exception as e:
+        log_with_timestamp(f"Failed to start global hotkey listener: {e}", "ERROR")
+        log_with_timestamp("Falling back to console-only hotkeys", "SYSTEM")
+        return start_console_hotkeys()
+
+def start_console_hotkeys():
+    """
+    Fallback console-only hotkey listener using msvcrt.
+    Returns True if successful, False otherwise.
     """
     global hotkey_listener_running
     
-    # Debouncing - track last press time for each key
-    debounce_timers = {}
-    debounce_delay = 0.3  # 300ms debounce
-    
-    log_with_timestamp("Hotkey listener thread started with enhanced error handling", "SYSTEM")
-    
-    while hotkey_listener_running:
-        try:
-            # Check if a key is available (non-blocking)
-            if msvcrt.kbhit():
+    try:
+        log_with_timestamp("Starting console-only hotkey listener (msvcrt)", "SYSTEM")
+        
+        def console_hotkey_worker():
+            """
+            Console-only hotkey listener thread using msvcrt.
+            """
+            global hotkey_listener_running
+            
+            # Debouncing - track last press time for each key
+            debounce_timers = {}
+            debounce_delay = 0.3  # 300ms debounce
+            
+            log_with_timestamp("Console hotkey listener thread started", "SYSTEM")
+            
+            while hotkey_listener_running:
                 try:
-                    # Get the key press
-                    key = msvcrt.getch().decode('utf-8').lower()
-                    current_time = time.time()
+                    # Check if a key is available (non-blocking)
+                    if msvcrt.kbhit():
+                        try:
+                            # Get the key press
+                            key = msvcrt.getch().decode('utf-8').lower()
+                            current_time = time.time()
+                            
+                            # Check debouncing for this specific key
+                            if key in debounce_timers:
+                                time_since_last = current_time - debounce_timers[key]
+                                if time_since_last < debounce_delay:
+                                    # Key is debounced, ignore this press
+                                    log_with_timestamp(f"Debounced key '{key}' (last press {time_since_last:.3f}s ago)", "HOTKEY_DEBOUNCE")
+                                    continue
+                            
+                            # Update debounce timer for this key
+                            debounce_timers[key] = current_time
+                            
+                            # Process the key press with individual error handling
+                            try:
+                                # Convert to uppercase for comparison
+                                key_upper = key.upper()
+                                
+                                # Note: Console hotkeys are limited to single keys
+                                # For full modifier combination support, use global hotkeys
+                                if key_upper == 'S':
+                                    handle_send_key(hotkey_state, hotkey_lock, log_with_timestamp, call_gemini_api)
+                                    
+                                elif key_upper == 'R':
+                                    handle_repeat_key(hotkey_state, hotkey_lock, log_with_timestamp)
+                                    
+                                elif key_upper == 'H':
+                                    handle_help_key(log_with_timestamp)
+                                    
+                                elif key_upper == 'C':
+                                    handle_skip_key(log_with_timestamp)
+                                    
+                                else:
+                                    # Ignore other keys silently
+                                    pass
+                                    
+                            except Exception as handler_error:
+                                log_with_timestamp(f"Error in hotkey handler for '{key}': {handler_error}", "ERROR_HOTKEY_HANDLER")
+                                # Continue running - don't let handler errors crash the listener
+                                
+                        except UnicodeDecodeError:
+                            # Handle special keys that can't be decoded
+                            log_with_timestamp("Special key pressed (ignored)", "HOTKEY_SPECIAL")
+                        except EOFError:
+                            # Handle EOF gracefully
+                            log_with_timestamp("EOF received in hotkey listener, shutting down", "HOTKEY_EOF")
+                            break
+                        except KeyboardInterrupt:
+                            # Handle Ctrl+C in hotkey thread
+                            log_with_timestamp("Keyboard interrupt in hotkey listener, shutting down", "HOTKEY_INTERRUPT")
+                            break
+                        except Exception as key_error:
+                            log_with_timestamp(f"Error processing key press: {key_error}", "ERROR_HOTKEY_INPUT")
                     
-                    # Check debouncing for this specific key
-                    if key in debounce_timers:
-                        time_since_last = current_time - debounce_timers[key]
-                        if time_since_last < debounce_delay:
-                            # Key is debounced, ignore this press
-                            log_with_timestamp(f"Debounced key '{key}' (last press {time_since_last:.3f}s ago)", "HOTKEY_DEBOUNCE")
-                            continue
+                    # Small sleep to prevent excessive CPU usage
+                    time.sleep(0.01)  # 10ms sleep
                     
-                    # Update debounce timer for this key
-                    debounce_timers[key] = current_time
-                    
-                    # Process the key press with individual error handling
-                    try:
-                        if key == 'g':
-                            handle_g_key(hotkey_state, hotkey_lock, log_with_timestamp, call_gemini_api)
-                            
-                        elif key == 'r':
-                            handle_r_key(hotkey_state, hotkey_lock, log_with_timestamp)
-                            
-                        elif key == 'h':
-                            handle_h_key(log_with_timestamp)
-                            
-                        elif key == 'q':
-                            log_with_timestamp("Hotkey 'q' pressed", "HOTKEY_Q")
-                            # Handle q key - will be implemented in next task
-                            
-                        else:
-                            # Ignore other keys silently
-                            pass
-                            
-                    except Exception as handler_error:
-                        log_with_timestamp(f"Error in hotkey handler for '{key}': {handler_error}", "ERROR_HOTKEY_HANDLER")
-                        # Continue running - don't let handler errors crash the listener
-                        
-                except UnicodeDecodeError:
-                    # Handle special keys that can't be decoded
-                    log_with_timestamp("Special key pressed (ignored)", "HOTKEY_SPECIAL")
-                except EOFError:
-                    # Handle EOF gracefully
-                    log_with_timestamp("EOF received in hotkey listener, shutting down", "HOTKEY_EOF")
-                    break
                 except KeyboardInterrupt:
-                    # Handle Ctrl+C in hotkey thread
-                    log_with_timestamp("Keyboard interrupt in hotkey listener, shutting down", "HOTKEY_INTERRUPT")
+                    # Handle Ctrl+C at thread level
+                    log_with_timestamp("Console hotkey listener thread interrupted by user", "SYSTEM")
                     break
-                except Exception as key_error:
-                    log_with_timestamp(f"Error processing key press: {key_error}", "ERROR_HOTKEY_INPUT")
+                except Exception as listener_error:
+                    log_with_timestamp(f"Critical console hotkey listener error: {listener_error}", "ERROR_HOTKEY_THREAD")
+                    # Continue running even on critical errors to maintain system stability
+                    time.sleep(0.1)  # Longer sleep on error
+                    continue
             
-            # Small sleep to prevent excessive CPU usage
-            time.sleep(0.01)  # 10ms sleep
-            
-        except KeyboardInterrupt:
-            # Handle Ctrl+C at thread level
-            log_with_timestamp("Hotkey listener thread interrupted by user", "SYSTEM")
-            break
-        except Exception as listener_error:
-            log_with_timestamp(f"Critical hotkey listener error: {listener_error}", "ERROR_HOTKEY_THREAD")
-            # Continue running even on critical errors to maintain system stability
-            time.sleep(0.1)  # Longer sleep on error
-            continue
-    
-    log_with_timestamp("Hotkey listener thread stopped gracefully", "SYSTEM")
+            log_with_timestamp("Console hotkey listener thread stopped gracefully", "SYSTEM")
+        
+        # Start console hotkey worker thread
+        hotkey_thread = threading.Thread(target=console_hotkey_worker, daemon=True)
+        hotkey_thread.start()
+        hotkey_listener_running = True
+        
+        log_with_timestamp("Console hotkey listener started successfully", "SYSTEM")
+        print_console(f"[HOTKEY] Console hot-keys active ({HOTKEY_MAP['send'].upper()} / {HOTKEY_MAP['repeat'].upper()} / {HOTKEY_MAP['help'].upper()} / {HOTKEY_MAP['skip'].upper()}) – requires console focus", "SYSTEM")
+        return True
+        
+    except Exception as e:
+        log_with_timestamp(f"Failed to start console hotkey listener: {e}", "ERROR")
+        return False
 
 # user_input_worker() and display_transcription_and_prompt() functions removed
 # These have been replaced by the non-blocking hotkey system
@@ -999,7 +1323,10 @@ def streaming_transcription_worker():
                         # Show friendly buffer status (only if >= 20 chars)
                         total_chars = len(" ".join(live_buffer))
                         if total_chars >= 20:
-                            print_console(f"📄  {total_chars} chars captured   |   g to send", "BUFFER_UPDATE")
+                            print_console(f"📄  {total_chars} chars captured   |   {HOTKEY_MAP['send'].upper()} to send", "BUFFER_UPDATE")
+                        else:
+                            # Clear the transcribing cue for short transcriptions
+                            print_console("📄  Buffer updated", "BUFFER_UPDATE")
                     
                     with hotkey_lock:
                         hotkey_state["last_transcription"] = clean_text
@@ -1106,9 +1433,9 @@ def callback(indata, frames, time, status):
         try:
             speech_complete = update_speaking_state(audio_chunk)
             
-            # 🎙️ Live feedback when speech starts
+            # 🎙️ Live feedback when speech starts - use direct print for immediate display
             if is_speaking and not hasattr(callback, '_speaking_feedback_shown'):
-                print_console("🎙️  Transcribing …", "SPEECH_START")
+                print("🎙️  Transcribing …")
                 log_with_timestamp("User started speaking", "USER_FEEDBACK")
                 callback._speaking_feedback_shown = True
                 
@@ -1332,6 +1659,25 @@ def cleanup_resources():
         auto_send_monitor_running = False
         log_with_timestamp("Signaled worker threads to stop", "SYSTEM")
         
+        # Unhook global hotkeys if using keyboard library
+        try:
+            if _HOTKEY_LIB == "keyboard":
+                keyboard.unhook_all_hotkeys()
+                log_with_timestamp("Global hotkeys unhooked successfully", "SYSTEM")
+        except ImportError:
+            # keyboard library not available, skip unhooking
+            pass
+        except Exception as unhook_error:
+            log_with_timestamp(f"Error unhooking global hotkeys: {unhook_error}", "ERROR")
+        
+        # Stop pynput listener if using pynput library
+        try:
+            if _HOTKEY_LIB == "pynput" and _pynput_listener is not None:
+                _pynput_listener.stop()
+                log_with_timestamp("Pynput listener stopped successfully", "SYSTEM")
+        except Exception as pynput_error:
+            log_with_timestamp(f"Error stopping pynput listener: {pynput_error}", "ERROR")
+        
         # Wait for any remaining audio processing to complete with timeout
         try:
             log_with_timestamp("Waiting for audio queue to empty", "SYSTEM")
@@ -1377,6 +1723,8 @@ def cleanup_resources():
                     
             except Exception as thread_error:
                 log_with_timestamp(f"Error joining hotkey listener thread: {thread_error}", "ERROR")
+        else:
+            log_with_timestamp("No hotkey thread to join (global hotkeys may be using library threads)", "SYSTEM")
         
         # Wait for auto-send monitor thread to finish with timeout
         if auto_send_thread and auto_send_thread.is_alive():
@@ -1446,14 +1794,16 @@ def main():
             log_with_timestamp(f"❌ Failed to start streaming transcription worker thread: {thread_error}", "ERROR")
             raise
         
-        # Start hotkey listener thread with error handling
+        # Start global hotkey listener with error handling
         try:
-            hotkey_listener_running = True
-            hotkey_thread = threading.Thread(target=hotkey_listener_worker, daemon=True)
-            hotkey_thread.start()
-            log_with_timestamp("✅ Hotkey listener thread started successfully", "SYSTEM")
-        except Exception as thread_error:
-            log_with_timestamp(f"❌ Failed to start hotkey listener thread: {thread_error}", "ERROR")
+            hotkey_success = start_global_hotkeys()
+            if hotkey_success:
+                log_with_timestamp("✅ Global hotkey listener started successfully", "SYSTEM")
+            else:
+                log_with_timestamp("❌ Failed to start global hotkey listener", "ERROR")
+                raise RuntimeError("Failed to start global hotkey listener")
+        except Exception as hotkey_error:
+            log_with_timestamp(f"❌ Failed to start global hotkey listener: {hotkey_error}", "ERROR")
             raise
         
         # Start auto-send monitor thread (disabled) with error handling
@@ -1467,7 +1817,7 @@ def main():
             raise
         
         # Verify all threads are alive
-        if transcription_thread.is_alive() and hotkey_thread.is_alive() and auto_send_thread.is_alive():
+        if transcription_thread.is_alive() and auto_send_thread.is_alive():
             log_with_timestamp("✅ All system threads running successfully", "SYSTEM")
         else:
             raise RuntimeError("One or more system threads failed to start properly")
@@ -1481,6 +1831,7 @@ def main():
             warmup_thread = threading.Thread(target=warm_up_gemini, daemon=True)
             warmup_thread.start()
             log_with_timestamp("✅ Gemini warm-up thread started", "SYSTEM")
+            print_console("Warming up Gemini …", "INIT")
         except Exception as warmup_thread_error:
             log_with_timestamp(f"⚠️ Failed to start Gemini warm-up thread: {warmup_thread_error}", "ERROR")
             # Don't raise - warm-up is optional and shouldn't block startup
@@ -1500,10 +1851,8 @@ def main():
                 log_with_timestamp("✅ Audio stream started successfully", "SYSTEM")
                 log_with_timestamp("=== SYSTEM FULLY OPERATIONAL ===", "SYSTEM")
                 
-                # Display startup banner and ready status
+                # Display startup banner
                 print_startup_banner()
-                print_console("Ready!  ─ Ready to transcribe ─", "READY")
-                print_console("─────────────────────────────────────────────────────────", "READY")
                 
                 # Main listening loop with enhanced shutdown handling
                 try:
@@ -1557,8 +1906,28 @@ def main():
             print_console(f"❌ Cleanup error: {final_cleanup_error}", "ERROR")
             print_console("⚠️ Some resources may not have been cleaned up properly", "ERROR")
 
+def dump_key_mapping():
+    """Print the current key mapping configuration."""
+    print("=== Current Key Mapping ===")
+    print(f"Modifiers: {' + '.join(KEY_CONFIG['modifiers'])}")
+    print()
+    print("Hotkeys:")
+    for action, key in KEY_CONFIG["keys"].items():
+        combo = f"{' + '.join(KEY_CONFIG['modifiers'])} + {key.upper()}"
+        print(f"  {combo:<20} → {action}")
+    print()
+    print("To customize hotkeys, edit the KEY_CONFIG dictionary in main.py")
+    print("Format: KEY_CONFIG['keys']['action'] = 'new_key'")
+
 # Run the main function
 if __name__ == "__main__":
+    import sys
+    
+    # Check for --keys dump flag
+    if "--keys" in sys.argv and "dump" in sys.argv:
+        dump_key_mapping()
+        sys.exit(0)
+    
     try:
         main()
     except Exception as startup_error:
