@@ -27,13 +27,15 @@ The application uses a multi-threaded architecture with the following components
 
 ### Software Requirements
 
-1. **Python 3.10** - The application is written in Python and need 3.10 for certain libraries.
+1. **Python 3.11** - The application is written in Python and need 3.11 for certain libraries.
 2. **VB-Audio Virtual Cable** - Required for audio routing
    - Download from: https://vb-audio.com/Cable/
    - This creates a virtual audio device that routes system audio to the application
 3. **CUDA-capable GPU (Optional)** - For faster Whisper processing
    - NVIDIA GPU with CUDA support recommended
    - CPU-only mode available but slower
+   - cuBLAS for CUDA 12
+   - cuDNN 9 for CUDA 12
 4. **CTranslate2** - Required for faster-whisper (automatically installed with faster-whisper)
 
 ### Hardware Requirements

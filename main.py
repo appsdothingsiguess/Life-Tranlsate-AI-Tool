@@ -32,7 +32,7 @@ from collections import deque
 import threading
 import queue
 from dotenv import load_dotenv
-from google import genai
+import google.generativeai as genai
 from datetime import datetime
 import time
 import re  # Added for filtering nonsense chunks

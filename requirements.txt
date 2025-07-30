@@ -1,11 +1,23 @@
+# Core PyTorch with CUDA 12.1
 torch==2.4.1+cu121
 torchaudio==2.4.1+cu121
 torchvision==0.19.1+cu121
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+# Whisper model & audio dependencies
 faster-whisper==1.0.1
 sounddevice==0.4.6
 numpy>=1.25.2
-python-dotenv>=1.0.0
 scipy>=1.10.0  # optional unless you're using scipy resample
+
+# GPU runtime dependencies, Python 3.11.9 + CUDA 12.1
+nvidia-cublas-cu12==12.9.1.4
+nvidia-cudnn-cu12==9.11.0.98
+
+# Environment + Gemini API
+python-dotenv>=1.0.0
 google-generativeai==0.4.1
+
+# Hotkey support
 keyboard>=0.13.5  # Global hotkey support for Windows
-pynput>=1.7.6    # Cross-platform fallback for hotkeys
+pynput>=1.7.6     # Cross-platform fallback for hotkeys
