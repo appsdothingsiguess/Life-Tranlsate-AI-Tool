@@ -2,6 +2,13 @@
 CHANGELOG
 =========
 
+v2.2.1 - CUDA & Audio Device Fixes
+- REMOVED: Hardcoded CUDA DLL path (os.add_dll_directory) - now uses pip-installed CUDA libraries
+- ADDED: Dynamic CUDA detection with graceful CPU fallback
+- IMPROVED: Audio device detection with automatic VB-Audio Cable detection
+- ENHANCED: Error handling for CUDA and audio device initialization
+- FIXED: Virtual environment compatibility issues
+
 v2.2.0 - Collision-Free Global Hotkeys
 - Replaced F-keys with triple-modifier combinations (Ctrl+Alt+Shift+key)
 - Eliminated input hijacking in other applications
@@ -38,39 +45,38 @@ import time
 import re  # Added for filtering nonsense chunks
 import logging  # Added for logging configuration
 
-# Global hotkey library imports with cross-platform fallback
-try:
-    from pynput import keyboard as pynput_keyboard
-    _HOTKEY_LIB = "pynput"
-except ImportError:
+# Global hotkey library imports with Windows API fallback
+import sys
+if sys.platform == "win32":
     try:
-        import keyboard  # Windows / X11 / Wayland
-        _HOTKEY_LIB = "keyboard"
+        from windows_hotkeys import WindowsGlobalHotkeyManager, HOTKEY_IDS
+        _HOTKEY_LIB = "windows_api"
     except ImportError:
-        import msvcrt  # Fallback to console-only hotkeys
-        _HOTKEY_LIB = "msvcrt"
+        _HOTKEY_LIB = "console_only"
+else:
+    _HOTKEY_LIB = "console_only"
 
 # Hotkey mapping configuration - collision-free triple-modifier combos
 HOTKEY_MAP = {
-    "send": "ctrl+alt+shift+s",
+    "send": "ctrl+alt+shift+g",
     "repeat": "ctrl+alt+shift+r", 
     "help": "ctrl+alt+shift+h",
-    "skip": "ctrl+alt+shift+c"
+    "skip": "ctrl+alt+shift+f7"
 }
 
 # Key configuration for easy customization
 KEY_CONFIG = {
     "modifiers": ["ctrl", "alt", "shift"],
     "keys": {
-        "send": "s",
+        "send": "g",
         "repeat": "r", 
         "help": "h",
-        "skip": "c"
+        "skip": "f7"
     }
 }
 
 # Global variables for cleanup
-_pynput_listener = None
+_windows_hotkey_manager = None
 
 # Configure logging to suppress unwanted messages
 logging.getLogger("google_genai").setLevel(logging.WARNING)
@@ -78,7 +84,84 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 logging.getLogger("faster_whisper").setLevel(logging.WARNING)
 
-os.add_dll_directory(r"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin")
+# CUDA detection and initialization - REMOVED hardcoded DLL path
+def initialize_cuda():
+    """
+    Initialize CUDA support with proper detection and fallback.
+    Uses pip-installed CUDA libraries instead of hardcoded paths.
+    """
+    try:
+        if torch.cuda.is_available():
+            # Test CUDA functionality
+            test_tensor = torch.rand(1, device="cuda")
+            del test_tensor  # Clean up test tensor
+            
+            log_with_timestamp(f"CUDA initialized successfully - {torch.cuda.device_count()} device(s) available", "SYSTEM")
+            log_with_timestamp(f"GPU: {torch.cuda.get_device_name(0)}", "SYSTEM")
+            return True
+        else:
+            log_with_timestamp("CUDA not available - falling back to CPU", "SYSTEM")
+            return False
+    except Exception as e:
+        log_with_timestamp(f"CUDA initialization failed: {e} - falling back to CPU", "ERROR")
+        return False
+
+# Audio device detection with VB-Audio Cable support
+def find_vb_audio_device():
+    """
+    Automatically detect VB-Audio Virtual Cable device.
+    Returns device index or None if not found.
+    """
+    try:
+        devices = sd.query_devices()
+        log_with_timestamp(f"Scanning {len(devices)} audio devices for VB-Audio", "SYSTEM")
+        
+        # Log all input devices for debugging
+        input_devices = []
+        for i, device in enumerate(devices):
+            if device['max_input_channels'] > 0:  # Input device
+                input_devices.append((i, device['name']))
+                log_with_timestamp(f"Input device {i}: {device['name']}", "SYSTEM")
+        
+        log_with_timestamp(f"Found {len(input_devices)} input devices", "SYSTEM")
+        
+        # Priority 1: Look for "CABLE Output (VB-Audio Virtual Cable)" - this is the correct device
+        for i, device in enumerate(devices):
+            if device['max_input_channels'] > 0:  # Input device
+                name = device['name'].lower()
+                if 'cable output' in name and 'vb-audio virtual cable' in name:
+                    log_with_timestamp(f"Found primary VB-Audio device at index {i}: {device['name']}", "SYSTEM")
+                    return i
+        
+        # Priority 2: Look for any VB-Audio device with "CABLE Output"
+        for i, device in enumerate(devices):
+            if device['max_input_channels'] > 0:  # Input device
+                name = device['name'].lower()
+                if 'cable output' in name and 'vb-audio' in name:
+                    log_with_timestamp(f"Found VB-Audio CABLE Output device at index {i}: {device['name']}", "SYSTEM")
+                    return i
+        
+        # Priority 3: Look for any VB-Audio device
+        for i, device in enumerate(devices):
+            if device['max_input_channels'] > 0:  # Input device
+                name = device['name'].lower()
+                if 'vb-audio' in name:
+                    log_with_timestamp(f"Found VB-Audio device at index {i}: {device['name']}", "SYSTEM")
+                    return i
+        
+        # Priority 4: Look for any virtual audio device
+        for i, device in enumerate(devices):
+            if device['max_input_channels'] > 0:  # Input device
+                name = device['name'].lower()
+                if any(pattern in name for pattern in ['virtual', 'loopback', 'stereo mix', 'what u hear']):
+                    log_with_timestamp(f"Found virtual audio device at index {i}: {device['name']}", "SYSTEM")
+                    return i
+        
+        log_with_timestamp("No VB-Audio or virtual audio devices found", "WARNING")
+        return None
+    except Exception as e:
+        log_with_timestamp(f"Error detecting audio devices: {e}", "ERROR")
+        return None
 
 # Custom resample function to replace scipy.signal.resample
 def resample(audio_data, new_length):
@@ -258,7 +341,7 @@ except Exception as e:
 
 # Initialize Gemini client with error handling
 try:
-    client = genai.Client(api_key=API_KEY)
+    genai.configure(api_key=API_KEY)
     log_with_timestamp("Gemini client initialized successfully", "SYSTEM")
     log_with_timestamp(f"Using Gemini model: {MODEL_NAME} (optimized for live exam latency)", "SYSTEM")
 except Exception as e:
@@ -311,9 +394,9 @@ def warm_up_gemini():
         try:
             start_time = time.time()
             
-            response = client.models.generate_content(
-                model=MODEL_NAME,  # "gemini-2.5-flash-lite"
-                contents=f"{prompt}\n\nStudent said in Spanish: {warmup_input}"
+            model = genai.GenerativeModel(MODEL_NAME)
+            response = model.generate_content(
+                f"{prompt}\n\nStudent said in Spanish: {warmup_input}"
             )
             
             warmup_time = time.time() - start_time
@@ -397,11 +480,9 @@ def call_gemini_api(spanish_input, is_repeat=False):
             start_time = time.time()
             
             # Configure request with optimizations for live exam latency
-            response = client.models.generate_content(
-                model=MODEL_NAME,  # "gemini-2.5-flash-lite"
-                contents=f"{prompt}\n\nStudent said in Spanish: {spanish_input}",
-                # Add any available latency optimizations here
-                # Note: thinking_budget parameter may not be available in all versions
+            model = genai.GenerativeModel(MODEL_NAME)
+            response = model.generate_content(
+                f"{prompt}\n\nStudent said in Spanish: {spanish_input}"
             )
             
             # Calculate response time
@@ -442,10 +523,13 @@ def call_gemini_api(spanish_input, is_repeat=False):
     return None
 
 
-# Load Whisper model with error handling
+# Initialize CUDA support
+cuda_available = initialize_cuda()
+
+# Load Whisper model with error handling and CUDA detection
 print("[🧠] Loading Whisper model...")
 try:
-    compute_type = "float16" if torch.cuda.is_available() else "int8"
+    compute_type = "float16" if cuda_available else "int8"
     log_with_timestamp(f"Initializing Whisper model with compute_type: {compute_type}", "SYSTEM")
     model = WhisperModel("small", compute_type=compute_type)
     log_with_timestamp("Whisper model loaded successfully", "SYSTEM")
@@ -455,7 +539,55 @@ except Exception as e:
     print(f"[❌] Failed to load Whisper model: {e}")
     raise
 
-        # Live transcription system initialization
+# Audio device detection and initialization
+def initialize_audio_device():
+    """
+    Initialize audio device with automatic VB-Audio Cable detection.
+    Returns device index or raises exception if no suitable device found.
+    """
+    try:
+        # Try to find VB-Audio device automatically
+        vb_device = find_vb_audio_device()
+        if vb_device is not None:
+            log_with_timestamp(f"Using VB-Audio device at index {vb_device}", "SYSTEM")
+            return vb_device
+        
+        # If no VB-Audio device found, try to find any input device
+        devices = sd.query_devices()
+        log_with_timestamp("No VB-Audio device found, looking for any input device", "SYSTEM")
+        
+        # Try to find any input device
+        for i, device in enumerate(devices):
+            if device['max_input_channels'] > 0:
+                log_with_timestamp(f"Found input device {i}: {device['name']}", "SYSTEM")
+                # Prefer devices that might be virtual or loopback
+                name = device['name'].lower()
+                if any(pattern in name for pattern in ['stereo mix', 'what u hear', 'loopback', 'virtual']):
+                    log_with_timestamp(f"Using virtual audio device {i}: {device['name']}", "SYSTEM")
+                    return i
+        
+        # If no virtual devices found, use the first available input device
+        for i, device in enumerate(devices):
+            if device['max_input_channels'] > 0:
+                log_with_timestamp(f"Using fallback input device {i}: {device['name']}", "SYSTEM")
+                return i
+        
+        raise RuntimeError("No audio input devices found")
+        
+    except Exception as e:
+        log_with_timestamp(f"Audio device initialization failed: {e}", "ERROR")
+        raise
+
+# Initialize audio device
+try:
+    DEVICE_INDEX = initialize_audio_device()
+    log_with_timestamp(f"Audio device initialized: index {DEVICE_INDEX}", "SYSTEM")
+except Exception as e:
+    log_with_timestamp(f"Failed to initialize audio device: {e}", "ERROR")
+    print(f"[❌] Audio device error: {e}")
+    raise
+
+# Live transcription system initialization
 log_with_timestamp("=== Live Transcription System Ready ===", "AUDIO_FORMAT")
 log_with_timestamp("✅ RMS-based speech detection enabled", "AUDIO_FORMAT")
 log_with_timestamp("✅ Live buffer accumulation system initialized", "AUDIO_FORMAT")
@@ -473,7 +605,6 @@ TARGET_RATE = 16000
 BLOCK_DURATION = 0.5
 # WINDOW_DURATION now defined in streaming constants section above
 CHANNELS = 1
-DEVICE_INDEX = 37  # VB-Audio Virtual Cable WASAPI input
 
 BLOCK_SIZE = int(SAMPLE_RATE * BLOCK_DURATION)
 
@@ -876,201 +1007,78 @@ def handle_skip_key(log_event):
 # HANDLERS_OK
 # <<< HOTKEY_HANDLERS_END
 
-# Global hotkey debouncing state
-_hotkey_debounce_timers = {}
-_hotkey_debounce_delay = 0.3  # 300ms debounce
+# Windows hotkey dispatcher function
 
-def _is_hotkey_debounced(key):
+def _windows_hotkey_dispatcher(hotkey_id: int):
     """
-    Check if a hotkey is within the debounce window.
-    Returns True if the key should be ignored due to debouncing.
-    """
-    global _hotkey_debounce_timers, _hotkey_debounce_delay
-    
-    current_time = time.time()
-    if key in _hotkey_debounce_timers:
-        time_since_last = current_time - _hotkey_debounce_timers[key]
-        if time_since_last < _hotkey_debounce_delay:
-            log_with_timestamp(f"Debounced key '{key}' (last press {time_since_last:.3f}s ago)", "HOTKEY_DEBOUNCE")
-            return True
-    
-    # Update debounce timer for this key
-    _hotkey_debounce_timers[key] = current_time
-    return False
-
-# Global modifier state tracking
-_modifier_state = {
-    "ctrl": False,
-    "alt": False,
-    "shift": False
-}
-
-def _update_modifier_state(key, pressed):
-    """Update modifier state based on key press/release."""
-    global _modifier_state
-    
-    if hasattr(key, 'name'):
-        key_name = key.name.lower()
-        if key_name in _modifier_state:
-            _modifier_state[key_name] = pressed
-
-def _check_hotkey_combination(key):
-    """Check if current key press matches any hotkey combination."""
-    global _modifier_state
-    
-    # Get the pressed key character
-    if hasattr(key, 'char') and key.char:
-        pressed_key = key.char.lower()
-    else:
-        return None
-    
-    # Check if all required modifiers are pressed
-    if (_modifier_state["ctrl"] and 
-        _modifier_state["alt"] and 
-        _modifier_state["shift"]):
-        
-        # Check if this key matches any of our hotkeys
-        for action, key_char in KEY_CONFIG["keys"].items():
-            if pressed_key == key_char:
-                return action
-    
-    return None
-
-def _on_hotkey_press(key):
-    """
-    Global hotkey press handler with modifier combination detection.
+    Windows API hotkey dispatcher that routes hotkey IDs to handler functions.
     """
     try:
-        # Update modifier state
-        _update_modifier_state(key, True)
-        
-        # Check for hotkey combination
-        action = _check_hotkey_combination(key)
-        
-        if action:
-            # Check debouncing
-            if _is_hotkey_debounced(action):
-                return
+        # Map hotkey ID to action
+        action_map = {v: k for k, v in HOTKEY_IDS.items()}
+        if hotkey_id not in action_map:
+            log_with_timestamp(f"Unknown hotkey ID: {hotkey_id}", "ERROR_HOTKEY")
+            return
             
-            # Process the hotkey action
-            try:
-                if action == "send":
-                    handle_send_key(hotkey_state, hotkey_lock, log_with_timestamp, call_gemini_api)
-                    
-                elif action == "repeat":
-                    handle_repeat_key(hotkey_state, hotkey_lock, log_with_timestamp)
-                    
-                elif action == "help":
-                    handle_help_key(log_with_timestamp)
-                    
-                elif action == "skip":
-                    handle_skip_key(log_with_timestamp)
-                    
-            except Exception as handler_error:
-                log_with_timestamp(f"Error in hotkey handler for '{action}': {handler_error}", "ERROR_HOTKEY_HANDLER")
-                # Continue running - don't let handler errors crash the listener
+        action = action_map[hotkey_id]
+        
+        # Process the hotkey action
+        try:
+            if action == "send":
+                handle_send_key(hotkey_state, hotkey_lock, log_with_timestamp, call_gemini_api)
                 
+            elif action == "repeat":
+                handle_repeat_key(hotkey_state, hotkey_lock, log_with_timestamp)
+                
+            elif action == "help":
+                handle_help_key(log_with_timestamp)
+                
+            elif action == "skip":
+                handle_skip_key(log_with_timestamp)
+                
+        except Exception as handler_error:
+            log_with_timestamp(f"Error in hotkey handler for '{action}': {handler_error}", "ERROR_HOTKEY_HANDLER")
+            # Continue running - don't let handler errors crash the listener
+            
     except Exception as hotkey_error:
-        log_with_timestamp(f"Error processing global hotkey: {hotkey_error}", "ERROR_HOTKEY_INPUT")
-
-def _on_hotkey_release(key):
-    """
-    Global hotkey release handler for modifier state tracking.
-    """
-    try:
-        # Update modifier state
-        _update_modifier_state(key, False)
-    except Exception as hotkey_error:
-        log_with_timestamp(f"Error processing hotkey release: {hotkey_error}", "ERROR_HOTKEY_INPUT")
-
-def _register_hotkey(label, key, func):
-    """
-    Register a hotkey with robust logging and error handling.
-    """
-    try:
-        keyboard.add_hotkey(key, func)
-        log_with_timestamp(f"[HOTKEY] Registered {label} on {key}", "SYSTEM")
-        return True
-    except Exception as e:
-        log_with_timestamp(f"[HOTKEY] Failed to register {label} on {key}: {e}", "ERROR")
-        return False
-
-def _check_keyboard_privileges():
-    """
-    Check if keyboard library has sufficient privileges for global hotkeys.
-    Returns True if privileges are sufficient, False otherwise.
-    """
-    try:
-        # Test if we can detect a simple key press
-        keyboard.is_pressed('shift')
-        return True
-    except (RuntimeError, PermissionError) as e:
-        log_with_timestamp(f"[HOTKEY] Admin rights required for global hooks: {e}", "ERROR")
-        print_console("[HOTKEY] Admin rights required for global hooks. Run PowerShell as Administrator.", "ERROR")
-        return False
-    except Exception as e:
-        log_with_timestamp(f"[HOTKEY] Keyboard privilege check failed: {e}", "ERROR")
-        return False
+        log_with_timestamp(f"Error processing Windows hotkey: {hotkey_error}", "ERROR_HOTKEY_INPUT")
 
 def start_global_hotkeys():
     """
-    Start global hotkey listener using the appropriate library.
+    Start global hotkey listener using Windows API or fallback to console-only.
     Returns True if successful, False otherwise.
     """
-    global hotkey_listener_running, _pynput_listener
+    global hotkey_listener_running, _windows_hotkey_manager
     
     try:
         log_with_timestamp(f"Starting global hotkey listener using {_HOTKEY_LIB}", "SYSTEM")
         
-        if _HOTKEY_LIB == "keyboard":
-            # Keyboard library doesn't support complex modifier combinations well
-            # Fall back to pynput or console hotkeys
-            log_with_timestamp("Keyboard library doesn't support modifier combinations, falling back to console", "SYSTEM")
-            return start_console_hotkeys()
-            
-        elif _HOTKEY_LIB == "pynput":
-            # Register hotkeys with pynput library using modifier combinations
-            def on_press(key):
-                try:
-                    _on_hotkey_press(key)
-                except Exception as e:
-                    log_with_timestamp(f"Pynput key press error: {e}", "ERROR_HOTKEY_INPUT")
-            
-            def on_release(key):
-                try:
-                    _on_hotkey_release(key)
-                except Exception as e:
-                    log_with_timestamp(f"Pynput key release error: {e}", "ERROR_HOTKEY_INPUT")
-            
-            # Start pynput listener in daemon thread
-            def pynput_listener():
-                try:
-                    global _pynput_listener
-                    _pynput_listener = pynput_keyboard.Listener(
-                        on_press=on_press,
-                        on_release=on_release
-                    )
-                    _pynput_listener.start()
-                    _pynput_listener.join()
-                except Exception as e:
-                    log_with_timestamp(f"Pynput listener error: {e}", "ERROR_HOTKEY_THREAD")
-            
-            hotkey_thread = threading.Thread(target=pynput_listener, daemon=True)
-            hotkey_thread.start()
-            hotkey_listener_running = True
-            
+        if _HOTKEY_LIB == "windows_api":
+            # Use Windows API for true global hotkeys
+            try:
+                _windows_hotkey_manager = WindowsGlobalHotkeyManager(_windows_hotkey_dispatcher)
+                success = _windows_hotkey_manager.start_listening()
+                
+                if success:
+                    hotkey_listener_running = True
+                    log_with_timestamp("Windows API global hotkey listener started successfully", "SYSTEM")
+                    print_console(f"[HOTKEY] Global hooks active ({HOTKEY_MAP['send'].upper()}=send • {HOTKEY_MAP['repeat'].upper()}=repeat • {HOTKEY_MAP['help'].upper()}=help • {HOTKEY_MAP['skip'].upper()}=skip)", "SYSTEM")
+                    return True
+                else:
+                    log_with_timestamp("Failed to start Windows API hotkey listener", "ERROR")
+                    return start_console_hotkeys()
+                    
+            except Exception as e:
+                log_with_timestamp(f"Windows API hotkey error: {e}", "ERROR")
+                return start_console_hotkeys()
+                
         else:
-            # Fallback to console-only hotkeys (original msvcrt implementation)
-            log_with_timestamp("Falling back to console-only hotkeys (msvcrt)", "SYSTEM")
+            # Fallback to console-only hotkeys
+            log_with_timestamp("Global hotkeys unavailable on this platform", "SYSTEM")
             return start_console_hotkeys()
-        
-        log_with_timestamp("Global hotkey listener started successfully", "SYSTEM")
-        print_console(f"[HOTKEY] Global hooks active ({HOTKEY_MAP['send'].upper()}=send • {HOTKEY_MAP['repeat'].upper()}=repeat • {HOTKEY_MAP['help'].upper()}=help • {HOTKEY_MAP['skip'].upper()}=skip)", "SYSTEM")
-        return True
         
     except Exception as e:
         log_with_timestamp(f"Failed to start global hotkey listener: {e}", "ERROR")
-        log_with_timestamp("Falling back to console-only hotkeys", "SYSTEM")
         return start_console_hotkeys()
 
 def start_console_hotkeys():
@@ -1364,41 +1372,7 @@ def streaming_transcription_worker():
 
 # Live transcription system using RMS-based speech detection
 
-# Show input device info with comprehensive error handling
-try:
-    info = sd.query_devices(DEVICE_INDEX)
-    log_with_timestamp(f"Using audio device {DEVICE_INDEX}: {info['name']}", "SYSTEM")
-    
-    # Validate device capabilities
-    if info['max_input_channels'] < CHANNELS:
-        raise ValueError(f"Device only supports {info['max_input_channels']} input channels, need {CHANNELS}")
-    
-    # Check if sample rate is supported
-    try:
-        sd.check_input_settings(device=DEVICE_INDEX, channels=CHANNELS, samplerate=SAMPLE_RATE)
-        log_with_timestamp(f"Audio settings validated: {SAMPLE_RATE}Hz, {CHANNELS} channel(s)", "SYSTEM")
-    except Exception as settings_error:
-        log_with_timestamp(f"Audio settings validation failed: {settings_error}", "ERROR")
-        raise
-        
-except sd.PortAudioError as pa_error:
-    log_with_timestamp(f"PortAudio error with device {DEVICE_INDEX}: {pa_error}", "ERROR")
-    print_console(f"❌ PortAudio device error: {pa_error}", "ERROR")
-    print_console("Available devices:", "ERROR")
-    try:
-        print_console(str(sd.query_devices()), "ERROR")
-    except:
-        pass
-    exit(1)
-except Exception as e:
-    log_with_timestamp(f"Audio device error: {e}", "ERROR")
-    print_console(f"❌ Device error: {e}", "ERROR")
-    print_console("Available devices:", "ERROR")
-    try:
-        print_console(str(sd.query_devices()), "ERROR")
-    except:
-        pass
-    exit(1)
+# Audio device validation - now handled by initialize_audio_device() function above
 
 
 
@@ -1659,24 +1633,13 @@ def cleanup_resources():
         auto_send_monitor_running = False
         log_with_timestamp("Signaled worker threads to stop", "SYSTEM")
         
-        # Unhook global hotkeys if using keyboard library
+        # Stop Windows hotkey manager if using Windows API
         try:
-            if _HOTKEY_LIB == "keyboard":
-                keyboard.unhook_all_hotkeys()
-                log_with_timestamp("Global hotkeys unhooked successfully", "SYSTEM")
-        except ImportError:
-            # keyboard library not available, skip unhooking
-            pass
-        except Exception as unhook_error:
-            log_with_timestamp(f"Error unhooking global hotkeys: {unhook_error}", "ERROR")
-        
-        # Stop pynput listener if using pynput library
-        try:
-            if _HOTKEY_LIB == "pynput" and _pynput_listener is not None:
-                _pynput_listener.stop()
-                log_with_timestamp("Pynput listener stopped successfully", "SYSTEM")
-        except Exception as pynput_error:
-            log_with_timestamp(f"Error stopping pynput listener: {pynput_error}", "ERROR")
+            if _HOTKEY_LIB == "windows_api" and _windows_hotkey_manager is not None:
+                _windows_hotkey_manager.stop_listening()
+                log_with_timestamp("Windows hotkey manager stopped successfully", "SYSTEM")
+        except Exception as windows_error:
+            log_with_timestamp(f"Error stopping Windows hotkey manager: {windows_error}", "ERROR")
         
         # Wait for any remaining audio processing to complete with timeout
         try:
@@ -1927,6 +1890,38 @@ if __name__ == "__main__":
     if "--keys" in sys.argv and "dump" in sys.argv:
         dump_key_mapping()
         sys.exit(0)
+    
+    # Check for --test-hotkeys flag
+    if "--test-hotkeys" in sys.argv:
+        if sys.platform == "win32":
+            try:
+                from windows_hotkeys import test_hotkeys
+                if test_hotkeys():
+                    print("Hotkeys OK")
+                    sys.exit(0)
+                else:
+                    print("Hotkeys FAILED")
+                    sys.exit(1)
+            except Exception as e:
+                print(f"Hotkeys FAILED: {e}")
+                sys.exit(1)
+        else:
+            print("Global hotkeys unavailable on this platform")
+            sys.exit(0)
+    
+    # Check for --dump-hotkey-status flag
+    if "--dump-hotkey-status" in sys.argv:
+        if sys.platform == "win32":
+            try:
+                from windows_hotkeys import dump_hotkey_status
+                dump_hotkey_status()
+                sys.exit(0)
+            except Exception as e:
+                print(f"Hotkey status dump failed: {e}")
+                sys.exit(1)
+        else:
+            print("Global hotkeys unavailable on this platform")
+            sys.exit(0)
     
     try:
         main()

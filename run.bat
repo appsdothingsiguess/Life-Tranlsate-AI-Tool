@@ -86,23 +86,76 @@ if %errorlevel% equ 0 (
 echo [OK] GOOGLE_API_KEY found and valid.
 
 
-REM ====== 8. Check for VB-Audio Cable ======
-echo [INFO] Checking for VB-Audio Cable...
-python -c "import sounddevice as sd; devices = [d['name'] for d in sd.query_devices()]; print('[OK]' if any('VB-AUDIO' in d.upper() or 'CABLE INPUT' in d.upper() for d in devices) else '[MISSING]')" > vbcheck.tmp
+REM ====== 8. Check for VB‑Audio Cable and advise on default device ======
 
-findstr "[MISSING]" vbcheck.tmp >nul
-if %errorlevel% equ 0 (
-    echo [ERROR] VB-Audio Cable not detected.
-    echo Opening download page...
+:: The Python one‑liner prints:  inputName|outputName|true/false|isDefaultCorrect
+for /f "tokens=1,2,3,4 delims=|" %%A in ('python -c "import sounddevice as sd, sys; di,do=sd.default.device; dev=sd.query_devices(); fmt=lambda i:dev[i]['name'] if i>=0 else 'N/A'; vb=any('VB-AUDIO' in d['name'].upper() or 'CABLE' in d['name'].upper() for d in dev); default_input=fmt(di).lower(); is_correct=('cable output' in default_input and 'vb-audio virtual' in default_input); print(f'{fmt(di)}|{fmt(do)}|{vb}|{is_correct}'.lower())"') do (
+    set "DEF_IN=%%A"
+    set "DEF_OUT=%%B"
+    set "VB_OK=%%C"
+    set "DEFAULT_CORRECT=%%D"
+)
+
+:: Abort if the driver itself is missing
+if /I "%VB_OK%"=="false" (
+    echo.
+    echo [ERROR] VB‑Audio Cable driver not detected.
+    echo Download and install it from: https://vb-audio.com/Cable/
     start https://vb-audio.com/Cable/
-    del vbcheck.tmp
     pause
     exit /b 1
 )
-del vbcheck.tmp
-echo [OK] VB-Audio Cable detected.
 
-REM ====== 9. Run the app ======
+echo.
+echo Default Recording Device : %DEF_IN%
+echo Default Playback Device  : %DEF_OUT%
+echo.
+
+:: Check if default device is already correctly configured
+if /I "%DEFAULT_CORRECT%"=="true" (
+    echo [OK] Audio setup is correct! Default recording device is already set to VB-Audio Cable.
+    echo [INFO] Continuing with current audio settings...
+    goto :run_app
+)
+
+echo [INFO] Set your Recording (Input) device to:
+echo     "CABLE Output (VB-Audio Virtual Cable)"
+echo Keep your physical microphone (e.g. "Realtek Microphone Array")
+echo as the *Default COMMUNICATIONS device* if you still need it in Zoom or Discord.
+echo.
+echo Steps to change it:
+echo   1. Press Win + R, type "mmsys.cpl", then press Enter.
+echo   2. In the Settings window, click "More sound settings" on the right.
+echo   3. Open the Recording tab, right-click "CABLE Output (VB-Audio Virtual Cable)".
+echo   4. Choose "Set as Default Device" (do NOT click "Set as Default Communications Device").
+echo.
+
+REM ====== FIXED: Use set /p instead of choice to avoid double prompt ======
+set /p "USER_CONFIRM=Finished switching the Recording device? (Y/N): "
+if /I not "%USER_CONFIRM%"=="Y" (
+    echo [ABORTED] Please change the device in Windows Sound settings, then rerun this script.
+    pause
+    exit /b 1
+)
+
+echo [OK] Continuing with current audio settings...
+
+:run_app
+REM ====== 9. Run the app with proper interrupt handling ======
 echo [INFO] Running %MAIN_SCRIPT%...
+echo [INFO] Press Ctrl+C to exit the application.
+echo.
+
+REM ====== FIXED: Add proper interrupt handling ======
 python "%MAIN_SCRIPT%"
-pause
+if %errorlevel% neq 0 (
+    echo.
+    echo [INFO] Application exited with error code %errorlevel%
+    echo [INFO] Press any key to close this window...
+    pause >nul
+) else (
+    echo.
+    echo [INFO] Application exited normally.
+    echo [INFO] Press any key to close this window...
+    pause >nul
+)

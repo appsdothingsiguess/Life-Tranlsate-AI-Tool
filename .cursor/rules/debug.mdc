@@ -1,0 +1,91 @@
+---
+
+description: Development workflow, coding standards, error handling, and API guidelines for hub-of-sunshine-apps. Always applied to make Cursor follow the project's SOP.
+globs:
+alwaysApply: true
+-----------------
+
+# Development Workflow & Phases
+
+Use these phases **in order** for every task. Never skip a phase unless the task type explicitly says so.
+
+## Phase 1 – Search & Understand
+
+* Search the entire codebase (`⌘⇧F`) for keywords related to the task.
+* Open existing implementations, patterns, and hooks to avoid re‑inventing solutions.
+* Identify affected modules, shared utilities, and feature flags.
+
+## Phase 2 – Plan & Outline
+
+* Create a **high‑level outline** of changes in plain English *before* writing code.
+* Include file names (or new files) and the purpose of each change.
+* For large changes (>100 LOC or multi‑module) add an `architecture.md` snippet to the PR description.
+
+## Phase 3 – Implement
+
+* Follow the coding standards below.
+* Touch the smallest surface area possible; prefer extending existing patterns.
+* Keep functions < 40 LOC; extract helpers to `lib/` or `utils/` if reused twice.
+
+## Phase 4 – Test & Verify
+
+* Run **all** Vitest suites: `pnpm test`.
+* Run ESLint + type‑check: `pnpm lint && pnpm tsc --noEmit`.
+* Manually verify the feature behind any feature flag in both **DEV** and **PROD‑like** env.
+
+## Phase 5 – Commit & Document
+
+* Use **Conventional Commits**: `feat(component): add dark‑mode toggle`.
+* Update or create relevant docs in `/docs` or inline JSDoc comments.
+* Push branch and open PR with checklist: ✅ tests pass, ✅ lint passes, ✅ docs updated.
+
+## Phase 6 – Merge & Cleanup
+
+* PR must pass CI (Vitest, ESLint, TypeScript, Playwright).
+* `squash` merge unless multiple logical commits are meaningful.
+* Delete feature branches locally and remotely after merge.
+
+---
+
+# Coding Standards
+
+* **Language**: TypeScript with `strict` compiler options enabled.
+* **Imports**: Use absolute imports via the `@/` alias; no relative `../../../`.
+* **React**:
+
+  * Prefer functional components and hooks.
+  * Side‑effects belong in `useEffect`; data fetching in `react‑query` hooks.
+* **Styling**: Tailwind CSS; no inline styles except dynamic `style` props for SVG.
+* **State**: Use existing context providers; do **not** introduce new global state libraries.
+* **Accessibility**: All interactive elements must have `aria‑` attributes & keyboard support.
+* **Naming**: kebab‑case for filenames, camelCase for variables, PascalCase for components.
+
+---
+
+# Error Handling & Logging
+
+* Wrap **all** async calls in `try { } catch (e) {}`.
+* Show user‑facing feedback via `useToast`.
+* Log developer diagnostics with `useLogger`.
+
+  * Call `logError(err, { context: 'feature‑name' })` for caught exceptions.
+* Sanitize authentication errors with `sanitizeAuthError` before display or logging.
+
+---
+
+# API & Supabase Edge Functions
+
+* Place new Edge Functions in `supabase/functions`.
+* Functions **must**:
+
+  1. Reply to `OPTIONS` pre‑flight with status 200 and CORS headers.
+  2. Validate JWT and, when required, `is_admin` role.
+  3. Return JSON `{ ok: boolean, data?: T, error?: string }`.
+* Write integration tests in `supabase/tests`.
+
+---
+
+# Referenced Files
+
+@supabase/functions/\_templates/handler.ts
+@lib/logger.ts

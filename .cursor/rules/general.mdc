@@ -1,0 +1,66 @@
+---
+
+description: General user rules for Joeyspace.dev covering prompt isolation, testing, achievements, notifications, Supabase functions, UI conventions, and realtime sync. Always applied.
+globs:
+alwaysApply: true
+-----------------
+
+# 🧠 General Behavior
+
+* **Isolate work by prompt.** Never combine logic from two separate prompts unless explicitly instructed.
+* **Prefer modifying existing code** over introducing new abstractions. Create new modules only when reuse is evident.
+* **CI gate**: Before completing any prompt run `pnpm lint && pnpm test` locally; Cursor should emulate this step.
+
+# 🧪 Testing & Verification
+
+* All new logic must include **unit tests** (Vitest) and pass linting.
+* For UI changes, add or update **Playwright** e2e tests in `/e2e`.
+* Use **test‑ids** (`data-testid`) to make components testable. Do **not** rely on CSS selectors.
+
+# 🎯 Achievements System
+
+* **Do not delete or replace** the legacy Achievements panel/modal.
+* Maintain compatibility with:
+
+  * `useAchievements`, `checkAchievements`, `AchievementModal`
+* Keep memoization and early‑exit guards intact.
+* When adding new achievements:
+
+  1. Extend `achievements.ts`.
+  2. Add translation keys in `i18n/en.json`.
+  3. Write unit tests for `checkAchievements`.
+
+# 🔔 Notification System
+
+* Play sounds via `SoundService.play(eventType)` inside a `switch` statement for clarity.
+* Show toasts with `showSuccessToast()` / `showErrorToast()` using production styling (`bg-emerald-600 text-white shadow-lg`).
+* Emit events only through `eventBus.emit('event‑name')` if listeners already exist; avoid creating new global events.
+
+# 🧹 Supabase Functions
+
+* Each function must respond to **CORS pre‑flight** (`OPTIONS 200`) with `Access-Control-Allow-*` headers.
+* Avoid status 204; a 2xx with a JSON body is required.
+* For one‑off debug helpers expose them via `window.debug.*` rather than UI toggles.
+
+# 📛 UI / UX Conventions
+
+* **Debug panels** must *never* overwrite production components.
+* Background colours must align with the Tailwind palette in `styles/theme.ts`.
+* Any button that triggers an async action must:
+
+  1. `disabled` state while awaiting
+  2. Display a toast on error (`showErrorToast`)
+
+# 🔁 Realtime Sync & Subscriptions
+
+* Realtime subscriptions must be optional in `import.meta.env.DEV`.
+* If connection fails (e.g., "Unable to connect to project database"), fall back to polling or **log once** and disable sync.
+* Never crash the UI due to realtime errors; wrap in `try …catch` and show a non‑blocking toast.
+
+---
+
+# Referenced Files
+
+@src/contexts/AchievementsContext.tsx
+@src/services/SoundService.ts
+@supabase/functions/\_templates/cors-handler.ts
